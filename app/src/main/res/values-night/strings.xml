@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="register_acc">تسجيــل حساب جديد</string>
+    <string name="sign_as_guest">تسجيل الدخول كضيف</string>
+</resources>

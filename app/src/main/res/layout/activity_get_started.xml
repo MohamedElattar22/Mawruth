@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/enter_background"
+    tools:context=".ui.getstarted.GetStartedActivity">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:background="@drawable/texture_bg">
+
+            <ImageView
+                android:layout_marginTop="80dp"
+                android:layout_width="290dp"
+                android:layout_height="300dp"
+                android:src="@drawable/full_size_log"
+              >
+            </ImageView>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/toRegisterBtn"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                style="@style/heroBtn"
+                android:text="@string/register_acc"
+                >
+            </androidx.appcompat.widget.AppCompatButton>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/logInBtn"
+                android:layout_width="match_parent"
+                style="@style/strokeBtn"
+                android:text="تسجيــل الدخـــول"
+                android:layout_height="65dp">
+
+            </com.google.android.material.button.MaterialButton>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/or"
+                android:layout_height="40dp">
+
+            </ImageView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/guestBtn"
+                    android:layout_width="wrap_content"
+                    android:text="@string/sign_as_guest"
+                    android:textSize="18sp"
+                    android:textColor="#686A60"
+                    android:fontFamily="@font/cairo_semibold"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+                <ImageView
+                    android:layout_width="25dp"
+                    android:src="@drawable/anonymous"
+                   android:layout_margin="10dp"
+                    android:layout_height="25dp">
+
+                </ImageView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

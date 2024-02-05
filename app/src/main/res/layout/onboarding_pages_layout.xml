@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_marginTop="15dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/desImage"
+        android:layout_width="265dp"
+        android:src="@drawable/ar_onboard"
+        android:layout_height="250dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="TODO">
+    </ImageView>
+    <TextView
+        android:id="@+id/featureTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/darkBrown"
+        android:text="تجربة بصرية فريدة !"
+        android:fontFamily="@font/cairo_medium"
+        android:textSize="28sp"
+        >
+    </TextView>
+    <TextView
+        android:id="@+id/contentTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/paragraph"
+        android:maxLines="3"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:text="بإستخــدام تقنيــة الواقــع المعــزز , يمكنك
+الآن الحصول علــي تجــربة بصـــرية فريـــدة
+خلال زيارتك للمتحف"
+        android:fontFamily="@font/cairo_regular"
+        android:textSize="18sp"
+        >
+    </TextView>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/nextBtn"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+
+        app:iconSize="35dp"
+        android:layout_marginTop="10dp"
+        app:iconTint="@color/white"
+        app:icon="@drawable/baseline_navigate_next_24"
+        android:background="@drawable/next_btnf"
+        app:backgroundTint="@color/mainBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    </com.google.android.material.button.MaterialButton>
+
+</LinearLayout>

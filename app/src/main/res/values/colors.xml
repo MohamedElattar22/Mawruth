@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="darkBrown">#332B1A</color>
+    <color name="mainBtn">#A17C48</color>
+    <color name="mainSand">#B9A474</color>
+    <color name="lightSand">#FFE3B3</color>
+    <color name="whiteSand">#F1F0EB</color>
+    <color name="titlesColor">#2D2E29</color>
+    <color name="contentColor">#43443F</color>
+    <color name="paragraph">#686A60</color>
+    <color name="secTitleColor">#AEB7AE</color>
+    <color name="border">#E0E0DF</color>
+
+</resources>
