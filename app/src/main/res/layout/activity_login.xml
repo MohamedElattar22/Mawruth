@@ -12,7 +12,7 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="105dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:contentDescription="@string/logo"
         android:src="@drawable/logo"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -43,14 +43,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.20" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.30" />
+        app:layout_constraintGuide_percent="0.25" />
 
 
     <com.google.android.material.card.MaterialCardView
@@ -64,10 +64,7 @@
         app:layout_constraintTop_toBottomOf="@id/guideline"
         app:strokeWidth="0dp">
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -123,17 +120,18 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     app:hintEnabled="false"
-                    app:layout_constraintTop_toBottomOf="@+id/email">
+                    app:layout_constraintTop_toBottomOf="@+id/email"
+                   >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:background="@drawable/emailbackground"
                         android:drawableStart="@drawable/email"
                         android:drawablePadding="10dp"
                         android:fontFamily="@font/cairo_regular"
-                        android:hint="البريد الإلكتروني"
-                        android:inputType="textEmailAddress" />
+                        android:hint="@string/Emailhint"
+                        android:inputType="textPassword" />
 
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -235,14 +233,11 @@
                     android:textColor="@color/paragraph"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_bias="0.497"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/googlelogin" />
-
-
+                    app:layout_constraintTop_toBottomOf="@+id/googlelogin"
+                    app:layout_constraintVertical_bias="0.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.core.widget.NestedScrollView>
 
 
     </com.google.android.material.card.MaterialCardView>
