@@ -3,4 +3,7 @@
     <string name="logo">logo</string>
     <string name="register_acc">تسجيــل حساب جديد</string>
     <string name="sign_as_guest">تسجيل الدخول  <b>كضيف</b></string>
+    <string name="donthaveaccount">ليـس لـديـك حسـاب ؟ <b> سجـل الآن !</b>   </string>
+
+
 </resources>
