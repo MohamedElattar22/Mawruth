@@ -12,10 +12,9 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="105dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:contentDescription="@string/logo"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -50,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.30" />
+        app:layout_constraintGuide_percent="0.28" />
 
 
     <com.google.android.material.card.MaterialCardView
@@ -105,14 +104,12 @@
                     android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="11dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
                     android:fontFamily="@font/cairo_medium"
                     android:text="البريد الإلكتروني"
                     android:textSize="21sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.05"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/paragraphlogin" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -121,6 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
+                    android:gravity="end"
                     android:layout_marginEnd="20dp"
                     app:hintEnabled="false"
                     app:layout_constraintTop_toBottomOf="@+id/email"
@@ -130,11 +128,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/emailbackground"
-                        android:drawableStart="@drawable/lock"
+                        android:id="@+id/emailInput"
                         android:drawablePadding="10dp"
+                        android:drawableEnd="@drawable/user"
+                        android:gravity="end"
+                        android:hint="example@gmail.com"
                         android:fontFamily="@font/cairo_regular"
-                        android:hint="@string/Emailhint"
-                        android:inputType="textPassword" />
+                        android:inputType="text" />
 
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -143,14 +143,12 @@
                     android:id="@+id/passwordtxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="11dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginEnd="20dp"
                     android:fontFamily="@font/cairo_medium"
                     android:text="كلمـة المرور"
                     android:textSize="21sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.05"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/emailedittext" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -161,17 +159,18 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     app:hintEnabled="false"
-                    app:layout_constraintTop_toBottomOf="@+id/passwordtxt"
-                    app:passwordToggleEnabled="true">
+                    app:layout_constraintTop_toBottomOf="@+id/passwordtxt">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/emailbackground"
-                        android:drawableStart="@drawable/lock"
+                        android:id="@+id/passwordInput"
                         android:drawablePadding="10dp"
+                        android:drawableEnd="@drawable/lock"
+                        android:gravity="end"
                         android:fontFamily="@font/cairo_regular"
-                        android:hint="كلمة المرور"
+                        android:hint="password"
                         android:inputType="textPassword" />
 
 
@@ -181,15 +180,12 @@
                     android:id="@+id/forgetpassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="7dp"
                     android:layout_marginTop="5dp"
-
+                    android:layout_marginEnd="20dp"
                     android:fontFamily="@font/cairo_medium"
                     android:text="هل نسيت كلمة المرور؟"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.05"
 
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/passwordedittext" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -207,18 +203,18 @@
                     android:id="@+id/or"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_margin="20dp"
                     android:src="@drawable/or"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/logInBtn" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/googlelogin"
                     style="@style/strokeBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginEnd="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_margin="20dp"
                     android:text="دخــول بواسطة جوجـل"
                     app:icon="@drawable/google"
                     app:iconGravity="textStart"
@@ -226,20 +222,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/or" />
-
-                <TextView
-                    android:id="@+id/donthaveaccount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/cairo_medium"
-                    android:text="@string/donthaveaccount"
-                    android:textColor="@color/paragraph"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/googlelogin"
-                    app:layout_constraintVertical_bias="0.0" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

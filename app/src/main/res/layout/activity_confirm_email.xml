@@ -12,7 +12,9 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="230dp"
-        android:src="@drawable/email_confiem"></ImageView>
+        android:src="@drawable/email_confiem">
+
+    </ImageView>
 
     <TextView
         android:layout_width="wrap_content"
@@ -213,7 +215,9 @@
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/cairo_semibold"
             android:text="1:00"
-            android:textSize="18sp"></TextView>
+            android:textSize="18sp">
+
+        </TextView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -221,7 +225,9 @@
             android:layout_marginTop="10dp"
             android:text="ستنتهي صلاحية الرمز بعد:"
             android:textColor="#A17C48"
-            android:textSize="18sp"></TextView>
+            android:textSize="18sp">
+
+        </TextView>
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -233,11 +239,13 @@
         android:layout_marginEnd="20dp"
         android:enabled="false"
         android:text="تحقق"
+
         android:textSize="20sp"
         app:cornerRadius="10dp"
-
         app:iconSize="25dp"
-        app:iconTint="@color/mainBtn"></com.google.android.material.button.MaterialButton>
+        app:iconTint="@color/mainBtn">
+
+    </com.google.android.material.button.MaterialButton>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/logInBtn"
@@ -248,7 +256,9 @@
         android:text="إعادة الإرسال"
         app:iconGravity="textEnd"
         app:iconSize="25dp"
-        app:iconTint="@color/mainBtn"></com.google.android.material.button.MaterialButton>
+        app:iconTint="@color/mainBtn">
+
+    </com.google.android.material.button.MaterialButton>
 
 
 </LinearLayout>
