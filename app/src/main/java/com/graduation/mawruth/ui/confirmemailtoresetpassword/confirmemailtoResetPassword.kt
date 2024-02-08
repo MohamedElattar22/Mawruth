@@ -1,27 +1,21 @@
-package com.graduation.mawruth.ui.login
+package com.graduation.mawruth.ui.confirmemailtoresetpassword
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.WindowCompat
-import com.graduation.mawruth.R
-import com.graduation.mawruth.databinding.ActivityLoginBinding
+import com.graduation.mawruth.databinding.ActivityConfirmEmailToResetpassBinding
 
 
-class LoginActivity : AppCompatActivity() {
-    lateinit var viewBinding: ActivityLoginBinding
+class confirmemailtoResetPassword : AppCompatActivity() {
+    lateinit var viewBinding: ActivityConfirmEmailToResetpassBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-        viewBinding = ActivityLoginBinding.inflate(layoutInflater)
+        viewBinding = ActivityConfirmEmailToResetpassBinding.inflate(layoutInflater)
 
         setContentView(viewBinding.root)
         initViews()
-
-     
-
-
     }
     private fun initViews() {
         WindowCompat.setDecorFitsSystemWindows(window , false)

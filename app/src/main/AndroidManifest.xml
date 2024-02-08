@@ -37,11 +37,21 @@
             android:name=".ui.confirmEmail.ConfirmEmailActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.confirmemailtoresetpassword.confirmemailtoResetPassword"
+            android:exported="false"
+            />
+        <activity
+            android:name=".ui.resetpassword.ResetPassword"
+            android:exported="false"
+            />
+        <activity
             android:name=".ui.login.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.signup.SignupActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.getstarted.GetStartedActivity"
             android:exported="false"
