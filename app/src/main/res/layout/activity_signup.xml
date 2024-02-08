@@ -1,9 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.signup.SignupActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_full"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:context=".ui.signup.SignupActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:fontFamily="@font/cairo_semibold"
+                android:text="سجل الآن !"
+                android:textColor="@color/darkBrown"
+                android:textSize="27sp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo_regular"
+                android:text="للإستفادة من كامل خدمات موروث"
+                android:textColor="#686A60"
+                android:textSize="20sp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/cairo_medium"
+                android:text="الاسم بالكامل"
+                android:textColor="@color/darkBrown"
+                android:textSize="20sp">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/userInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center_horizontal"
+                android:outlineSpotShadowColor="@color/paragraph"
+                android:textColorHint="@color/inputIcons"
+                android:textDirection="locale"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="7dp"
+                app:cursorColor="@color/darkBrown"
+                app:helperText="Required"
+                app:hintEnabled="false"
+                app:placeholderTextColor="@color/darkBrown"
+                app:startIconTint="@color/inputIcons"
+                tools:targetApi="p">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/edit_text_style"
+                    android:drawableEnd="@drawable/user"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/cairo_medium"
+                    android:gravity="end"
+                    android:hint="User Name"
+                    android:imeOptions="actionNext"
+                    android:textColor="@color/darkBrown"
+                    android:textColorHighlight="@color/mainSand"
+                    tools:targetApi="upside_down_cake">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/cairo_medium"
+                android:text="البريد الإلكتروني"
+                android:textColor="@color/darkBrown"
+                android:textSize="20sp">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="20dp"
+                android:outlineSpotShadowColor="@color/paragraph"
+                android:textColorHint="@color/inputIcons"
+                android:textDirection="locale"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+
+                app:boxCornerRadiusTopStart="10dp"
+                app:cursorColor="@color/darkBrown"
+                app:helperText="Required"
+                app:hintEnabled="false"
+                app:placeholderTextColor="@color/darkBrown"
+                app:startIconTint="@color/inputIcons"
+                tools:targetApi="p">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_style"
+                    android:drawableEnd="@drawable/email"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/cairo_medium"
+                    android:gravity="end"
+                    android:hint="example@gmail.com"
+                    android:imeOptions="actionNext"
+                    android:textColor="@color/darkBrown"
+                    android:textColorHighlight="@color/mainSand"
+                    tools:targetApi="upside_down_cake">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/cairo_medium"
+                android:text="كلمـة المرور"
+                android:textColor="@color/darkBrown"
+                android:textSize="20sp">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="20dp"
+                android:outlineSpotShadowColor="@color/paragraph"
+                android:textColorHint="@color/inputIcons"
+                android:textDirection="locale"
+                app:boxCornerRadiusTopStart="10dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="16"
+                app:cursorColor="@color/darkBrown"
+                app:helperText="Required"
+                app:hintEnabled="false"
+                app:placeholderTextColor="@color/darkBrown"
+                app:startIconTint="@color/inputIcons"
+                tools:targetApi="p">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/edit_text_style"
+                    android:drawableEnd="@drawable/password"
+                    android:drawablePadding="10dp"
+
+                    android:fontFamily="@font/cairo_medium"
+                    android:gravity="end"
+                    android:hint="password"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:textColor="@color/darkBrown"
+                    android:textColorHighlight="@color/mainSand"
+                    tools:targetApi="upside_down_cake">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/cairo_medium"
+                android:text="أكد كلمة المرور"
+                android:textColor="@color/darkBrown"
+                android:textSize="20sp">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="20dp"
+                android:outlineSpotShadowColor="@color/paragraph"
+                android:textColorHint="@color/inputIcons"
+                android:textDirection="locale"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="16"
+
+                app:cursorColor="@color/darkBrown"
+                app:helperText="Required"
+                app:hintEnabled="false"
+                app:placeholderTextColor="@color/darkBrown"
+                app:startIconTint="@color/inputIcons"
+                tools:targetApi="p">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/edit_text_style"
+                    android:drawableEnd="@drawable/password"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/cairo_medium"
+                    android:gravity="end"
+
+                    android:hint="Confirm Password"
+                    android:imeOptions="actionNext"
+                    android:textColor="@color/darkBrown"
+                    android:textColorHighlight="@color/mainSand"
+                    tools:targetApi="upside_down_cake">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/toRegisterBtn"
+                style="@style/heroBtn"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/register_acc">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/or">
+
+            </ImageView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/logInBtn"
+                style="@style/strokeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="20dp"
+                android:text="دخــول بواسطة جوجـل"
+                app:icon="@drawable/google"
+                app:iconGravity="textEnd"
+                app:iconSize="25dp"
+                app:iconTint="@color/mainBtn">
+
+            </com.google.android.material.button.MaterialButton>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

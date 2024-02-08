@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.successfulCreate.SuccessfulCreatedActivity">
+
+    <ImageView
+        android:id="@+id/animatedSuccess"
+        android:layout_width="wrap_content"
+        android:layout_height="220dp"
+        android:layout_margin="20dp"
+        android:src="@drawable/success">
+
+    </ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo_semibold"
+        android:text="تـم إنشــاء حسابــك بنجــاح !"
+        android:textSize="28sp"></TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/cairo_regular"
+        android:text="تم انشاء الخاصة بك، يمكنك الآن البدء في تجربة إستخـدام التطبيق، تجـربة سعيــدة!"
+        android:textAlignment="center"
+        android:textSize="18sp"></TextView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/toRegisterBtn"
+        style="@style/heroBtn"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="20dp"
+        android:text="ابــــدأ رحلتـــــك"></androidx.appcompat.widget.AppCompatButton>
+
+</LinearLayout>
