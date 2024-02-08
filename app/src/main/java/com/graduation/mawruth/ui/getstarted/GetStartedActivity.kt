@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import androidx.core.view.WindowCompat
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityGetStartedBinding
+import com.graduation.mawruth.ui.confirmEmail.ConfirmEmailActivity
 import com.graduation.mawruth.ui.login.LoginActivity
 import com.graduation.mawruth.ui.signup.SignupActivity
 
@@ -23,11 +24,14 @@ class GetStartedActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window , false)
         navigateToSignUp()
         navigateToLogin()
-//        guestMode()
+        guestMode()
     }
 
     private fun guestMode() {
-
+        viewBinding.guestBtn.setOnClickListener {
+            val login = Intent(this, ConfirmEmailActivity::class.java)
+            startActivity(login)
+        }
     }
 
     private fun navigateToLogin() {

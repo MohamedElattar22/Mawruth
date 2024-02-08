@@ -5,7 +5,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="darkBrown">#332B1A</color>
     <color name="mainBtn">#A17C48</color>
+    <color name="editTextColor">#DBD4CB</color>
     <color name="mainSand">#B9A474</color>
+    <color name="inputIcons">#B7B2AB</color>
     <color name="lightSand">#FFE3B3</color>
     <color name="whiteSand">#F1F0EB</color>
     <color name="titlesColor">#2D2E29</color>

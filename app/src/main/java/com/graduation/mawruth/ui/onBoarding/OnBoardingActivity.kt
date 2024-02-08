@@ -1,10 +1,8 @@
 package com.graduation.mawruth.ui.onBoarding
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.core.view.WindowCompat
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityOnboardingBinding
@@ -18,7 +16,6 @@ class OnBoardingActivity : AppCompatActivity() {
     private var imagesList = mutableListOf<Int>()
     private var headerList = mutableListOf<String>()
     private var contentList = mutableListOf<String>()
-    private var cnt = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityOnboardingBinding.inflate(layoutInflater)
@@ -50,9 +47,7 @@ class OnBoardingActivity : AppCompatActivity() {
         adapter = ViewPagerAdapter(imagesList , headerList ,contentList)
         viewBinding.viewPager.adapter = adapter
 
-
         viewBinding.nextBtn.setOnClickListener {
-            cnt++
             viewBinding.viewPager.apply {
                 beginFakeDrag()
                 fakeDragBy(-10f)
@@ -63,15 +58,21 @@ class OnBoardingActivity : AppCompatActivity() {
         viewBinding.circleIndicator.setViewPager(viewBinding.viewPager)
         adapter.onClick = object:onNextBtnClick{
             override fun onBtnClick() {
-                val intent = Intent(this@OnBoardingActivity , GetStartedActivity::class.java)
+                val intent = Intent(
+                    this@OnBoardingActivity,
+                    GetStartedActivity::class.java
+                )
                 startActivity(intent)
                 finish()
             }
         }
 
     }
-    private fun navigateToGetStarted(){
-        val getStarted = Intent(this , GetStartedActivity::class.java)
+    private fun navigateToGetStarted() {
+        val getStarted = Intent(
+            this,
+            GetStartedActivity::class.java
+        )
         startActivity(getStarted)
         finish()
     }

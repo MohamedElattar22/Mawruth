@@ -3,6 +3,8 @@
     <style name="Base.Theme.Mawruth" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentStatus">false</item>
+        <item name="fontFamily">@font/cairo_medium</item>
+        <item name="android:colorPrimary">@color/darkBrown</item>
         <item name="backgroundColor">@color/white</item>
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
@@ -28,5 +30,6 @@
         <item name="cornerRadius">10dp</item>
         <item name="android:layout_margin">20dp</item>
     </style>
+
 
 </resources>
