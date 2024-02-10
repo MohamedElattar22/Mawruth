@@ -29,11 +29,11 @@ class SplashScreen : AppCompatActivity() {
     }
 
     private fun startSplash() {
-        Handler(Looper.getMainLooper()).postDelayed( {
-            val startSplash = Intent(this , OnBoardingActivity::class.java )
+        Handler(Looper.getMainLooper()).postDelayed({
+            val startSplash = Intent(this, OnBoardingActivity::class.java)
             startActivity(startSplash)
             finish()
-        },2500)
+        }, 2700)
     }
 
     private fun animateLogo() {

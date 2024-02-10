@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.WindowCompat
 import com.graduation.mawruth.databinding.ActivityGetStartedBinding
+import com.graduation.mawruth.ui.home.HomeActivity
 import com.graduation.mawruth.ui.login.LoginActivity
 import com.graduation.mawruth.ui.museumDetails.MuseumDetailsActivity
 import com.graduation.mawruth.ui.signup.SignupActivity
@@ -28,7 +29,7 @@ class GetStartedActivity : AppCompatActivity() {
 
     private fun guestMode() {
         viewBinding.guestBtn.setOnClickListener {
-            val login = Intent(this, MuseumDetailsActivity::class.java)
+            val login = Intent(this, HomeActivity::class.java)
             startActivity(login)
         }
     }

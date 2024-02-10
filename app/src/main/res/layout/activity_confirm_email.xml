@@ -10,9 +10,9 @@
     tools:context=".ui.confirmEmail.ConfirmEmailActivity">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:src="@drawable/email_confiem">
+        android:layout_width="wrap_content"
+        android:layout_height="260dp"
+        android:src="@drawable/email_confirm">
 
     </ImageView>
 

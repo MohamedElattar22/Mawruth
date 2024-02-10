@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.google.android.material.tabs.TabLayoutMediator
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityHomeBinding
@@ -33,6 +34,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         adapter = HomeViewPager(TestViewPagerObject.getList())
         catAdapter = CategoriesRecyclerAdapter(TestCategoriesObject.getList())
         museumRecyclerAdapter = MuseumRecyclerAdapter(TestMuseumObject.getList())

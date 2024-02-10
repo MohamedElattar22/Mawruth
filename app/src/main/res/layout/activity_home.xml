@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer"
-    style="@style/Base.Theme.Mawruth"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -117,7 +116,6 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav"
-        style="@style/Base.Theme.Mawruth"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"

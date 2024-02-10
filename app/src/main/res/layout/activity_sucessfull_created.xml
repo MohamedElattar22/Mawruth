@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="220dp"
         android:layout_margin="20dp"
-        android:src="@drawable/success">
+        android:src="@drawable/succ">
 
     </ImageView>
 
@@ -24,7 +24,9 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/cairo_semibold"
         android:text="تـم إنشــاء حسابــك بنجــاح !"
-        android:textSize="28sp"></TextView>
+        android:textSize="28sp">
+
+    </TextView>
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,7 +35,9 @@
         android:fontFamily="@font/cairo_regular"
         android:text="تم انشاء الخاصة بك، يمكنك الآن البدء في تجربة إستخـدام التطبيق، تجـربة سعيــدة!"
         android:textAlignment="center"
-        android:textSize="18sp"></TextView>
+        android:textSize="18sp">
+
+    </TextView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/toRegisterBtn"
@@ -43,6 +47,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="20dp"
-        android:text="ابــــدأ رحلتـــــك"></androidx.appcompat.widget.AppCompatButton>
+        android:text="ابــــدأ رحلتـــــك">
+
+    </androidx.appcompat.widget.AppCompatButton>
 
 </LinearLayout>

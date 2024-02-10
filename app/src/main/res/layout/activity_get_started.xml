@@ -30,7 +30,7 @@
                 android:layout_marginTop="80dp"
                 android:layout_width="290dp"
                 android:layout_height="300dp"
-                android:src="@drawable/full_size_log"
+                android:src="@drawable/full_logo_size"
               >
             </ImageView>
             <androidx.appcompat.widget.AppCompatButton
