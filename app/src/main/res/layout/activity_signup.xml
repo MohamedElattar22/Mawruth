@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="vm"
+            type="com.graduation.mawruth.ui.signup.SignUpViewModel" />
+    </data>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -81,6 +88,7 @@
                     android:background="@drawable/edit_text_style"
                     android:drawableEnd="@drawable/user"
                     android:drawablePadding="10dp"
+                    android:text="@={vm.userName}"
                     android:fontFamily="@font/cairo_medium"
                     android:gravity="end"
                     android:hint="User Name"
@@ -136,6 +144,7 @@
                     android:background="@drawable/edit_text_style"
                     android:drawableEnd="@drawable/email"
                     android:drawablePadding="10dp"
+                    android:text="@={vm.email}"
                     android:fontFamily="@font/cairo_medium"
                     android:gravity="end"
                     android:hint="example@gmail.com"
@@ -165,6 +174,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/passwordInputLay"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="7dp"
                 android:layout_marginEnd="20dp"
@@ -183,11 +193,12 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:id="@+id/passwordInput"
                     android:layout_height="match_parent"
                     android:background="@drawable/edit_text_style"
                     android:drawableEnd="@drawable/password"
                     android:drawablePadding="10dp"
-
+                    android:text="@={vm.password}"
                     android:fontFamily="@font/cairo_medium"
                     android:gravity="end"
                     android:hint="password"
@@ -216,6 +227,7 @@
             </TextView>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passConfLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -240,13 +252,14 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:id="@+id/passwordConf"
                     android:layout_height="match_parent"
                     android:background="@drawable/edit_text_style"
                     android:drawableEnd="@drawable/password"
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/cairo_medium"
                     android:gravity="end"
-
+                    android:text="@={vm.passwordConfirmation}"
                     android:hint="Confirm Password"
                     android:imeOptions="actionNext"
                     android:textColor="@color/darkBrown"
@@ -257,23 +270,43 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/toRegisterBtn"
-                style="@style/heroBtn"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:text="@string/register_acc">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp">
 
-            </androidx.appcompat.widget.AppCompatButton>
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </ProgressBar>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/registerBtn"
+                    style="@style/heroBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:enabled="false"
+                    android:onClick="@{()->vm.registerUser()}"
+                    android:text="@string/register_acc"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </com.google.android.material.button.MaterialButton>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
                 android:src="@drawable/or">
 

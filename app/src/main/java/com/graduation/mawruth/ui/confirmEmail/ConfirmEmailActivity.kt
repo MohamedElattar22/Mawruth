@@ -44,8 +44,7 @@ class ConfirmEmailActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-
-    fun startTimer() {
+    private fun startTimer() {
         cTimer = object : CountDownTimer(60000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 viewBinding.timerTV.text = "0:" + (millisUntilFinished / 1000).toString()
@@ -69,12 +68,12 @@ class ConfirmEmailActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                var firstOtp = viewBinding.otp1.text.toString()
-                var secondOtp = viewBinding.otp2.text.toString()
-                var thirdOtp = viewBinding.otp3.text.toString()
-                var fourthOtp = viewBinding.otp4.text.toString()
-                if (!firstOtp.isNullOrBlank() && !secondOtp.isNullOrBlank()
-                    && !thirdOtp.isNullOrBlank() && !fourthOtp.isNullOrBlank()
+                val firstOtp = viewBinding.otp1.text.toString()
+                val secondOtp = viewBinding.otp2.text.toString()
+                val thirdOtp = viewBinding.otp3.text.toString()
+                val fourthOtp = viewBinding.otp4.text.toString()
+                if (firstOtp.isNotBlank() && secondOtp.isNotBlank()
+                    && thirdOtp.isNotBlank() && fourthOtp.isNotBlank()
                 ) {
                     viewBinding.checkBtn.isEnabled = true
                     val color = getColor(R.color.mainBtn)
