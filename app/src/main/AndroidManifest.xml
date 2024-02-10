@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-feature
         android:glEsVersion="0x00030000"
         android:required="true" />
@@ -15,9 +14,7 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
-    <meta-data
-        android:name="com.google.ar.core"
-        android:value="required" />
+
 
     <application
         android:name=".mawruthApp.MawruthApp"
@@ -31,6 +28,17 @@
         android:theme="@style/Theme.Mawruth"
         tools:targetApi="31">
         <activity
+            android:name=".ui.arActivity.AgumentedRealityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.museumDetails.MuseumDetailsActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".ui.HomeScreen.MawruthHomeScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.successfulCreate.SuccessfulCreatedActivity"
             android:exported="false" />
         <activity
@@ -42,8 +50,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.signup.SignupActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
+            android:exported="true"
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity
             android:name=".ui.getstarted.GetStartedActivity"
             android:exported="false"
@@ -62,6 +72,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="required" />
     </application>
 
 </manifest>

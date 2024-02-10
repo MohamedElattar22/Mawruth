@@ -4,6 +4,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentStatus">false</item>
         <item name="fontFamily">@font/cairo_medium</item>
+        <item name="colorPrimary">@color/mainBtn</item>
         <item name="android:colorPrimary">@color/darkBrown</item>
         <item name="backgroundColor">@color/white</item>
         <!-- Customize your light theme here. -->

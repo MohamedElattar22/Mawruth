@@ -1,4 +1,4 @@
-package com.graduation.data
+package com.graduation.data.model.api
 
 import android.util.Log
 import dagger.Module
@@ -43,13 +43,13 @@ class ApiModule {
         return Retrofit.Builder()
             .addConverterFactory(converterFactory)
             .client(httpClient)
-            .baseUrl("")
+            .baseUrl(ApiConstants.baseUrl)
             .build()
     }
 
-//    @Provides
-//    fun provideWebServices(retrofit: Retrofit):WebServices{
-//        return retrofit.create(WebServices::class.java)
-//    }
+    @Provides
+    fun provideWebServices(retrofit: Retrofit): WebServices {
+        return retrofit.create(WebServices::class.java)
+    }
 
 }
