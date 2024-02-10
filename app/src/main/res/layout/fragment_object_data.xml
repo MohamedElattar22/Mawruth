@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:background="@drawable/texture_bg"
+    tools:context=".ui.arActivity.ObjectDataFragment">
+
+    <TextView
+        android:id="@+id/pieceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="مفتـــاح الكعبـــة"
+
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="مصر- العصر المملوكي
+"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pieceTitle"></TextView>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="القرن 8هـ/14م"
+        android:textColor="@color/mainBtn"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/age">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+
+        android:text="يُنسب هذا المفتاح للسلطان المملوكي الأشرف شعبان؛ لذلك يُعد أقدم نموذج باقي من مفاتيح الكعبة حتى الآن، وقد نُقش عليه آيات قرآنية من سورة الفتح بخط النسخ، كما سُجل عليه اسم وألقاب السلطان الأشرف شعبان, ويحمل تاريخ صنعه، وهو عام 765هـ / 1363- 1364م.
+يُنسب هذا المفتاح للسلطان المملوكي الأشرف شعبان؛ لذلك يُعد أقدم نموذج باقي من مفاتيح الكعبة حتى الآن، وقد نُقش عليه آيات قرآنية من سورة الفتح بخط النسخ، كما سُجل عليه اسم وألقاب السلطان الأشرف شعب364م."
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+    </TextView>
+
+    <ImageView
+        android:id="@+id/soundResource"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/speake"
+        app:layout_constraintBottom_toBottomOf="@+id/age"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pieceTitle"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ImageView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

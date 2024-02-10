@@ -1,59 +1,61 @@
 package com.graduation.mawruth.ui.signup
 
+
+import android.os.Build
+import retrofit2.HttpException
+import androidx.annotation.RequiresExtension
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.google.gson.Gson
+import com.graduation.data.model.signup.SignupResponse
+import com.graduation.domain.model.SignUpRequiredData
+import com.graduation.domain.useCase.SignUpUserUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SignUpViewModel : ViewModel() {
+@HiltViewModel
+class SignUpViewModel @Inject constructor(
+    private val signUpUserUseCase: SignUpUserUseCase
+) : ViewModel() {
+
     val userName = MutableLiveData<String>()
     val email = MutableLiveData<String>()
     val password = MutableLiveData<String>()
     val passwordConfirmation = MutableLiveData<String>()
-    val userNameError = MutableLiveData<String?>()
-    val emailError = MutableLiveData<String?>()
-    val passwordError = MutableLiveData<String?>()
-    val passwordConfirmationError = MutableLiveData<String?>()
+    val errorMessage = MutableLiveData<String>()
     val openActivity = MutableLiveData<Boolean>(false)
+    val loading = MutableLiveData<Boolean>()
+
 
     fun registerUser() {
-        if (!isRegisterValid()) {
-            return
+        loading.postValue(true)
+
+        viewModelScope.launch {
+            try {
+                signUpUserUseCase.invoke(
+                    SignUpRequiredData(
+                        full_name = null,
+                        email = email.value,
+                        user_name = userName.value,
+                        password = password.value
+                    )
+                )
+                openActivity.postValue(true)
+                loading.postValue(false)
+
+            } catch (e: Exception) {
+                errorMessage.postValue("")
+                openActivity.postValue(false)
+                loading.postValue(false)
+            } finally {
+                loading.postValue(false)
+            }
+
         }
-        openActivity.postValue(true)
+
+
     }
 
-    private fun isRegisterValid(): Boolean {
-        var valid = true
-        if (userName.value.isNullOrBlank()) {
-            //show error
-            userNameError.postValue("Enter valid user name")
-            valid = false
-        } else {
-            userNameError.postValue(null)
-        }
-        if (email.value.isNullOrBlank()) {
-            //show error
-            emailError.postValue("Enter valid email")
-            valid = false
-
-        } else {
-            emailError.postValue(null)
-        }
-        if (password.value.isNullOrBlank()) {
-            //show error
-            passwordError.postValue("Enter valid password")
-            valid = false
-
-        } else {
-            passwordError.postValue(null)
-        }
-        if (passwordConfirmation.value.isNullOrBlank()) {
-            //show error
-            passwordConfirmationError.postValue("Enter valid password")
-            valid = false
-        } else {
-            passwordConfirmationError.postValue(null)
-        }
-
-        return valid
-    }
 }

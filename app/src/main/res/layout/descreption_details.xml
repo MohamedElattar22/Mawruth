@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="end"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="معلومات أساسية"
+        android:textSize="21sp"></TextView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/seperator"></ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:drawablePadding="10dp"
+        android:text="القاهرة - مصر"
+        android:textColor="#B3332B1A"
+        android:textSize="16sp"
+        app:drawableEndCompat="@drawable/map_loc">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:drawablePadding="10dp"
+        android:text="4.9"
+        android:textColor="#B3332B1A"
+        android:textSize="16sp"
+        app:drawableEndCompat="@drawable/rating"></TextView>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/mainSand"
+            android:fontFamily="@font/cairo_medium"
+            android:text="تاريخي"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:chipStrokeWidth="0dp">
+
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/mainSand"
+            android:fontFamily="@font/cairo_semibold"
+            android:text="تاريخي"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:chipStrokeWidth="0dp">
+
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/mainSand"
+
+            android:fontFamily="@font/cairo_semibold"
+            android:text="تاريخي"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:chipStrokeWidth="0dp">
+
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/mainSand"
+            android:fontFamily="@font/cairo_semibold"
+            android:text="تاريخي"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:chipStrokeWidth="0dp">
+
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/mainSand"
+            android:fontFamily="@font/cairo_semibold"
+            android:text="تاريخي"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:chipStrokeWidth="0dp">
+
+        </com.google.android.material.chip.Chip>
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="عن المتحف"
+        android:textSize="21sp"></TextView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/seperator"></ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="@string/museum_descrip"
+        android:textColor="#B3332B1A"
+        android:textSize="14sp">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="شارك تجربتك"
+        android:textSize="21sp"></TextView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/seperator"></ImageView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_margin="20dp"
+        android:gravity="end"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:boxStrokeColor="@color/mainSand"
+        app:cursorColor="@color/darkBrown"
+        app:hintEnabled="false"
+        app:placeholderTextColor="@color/darkBrown">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="اكتب تجربتك هنا..."
+
+            android:textColor="@color/darkBrown"
+            android:textColorHint="#AEB7AE"
+            android:textSize="16sp">
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/stroke_btn"></androidx.appcompat.widget.AppCompatButton>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+
+        android:orientation="horizontal"
+
+        android:padding="5dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_gravity="start"
+            android:layout_marginEnd="10dp"
+            android:padding="10dp"
+            android:text="إلغاء"
+            android:textColor="@color/darkBrown"
+            android:textSize="14sp"
+            app:backgroundTint="@color/white"
+
+            app:cornerRadius="8dp"
+            app:strokeColor="@color/mainSand"
+            app:strokeWidth="1dp">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:padding="10dp"
+            android:text="تعليق"
+            android:textSize="14sp"
+            app:backgroundTint="@color/mainSand"
+            app:cornerRadius="8dp">
+
+        </com.google.android.material.button.MaterialButton>
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/whiteSand"
+        app:strokeWidth="0dp">
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>
