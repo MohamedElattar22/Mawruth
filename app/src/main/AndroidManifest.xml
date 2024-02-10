@@ -59,11 +59,30 @@
             android:name=".ui.profile.ProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.arActivity.AgumentedRealityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.museumDetails.MuseumDetailsActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".ui.HomeScreen.MawruthHomeScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.successfulCreate.SuccessfulCreatedActivity"
             android:exported="false" />
         <activity
             android:name=".ui.confirmEmail.ConfirmEmailActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.confirmemailtoresetpassword.confirmemailtoResetPassword"
+            android:exported="false"
+            />
+        <activity
+            android:name=".ui.resetpassword.ResetPassword"
+            android:exported="false"
+            />
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false"
