@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.Mawruth" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
@@ -6,8 +6,7 @@
         <item name="fontFamily">@font/cairo_medium</item>
         <item name="android:colorPrimary">@color/darkBrown</item>
         <item name="backgroundColor">@color/white</item>
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<!--        <item name="colorOnPrimaryContainer">@color/whiteSand</item>-->
     </style>
 
     <style name="Theme.Mawruth" parent="Base.Theme.Mawruth" />
@@ -18,6 +17,22 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">18sp</item>
 
+    </style>
+
+    <style name="menuItem" parent="Base.Theme.Mawruth">
+        <item name="android:gravity">end</item>
+        <item name="android:layout_gravity">end</item>
+    </style>
+
+    <style name="toolbarTitle" parent="Base.Theme.Mawruth">
+        <item name="fontFamily">@font/cairo_semibold</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/lightSand</item>
+
+    </style>
+
+    <style name="searchstyly" parent="ShapeAppearanceOverlay.Material3.SearchBar">
+        <item name="background">@drawable/edit_button_back</item>
     </style>
 
     <style name="strokeBtn" parent="Widget.Material3.Button">

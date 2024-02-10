@@ -47,9 +47,9 @@ class ApiModule {
             .build()
     }
 
-//    @Provides
-//    fun provideWebServices(retrofit: Retrofit):WebServices{
-//        return retrofit.create(WebServices::class.java)
-//    }
+    @Provides
+    fun provideWebServices(retrofit: Retrofit): WebServices {
+        return retrofit.create(WebServices::class.java)
+    }
 
 }

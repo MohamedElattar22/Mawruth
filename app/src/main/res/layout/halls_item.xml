@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/emailbackground"
+    android:padding="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/transparent"
+        app:cardElevation="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/hall_image"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/no_pic" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/hall_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:text="الأموي و العباسي"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/cardView" />
+
+    <TextView
+        android:id="@+id/hall_num"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="القاعة 1"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/hall_name"
+        app:layout_constraintStart_toStartOf="@+id/hall_name"
+        app:layout_constraintTop_toBottomOf="@+id/hall_name" />
+
+    <ImageButton
+        android:layout_width="45dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/whiteSand"
+        android:src="@drawable/arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

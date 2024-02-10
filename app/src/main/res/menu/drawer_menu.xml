@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/contact_us"
+        android:icon="@drawable/email"
+        android:iconTint="@color/white"
+        android:title="تواصل معنا"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/fav"
+        android:icon="@drawable/fav"
+        android:iconTint="@color/white"
+        android:title="المفضله"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/faq"
+        android:icon="@drawable/group"
+        android:iconTint="@color/white"
+        android:title="FandQ"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/send"
+        android:icon="@drawable/send"
+        android:iconTint="@color/white"
+        android:title="مشاركة التطبيق"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/person"
+        android:icon="@drawable/person"
+        android:iconTint="@color/white"
+        android:title="الحســاب"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/set"
+        android:iconTint="@color/white"
+        android:title="الإعـــدادت"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/logout"
+        android:iconTint="@color/white"
+        android:title="تسجــيل الخروج"
+        app:showAsAction="always" />
+
+
+</menu>

@@ -15,6 +15,7 @@
     <color name="paragraph">#686A60</color>
     <color name="secTitleColor">#AEB7AE</color>
     <color name="border">#E0E0DF</color>
+    <color name="transparent">#00000000</color>
 
 
 </resources>

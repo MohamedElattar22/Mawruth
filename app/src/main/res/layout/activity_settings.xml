@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.settings.SettingsActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/settings_back"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleGravity="start"
+            app:collapsedTitleTextAppearance="@style/toolbarTitle"
+            app:collapsedTitleTextColor="@color/lightSand"
+            app:contentScrim="@color/darkBrown"
+            app:expandedTitleGravity="center|top"
+            app:expandedTitleMarginTop="70dp"
+            app:expandedTitleTextAppearance="@style/toolbarTitle"
+            app:expandedTitleTextColor="@color/darkBrown"
+            app:layout_scrollFlags="snap|scroll|exitUntilCollapsed"
+            app:title="الاعدادات">
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:buttonGravity="bottom"
+                app:layout_collapseMode="pin"
+                app:menu="@menu/profile_menu"
+                app:navigationIcon="@drawable/back_ic" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include
+        android:id="@+id/content"
+        layout="@layout/settings_content" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

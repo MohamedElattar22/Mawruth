@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/cairo_semibold"
+            android:text="تعديل الملف الشخصي"
+            android:textColor="@color/titlesColor"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/line_view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/mainBtn"
+            app:layout_constraintBottom_toBottomOf="@+id/coloured_view"
+            app:layout_constraintEnd_toStartOf="@+id/coloured_view"
+            app:layout_constraintStart_toStartOf="@+id/textView" />
+
+        <View
+            android:id="@+id/coloured_view"
+            android:layout_width="80dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/mainBtn"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/edit_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/editTextColor"
+            android:gravity="start"
+            android:paddingVertical="15dp"
+            android:text="@string/edit_user_name"
+            android:textColor="@color/contentColor"
+            android:textSize="20sp"
+            app:cornerRadius="15dp"
+            app:icon="@drawable/email"
+            app:iconGravity="end"
+            app:iconPadding="8dp"
+            app:iconSize="25dp"
+            app:iconTint="@color/darkBrown"
+            app:layout_constraintTop_toBottomOf="@+id/coloured_view" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/editTextColor"
+            android:gravity="start"
+            android:paddingVertical="15dp"
+            android:text="الاعدادات"
+            android:textColor="@color/contentColor"
+            android:textSize="20sp"
+            app:cornerRadius="15dp"
+            app:icon="@drawable/set"
+            app:iconGravity="end"
+            app:iconPadding="8dp"
+            app:iconSize="25dp"
+            app:iconTint="@color/darkBrown"
+            app:layout_constraintTop_toBottomOf="@+id/fav_list"
+            tools:layout_editor_absoluteX="48dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fav_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/editTextColor"
+            android:gravity="start"
+            android:paddingVertical="15dp"
+            android:text="قائمة المفضلة"
+            android:textColor="@color/contentColor"
+            android:textSize="20sp"
+            app:cornerRadius="15dp"
+            app:icon="@drawable/fav"
+            app:iconGravity="end"
+            app:iconPadding="8dp"
+            app:iconSize="25dp"
+            app:iconTint="@color/darkBrown"
+            app:layout_constraintTop_toBottomOf="@+id/edit_password" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/editTextColor"
+            android:gravity="start"
+            android:paddingVertical="15dp"
+            android:text="تغيير كلمة المرور"
+            android:textColor="@color/contentColor"
+            android:textSize="20sp"
+            app:cornerRadius="15dp"
+            app:icon="@drawable/lock"
+            app:iconGravity="end"
+            app:iconPadding="8dp"
+            app:iconSize="25dp"
+            app:iconTint="@color/darkBrown"
+            app:layout_constraintTop_toBottomOf="@+id/edit_email" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/transparent"
+            android:drawablePadding="10dp"
+            android:text="تسجيل الخروج"
+            android:textColor="@color/contentColor"
+            android:textSize="23sp"
+            app:icon="@drawable/logout"
+            app:iconGravity="end"
+            app:iconSize="25dp"
+            app:iconTint="@color/darkBrown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settings" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

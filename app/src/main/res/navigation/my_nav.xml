@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/profileContentFragment">
+
+    <fragment
+        android:id="@+id/profileContentFragment"
+        android:name="com.graduation.mawruth.ui.profile.fragments.ProfileContentFragment"
+        android:label="ProfileContentFragment">
+        <action
+            android:id="@+id/action_profileContentFragment_to_editNameFragment"
+            app:destination="@id/editNameFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileContentFragment_to_editPasswordFragment"
+            app:destination="@id/editPasswordFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/editNameFragment"
+        android:name="com.graduation.mawruth.ui.profile.fragments.EditNameFragment"
+        android:label="fragment_edit_name"
+        tools:layout="@layout/fragment_edit_name">
+        <action
+            android:id="@+id/action_editNameFragment_to_profileContentFragment"
+            app:destination="@id/profileContentFragment"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/editPasswordFragment"
+        android:name="com.graduation.mawruth.ui.profile.fragments.EditPasswordFragment"
+        android:label="EditPasswordFragment">
+        <action
+            android:id="@+id/action_editPasswordFragment_to_profileContentFragment"
+            app:destination="@id/profileContentFragment"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/slide_in_left" />
+    </fragment>
+</navigation>

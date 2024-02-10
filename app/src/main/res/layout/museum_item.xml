@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="50dp"
+    app:strokeColor="@color/transparent"
+    app:strokeWidth="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mus_image"
+        android:layout_width="200dp"
+        android:layout_height="230dp"
+        android:layout_gravity="center"
+        android:background="@drawable/museum_pic"
+        android:padding="15dp">
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/outlined_heart_back"
+            android:src="@drawable/outlined_heart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/museum_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="المتحف المصري"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/museum_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.9"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/museum_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="القاهرة - مصر"
+            android:textColor="@color/whiteSand"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/rate"
+            app:layout_constraintEnd_toStartOf="@+id/imageView6"
+            app:layout_constraintTop_toBottomOf="@+id/museum_name" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/location"
+
+            app:layout_constraintBottom_toBottomOf="@+id/museum_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/museum_location" />
+
+        <TextView
+            android:id="@+id/rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/rate"
+            android:drawablePadding="5dp"
+            android:text="4.9"
+            android:textColor="@color/whiteSand"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/chipGroup2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/museum_location" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup2"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rate">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/mainBtn"
+                android:fontFamily="@font/cairo_semibold"
+                android:text="تاريخي"
+                android:textColor="@color/lightSand"
+                android:textSize="6sp"
+                app:chipCornerRadius="3dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/mainBtn"
+                android:fontFamily="@font/cairo_semibold"
+                android:text="مصري"
+                android:textColor="@color/lightSand"
+                android:textSize="6sp"
+                app:chipCornerRadius="3dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/mainBtn"
+                android:fontFamily="@font/cairo_semibold"
+                android:text="فرعوني"
+                android:textColor="@color/lightSand"
+                android:textSize="6sp"
+                app:chipCornerRadius="3dp" />
+        </com.google.android.material.chip.ChipGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
