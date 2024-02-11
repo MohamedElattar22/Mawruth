@@ -66,8 +66,6 @@ class SignupActivity : AppCompatActivity() {
                 } else {
                     viewBinding.passConfLayout.error = ""
                 }
-
-
                 if (!validateEmail(email)) {
                     viewBinding.emailContainer.error = "Enter valid email"
                 } else {
