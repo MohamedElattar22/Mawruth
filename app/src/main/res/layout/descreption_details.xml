@@ -13,13 +13,17 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:text="معلومات أساسية"
-        android:textSize="21sp"></TextView>
+        android:textSize="21sp">
+
+    </TextView>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:src="@drawable/seperator"></ImageView>
+        android:src="@drawable/seperator">
+
+    </ImageView>
 
     <TextView
         android:layout_width="wrap_content"
