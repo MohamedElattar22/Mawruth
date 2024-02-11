@@ -22,7 +22,7 @@
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="match_parent"
                 app:collapsedTitleGravity="start"
                 app:collapsedTitleTextColor="@color/lightSand"
                 app:contentScrim="@color/whiteSand"
