@@ -2,6 +2,7 @@ package com.graduation.data.datasourceImpl
 
 import com.graduation.data.api.WebServices
 import com.graduation.data.dataSourceContract.UserAuthenticationDataSource
+import com.graduation.domain.model.EmailConfirmationData
 import com.graduation.domain.model.SignUpRequiredData
 import com.graduation.domain.model.User
 import com.graduation.domain.model.userlogin.UserLoginDto
@@ -18,6 +19,10 @@ class UserAuthenticationDataSourceImpl @Inject constructor(private val webServic
     override suspend fun loginUser(userLoginPost: UserLoginPost): UserLoginDto {
         val result = webServices.loginUser(userLoginPost)
         return result.toUserDto()
+    }
+
+    override suspend fun verifyEmail(verifyData: EmailConfirmationData): String {
+        return webServices.verifyOTP(verifyData).message.toString()
     }
 
 }

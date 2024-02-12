@@ -43,7 +43,7 @@ class ProfileActivity : AppCompatActivity() {
         viewBinding.profPicCard.setOnClickListener {
             dialog.show(supportFragmentManager, "")
         }
-        viewBinding.name.text = SessionProvider.user?.fullName
+        viewBinding.name.text = SessionProvider.user?.userName
         viewBinding.email.text = SessionProvider.user?.email
     }
 

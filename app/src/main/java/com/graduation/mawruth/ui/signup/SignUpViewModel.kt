@@ -26,7 +26,6 @@ class SignUpViewModel @Inject constructor(
 
     fun registerUser() {
         loading.postValue(true)
-
         viewModelScope.launch {
             try {
                 signUpUserUseCase.invoke(
@@ -38,12 +37,12 @@ class SignUpViewModel @Inject constructor(
                     )
                 )
                 openActivity.postValue(true)
-                loading.postValue(false)
+
 
             } catch (e: Exception) {
-                errorMessage.postValue("")
+                errorMessage.postValue(e.localizedMessage)
                 openActivity.postValue(false)
-                loading.postValue(false)
+
             } finally {
                 loading.postValue(false)
             }

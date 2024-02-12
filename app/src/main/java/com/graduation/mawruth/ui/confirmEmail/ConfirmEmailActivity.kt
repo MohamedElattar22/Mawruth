@@ -8,17 +8,22 @@ import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityConfirmEmailBinding
 import com.graduation.mawruth.ui.successfulCreate.SuccessfulCreatedActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ConfirmEmailActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityConfirmEmailBinding
+    private lateinit var viewModel: ConfirmEmailViewModel
     var cTimer: CountDownTimer? = null
+    var result: String? = null
     val inputManager: InputMethodManager? = null
     var txtWatcher: TextWatcher? = null
     var selectedPosition = 0
@@ -26,6 +31,7 @@ class ConfirmEmailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityConfirmEmailBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+        viewModel = ViewModelProvider(this)[ConfirmEmailViewModel::class.java]
         initViews()
     }
 
@@ -33,9 +39,8 @@ class ConfirmEmailActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         startTimer()
         textChanger()
-        viewBinding.checkBtn.setOnClickListener {
-            navigateToSuccess()
-        }
+        subscribeToLiveData()
+        validateOTP()
 
     }
 
@@ -72,12 +77,15 @@ class ConfirmEmailActivity : AppCompatActivity() {
                 val secondOtp = viewBinding.otp2.text.toString()
                 val thirdOtp = viewBinding.otp3.text.toString()
                 val fourthOtp = viewBinding.otp4.text.toString()
+
                 if (firstOtp.isNotBlank() && secondOtp.isNotBlank()
                     && thirdOtp.isNotBlank() && fourthOtp.isNotBlank()
                 ) {
                     viewBinding.checkBtn.isEnabled = true
                     val color = getColor(R.color.mainBtn)
                     viewBinding.checkBtn.setBackgroundColor(color)
+                    result = firstOtp + secondOtp + thirdOtp + fourthOtp
+
                 }
             }
 
@@ -108,6 +116,26 @@ class ConfirmEmailActivity : AppCompatActivity() {
         val inputMethodManager =
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.showSoftInput(textInput, InputMethodManager.SHOW_IMPLICIT)
+    }
+
+    private fun subscribeToLiveData() {
+        viewModel.navigate.observe(this) {
+            if (it) {
+                navigateToSuccess()
+            }
+        }
+        viewModel.errorOcc.observe(this) {
+            if (it) {
+                Toast.makeText(this, "OTP is invalid", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun validateOTP() {
+        val data = intent.getStringExtra("email")
+        viewBinding.checkBtn.setOnClickListener {
+            viewModel.verifyEmail(data!!, result!!)
+        }
     }
 
 }

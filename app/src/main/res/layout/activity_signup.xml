@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="android.view.View" />
         <variable
             name="vm"
             type="com.graduation.mawruth.ui.signup.SignUpViewModel" />
@@ -278,7 +278,7 @@
                 <ProgressBar
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="invisible"
+                    android:visibility="@{vm.loading?View.VISIBLE:View.INVISIBLE}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -291,6 +291,7 @@
                     style="@style/heroBtn"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
+                    android:visibility="@{vm.loading?View.INVISIBLE:View.VISIBLE}"
                     android:enabled="false"
                     android:onClick="@{()->vm.registerUser()}"
                     android:text="@string/register_acc"

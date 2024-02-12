@@ -137,7 +137,7 @@ class HomeActivity : AppCompatActivity() {
         toggle.syncState()
         val header = viewBinding.nav.getHeaderView(0)
         val name = header.findViewById<TextView>(R.id.Headername)
-        name.text = SessionProvider.user?.fullName.toString()
+        name.text = SessionProvider.user?.userName.toString()
         val email = header.findViewById<TextView>(R.id.headeremail)
         email.text = SessionProvider.user?.email
         viewBinding.nav.setNavigationItemSelectedListener {

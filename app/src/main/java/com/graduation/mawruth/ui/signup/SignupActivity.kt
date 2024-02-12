@@ -2,17 +2,13 @@ package com.graduation.mawruth.ui.signup
 
 
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivitySignupBinding
 import com.graduation.mawruth.ui.confirmEmail.ConfirmEmailActivity
 import com.graduation.mawruth.utils.RegexConstants
@@ -23,6 +19,7 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivitySignupBinding
     private lateinit var viewModel: SignUpViewModel
     private var txtWatcher: TextWatcher? = null
+    var email: String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +27,7 @@ class SignupActivity : AppCompatActivity() {
         viewBinding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
         viewModel = ViewModelProvider(this)[SignUpViewModel::class.java]
+        viewBinding.lifecycleOwner = this
         viewBinding.vm = viewModel
         initViews()
     }
@@ -48,7 +46,7 @@ class SignupActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val userName = viewBinding.userInput.text.toString()
-                val email = viewBinding.emailTxt.text.toString()
+                email = viewBinding.emailTxt.text.toString()
                 val password = viewBinding.passwordInput.text.toString()
                 val passwordConf = viewBinding.passwordConf.text.toString()
                 if (password.isNullOrBlank()) {
@@ -60,6 +58,11 @@ class SignupActivity : AppCompatActivity() {
                     viewBinding.userInputLayout.error = "User name is required"
                 } else {
                     viewBinding.userInputLayout.error = ""
+                }
+                if (email.isNullOrBlank()) {
+                    viewBinding.emailContainer.error = "Enter valid email"
+                } else {
+                    viewBinding.emailContainer.error = ""
                 }
                 if (passwordConf.isNullOrBlank()) {
                     viewBinding.passConfLayout.error = "Password confirmation is required"
@@ -106,34 +109,31 @@ class SignupActivity : AppCompatActivity() {
         return RegexConstants.emailPattern.matches(email)
     }
 
-    private fun createDialog() {
-        val loadingDialogBinding = layoutInflater.inflate(R.layout.loading_dialog, null)
-        val dialog = MaterialAlertDialogBuilder(this)
-            .setView(loadingDialogBinding)
-        dialog.setBackground(ColorDrawable(Color.TRANSPARENT))
-        dialog.show()
-    }
+//    private fun createDialog() {
+//        val loadingDialogBinding = layoutInflater.inflate(R.layout.loading_dialog, null)
+//        val dialog = MaterialAlertDialogBuilder(this)
+//            .setView(loadingDialogBinding)
+//        dialog.setBackground(ColorDrawable(Color.TRANSPARENT))
+//        dialog.show()
+//    }
 
     private fun subscribeToLiveData() {
         viewModel.errorMessage.observe(this) {
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Invalid email or username", Toast.LENGTH_SHORT).show()
         }
 
         viewModel.openActivity.observe(this) {
-            if (it == true) {
+            if (it) {
                 navigateToVerifyOTP()
             }
 
         }
-        viewModel.loading.observe(this) {
-            if (it) {
-                createDialog()
-            }
-        }
+
     }
 
     private fun navigateToVerifyOTP() {
         val intent = Intent(this, ConfirmEmailActivity::class.java)
+        intent.putExtra("email", email)
         startActivity(intent)
         finish()
     }

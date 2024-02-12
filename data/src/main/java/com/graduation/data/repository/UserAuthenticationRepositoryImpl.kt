@@ -1,6 +1,7 @@
 package com.graduation.data.repository
 
 import com.graduation.data.dataSourceContract.UserAuthenticationDataSource
+import com.graduation.domain.model.EmailConfirmationData
 import com.graduation.domain.model.SignUpRequiredData
 import com.graduation.domain.model.User
 import com.graduation.domain.model.userlogin.UserLoginDto
@@ -18,5 +19,10 @@ class UserAuthenticationRepositoryImpl @Inject constructor
     override suspend fun loginUser(userLoginPost: UserLoginPost): UserLoginDto {
         val result = userAuthenticationDataSource.loginUser(userLoginPost)
         return result
+    }
+
+    override suspend fun confirmEmail(emailConfirmationData: EmailConfirmationData): String {
+        val res = userAuthenticationDataSource.verifyEmail(emailConfirmationData)
+        return res
     }
 }
