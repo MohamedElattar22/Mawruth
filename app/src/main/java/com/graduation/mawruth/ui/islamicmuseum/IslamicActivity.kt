@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayoutMediator
 import com.graduation.mawruth.databinding.ActivityIslamicBinding
-import com.graduation.mawruth.ui.home.HomeViewPager
-import com.graduation.mawruth.ui.home.TestViewPagerObject
+import com.graduation.mawruth.ui.home.viewpager.HomeViewPager
+import com.graduation.mawruth.ui.home.viewpager.TestViewPagerObject
 
 class IslamicActivity : AppCompatActivity() {
     lateinit var viewBinding: ActivityIslamicBinding

@@ -1,6 +1,8 @@
 package com.graduation.data.datasourceImpl
 
-import com.graduation.data.dataSourceContract.SignUpUserDataSource
+import com.graduation.data.dataSourceContract.UserAuthenticationDataSource
+import com.graduation.data.dataSourceContract.musums.MuseumsDataSource
+import com.graduation.data.datasourceImpl.museums.MuseumsDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,8 +14,10 @@ abstract class di {
 
     @Binds
     abstract fun provideSignUpDataSource(
-        signUpUserDataSourceImpl: SignUpUserDataSourceImpl
-    ): SignUpUserDataSource
+        userAuthenticationDataSourceImpl: UserAuthenticationDataSourceImpl
+    ): UserAuthenticationDataSource
 
+    @Binds
+    abstract fun bindMuseumDataSource(museumsDataSourceImpl: MuseumsDataSourceImpl): MuseumsDataSource
 
 }

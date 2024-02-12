@@ -1,4 +1,4 @@
-package com.graduation.data.model.api
+package com.graduation.data.api
 
 import android.util.Log
 import dagger.Module

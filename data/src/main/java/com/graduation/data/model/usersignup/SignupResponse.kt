@@ -1,4 +1,4 @@
-package com.graduation.data.model.signup
+package com.graduation.data.model.usersignup
 
 import com.google.gson.annotations.SerializedName
 import com.graduation.domain.model.User

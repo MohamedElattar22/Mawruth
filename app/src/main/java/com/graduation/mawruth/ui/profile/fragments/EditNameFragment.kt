@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.graduation.mawruth.databinding.FragmentEditNameBinding
+import com.graduation.mawruth.utils.SessionProvider
 
 class EditNameFragment : Fragment() {
 
@@ -21,9 +22,8 @@ class EditNameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewBinding.editName.setOnClickListener {
-            it.isEnabled = true
-        }
+        viewBinding.editName.setText(SessionProvider.user?.fullName)
+
     }
 
 

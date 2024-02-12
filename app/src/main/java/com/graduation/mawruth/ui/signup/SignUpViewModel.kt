@@ -1,14 +1,9 @@
 package com.graduation.mawruth.ui.signup
 
 
-import android.os.Build
-import retrofit2.HttpException
-import androidx.annotation.RequiresExtension
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.gson.Gson
-import com.graduation.data.model.signup.SignupResponse
 import com.graduation.domain.model.SignUpRequiredData
 import com.graduation.domain.useCase.SignUpUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

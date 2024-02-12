@@ -2,13 +2,12 @@ package com.graduation.mawruth.ui.getstarted
 
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import com.graduation.mawruth.databinding.ActivityGetStartedBinding
 import com.graduation.mawruth.ui.home.HomeActivity
 import com.graduation.mawruth.ui.login.LoginActivity
-import com.graduation.mawruth.ui.museumDetails.MuseumDetailsActivity
 import com.graduation.mawruth.ui.signup.SignupActivity
 
 class GetStartedActivity : AppCompatActivity() {
@@ -31,6 +30,7 @@ class GetStartedActivity : AppCompatActivity() {
         viewBinding.guestBtn.setOnClickListener {
             val login = Intent(this, HomeActivity::class.java)
             startActivity(login)
+
         }
     }
 

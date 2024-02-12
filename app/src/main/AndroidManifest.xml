@@ -15,7 +15,7 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:name=".mawruthApp.MawruthApp"
         android:allowBackup="true"
@@ -42,7 +42,7 @@
         <!-- </service> -->
         <activity
             android:name=".ui.home.HomeActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".ui.settings.SettingsActivity"
             android:exported="false" />

@@ -1,18 +1,23 @@
 package com.graduation.mawruth.ui.splash
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
+import com.graduation.domain.model.userlogin.UserLoginDto
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityMainBinding
+import com.graduation.mawruth.ui.home.HomeActivity
 import com.graduation.mawruth.ui.onBoarding.OnBoardingActivity
+import com.graduation.mawruth.utils.SessionProvider
 
 class SplashScreen : AppCompatActivity() {
     private lateinit var viewBinding : ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -23,12 +28,31 @@ class SplashScreen : AppCompatActivity() {
     }
 
     private fun initViews() {
-        WindowCompat.setDecorFitsSystemWindows(window , false)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
+        if (sharedPreferences.contains("userData")) {
+            sharedPreferences.getString("userData", null)?.let {
+                val user = Gson().fromJson(it, UserLoginDto::class.java)
+                SessionProvider.user = user
+                navigateToHome()
+            }
+        } else {
+            startSplash()
+        }
+
+    }
+
+    private fun navigateToHome() {
         animateLogo()
-        startSplash()
+        Handler(Looper.getMainLooper()).postDelayed({
+            val home = Intent(this, HomeActivity::class.java)
+            startActivity(home)
+            finish()
+        }, 2700)
     }
 
     private fun startSplash() {
+        animateLogo()
         Handler(Looper.getMainLooper()).postDelayed({
             val startSplash = Intent(this, OnBoardingActivity::class.java)
             startActivity(startSplash)

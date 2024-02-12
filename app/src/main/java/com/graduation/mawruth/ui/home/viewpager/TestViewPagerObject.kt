@@ -1,4 +1,4 @@
-package com.graduation.mawruth.ui.home
+package com.graduation.mawruth.ui.home.viewpager
 
 import com.graduation.mawruth.R
 
