@@ -3,22 +3,29 @@ package com.graduation.mawruth.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.WindowCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.facebook.shimmer.Shimmer
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityHomeBinding
 import com.graduation.mawruth.ui.home.viewpager.HomeViewPager
 import com.graduation.mawruth.ui.home.viewpager.TestViewPagerObject
+import com.graduation.mawruth.ui.login.LoginActivity
 import com.graduation.mawruth.ui.museumDetails.MuseumDetailsActivity
 import com.graduation.mawruth.ui.profile.ProfileActivity
 import com.graduation.mawruth.ui.settings.SettingsActivity
+import com.graduation.mawruth.ui.signup.SignupActivity
 import com.graduation.mawruth.ui.splash.SplashScreen
 import com.graduation.mawruth.utils.SessionProvider
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,7 +49,6 @@ class HomeActivity : AppCompatActivity() {
         viewBinding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
         initViews()
-        observeLiveData()
     }
 
     private fun showShimmer() {
@@ -52,6 +58,8 @@ class HomeActivity : AppCompatActivity() {
         viewBinding.content.shimmer.setShimmer(shimmer)
         viewBinding.content.shimmer.startShimmer()
         viewBinding.content.shimmer.isVisible = true
+        viewBinding.viewPager.isVisible = false
+        viewBinding.tabLayout.isVisible = false
     }
 
     private fun hideShimmer() {
@@ -63,6 +71,10 @@ class HomeActivity : AppCompatActivity() {
 
     private fun observeLiveData() {
         viewModel.museumData.observe(this) {
+            viewBinding.content.successContent.isVisible = true
+            viewBinding.content.failedContent.isVisible = false
+            viewBinding.viewPager.isVisible = true
+            viewBinding.tabLayout.isVisible = true
             museumRecyclerAdapter.bindMuseumsList(it)
         }
         viewModel.loadingLiveData.observe(this) {
@@ -72,11 +84,27 @@ class HomeActivity : AppCompatActivity() {
                 hideShimmer()
             }
         }
+        viewModel.error.observe(this) {
+            viewBinding.viewPager.isVisible = false
+            viewBinding.tabLayout.isVisible = false
+            viewBinding.content.successContent.isVisible = false
+            viewBinding.content.failedContent.isVisible = true
+            Snackbar.make(
+                this,
+                viewBinding.root,
+                "حدث مشكلة اثناء الاتصال حاول مرة اخرى",
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }
     }
 
     override fun onStart() {
         super.onStart()
         viewModel.getMuseumData()
+        observeLiveData()
+        viewBinding.content.retryBtn.setOnClickListener {
+            viewModel.getMuseumData()
+        }
     }
 
     private fun initViews() {
@@ -136,35 +164,75 @@ class HomeActivity : AppCompatActivity() {
         viewBinding.drawer.addDrawerListener(toggle)
         toggle.syncState()
         val header = viewBinding.nav.getHeaderView(0)
-        val name = header.findViewById<TextView>(R.id.Headername)
-        name.text = SessionProvider.user?.userName.toString()
-        val email = header.findViewById<TextView>(R.id.headeremail)
-        email.text = SessionProvider.user?.email
-        viewBinding.nav.setNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.person -> {
-
-                    val intent = Intent(this, ProfileActivity::class.java)
-                    startActivity(intent)
-                    viewBinding.drawer.close()
-                }
-
-                R.id.settings -> {
-                    val intent = Intent(this, SettingsActivity::class.java)
-                    startActivity(intent)
-                    viewBinding.drawer.close()
-
-                }
-
-                R.id.logout -> {
-                    handelLogOut()
-                }
+        val loginHeader = header.findViewById<ConstraintLayout>(R.id.loginHeader)
+        val guest = header.findViewById<LinearLayout>(R.id.guestHeader)
+        if (SessionProvider.user != null) {
+            header.setOnClickListener {
+                navigateToProfile()
             }
-            return@setNavigationItemSelectedListener true
+            loginHeader.visibility = View.VISIBLE
+            guest.visibility = View.INVISIBLE
+            val name = header.findViewById<TextView>(R.id.Headername)
+            viewBinding.nav.menu.setGroupVisible(R.menu.drawer_menu, true)
+            name.text = SessionProvider.user?.userName.toString()
+            val email = header.findViewById<TextView>(R.id.headeremail)
+            email.text = SessionProvider.user?.email
+            viewBinding.nav.setNavigationItemSelectedListener {
+                when (it.itemId) {
+                    R.id.person -> {
 
+                        navigateToProfile()
+                    }
+
+                    R.id.settings -> {
+                        navigateToSettings()
+
+                    }
+
+                    R.id.logout -> {
+                        handelLogOut()
+                    }
+                }
+                return@setNavigationItemSelectedListener true
+
+            }
+        } else {
+            guest.visibility = View.VISIBLE
+            loginHeader.visibility = View.INVISIBLE
+            viewBinding.nav.menu.clear()
+            val loginBtn = header.findViewById<MaterialButton>(R.id.headerLogin)
+            val registerButton = header.findViewById<MaterialButton>(R.id.headerRegister)
+            loginBtn.setOnClickListener {
+                navigateToLogin()
+            }
+            registerButton.setOnClickListener {
+                navigateToRegister()
+            }
         }
+    }
 
+    private fun navigateToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 
+    private fun navigateToRegister() {
+        val intent = Intent(this, SignupActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun navigateToSettings() {
+        val intent = Intent(this, SettingsActivity::class.java)
+        startActivity(intent)
+        viewBinding.drawer.close()
+    }
+
+    private fun navigateToProfile() {
+        val intent = Intent(this, ProfileActivity::class.java)
+        startActivity(intent)
+        viewBinding.drawer.close()
     }
 
     private fun handelLogOut() {
@@ -172,7 +240,7 @@ class HomeActivity : AppCompatActivity() {
         val dialog = MaterialAlertDialogBuilder(this)
         dialog.setTitle("تسجيل الخروج")
         dialog.setIcon(R.drawable.mylogo)
-        dialog.setMessage("هل حقا تريد مغادرة تارثك ؟")
+        dialog.setMessage("هل حقا تريد مغادرة تراثك ؟")
         dialog.setPositiveButton(
             "نعم"
         ) { dialog, which ->
