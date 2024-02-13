@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -13,55 +14,13 @@
         app:strokeWidth="0dp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ImageView
             android:id="@+id/bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/vp_image1"
-            android:padding="15dp">
+            android:scaleType="centerCrop">
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="تعامــد الشمــس !"
-                android:layout_marginStart="35dp"
-                android:textColor="@color/mainBtn"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/description"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed" />
+        </ImageView>
 
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/cairo_regular"
-                android:text="ترقــب الحـــدث الأكبر فــي\n معبــد الكرنــك اليوم !"
-                android:textColor="@color/secTitleColor"
-                android:lineHeight="18dp"
-                android:textSize="14sp"
-
-                app:layout_constraintBottom_toTopOf="@+id/materialButton"
-                app:layout_constraintEnd_toEndOf="@+id/title"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButton"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="إقــرأ المزيـــد"
-                android:textSize="11sp"
-                android:layout_margin="10dp"
-                android:backgroundTint="@color/mainSand"
-                android:paddingHorizontal="30dp"
-                app:cornerRadius="7dp"
-                app:strokeWidth="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/description" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

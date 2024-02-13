@@ -2,7 +2,6 @@ package com.graduation.mawruth.ui.home.viewpager
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.graduation.mawruth.databinding.ViewPagerItemBinding
 
@@ -23,7 +22,7 @@ class HomeViewPager(private var list: List<Int>) :
     }
 
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
-        holder.itemBinding.bg.background =
-            ContextCompat.getDrawable(holder.itemBinding.root.context, list[position])
+        holder.itemBinding.bg.setImageResource(list[position])
+
     }
 }
