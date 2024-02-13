@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ui.profile.ProfileActivity">
+    tools:context=".ui.profile.ProfileActivity"
+    android:background="@color/white">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/profile_background"
+        android:background="@drawable/back_prof"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -73,6 +74,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:fontFamily="@font/cairo_semibold"
+                    android:textSize="20sp"
                     android:text="Abdelrahman Moahmed"
                     android:textColor="@color/lightSand"
                     app:layout_constraintEnd_toEndOf="@+id/prof_pic_card"
@@ -86,6 +89,8 @@
                     android:layout_gravity="bottom"
                     android:layout_marginTop="-7dp"
                     android:text="Example@gmail.com"
+                    android:fontFamily="@font/cairo_regular"
+                    android:textSize="12sp"
                     android:textColor="@color/secTitleColor"
                     app:layout_constraintEnd_toEndOf="@+id/name"
                     app:layout_constraintStart_toStartOf="@+id/name"
@@ -100,7 +105,7 @@
                 app:buttonGravity="bottom"
                 app:layout_collapseMode="pin"
                 app:menu="@menu/profile_menu"
-                app:navigationIcon="@drawable/back_ic" />
+                app:navigationIcon="@drawable/backbtn" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

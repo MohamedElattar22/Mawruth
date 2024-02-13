@@ -53,7 +53,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/cairo_medium"
-                android:text="الاسم بالكامل"
+                android:text="اسم المستخدم"
                 android:textColor="@color/darkBrown"
                 android:textSize="20sp">
 
@@ -88,6 +88,7 @@
                     android:background="@drawable/edit_text_style"
                     android:drawableEnd="@drawable/user"
                     android:drawablePadding="10dp"
+
                     android:text="@={vm.userName}"
                     android:fontFamily="@font/cairo_medium"
                     android:gravity="end"
@@ -142,7 +143,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_style"
-                    android:drawableEnd="@drawable/email"
+                    android:drawableEnd="@drawable/email_icon"
                     android:drawablePadding="10dp"
                     android:text="@={vm.email}"
                     android:fontFamily="@font/cairo_medium"
@@ -259,6 +260,7 @@
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/cairo_medium"
                     android:gravity="end"
+                    android:inputType="textPassword"
                     android:text="@={vm.passwordConfirmation}"
                     android:hint="Confirm Password"
                     android:imeOptions="actionNext"
@@ -278,6 +280,8 @@
                 <ProgressBar
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
+                    android:indeterminateTint="@color/mainBtn"
                     android:visibility="@{vm.loading?View.VISIBLE:View.INVISIBLE}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -289,6 +293,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/registerBtn"
                     style="@style/heroBtn"
+                    android:fontFamily="@font/cairo_semibold"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:visibility="@{vm.loading?View.INVISIBLE:View.VISIBLE}"
@@ -306,7 +311,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:src="@drawable/or">
@@ -320,6 +325,7 @@
                 android:layout_height="60dp"
                 android:layout_marginStart="20dp"
                 android:text="دخــول بواسطة جوجـل"
+                android:fontFamily="@font/cairo_semibold"
                 app:icon="@drawable/google"
                 app:iconGravity="textEnd"
                 app:iconSize="25dp"

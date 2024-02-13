@@ -22,8 +22,8 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         app:elevation="1dp"
-        app:icon="@drawable/museum"
-        app:iconTint="@color/mainSand"
+        app:icon="@drawable/ancient_scroll"
+        app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintHorizontal_chainStyle="spread"
@@ -35,8 +35,8 @@
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/dataBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="bottom|end"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="7dp"
@@ -46,9 +46,9 @@
         android:fontFamily="@font/cairo_medium"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:elevation="1dp"
-        app:icon="@drawable/ancient_scroll"
+        app:icon="@drawable/voice"
         app:iconTint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/fab"
         app:layout_constraintHorizontal_chainStyle="spread"
@@ -58,30 +58,6 @@
 
     </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/voiceBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="7dp"
-        android:backgroundTint="@color/mainSand"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/cairo_medium"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        app:elevation="1dp"
-        app:icon="@drawable/voice"
-        app:iconTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/dataBtn"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:rippleColor="@color/darkBrown">
-
-    </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
 
     <fragment
         android:id="@+id/arFragment"

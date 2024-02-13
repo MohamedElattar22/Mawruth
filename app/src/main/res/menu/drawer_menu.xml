@@ -3,25 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/contact_us"
-        android:icon="@drawable/email"
+        android:icon="@drawable/contact"
         android:iconTint="@color/white"
         android:title="تواصل معنا"
         app:showAsAction="always" />
     <item
         android:id="@+id/fav"
-        android:icon="@drawable/fav"
+        android:icon="@drawable/favourite"
         android:iconTint="@color/white"
         android:title="المفضله"
         app:showAsAction="always" />
     <item
         android:id="@+id/faq"
-        android:icon="@drawable/group"
+        android:icon="@drawable/fan"
         android:iconTint="@color/white"
         android:title="FandQ"
         app:showAsAction="always" />
     <item
         android:id="@+id/send"
-        android:icon="@drawable/send"
+        android:icon="@drawable/share_app"
         android:iconTint="@color/white"
         android:title="مشاركة التطبيق"
         app:showAsAction="always" />
@@ -33,7 +33,7 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/settings"
-        android:icon="@drawable/set"
+        android:icon="@drawable/setteings"
         android:iconTint="@color/white"
         android:title="الإعـــدادت"
         app:showAsAction="always" />

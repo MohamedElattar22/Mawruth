@@ -1,15 +1,11 @@
 package com.graduation.mawruth.ui.arActivity
 
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.FrameLayout
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import com.google.android.material.bottomsheet.BottomSheetBehavior
+import androidx.appcompat.app.AppCompatActivity
 import com.google.ar.core.Anchor
 import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.assets.RenderableSource
@@ -50,46 +46,17 @@ class AgumentedRealityActivity : AppCompatActivity() {
 
             spawnObject(hitResult.createAnchor(), Uri.parse(url))
         }
-        viewBinding.voiceBtn.setOnClickListener {
+
+        viewBinding.dataBtn.setOnClickListener {
             Toast.makeText(this, "voice opened", Toast.LENGTH_SHORT).show()
         }
-        viewBinding.dataBtn.setOnClickListener {
-            showDataSheet()
-        }
         viewBinding.fab.setOnClickListener {
-            onMainButtonClick()
+            showDataSheet()
 
         }
 
     }
 
-    private fun onMainButtonClick() {
-        setVisibility(clicked)
-        setAnimation(clicked)
-        clicked = !clicked
-    }
-
-    private fun setAnimation(clicked: Boolean) {
-        if (!clicked) {
-            viewBinding.voiceBtn.visibility = View.VISIBLE
-            viewBinding.dataBtn.visibility = View.VISIBLE
-        } else {
-            viewBinding.voiceBtn.visibility = View.INVISIBLE
-            viewBinding.dataBtn.visibility = View.INVISIBLE
-        }
-
-    }
-
-    private fun setVisibility(clicked: Boolean) {
-        if (!clicked) {
-            viewBinding.voiceBtn.startAnimation(fromBottom)
-            viewBinding.dataBtn.startAnimation(fromBottom)
-        } else {
-            viewBinding.voiceBtn.startAnimation(toBottom)
-            viewBinding.dataBtn.startAnimation(toBottom)
-
-        }
-    }
 
     private fun showDataSheet() {
         val dataBottomSheet = ObjectDataFragment()

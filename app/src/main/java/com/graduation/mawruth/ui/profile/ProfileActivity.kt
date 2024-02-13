@@ -37,6 +37,7 @@ class ProfileActivity : AppCompatActivity() {
         }
         initViews()
 
+
     }
 
     private fun initViews() {
