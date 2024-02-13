@@ -73,7 +73,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/rate"
             android:layout_width="30dp"
-            android:layout_height="15dp"
+            android:layout_height="20dp"
             android:layout_marginVertical="2dp"
             android:backgroundTint="@color/whiteSand"
             android:fontFamily="@font/cairo_regular"
