@@ -32,6 +32,7 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="40dp"
                     android:text="المتحــف المصــري"
+                    android:fontFamily="@font/cairo_semibold"
                     android:textColor="@color/white"
                     android:textSize="32sp"
                     app:layout_collapseMode="parallax"
@@ -46,6 +47,7 @@
                     android:layout_marginBottom="30dp"
                     android:text="المتحف الكبير"
                     android:textColor="#928E8A"
+                    android:fontFamily="@font/cairo_regular"
                     android:textSize="16sp"
                     app:layout_collapseMode="parallax"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -59,6 +61,7 @@
 
 
             <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_margin="25dp"

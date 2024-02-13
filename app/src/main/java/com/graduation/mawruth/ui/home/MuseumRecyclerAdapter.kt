@@ -30,7 +30,6 @@ class MuseumRecyclerAdapter(var list: List<MuseumDto?>?) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemBinding.rate.text = list?.get(position)?.rating.toString()
-        holder.itemBinding.chip1.text = "إسلامي"
         holder.itemBinding.museumName.text = list?.get(position)?.name.toString()
         holder.itemBinding.museumLocation.text =
             "${list?.get(position)?.country} ${list?.get(position)?.city}"

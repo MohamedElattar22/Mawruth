@@ -127,11 +127,12 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/emailedittext"
                         android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
                         android:gravity="end"
+                        app:cursorColor="@color/darkBrown"
                         app:hintEnabled="false"
                         app:layout_constraintTop_toBottomOf="@+id/email">
 
@@ -139,6 +140,7 @@
                             android:id="@+id/emailInput"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:textColorHighlight="@color/mainSand"
                             android:background="@drawable/emailbackground"
                             android:drawableEnd="@drawable/user"
                             android:drawablePadding="10dp"
@@ -168,6 +170,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
+                        app:cursorColor="@color/darkBrown"
                         android:layout_marginEnd="20dp"
                         app:counterEnabled="true"
                         app:hintEnabled="false"
@@ -181,6 +184,7 @@
                             android:background="@drawable/emailbackground"
                             android:drawableEnd="@drawable/lock"
                             android:drawablePadding="10dp"
+                            android:textColorHighlight="@color/mainSand"
                             android:fontFamily="@font/cairo_regular"
                             android:gravity="end"
                             android:hint="password"
@@ -218,7 +222,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:visibility="@{vm.loadingLiveData?View.VISIBLE:View.INVISIBLE}"
-
+                        android:indeterminateTint="@color/mainBtn"
                         app:layout_constraintBottom_toBottomOf="@+id/logInBtn"
                         app:layout_constraintEnd_toEndOf="@+id/logInBtn"
                         app:layout_constraintStart_toStartOf="@+id/logInBtn"
@@ -228,8 +232,9 @@
                         android:id="@+id/or"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:layout_margin="20dp"
+                        android:layout_marginHorizontal="20dp"
                         android:src="@drawable/or"
+                        android:layout_marginTop="7dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/logInBtn" />
@@ -239,14 +244,15 @@
                         style="@style/strokeBtn"
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:layout_margin="20dp"
+                        android:layout_marginHorizontal="20dp"
                         android:text="دخــول بواسطة جوجـل"
                         app:icon="@drawable/google"
                         app:iconGravity="textStart"
                         app:iconTint="#A7824E"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/or" />
+                        app:layout_constraintTop_toBottomOf="@+id/logInBtn" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

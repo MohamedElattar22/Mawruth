@@ -3,14 +3,14 @@ package com.graduation.mawruth.ui.museumDetails
 import android.animation.ValueAnimator
 import android.content.Intent
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.WindowCompat
-import com.google.android.material.chip.Chip
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityMuseumDetailsBinding
 import com.graduation.mawruth.ui.arActivity.AgumentedRealityActivity
+import com.graduation.mawruth.ui.home.HomeActivity
 
 class MuseumDetailsActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMuseumDetailsBinding
@@ -31,6 +31,9 @@ class MuseumDetailsActivity : AppCompatActivity() {
         animator()
         viewBinding.fab.setOnClickListener {
             navigatetoAR()
+        }
+        viewBinding.toolbar.setNavigationOnClickListener {
+            navigateToHome()
         }
     }
 
@@ -53,5 +56,11 @@ class MuseumDetailsActivity : AppCompatActivity() {
     fun navigatetoAR() {
         val start = Intent(this, AgumentedRealityActivity::class.java)
         startActivity(start)
+    }
+
+    fun navigateToHome() {
+        val start = Intent(this, HomeActivity::class.java)
+        startActivity(start)
+        finish()
     }
 }

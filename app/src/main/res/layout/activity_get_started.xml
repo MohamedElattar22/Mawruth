@@ -37,6 +37,7 @@
                 android:id="@+id/toRegisterBtn"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
+                android:fontFamily="@font/cairo_regular"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 style="@style/heroBtn"
@@ -47,6 +48,7 @@
                 android:id="@+id/logInBtn"
                 android:layout_width="match_parent"
                 style="@style/strokeBtn"
+                android:fontFamily="@font/cairo_regular"
                 android:text="تسجيــل الدخـــول"
                 android:layout_height="65dp">
 

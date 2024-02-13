@@ -19,8 +19,8 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/roundedImageView"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_margin="30dp"
             android:scaleType="centerCrop"
             android:src="@drawable/guest"
@@ -35,6 +35,7 @@
             android:layout_marginHorizontal="10dp"
             android:textColor="@color/whiteSand"
             android:textSize="18sp"
+            android:fontFamily="@font/cairo_semibold"
             app:layout_constraintBottom_toTopOf="@+id/headeremail"
             app:layout_constraintEnd_toStartOf="@+id/roundedImageView"
             app:layout_constraintTop_toTopOf="@+id/roundedImageView"
@@ -49,6 +50,7 @@
             android:layout_marginHorizontal="10dp"
             android:text="example@gmail.com"
             android:textColor="@color/white"
+            android:fontFamily="@font/cairo_regular"
             app:layout_constraintBottom_toBottomOf="@+id/roundedImageView"
             app:layout_constraintEnd_toStartOf="@+id/roundedImageView"
             app:layout_constraintTop_toBottomOf="@+id/Headername"

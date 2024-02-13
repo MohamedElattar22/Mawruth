@@ -49,6 +49,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="70dp"
                             android:backgroundTint="@color/white"
+
+                            app:backgroundTint="@color/white"
                             android:hint="إلي أي تراث تتطلع ....؟"
                             app:layout_constraintBottom_toTopOf="@+id/view_pager"
                             app:layout_constraintEnd_toStartOf="@+id/imageButton"
@@ -56,20 +58,11 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.15"
-                            app:navigationIcon="@drawable/search_ic"
-                            app:strokeColor="@color/mainSand"
+                            app:navigationIcon="@drawable/search_icon"
+                            app:strokeColor="#B7B2AB"
                             app:strokeWidth="1dp" />
 
-                        <ImageButton
-                            android:id="@+id/imageButton"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_marginEnd="20dp"
-                            android:background="@drawable/filter_back"
-                            android:src="@drawable/filter_ic"
-                            app:layout_constraintBottom_toBottomOf="@+id/search_bar"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/search_bar" />
+
 
                     </LinearLayout>
 
@@ -106,7 +99,7 @@
                     app:buttonGravity="bottom"
                     app:layout_collapseMode="pin"
                     app:menu="@menu/profile_menu"
-                    app:navigationIcon="@drawable/more">
+                    app:navigationIcon="@drawable/drawer_icon">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -116,7 +109,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/mylogo" />
+                            android:src="@drawable/my_logo" />
                     </LinearLayout>
                 </androidx.appcompat.widget.Toolbar>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -125,6 +118,7 @@
         <com.google.android.material.search.SearchView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:backgroundTint="@color/white"
             app:layout_anchor="@id/search_bar"
             app:searchIcon="@drawable/search_ic">
 

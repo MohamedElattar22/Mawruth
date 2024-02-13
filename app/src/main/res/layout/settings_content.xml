@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#F1F0EB"
             app:cardCornerRadius="30dp"
+            app:strokeWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -34,8 +35,9 @@
                     android:drawablePadding="5dp"
                     android:text="الحساب"
                     android:textColor="@color/darkBrown"
-                    android:textSize="30sp"
+                    android:drawableTint="@color/darkBrown"
                     app:drawableEndCompat="@drawable/person"
+                    android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,11 +69,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
-                    android:drawableEnd="@drawable/basic_bell"
+                    android:drawableEnd="@drawable/bill_basic"
                     android:drawablePadding="5dp"
                     android:text="الاشعارات"
                     android:textColor="@color/darkBrown"
-                    android:textSize="30sp"
+                    android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/v1" />
 
@@ -84,7 +86,7 @@
                     android:labelFor="@id/switch_one"
                     android:text="تفعيل الاشعارات"
                     android:textColor="#7F7A6E"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -113,8 +115,8 @@
                     android:drawablePadding="5dp"
                     android:text="المزيد"
                     android:textColor="@color/darkBrown"
-                    android:textSize="30dp"
-                    app:drawableEndCompat="@drawable/more"
+                    android:textSize="24dp"
+                    app:drawableEndCompat="@drawable/drawer_icon"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/v2" />
 
@@ -128,7 +130,7 @@
                     android:labelFor="@id/switch_one"
                     android:text="اللغة"
                     android:textColor="#7F7A6E"
-                    android:textSize="21sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintStart_toEndOf="@+id/lang_list"
@@ -164,7 +166,7 @@
                     android:labelFor="@id/switch_one"
                     android:text="عن موْروث"
                     android:textColor="#7F7A6E"
-                    android:textSize="25sp"
+                    android:textSize="18sp"
                     app:icon="@drawable/arrow"
                     app:iconGravity="start"
                     app:iconSize="@null"
@@ -175,8 +177,8 @@
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/mylogo"
+                    android:layout_height="80dp"
+                    android:src="@drawable/my_logo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

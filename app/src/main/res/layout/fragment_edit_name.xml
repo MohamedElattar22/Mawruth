@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="20dp"
+    android:background="@color/white"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.profile.fragments.EditNameFragment">
 
@@ -12,6 +13,7 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/cairo_regular"
         android:layout_height="wrap_content"
         android:text="اسم المستخدم"
         android:textSize="20sp"
@@ -46,6 +48,7 @@
         android:layout_marginTop="100dp"
         android:backgroundTint="@color/darkBrown"
         android:text="حفظ التغييرات"
+        android:fontFamily="@font/cairo_regular"
         android:textSize="22sp"
         app:icon="@drawable/save"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,7 +62,8 @@
         android:backgroundTint="@color/transparent"
         android:text="تجاهل"
         android:textColor="@color/paragraph"
-        android:textSize="22sp"
+        android:fontFamily="@font/cairo_regular"
+        android:textSize="18sp"
         app:icon="@drawable/ignore"
         app:iconTint="@color/paragraph"
         app:layout_constraintBottom_toBottomOf="@+id/save_btn"

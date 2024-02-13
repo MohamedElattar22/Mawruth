@@ -11,29 +11,37 @@
     <TextView
         android:id="@+id/pieceTitle"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/cairo_regular"
         android:layout_height="wrap_content"
+        android:textColor="@color/darkBrown"
         android:layout_marginTop="20dp"
         android:text="مفتـــاح الكعبـــة"
-
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
 
     <TextView
         android:id="@+id/age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo_regular"
+        android:textColor="@color/darkBrown"
         android:text="مصر- العصر المملوكي
 "
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pieceTitle"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/pieceTitle">
+
+    </TextView>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/cairo_regular"
         android:layout_height="wrap_content"
         android:text="القرن 8هـ/14م"
         android:textColor="@color/mainBtn"
@@ -48,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20dp"
-
+        android:fontFamily="@font/cairo_regular"
         android:text="يُنسب هذا المفتاح للسلطان المملوكي الأشرف شعبان؛ لذلك يُعد أقدم نموذج باقي من مفاتيح الكعبة حتى الآن، وقد نُقش عليه آيات قرآنية من سورة الفتح بخط النسخ، كما سُجل عليه اسم وألقاب السلطان الأشرف شعبان, ويحمل تاريخ صنعه، وهو عام 765هـ / 1363- 1364م.
 يُنسب هذا المفتاح للسلطان المملوكي الأشرف شعبان؛ لذلك يُعد أقدم نموذج باقي من مفاتيح الكعبة حتى الآن، وقد نُقش عليه آيات قرآنية من سورة الفتح بخط النسخ، كما سُجل عليه اسم وألقاب السلطان الأشرف شعب364م."
         android:textAlignment="center"

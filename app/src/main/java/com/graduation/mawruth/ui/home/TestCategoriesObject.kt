@@ -11,19 +11,19 @@ class TestCategoriesObject(
             return mutableListOf(
                 TestCategoriesObject(
                     R.drawable.cat1,
-                    "فنون"
+                    "فرعوني"
                 ),
                 TestCategoriesObject(
                     R.drawable.cat2,
-                    "اسلامي"
-                ),
-                TestCategoriesObject(
-                    R.drawable.cat3,
                     "تاريخي"
                 ),
                 TestCategoriesObject(
+                    R.drawable.cat3,
+                    "إسلامي"
+                ),
+                TestCategoriesObject(
                     R.drawable.cat4,
-                    "مصري قديم"
+                    "فنون"
                 )
             )
         }
