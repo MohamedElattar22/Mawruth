@@ -49,7 +49,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="70dp"
                             android:backgroundTint="@color/white"
-
                             app:backgroundTint="@color/white"
                             android:hint="إلي أي تراث تتطلع ....؟"
                             app:layout_constraintBottom_toTopOf="@+id/view_pager"
@@ -116,9 +115,10 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.google.android.material.search.SearchView
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:backgroundTint="@color/white"
+            app:backgroundTint="@color/lightSand"
             app:layout_anchor="@id/search_bar"
             app:searchIcon="@drawable/search_ic">
 

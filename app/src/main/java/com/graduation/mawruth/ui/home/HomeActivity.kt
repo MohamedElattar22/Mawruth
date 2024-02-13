@@ -2,6 +2,7 @@ package com.graduation.mawruth.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
@@ -237,13 +238,15 @@ class HomeActivity : AppCompatActivity() {
 
     private fun handelLogOut() {
         viewBinding.drawer.close()
-        val dialog = MaterialAlertDialogBuilder(this)
-        dialog.setTitle("تسجيل الخروج")
-        dialog.setIcon(R.drawable.mylogo)
-        dialog.setMessage("هل حقا تريد مغادرة تراثك ؟")
-        dialog.setPositiveButton(
-            "نعم"
-        ) { dialog, which ->
+        val dialog = MaterialAlertDialogBuilder(this).create()
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.logout_dialog_design, null)
+        dialog.setView(dialogView)
+        val stay = dialogView.findViewById<MaterialButton>(R.id.stay)
+        val logout = dialogView.findViewById<MaterialButton>(R.id.log)
+        stay.setOnClickListener {
+            dialog.dismiss()
+        }
+        logout.setOnClickListener {
             val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.remove("userData")
@@ -252,10 +255,28 @@ class HomeActivity : AppCompatActivity() {
             navigateToSplash()
             dialog.dismiss()
         }
-        dialog.setNegativeButton("لا") { dialog, _ ->
-            dialog.dismiss()
-        }
         dialog.show()
+
+
+//        val dialog = MaterialAlertDialogBuilder(this)
+//        dialog.setTitle("تسجيل الخروج")
+//        dialog.setIcon(R.drawable.mylogo)
+//        dialog.setMessage("هل حقا تريد مغادرة تراثك ؟")
+//        dialog.setPositiveButton(
+//            "نعم"
+//        ) { dialog, which ->
+//            val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
+//            val editor = sharedPreferences.edit()
+//            editor.remove("userData")
+//            editor.apply()
+//            SessionProvider.user = null
+//            navigateToSplash()
+//            dialog.dismiss()
+//        }
+//        dialog.setNegativeButton("لا") { dialog, _ ->
+//            dialog.dismiss()
+//        }
+//        dialog.show()
     }
 
     private fun navigateToSplash() {

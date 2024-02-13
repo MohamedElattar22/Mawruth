@@ -21,7 +21,7 @@ class ShowProfileImageFragment : DialogFragment() {
         viewBinding = FragmentShowProfileImageBinding.inflate(inflater)
         val bundle = arguments
         bundle?.let {
-            var image = bundle.getString("uri")!!.toUri()
+            val image = bundle.getString("uri")!!.toUri()
             viewBinding.profPic.setImageURI(image)
             viewBinding.saveBtn.visibility = View.VISIBLE
             viewBinding.ignoreBtn.visibility = View.VISIBLE
