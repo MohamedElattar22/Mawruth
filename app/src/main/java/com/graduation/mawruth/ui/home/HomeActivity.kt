@@ -100,8 +100,8 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        viewModel.getMuseumData()
         observeLiveData()
+        viewModel.getMuseumData()
         viewBinding.content.retryBtn.setOnClickListener {
             viewModel.getMuseumData()
         }
@@ -110,7 +110,7 @@ class HomeActivity : AppCompatActivity() {
     private fun initViews() {
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        adapter = HomeViewPager(TestViewPagerObject.getList())
+        adapter = HomeViewPager(TestViewPagerObject.list)
         catAdapter = CategoriesRecyclerAdapter(TestCategoriesObject.getList())
         viewBinding.content.catRec.adapter = catAdapter
         viewBinding.content.museumRec.adapter = museumRecyclerAdapter
@@ -124,7 +124,7 @@ class HomeActivity : AppCompatActivity() {
         }.attach()
         val handler = android.os.Handler()
         val Update = Runnable {
-            if (currentPage === (TestViewPagerObject.getList().size + 1) - 1) {
+            if (currentPage === (TestViewPagerObject.list.size + 1) - 1) {
                 currentPage = 0
             }
             viewBinding.viewPager.setCurrentItem(currentPage++, true)

@@ -19,7 +19,7 @@ class IslamicActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        adapter = HomeViewPager(TestViewPagerObject.getList())
+        adapter = HomeViewPager(TestViewPagerObject.list)
         viewBinding.viewPager.adapter = adapter
         TabLayoutMediator(
             viewBinding.tabLayout,

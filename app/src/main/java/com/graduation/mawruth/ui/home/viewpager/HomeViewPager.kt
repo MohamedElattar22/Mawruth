@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.graduation.mawruth.databinding.ViewPagerItemBinding
 
-class HomeViewPager(private var list: MutableList<TestViewPagerObject>) :
+class HomeViewPager(private var list: List<Int>) :
     RecyclerView.Adapter<HomeViewPager.PagerViewHolder>() {
 
     class PagerViewHolder(val itemBinding: ViewPagerItemBinding) :
@@ -23,9 +23,7 @@ class HomeViewPager(private var list: MutableList<TestViewPagerObject>) :
     }
 
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
-        holder.itemBinding.title.text = list[position].title
-        holder.itemBinding.description.text = list[position].description
         holder.itemBinding.bg.background =
-            ContextCompat.getDrawable(holder.itemBinding.root.context, list[position].image)
+            ContextCompat.getDrawable(holder.itemBinding.root.context, list[position])
     }
 }
