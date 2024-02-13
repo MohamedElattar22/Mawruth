@@ -1,21 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:cardCornerRadius="30dp"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    app:cardCornerRadius="20dp"
     app:cardUseCompatPadding="true"
-    app:strokeColor="@color/transparent"
     app:strokeWidth="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mus_image"
-        android:layout_width="200dp"
-        android:layout_height="230dp"
-        android:layout_gravity="center"
-        android:background="#EEEDEB"
-        android:padding="15dp">
 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/mus_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/mainSand"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </ImageView>
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/outlined_heart_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/museum_name"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:layout_marginVertical="2dp"
+            android:backgroundTint="@color/whiteSand"
+            android:fontFamily="@font/cairo_semibold"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/museum_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.9"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/museum_location"
+            android:layout_width="75dp"
+            android:layout_height="20dp"
+            android:layout_marginVertical="2dp"
+            android:backgroundTint="@color/whiteSand"
+            android:fontFamily="@font/cairo_regular"
+            android:textColor="#80F1F0EB"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toTopOf="@+id/rate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/mus_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/museum_name" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rate"
+            android:layout_width="30dp"
+            android:layout_height="15dp"
+            android:layout_marginVertical="2dp"
+            android:backgroundTint="@color/whiteSand"
+            android:fontFamily="@font/cairo_regular"
+            android:textColor="#80F1F0EB"
+            android:textSize="9sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/museum_location" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

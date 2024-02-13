@@ -10,6 +10,7 @@ import com.graduation.mawruth.databinding.ActivityProfileBinding
 import com.graduation.mawruth.ui.profile.fragments.ShowProfileImageFragment
 import com.graduation.mawruth.utils.SessionProvider
 
+
 class ProfileActivity : AppCompatActivity() {
     lateinit var viewBinding: ActivityProfileBinding
     private lateinit var uri: Uri
@@ -36,9 +37,11 @@ class ProfileActivity : AppCompatActivity() {
             launcher.launch(intent)
         }
         initViews()
-
-
+        viewBinding.toolbar.setNavigationOnClickListener {
+            finish()
+        }
     }
+
 
     private fun initViews() {
         viewBinding.profPicCard.setOnClickListener {

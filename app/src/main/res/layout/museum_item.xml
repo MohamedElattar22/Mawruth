@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="170dp"
-    android:layout_height="200dp"
-    android:layout_margin="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
     app:cardCornerRadius="20dp"
+    app:cardUseCompatPadding="true"
     app:strokeWidth="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,14 +26,15 @@
 
         </ImageView>
 
-        <!--        <ImageButton-->
-        <!--            android:id="@+id/imageButton2"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:background="@drawable/outlined_heart_back"-->
-        <!--            android:src="@drawable/outlined_heart"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/outlined_heart_back"
+            android:src="@drawable/outlined_heart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/museum_name"

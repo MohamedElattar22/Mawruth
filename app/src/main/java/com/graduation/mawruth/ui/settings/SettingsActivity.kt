@@ -20,5 +20,8 @@ class SettingsActivity : AppCompatActivity() {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
+        viewBinding.toolbar.setNavigationOnClickListener {
+            finish()
+        }
     }
 }

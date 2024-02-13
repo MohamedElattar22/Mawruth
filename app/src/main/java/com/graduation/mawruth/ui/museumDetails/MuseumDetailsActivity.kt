@@ -10,7 +10,6 @@ import androidx.core.view.WindowCompat
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityMuseumDetailsBinding
 import com.graduation.mawruth.ui.arActivity.AgumentedRealityActivity
-import com.graduation.mawruth.ui.home.HomeActivity
 
 class MuseumDetailsActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMuseumDetailsBinding
@@ -33,8 +32,9 @@ class MuseumDetailsActivity : AppCompatActivity() {
             navigatetoAR()
         }
         viewBinding.toolbar.setNavigationOnClickListener {
-            navigateToHome()
+            finish()
         }
+
     }
 
     private fun animator() {
@@ -58,9 +58,4 @@ class MuseumDetailsActivity : AppCompatActivity() {
         startActivity(start)
     }
 
-    fun navigateToHome() {
-        val start = Intent(this, HomeActivity::class.java)
-        startActivity(start)
-        finish()
-    }
 }

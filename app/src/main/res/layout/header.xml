@@ -4,18 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:fitsSystemWindows="true"
     android:paddingVertical="40dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loginHeader"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/roundedImageView"
@@ -33,9 +34,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
+            android:fontFamily="@font/cairo_semibold"
             android:textColor="@color/whiteSand"
             android:textSize="18sp"
-            android:fontFamily="@font/cairo_semibold"
             app:layout_constraintBottom_toTopOf="@+id/headeremail"
             app:layout_constraintEnd_toStartOf="@+id/roundedImageView"
             app:layout_constraintTop_toTopOf="@+id/roundedImageView"
@@ -45,18 +46,25 @@
 
         <TextView
             android:id="@+id/headeremail"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:text="example@gmail.com"
-            android:textColor="@color/white"
+            android:layout_marginEnd="7dp"
+            android:background="@color/darkBrown"
+            android:ellipsize="marquee"
             android:fontFamily="@font/cairo_regular"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:text="example@gmail.comexassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssmple@"
+
+            android:textAlignment="viewEnd"
+            android:textColor="@color/white"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="@+id/roundedImageView"
             app:layout_constraintEnd_toStartOf="@+id/roundedImageView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Headername"
-            app:layout_constraintVertical_bias="0.9" />
+            tools:ignore="SmallSp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
     <LinearLayout
         android:id="@+id/guestHeader"
         android:layout_width="match_parent"
@@ -93,5 +101,5 @@
             android:text="تسجيل حساب جديد" />
     </LinearLayout>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+

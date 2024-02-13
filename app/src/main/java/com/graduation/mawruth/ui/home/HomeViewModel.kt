@@ -19,8 +19,8 @@ class HomeViewModel @Inject constructor(private val getMuseumsDataUseCase: GetMu
     val error = MutableLiveData<String>()
 
     fun getMuseumData() {
-        loadingLiveData.postValue(true)
         viewModelScope.launch {
+            loadingLiveData.postValue(true)
             try {
                 val result = getMuseumsDataUseCase.invoke()
                 museumData.postValue(result)

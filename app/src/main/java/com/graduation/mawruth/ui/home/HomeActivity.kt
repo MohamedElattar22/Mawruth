@@ -54,19 +54,19 @@ class HomeActivity : AppCompatActivity() {
     private fun showShimmer() {
         val shimmer = Shimmer.AlphaHighlightBuilder().setAutoStart(true).setBaseAlpha(0.25f)
             .setHighlightAlpha(0.75f).setDirection(Shimmer.Direction.LEFT_TO_RIGHT).build()
-        viewBinding.content.museumRec.isVisible = false
         viewBinding.content.shimmer.setShimmer(shimmer)
         viewBinding.content.shimmer.startShimmer()
         viewBinding.content.shimmer.isVisible = true
+        viewBinding.content.failedContent.isVisible = false
+        viewBinding.content.successContent.isVisible = false
         viewBinding.viewPager.isVisible = false
         viewBinding.tabLayout.isVisible = false
+
     }
 
     private fun hideShimmer() {
-        viewBinding.content.museumRec.isVisible = true
         viewBinding.content.shimmer.stopShimmer()
         viewBinding.content.shimmer.isVisible = false
-
     }
 
     private fun observeLiveData() {
