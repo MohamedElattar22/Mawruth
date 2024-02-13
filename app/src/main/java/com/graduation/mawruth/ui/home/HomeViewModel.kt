@@ -25,7 +25,6 @@ class HomeViewModel @Inject constructor(private val getMuseumsDataUseCase: GetMu
                 val result = getMuseumsDataUseCase.invoke()
                 museumData.postValue(result)
                 Log.e("list", result.toString())
-
             } catch (e: Exception) {
                 error.postValue(e.localizedMessage)
                 Log.e("list", e.localizedMessage!!)

@@ -43,7 +43,7 @@ class ProfileContentFragment : Fragment() {
         val dialog = MaterialAlertDialogBuilder(requireContext())
         dialog.setTitle("تسجيل الخروج")
         dialog.setIcon(R.drawable.mylogo)
-        dialog.setMessage("هل حقا تريد مغادرة تارثك ؟")
+        dialog.setMessage("هل حقا تريد مغادرة تراثك ؟")
         dialog.setPositiveButton(
             "نعم"
         ) { dialog, which ->
