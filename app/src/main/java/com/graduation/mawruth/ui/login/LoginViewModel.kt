@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.graduation.domain.model.userlogin.UserLoginPost
 import com.graduation.domain.useCase.LoginUseCase
-import com.graduation.mawruth.utils.SessionProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,7 +22,7 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
         viewModelScope.launch {
             try {
                 val result = loginUseCase.invoke(user)
-                SessionProvider.user = result
+//                SessionProvider.user = result
                 val json = Gson().toJson(result)
                 userLiveData.postValue(json)
             } catch (e: Exception) {

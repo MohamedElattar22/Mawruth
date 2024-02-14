@@ -18,6 +18,8 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.gson.Gson
+import com.graduation.domain.model.userlogin.UserLoginDto
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityHomeBinding
 import com.graduation.mawruth.ui.home.viewpager.HomeViewPager
@@ -28,7 +30,6 @@ import com.graduation.mawruth.ui.profile.ProfileActivity
 import com.graduation.mawruth.ui.settings.SettingsActivity
 import com.graduation.mawruth.ui.signup.SignupActivity
 import com.graduation.mawruth.ui.splash.SplashScreen
-import com.graduation.mawruth.utils.SessionProvider
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Timer
 import java.util.TimerTask
@@ -45,6 +46,7 @@ class HomeActivity : AppCompatActivity() {
     private val DELAY_MS: Long = 500 //delay in milliseconds before task is to be executed
     private val PERIOD_MS: Long = 3000
     private lateinit var viewModel: HomeViewModel
+    var user: UserLoginDto? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityHomeBinding.inflate(layoutInflater)
@@ -167,17 +169,25 @@ class HomeActivity : AppCompatActivity() {
         val header = viewBinding.nav.getHeaderView(0)
         val loginHeader = header.findViewById<ConstraintLayout>(R.id.loginHeader)
         val guest = header.findViewById<LinearLayout>(R.id.guestHeader)
-        if (SessionProvider.user != null) {
+        val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
+
+        if (sharedPreferences.contains("userData")) {
+
+            loginHeader.visibility = View.VISIBLE
+            guest.visibility = View.INVISIBLE
+            sharedPreferences.getString("userData", null)?.let {
+                user = Gson().fromJson(it, UserLoginDto::class.java)
+                val name = header.findViewById<TextView>(R.id.Headername)
+                viewBinding.nav.menu.setGroupVisible(R.menu.drawer_menu, true)
+                name.text = user?.userName.toString()
+                val email = header.findViewById<TextView>(R.id.headeremail)
+                email.text = user?.email
+            }
             header.setOnClickListener {
                 navigateToProfile()
             }
-            loginHeader.visibility = View.VISIBLE
-            guest.visibility = View.INVISIBLE
-            val name = header.findViewById<TextView>(R.id.Headername)
-            viewBinding.nav.menu.setGroupVisible(R.menu.drawer_menu, true)
-            name.text = SessionProvider.user?.userName.toString()
-            val email = header.findViewById<TextView>(R.id.headeremail)
-            email.text = SessionProvider.user?.email
+
+
             viewBinding.nav.setNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.person -> {
@@ -251,7 +261,7 @@ class HomeActivity : AppCompatActivity() {
             val editor = sharedPreferences.edit()
             editor.remove("userData")
             editor.apply()
-            SessionProvider.user = null
+//            SessionProvider.user = null
             navigateToSplash()
             dialog.dismiss()
         }

@@ -6,14 +6,16 @@ import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
+import com.graduation.domain.model.userlogin.UserLoginDto
 import com.graduation.mawruth.databinding.ActivityProfileBinding
 import com.graduation.mawruth.ui.profile.fragments.ShowProfileImageFragment
-import com.graduation.mawruth.utils.SessionProvider
 
 
 class ProfileActivity : AppCompatActivity() {
     lateinit var viewBinding: ActivityProfileBinding
     private lateinit var uri: Uri
+    var user: UserLoginDto? = null
     var dialog = ShowProfileImageFragment()
     private var launcher: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -47,8 +49,13 @@ class ProfileActivity : AppCompatActivity() {
         viewBinding.profPicCard.setOnClickListener {
             dialog.show(supportFragmentManager, "")
         }
-        viewBinding.name.text = SessionProvider.user?.userName
-        viewBinding.email.text = SessionProvider.user?.email
+        val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
+        sharedPreferences.getString("userData", null)?.let {
+            user = Gson().fromJson(it, UserLoginDto::class.java)
+            viewBinding.name.text = user?.userName
+            viewBinding.email.text = user?.email
+        }
+
     }
 
 

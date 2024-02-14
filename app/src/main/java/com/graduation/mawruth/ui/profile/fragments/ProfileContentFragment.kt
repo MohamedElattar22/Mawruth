@@ -13,7 +13,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.FragmentProfileContentBinding
 import com.graduation.mawruth.ui.splash.SplashScreen
-import com.graduation.mawruth.utils.SessionProvider
 
 class ProfileContentFragment : Fragment() {
 
@@ -56,7 +55,7 @@ class ProfileContentFragment : Fragment() {
             val editor = sharedPreferences.edit()
             editor.remove("userData")
             editor.apply()
-            SessionProvider.user = null
+//            SessionProvider.user = null
             navigateToSplash()
             dialog.dismiss()
         }
