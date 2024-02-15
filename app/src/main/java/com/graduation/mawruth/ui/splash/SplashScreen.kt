@@ -29,8 +29,6 @@ class SplashScreen : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
         if (sharedPreferences.contains("userData")) {
             sharedPreferences.getString("userData", null)?.let {
-//                val user = Gson().fromJson(it, UserLoginDto::class.java)
-//                SessionProvider.user = user
                 navigateToHome()
             }
         } else {

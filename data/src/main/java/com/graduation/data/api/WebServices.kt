@@ -32,4 +32,17 @@ interface WebServices {
         @Body confirmationData: EmailConfirmationData
     ): OTPResponse
 
+//    @Multipart
+//    @PATCH("users/")
+//    @Hea
+//    suspend fun updateUserData(
+//        @Query("userId")
+//        userId:String,
+//        @Part("full_name") fullName:String,
+//        @Part("username") userName:String,
+//        @Part("email") email:String,
+//        @Part("password") password:String,
+//        @Part("phone_number") phoneNumber:String,
+//
+//    )
 }
