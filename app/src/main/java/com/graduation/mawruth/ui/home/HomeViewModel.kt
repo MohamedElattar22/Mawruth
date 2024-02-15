@@ -1,5 +1,6 @@
 package com.graduation.mawruth.ui.home
 
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,7 +16,8 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val getMuseumsDataUseCase: GetMuseumsDataUseCase,
-    private val getUserInformationUseCase: GetUserInformationUseCase
+    private val getUserInformationUseCase: GetUserInformationUseCase,
+    private val sharedPreferences: SharedPreferences
 ) :
     ViewModel() {
 
@@ -39,5 +41,13 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
+//    private suspend fun getUserInfo()
+//    {
+//        val result = getUserInformationUseCase.invoke()
+//        val editor = sharedPreferences.edit()
+//        val json = Gson().toJson(result)
+//        editor.putString("userInfo", json)
+//        editor.apply()
+//    }
 
 }

@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.gson.Gson
 import com.graduation.domain.useCase.GetUserInformationUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -22,11 +21,6 @@ class SplashViewModel @Inject constructor(
             try {
                 if (sharedPreferences.contains("userData")) {
                     sharedPreferences.getString("userData", null)?.let {
-                        val result = getUserInformationUseCase.invoke()
-                        val editor = sharedPreferences.edit()
-                        val json = Gson().toJson(result)
-                        editor.putString("userInfo", json)
-                        editor.apply()
                         infoLiveData.postValue(true)
                     }
 
