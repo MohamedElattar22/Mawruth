@@ -1,6 +1,7 @@
 package com.graduation.data.datasourceImpl
 
 import com.graduation.data.dataSourceContract.UserAuthenticationDataSource
+import com.graduation.data.dataSourceContract.UserInformationDataSource
 import com.graduation.data.dataSourceContract.musums.MuseumsDataSource
 import com.graduation.data.datasourceImpl.museums.MuseumsDataSourceImpl
 import dagger.Binds
@@ -19,5 +20,8 @@ abstract class di {
 
     @Binds
     abstract fun bindMuseumDataSource(museumsDataSourceImpl: MuseumsDataSourceImpl): MuseumsDataSource
+
+    @Binds
+    abstract fun bindUserInfoDataSource(userInformationDataSourceImpl: UserInformationDataSourceImpl): UserInformationDataSource
 
 }

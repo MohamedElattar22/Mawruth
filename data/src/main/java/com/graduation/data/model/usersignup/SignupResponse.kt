@@ -1,7 +1,7 @@
 package com.graduation.data.model.usersignup
 
 import com.google.gson.annotations.SerializedName
-import com.graduation.domain.model.User
+import com.graduation.domain.model.signupdata.User
 
 data class SignupResponse(
     @field:SerializedName("createdAt")

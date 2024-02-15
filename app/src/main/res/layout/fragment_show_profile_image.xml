@@ -9,12 +9,11 @@
     tools:context=".ui.profile.fragments.ShowProfileImageFragment">
 
     <ImageView
-        android:id="@+id/prof_pic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
+        android:id="@+id/dialog_profile_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/guest"
+        android:layout_marginHorizontal="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

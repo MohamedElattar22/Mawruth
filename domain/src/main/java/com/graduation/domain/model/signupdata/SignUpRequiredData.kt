@@ -1,4 +1,4 @@
-package com.graduation.domain.model
+package com.graduation.domain.model.signupdata
 
 data class SignUpRequiredData(
     val full_name: String? = null,

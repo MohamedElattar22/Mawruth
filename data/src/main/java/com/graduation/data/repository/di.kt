@@ -2,6 +2,7 @@ package com.graduation.data.repository
 
 import com.graduation.domain.repositories.MuseumRepository
 import com.graduation.domain.repositories.UserAuthenticationRepository
+import com.graduation.domain.repositories.UserInformationRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,4 +19,7 @@ abstract class di {
 
     @Binds
     abstract fun bindMuseumRepository(museumRepositoryImpl: MuseumRepositoryImpl): MuseumRepository
+
+    @Binds
+    abstract fun bindUserInfoRepositoryRepository(userInformationRepositoryImpl: UserInformationRepositoryImpl): UserInformationRepository
 }

@@ -45,11 +45,11 @@ class LoginActivity : AppCompatActivity() {
     private fun observeLiveData() {
         viewModel.userLiveData.observe(this)
         {
-            val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putString("userData", it)
-            editor.apply()
-            goToHomeActivity()
+//            val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
+//            val editor = sharedPreferences.edit()
+//            editor.putString("userData", it)
+//            editor.apply()
+            if (it) goToHomeActivity()
         }
         viewModel.errorLiveData.observe(this)
         {

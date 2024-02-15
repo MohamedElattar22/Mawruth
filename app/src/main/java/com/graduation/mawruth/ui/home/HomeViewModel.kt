@@ -5,18 +5,24 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.graduation.domain.model.museum.MuseumDto
+import com.graduation.domain.model.userinfo.UserInformationDto
 import com.graduation.domain.useCase.GetMuseumsDataUseCase
+import com.graduation.domain.useCase.GetUserInformationUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val getMuseumsDataUseCase: GetMuseumsDataUseCase) :
+class HomeViewModel @Inject constructor(
+    private val getMuseumsDataUseCase: GetMuseumsDataUseCase,
+    private val getUserInformationUseCase: GetUserInformationUseCase
+) :
     ViewModel() {
 
     val museumData = MutableLiveData<List<MuseumDto?>?>()
     val loadingLiveData = MutableLiveData<Boolean>()
     val error = MutableLiveData<String>()
+    val infoLiveData = MutableLiveData<UserInformationDto>()
 
     fun getMuseumData() {
         viewModelScope.launch {
@@ -33,4 +39,5 @@ class HomeViewModel @Inject constructor(private val getMuseumsDataUseCase: GetMu
             }
         }
     }
+
 }

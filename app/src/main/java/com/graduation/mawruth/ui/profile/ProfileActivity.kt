@@ -6,8 +6,9 @@ import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.gson.Gson
-import com.graduation.domain.model.userlogin.UserLoginDto
+import com.graduation.domain.model.userinfo.UserInformationDto
 import com.graduation.mawruth.databinding.ActivityProfileBinding
 import com.graduation.mawruth.ui.profile.fragments.ShowProfileImageFragment
 
@@ -15,14 +16,14 @@ import com.graduation.mawruth.ui.profile.fragments.ShowProfileImageFragment
 class ProfileActivity : AppCompatActivity() {
     lateinit var viewBinding: ActivityProfileBinding
     private lateinit var uri: Uri
-    var user: UserLoginDto? = null
-    var dialog = ShowProfileImageFragment()
+    var user: UserInformationDto? = null
+    val bundle = Bundle()
+    private var dialog = ShowProfileImageFragment()
     private var launcher: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
         if (it.resultCode == RESULT_OK && it.data?.data != null) {
             uri = it.data?.data!!
-            val bundle = Bundle()
             bundle.putString("uri", uri.toString())
             dialog.arguments = bundle
             dialog.show(supportFragmentManager, "")
@@ -46,14 +47,18 @@ class ProfileActivity : AppCompatActivity() {
 
 
     private fun initViews() {
-        viewBinding.profPicCard.setOnClickListener {
-            dialog.show(supportFragmentManager, "")
-        }
         val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
-        sharedPreferences.getString("userData", null)?.let {
-            user = Gson().fromJson(it, UserLoginDto::class.java)
-            viewBinding.name.text = user?.userName
-            viewBinding.email.text = user?.email
+        sharedPreferences.getString("userInfo", null)?.let {
+            user = Gson().fromJson(it, UserInformationDto::class.java)
+            viewBinding.name.text = user?.fullName
+            viewBinding.email.text = user?.userName
+            Glide.with(this).load(user?.avatar).into(viewBinding.profPic)
+        }
+        viewBinding.profPicCard.setOnClickListener {
+            bundle.putString("uri", user?.avatar)
+            dialog.arguments = bundle
+            dialog.show(supportFragmentManager, "")
+
         }
 
     }

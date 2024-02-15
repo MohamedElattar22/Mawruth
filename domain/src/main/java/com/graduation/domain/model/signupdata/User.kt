@@ -1,7 +1,7 @@
-package com.graduation.domain.model
+package com.graduation.domain.model.signupdata
 
-import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
 
 @Parcelize
