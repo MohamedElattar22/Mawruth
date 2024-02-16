@@ -10,9 +10,11 @@ import androidx.core.view.WindowCompat
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityMuseumDetailsBinding
 import com.graduation.mawruth.ui.arActivity.AgumentedRealityActivity
+import com.graduation.mawruth.ui.pieceDetails.PieceDetailsActivity
 
 class MuseumDetailsActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMuseumDetailsBinding
+    private lateinit var adapter: PiecesAdapter
     val animator: ValueAnimator? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +36,17 @@ class MuseumDetailsActivity : AppCompatActivity() {
         viewBinding.toolbar.setNavigationOnClickListener {
             finish()
         }
+        adapter = PiecesAdapter(testData.list)
+        viewBinding.lay.piecesRV.adapter = adapter
+        adapter.itemClick = PiecesAdapter.OnPieceClickListener { data, position ->
+            val intent = Intent(this@MuseumDetailsActivity, PieceDetailsActivity::class.java)
+            intent.putExtra("title", data.pieceTitle)
+            intent.putExtra("age", data.pieceAge)
+            intent.putExtra("description", data.description)
+            intent.putExtra("image", data.image)
+            startActivity(intent)
+        }
+
 
     }
 
