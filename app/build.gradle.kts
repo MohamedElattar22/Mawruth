@@ -71,6 +71,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
 
+    //Circular Progress Indicator
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
     //Hilt DI
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-compiler:2.50")
