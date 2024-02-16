@@ -10,9 +10,10 @@ import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.graduation.domain.model.userinfo.UserInformationDto
 import com.graduation.mawruth.databinding.ActivityProfileBinding
-import com.graduation.mawruth.ui.profile.fragments.ShowProfileImageFragment
+import com.graduation.mawruth.ui.profile.fragments.showprofile.ShowProfileImageFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ProfileActivity : AppCompatActivity() {
     lateinit var viewBinding: ActivityProfileBinding
     private lateinit var uri: Uri
@@ -25,6 +26,7 @@ class ProfileActivity : AppCompatActivity() {
         if (it.resultCode == RESULT_OK && it.data?.data != null) {
             uri = it.data?.data!!
             bundle.putString("uri", uri.toString())
+            bundle.putInt("out", 1)
             dialog.arguments = bundle
             dialog.show(supportFragmentManager, "")
         }
@@ -46,21 +48,21 @@ class ProfileActivity : AppCompatActivity() {
     }
 
 
-    private fun initViews() {
+    fun initViews() {
         val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
         sharedPreferences.getString("userInfo", null)?.let {
             user = Gson().fromJson(it, UserInformationDto::class.java)
             viewBinding.name.text = user?.fullName
-            viewBinding.email.text = user?.userName
+            viewBinding.email.text = "@${user?.userName}"
             Glide.with(this).load(user?.avatar).into(viewBinding.profPic)
         }
         viewBinding.profPicCard.setOnClickListener {
             bundle.putString("uri", user?.avatar)
+            bundle.putInt("out", 0)
             dialog.arguments = bundle
             dialog.show(supportFragmentManager, "")
 
         }
-
     }
 
 

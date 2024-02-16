@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/editNameFragment"
-        android:name="com.graduation.mawruth.ui.profile.fragments.EditNameFragment"
+        android:name="com.graduation.mawruth.ui.profile.fragments.editname.EditNameFragment"
         android:label="fragment_edit_name"
         tools:layout="@layout/fragment_edit_name">
         <action

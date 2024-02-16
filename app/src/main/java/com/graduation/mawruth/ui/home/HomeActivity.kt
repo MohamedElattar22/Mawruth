@@ -63,6 +63,7 @@ class HomeActivity : AppCompatActivity() {
             viewModel.getMuseumData()
         }
         observeLiveData()
+        initDrawer()
     }
 
 
@@ -184,11 +185,11 @@ class HomeActivity : AppCompatActivity() {
                 user = Gson().fromJson(it, UserInformationDto::class.java)
                 val name = header.findViewById<TextView>(R.id.Headername)
                 viewBinding.nav.menu.setGroupVisible(R.menu.drawer_menu, true)
-                name.text = user?.userName
+                name.text = user?.fullName
                 val email = header.findViewById<TextView>(R.id.headeremail)
-                email.text = user?.fullName
+                email.text = "@${user?.userName}"
                 val image = header.findViewById<ImageView>(R.id.header_pic)
-                Glide.with(this).load(user?.avatar).into(image)
+                Glide.with(this).load(user?.avatar).placeholder(R.drawable.person).into(image)
             }
             header.setOnClickListener {
                 navigateToProfile()

@@ -1,5 +1,6 @@
 package com.graduation.data.datasourceImpl
 
+import com.graduation.data.dataSourceContract.EditUserInfoDataSource
 import com.graduation.data.dataSourceContract.UserAuthenticationDataSource
 import com.graduation.data.dataSourceContract.UserInformationDataSource
 import com.graduation.data.dataSourceContract.musums.MuseumsDataSource
@@ -24,4 +25,6 @@ abstract class di {
     @Binds
     abstract fun bindUserInfoDataSource(userInformationDataSourceImpl: UserInformationDataSourceImpl): UserInformationDataSource
 
+    @Binds
+    abstract fun bindEditUserInfoDataSource(editUserInfoDataSourceImpl: EditUserInfoDataSourceImpl): EditUserInfoDataSource
 }

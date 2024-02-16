@@ -7,7 +7,7 @@
     android:padding="20dp"
     android:background="@color/white"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.profile.fragments.EditNameFragment">
+    tools:context=".ui.profile.fragments.editname.EditNameFragment">
 
 
     <TextView
@@ -53,6 +53,7 @@
         android:fontFamily="@font/cairo_regular"
         android:textSize="22sp"
         app:icon="@drawable/save"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_name_container" />

@@ -1,60 +1,145 @@
 package com.graduation.mawruth.ui.profile.fragments
 
+import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.graduation.mawruth.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.google.gson.Gson
+import com.graduation.domain.model.userinfo.UserInformationDto
+import com.graduation.mawruth.databinding.FragmentEditPasswordBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [EditPasswordFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class EditPasswordFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var viewBinding: FragmentEditPasswordBinding
+    private lateinit var viewModel: EditPasswordViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        viewModel = ViewModelProvider(this)[EditPasswordViewModel::class.java]
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_password, container, false)
+    ): View {
+        viewBinding = FragmentEditPasswordBinding.inflate(inflater)
+        return viewBinding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EditPasswordFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EditPasswordFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE)
+            .getString("userInfo", null)?.let {
+                val user = Gson().fromJson(it, UserInformationDto::class.java)
+                viewBinding.newpasstextx.addTextChangedListener(textWatcher)
+                viewBinding.newpasstextconfirm.addTextChangedListener(textWatcher)
+                viewBinding.oldpasstext.addTextChangedListener(passwordTextWatcher)
+                viewBinding.saveBtn.setOnClickListener {
+                    if (handelTextError(user)) {
+                        viewModel.editPassword(viewBinding.newpasstextx.text.toString().trim())
+                    }
                 }
             }
+        observeLiveData()
+        viewBinding.ignoreBtn.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
     }
+
+    private val textWatcher = object : TextWatcher {
+        override fun beforeTextChanged(
+            s: CharSequence?,
+            start: Int,
+            count: Int,
+            after: Int
+        ) {
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            if (viewBinding.newpasstextconfirm.text.toString().trim()
+                    .isBlank() || viewBinding.newpasstextx.text.toString().trim()
+                    .isBlank() || viewBinding.newpasstextconfirm.text.toString()
+                    .trim() != viewBinding.newpasstextx.text.toString().trim()
+            ) {
+                viewBinding.newpassconfirm.error = "Password is not match"
+                viewBinding.newpass.error = "Password is not match"
+            } else {
+                viewBinding.newpassconfirm.error = null
+                viewBinding.newpass.error = null
+            }
+        }
+
+        override fun afterTextChanged(s: Editable?) {
+
+        }
+
+    }
+    private val passwordTextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            if (viewBinding.oldpasstext.text.toString().trim().isNotBlank()) {
+                viewBinding.oldpass.error = ""
+            } else {
+                viewBinding.oldpass.error = "Invalid password"
+
+            }
+        }
+
+        override fun afterTextChanged(s: Editable?) {
+        }
+
+    }
+
+    private fun observeLiveData() {
+        viewModel.infoLiveData.observe(viewLifecycleOwner) {
+            if (it) {
+                Toast.makeText(requireContext(), "Data updated Successfully", Toast.LENGTH_SHORT)
+                    .show()
+                findNavController().popBackStack()
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Error Occurred ,Try again later",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            }
+        }
+    }
+
+    private fun handelTextError(user: UserInformationDto): Boolean {
+        var isInvalid = false
+        if (user.password.toString() != viewBinding.oldpasstext.text.toString().trim()) {
+            viewBinding.oldpass.error = "Invalid password"
+        } else {
+            viewBinding.oldpass.error = null
+            isInvalid = true
+        }
+        if (viewBinding.newpasstextx.text.toString().trim()
+                .isBlank() || viewBinding.newpasstextconfirm.text.toString().trim()
+                .isBlank()
+        ) {
+            viewBinding.newpassconfirm.error = "Password is not match"
+            viewBinding.newpass.error = "Password is not match"
+        } else {
+            viewBinding.newpassconfirm.error = null
+            viewBinding.newpass.error = null
+            isInvalid = true
+        }
+
+
+        return isInvalid
+    }
+
 }
