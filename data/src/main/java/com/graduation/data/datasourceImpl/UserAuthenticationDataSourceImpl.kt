@@ -2,9 +2,10 @@ package com.graduation.data.datasourceImpl
 
 import com.graduation.data.api.WebServices
 import com.graduation.data.dataSourceContract.UserAuthenticationDataSource
-import com.graduation.domain.model.EmailConfirmationData
-import com.graduation.domain.model.SignUpRequiredData
-import com.graduation.domain.model.User
+import com.graduation.domain.model.ResendOtpData
+import com.graduation.domain.model.signupdata.EmailConfirmationData
+import com.graduation.domain.model.signupdata.SignUpRequiredData
+import com.graduation.domain.model.signupdata.User
 import com.graduation.domain.model.userlogin.UserLoginDto
 import com.graduation.domain.model.userlogin.UserLoginPost
 import javax.inject.Inject
@@ -24,5 +25,10 @@ class UserAuthenticationDataSourceImpl @Inject constructor(private val webServic
     override suspend fun verifyEmail(verifyData: EmailConfirmationData): String {
         return webServices.verifyOTP(verifyData).message.toString()
     }
+
+    override suspend fun resendOTP(email: ResendOtpData): String {
+        return webServices.resendOTP(email).message!!
+    }
+
 
 }

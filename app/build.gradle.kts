@@ -58,7 +58,9 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.makeramen:roundedimageview:2.3.0")
-
+    //ssp & sdp
+    implementation ("com.intuit.ssp:ssp-android:1.1.0")
+    implementation ("com.intuit.sdp:sdp-android:1.1.0")
     //Coil
     implementation("io.coil-kt:coil:2.5.0")
 
@@ -70,6 +72,9 @@ dependencies {
     //Kotlin coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
+
+    //Circular Progress Indicator
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     //Hilt DI
     implementation("com.google.dagger:hilt-android:2.50")
@@ -90,13 +95,16 @@ dependencies {
     implementation ("com.google.ar:core:1.40.0")
     //SceneForm
     // Provides ArFragment, and other UX resources.
-    implementation ("com.google.ar.sceneform.ux:sceneform-ux:1.17.1")
-    implementation ("com.google.ar.sceneform:assets:1.17.1")
-    implementation ("com.google.ar.sceneform:animation:1.17.1")
+    implementation("com.google.ar.sceneform.ux:sceneform-ux:1.17.1")
+    implementation("com.google.ar.sceneform:assets:1.17.1")
+    implementation("com.google.ar.sceneform:animation:1.17.1")
     // Alternatively, use ArSceneView without the UX dependency.
-    implementation ("com.google.ar.sceneform:core:1.17.1")
+    implementation("com.google.ar.sceneform:core:1.17.1")
 
     //circle indicator
-     implementation ("me.relex:circleindicator:2.1.6")
+    implementation("me.relex:circleindicator:2.1.6")
+
+    val lottieVersion = "6.3.0"
+    implementation("com.airbnb.android:lottie:$lottieVersion")
 
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_marginTop="15dp"
+<LinearLayout android:layout_marginTop="@dimen/_15sdp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:gravity="center_horizontal"
@@ -8,47 +8,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView
         android:id="@+id/desImage"
-        android:layout_width="265dp"
+        android:layout_width="@dimen/_265sdp"
         android:src="@drawable/ar_onboard"
-        android:layout_height="250dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="@dimen/_250sdp"
+        android:layout_marginTop="@dimen/_40sdp"
         android:contentDescription="TODO">
     </ImageView>
     <TextView
         android:id="@+id/featureTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/_30sdp"
         android:textColor="@color/darkBrown"
         android:text="تجربة بصرية فريدة !"
         android:fontFamily="@font/cairo_medium"
-        android:textSize="28sp"
+        android:textSize="@dimen/_28ssp"
         >
     </TextView>
     <TextView
         android:id="@+id/contentTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:textColor="@color/paragraph"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:padding="10dp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:padding="@dimen/_10sdp"
         android:textAlignment="center"
         android:text="بإستخــدام تقنيــة الواقــع المعــزز , يمكنك
 الآن الحصول علــي تجــربة بصـــرية فريـــدة
 خلال زيارتك للمتحف"
         android:fontFamily="@font/cairo_regular"
-        android:textSize="18sp"
+        android:textSize="@dimen/_18ssp"
         >
     </TextView>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/nextBtn"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
 
-        app:iconSize="35dp"
-        android:layout_marginTop="10dp"
+        app:iconSize="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         app:iconTint="@color/white"
         app:icon="@drawable/baseline_navigate_next_24"
         android:background="@drawable/next_btnf"

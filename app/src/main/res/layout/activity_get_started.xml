@@ -27,19 +27,19 @@
             android:background="@drawable/texture_bg">
 
             <ImageView
-                android:layout_marginTop="80dp"
-                android:layout_width="290dp"
-                android:layout_height="300dp"
+                android:layout_marginTop="@dimen/_80sdp"
+                android:layout_width="@dimen/_290sdp"
+                android:layout_height="@dimen/_300sdp"
                 android:src="@drawable/full_logo_size"
               >
             </ImageView>
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/toRegisterBtn"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="@dimen/_55sdp"
                 android:fontFamily="@font/cairo_regular"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 style="@style/heroBtn"
                 android:text="@string/register_acc"
                 >
@@ -50,21 +50,21 @@
                 style="@style/strokeBtn"
                 android:fontFamily="@font/cairo_regular"
                 android:text="تسجيــل الدخـــول"
-                android:layout_height="65dp">
+                android:layout_height="@dimen/_65sdp">
 
             </com.google.android.material.button.MaterialButton>
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 android:src="@drawable/or"
-                android:layout_height="40dp">
+                android:layout_height="@dimen/_40sdp">
 
             </ImageView>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:layout_height="wrap_content">
@@ -72,17 +72,17 @@
                     android:id="@+id/guestBtn"
                     android:layout_width="wrap_content"
                     android:text="@string/sign_as_guest"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/_18ssp"
                     android:textColor="#686A60"
                     android:fontFamily="@font/cairo_semibold"
                     android:layout_height="wrap_content">
 
                 </TextView>
                 <ImageView
-                    android:layout_width="25dp"
+                    android:layout_width="@dimen/_25sdp"
                     android:src="@drawable/anonymous"
-                   android:layout_margin="10dp"
-                    android:layout_height="25dp">
+                   android:layout_margin="@dimen/_10sdp"
+                    android:layout_height="@dimen/_25sdp">
 
                 </ImageView>
             </LinearLayout>

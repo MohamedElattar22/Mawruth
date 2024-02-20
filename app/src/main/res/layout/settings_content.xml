@@ -5,20 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="true"
-    android:paddingHorizontal="10dp"
+    android:paddingHorizontal="@dimen/_10sdp"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         >
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#F1F0EB"
-            app:cardCornerRadius="30dp"
+            app:cardCornerRadius="@dimen/_30sdp"
             app:strokeWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -26,18 +25,18 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="30dp">
+                android:padding="@dimen/_30sdp">
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="5dp"
+                    android:drawablePadding="@dimen/_5sdp"
                     android:text="الحساب"
                     android:textColor="@color/darkBrown"
                     android:drawableTint="@color/darkBrown"
                     app:drawableEndCompat="@drawable/person"
-                    android:textSize="24sp"
+                    android:textSize="@dimen/_24ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,7 +48,7 @@
                     android:gravity="start"
                     android:text="تعديل الملف الشخصي"
                     android:textColor="#7F7A6E"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/_18ssp"
                     app:icon="@drawable/arrow"
                     app:iconGravity="start"
                     app:iconSize="@null"
@@ -60,7 +59,7 @@
                 <View
                     android:id="@+id/v1"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1sdp"
                     android:background="@color/contentColor"
                     app:layout_constraintTop_toBottomOf="@id/edit_profile_btn" />
 
@@ -68,12 +67,12 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="@dimen/_50sdp"
                     android:drawableEnd="@drawable/bill_basic"
-                    android:drawablePadding="5dp"
+                    android:drawablePadding="@dimen/_5sdp"
                     android:text="الاشعارات"
                     android:textColor="@color/darkBrown"
-                    android:textSize="24sp"
+                    android:textSize="@dimen/_24ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/v1" />
 
@@ -86,7 +85,7 @@
                     android:labelFor="@id/switch_one"
                     android:text="تفعيل الاشعارات"
                     android:textColor="#7F7A6E"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/_18ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -103,7 +102,7 @@
                 <View
                     android:id="@+id/v2"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1sdp"
                     android:background="@color/contentColor"
                     app:layout_constraintTop_toBottomOf="@id/notification_btn" />
 
@@ -111,11 +110,11 @@
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:drawablePadding="5dp"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:drawablePadding="@dimen/_5sdp"
                     android:text="المزيد"
                     android:textColor="@color/darkBrown"
-                    android:textSize="24dp"
+                    android:textSize="@dimen/_24ssp"
                     app:drawableEndCompat="@drawable/drawer_icon"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/v2" />
@@ -124,13 +123,13 @@
                     android:id="@+id/lang_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/_12sdp"
                     android:backgroundTint="@color/transparent"
                     android:gravity="start"
                     android:labelFor="@id/switch_one"
                     android:text="اللغة"
                     android:textColor="#7F7A6E"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/_18ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintStart_toEndOf="@+id/lang_list"
@@ -142,8 +141,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/spinner_back"
                     android:entries="@array/languages"
-                    android:paddingHorizontal="15dp"
-                    android:paddingVertical="5dp"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingVertical="@dimen/_5sdp"
                     android:spinnerMode="dialog"
                     app:layout_constraintBottom_toBottomOf="@+id/lang_btn"
                     app:layout_constraintStart_toStartOf="parent"
@@ -153,7 +152,7 @@
                 <View
                     android:id="@+id/v3"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1sdp"
                     android:background="@color/contentColor"
                     app:layout_constraintTop_toBottomOf="@id/lang_btn" />
 
@@ -166,7 +165,7 @@
                     android:labelFor="@id/switch_one"
                     android:text="عن موْروث"
                     android:textColor="#7F7A6E"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/_18ssp"
                     app:icon="@drawable/arrow"
                     app:iconGravity="start"
                     app:iconSize="@null"
@@ -177,7 +176,7 @@
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="wrap_content"
-                    android:layout_height="80dp"
+                    android:layout_height="@dimen/_80sdp"
                     android:src="@drawable/my_logo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -188,7 +187,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="v 1.1.0"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/_20ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

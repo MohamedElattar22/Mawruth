@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:gravity="end"
     android:orientation="vertical">
@@ -10,19 +11,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:fontFamily="@font/cairo_semibold"
         android:textColor="@color/darkBrown"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="@dimen/_20sdp"
         android:text="معلومات أساسية"
-        android:textSize="21sp">
+        android:textSize="@dimen/_21ssp">
 
     </TextView>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="@dimen/_20sdp"
         android:src="@drawable/seperator">
 
     </ImageView>
@@ -30,13 +31,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:drawablePadding="10dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:drawablePadding="@dimen/_10sdp"
         android:fontFamily="@font/cairo_regular"
         android:text="القاهرة - مصر"
         android:textColor="#B3332B1A"
-        android:textSize="16sp"
+        android:textSize="@dimen/_16ssp"
         app:drawableEndCompat="@drawable/map_loc">
 
     </TextView>
@@ -44,13 +45,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:drawablePadding="10dp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:drawablePadding="@dimen/_10sdp"
         android:text="4.9"
         android:fontFamily="@font/cairo_regular"
         android:textColor="#B3332B1A"
-        android:textSize="16sp"
+        android:textSize="@dimen/_16ssp"
         app:drawableEndCompat="@drawable/rating">
 
     </TextView>
@@ -59,7 +60,7 @@
         android:id="@+id/chipGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp">
+        android:layout_marginStart="@dimen/_20sdp">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip1"
@@ -69,7 +70,7 @@
             android:fontFamily="@font/cairo_medium"
             android:text="تاريخي"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="@dimen/_14ssp"
             app:chipStrokeWidth="0dp">
 
         </com.google.android.material.chip.Chip>
@@ -81,7 +82,7 @@
             android:fontFamily="@font/cairo_semibold"
             android:text="تاريخي"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="@dimen/_14ssp"
             app:chipStrokeWidth="0dp">
 
         </com.google.android.material.chip.Chip>
@@ -94,7 +95,7 @@
             android:fontFamily="@font/cairo_semibold"
             android:text="تاريخي"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="@dimen/_14ssp"
             app:chipStrokeWidth="0dp">
 
         </com.google.android.material.chip.Chip>
@@ -106,7 +107,7 @@
             android:fontFamily="@font/cairo_semibold"
             android:text="تاريخي"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="@dimen/_14ssp"
             app:chipStrokeWidth="0dp">
 
         </com.google.android.material.chip.Chip>
@@ -118,7 +119,7 @@
             android:fontFamily="@font/cairo_semibold"
             android:text="تاريخي"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="@dimen/_14ssp"
             app:chipStrokeWidth="0dp">
 
         </com.google.android.material.chip.Chip>
@@ -127,59 +128,96 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
         android:fontFamily="@font/cairo_semibold"
         android:textColor="@color/darkBrown"
         android:text="عن المتحف"
-        android:textSize="21sp">
+        android:textSize="@dimen/_21ssp">
 
     </TextView>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:src="@drawable/seperator"></ImageView>
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:src="@drawable/seperator">
+
+    </ImageView>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:padding="@dimen/_20sdp"
         android:fontFamily="@font/cairo_regular"
         android:text="@string/museum_descrip"
         android:textColor="#B3332B1A"
-        android:textSize="14sp">
+        android:textSize="@dimen/_14ssp">
 
     </TextView>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="شارك تجربتك"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
         android:fontFamily="@font/cairo_semibold"
+        android:text="أفضل القطع"
         android:textColor="@color/darkBrown"
-        android:textSize="21sp">
+        android:textSize="@dimen/_21ssp">
 
     </TextView>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:src="@drawable/seperator"></ImageView>
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:src="@drawable/seperator">
+
+    </ImageView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/piecesRV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/piece_recycler_item">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:text="شارك تجربتك"
+        android:fontFamily="@font/cairo_semibold"
+        android:textColor="@color/darkBrown"
+        android:textSize="@dimen/_21ssp">
+
+    </TextView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:src="@drawable/seperator">
+
+    </ImageView>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_margin="20dp"
+        android:layout_height="@dimen/_140sdp"
+        android:layout_margin="@dimen/_20sdp"
         android:gravity="end"
-        app:boxCornerRadiusBottomEnd="8dp"
-        app:boxCornerRadiusBottomStart="8dp"
-        app:boxCornerRadiusTopEnd="8dp"
-        app:boxCornerRadiusTopStart="8dp"
+        app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
+        app:boxCornerRadiusBottomStart="@dimen/_8sdp"
+        app:boxCornerRadiusTopEnd="@dimen/_8sdp"
+        app:boxCornerRadiusTopStart="@dimen/_8sdp"
         app:boxStrokeColor="@color/mainSand"
         app:cursorColor="@color/darkBrown"
         app:hintEnabled="false"
@@ -192,7 +230,7 @@
 
             android:textColor="@color/darkBrown"
             android:textColorHint="#AEB7AE"
-            android:textSize="16sp">
+            android:textSize="@dimen/_16ssp">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -202,35 +240,35 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:padding="@dimen/_5sdp">
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="180dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="@dimen/_60sdp"
             android:layout_gravity="start"
-            android:layout_marginEnd="10dp"
-            android:padding="10dp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:padding="@dimen/_10sdp"
             android:fontFamily="@font/cairo_semibold"
             android:textColor="@color/darkBrown"
-            android:textSize="14sp"
+            android:textSize="@dimen/_14ssp"
             app:backgroundTint="@color/white"
             android:text="@string/ثءهف"
-            app:cornerRadius="8dp"
+            app:cornerRadius="@dimen/_8sdp"
             app:strokeColor="@color/mainSand"
-            app:strokeWidth="1dp">
+            app:strokeWidth="@dimen/_1sdp">
 
         </com.google.android.material.button.MaterialButton>
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="180dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="@dimen/_60sdp"
             android:fontFamily="@font/cairo_semibold"
-            android:padding="10dp"
+            android:padding="@dimen/_10sdp"
             android:text="تعليق"
-            android:textSize="14sp"
+            android:textSize="@dimen/_14ssp"
             android:textColor="@color/white"
             app:backgroundTint="@color/mainSand"
-            app:cornerRadius="8dp">
+            app:cornerRadius="@dimen/_8sdp">
 
         </com.google.android.material.button.MaterialButton>
     </LinearLayout>

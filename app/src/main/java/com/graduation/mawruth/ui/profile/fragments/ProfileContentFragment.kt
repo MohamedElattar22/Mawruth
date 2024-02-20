@@ -54,8 +54,8 @@ class ProfileContentFragment : Fragment() {
                 requireActivity().getSharedPreferences("user", AppCompatActivity.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.remove("userData")
+            editor.remove("userInfo")
             editor.apply()
-//            SessionProvider.user = null
             navigateToSplash()
             dialog.dismiss()
         }

@@ -1,14 +1,19 @@
 package com.graduation.mawruth.ui.signup
 
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
+import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivitySignupBinding
 import com.graduation.mawruth.ui.confirmEmail.ConfirmEmailActivity
 import com.graduation.mawruth.utils.RegexConstants
@@ -18,6 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SignupActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivitySignupBinding
     private lateinit var viewModel: SignUpViewModel
+    private lateinit var dialog: Dialog
     private var txtWatcher: TextWatcher? = null
     var email: String = ""
 
@@ -34,7 +40,16 @@ class SignupActivity : AppCompatActivity() {
 
     private fun initViews() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        dialog = Dialog(this)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(false)
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog, null)
+        dialog.setContentView(dialogView)
         textChanger()
+        viewBinding.registerBtn.setOnClickListener {
+            viewModel.registerUser()
+            dialog.show()
+        }
         subscribeToLiveData()
     }
 
@@ -120,11 +135,13 @@ class SignupActivity : AppCompatActivity() {
     private fun subscribeToLiveData() {
         viewModel.errorMessage.observe(this) {
             Toast.makeText(this, "Invalid email or username", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
         }
 
         viewModel.openActivity.observe(this) {
             if (it) {
                 navigateToVerifyOTP()
+                dialog.dismiss()
             }
 
         }

@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/editNameFragment"
-        android:name="com.graduation.mawruth.ui.profile.fragments.EditNameFragment"
+        android:name="com.graduation.mawruth.ui.profile.fragments.editname.EditNameFragment"
         android:label="fragment_edit_name"
         tools:layout="@layout/fragment_edit_name">
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/editPasswordFragment"
-        android:name="com.graduation.mawruth.ui.profile.fragments.EditPasswordFragment"
+        android:name="com.graduation.mawruth.ui.profile.fragments.editpassword.EditPasswordFragment"
         android:label="EditPasswordFragment">
         <action
             android:id="@+id/action_editPasswordFragment_to_profileContentFragment"

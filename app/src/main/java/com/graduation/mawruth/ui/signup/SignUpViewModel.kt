@@ -4,7 +4,7 @@ package com.graduation.mawruth.ui.signup
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.graduation.domain.model.SignUpRequiredData
+import com.graduation.domain.model.signupdata.SignUpRequiredData
 import com.graduation.domain.useCase.SignUpUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -13,13 +14,14 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.WindowCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.facebook.shimmer.Shimmer
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
-import com.graduation.domain.model.userlogin.UserLoginDto
+import com.graduation.domain.model.userinfo.UserInformationDto
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityHomeBinding
 import com.graduation.mawruth.ui.home.viewpager.HomeViewPager
@@ -46,7 +48,7 @@ class HomeActivity : AppCompatActivity() {
     private val DELAY_MS: Long = 500 //delay in milliseconds before task is to be executed
     private val PERIOD_MS: Long = 3000
     private lateinit var viewModel: HomeViewModel
-    var user: UserLoginDto? = null
+    var user: UserInformationDto? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityHomeBinding.inflate(layoutInflater)
@@ -54,9 +56,21 @@ class HomeActivity : AppCompatActivity() {
         initViews()
     }
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.getMuseumData()
+        viewModel.getCategories()
+        viewBinding.content.retryBtn.setOnClickListener {
+            viewModel.getMuseumData()
+        }
+        observeLiveData()
+        initDrawer()
+    }
+
+
     private fun showShimmer() {
         val shimmer = Shimmer.AlphaHighlightBuilder().setAutoStart(true).setBaseAlpha(0.25f)
-            .setHighlightAlpha(0.75f).setDirection(Shimmer.Direction.LEFT_TO_RIGHT).build()
+            .setHighlightAlpha(0.50f).setDirection(Shimmer.Direction.LEFT_TO_RIGHT).build()
         viewBinding.content.shimmer.setShimmer(shimmer)
         viewBinding.content.shimmer.startShimmer()
         viewBinding.content.shimmer.isVisible = true
@@ -80,6 +94,10 @@ class HomeActivity : AppCompatActivity() {
             viewBinding.tabLayout.isVisible = true
             museumRecyclerAdapter.bindMuseumsList(it)
         }
+        viewModel.museumCategory.observe(this) {
+            catAdapter.bindMuseumsList(it)
+        }
+
         viewModel.loadingLiveData.observe(this) {
             if (it) {
                 showShimmer()
@@ -101,23 +119,25 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        observeLiveData()
-        viewModel.getMuseumData()
-        viewBinding.content.retryBtn.setOnClickListener {
-            viewModel.getMuseumData()
-        }
-    }
 
     private fun initViews() {
-        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         adapter = HomeViewPager(TestViewPagerObject.list)
-        catAdapter = CategoriesRecyclerAdapter(TestCategoriesObject.getList())
+        catAdapter = CategoriesRecyclerAdapter(listOf())
         viewBinding.content.catRec.adapter = catAdapter
         viewBinding.content.museumRec.adapter = museumRecyclerAdapter
         viewBinding.viewPager.adapter = adapter
+        handelTabLayoutForPager()
+        initDrawer()
+        museumRecyclerAdapter.onMuseumClickListener = MuseumRecyclerAdapter
+            .OnMuseumClickListener { museumDto, position ->
+                goToDetailsActivity()
+            }
+
+    }
+
+    private fun handelTabLayoutForPager() {
         TabLayoutMediator(
             viewBinding.tabLayout,
             viewBinding.viewPager,
@@ -127,7 +147,7 @@ class HomeActivity : AppCompatActivity() {
         }.attach()
         val handler = android.os.Handler()
         val Update = Runnable {
-            if (currentPage === (TestViewPagerObject.list.size + 1) - 1) {
+            if (currentPage == (TestViewPagerObject.list.size + 1) - 1) {
                 currentPage = 0
             }
             viewBinding.viewPager.setCurrentItem(currentPage++, true)
@@ -141,18 +161,8 @@ class HomeActivity : AppCompatActivity() {
                 handler.post(Update)
             }
         }, DELAY_MS, PERIOD_MS)
-        initDrawer()
-        museumRecyclerAdapter.onMuseumClickListener = MuseumRecyclerAdapter
-            .OnMuseumClickListener { museumDto, position ->
-                goToDetailsActivity()
-            }
-
     }
 
-    private fun goToDetailsActivity() {
-        val intent = Intent(this, MuseumDetailsActivity::class.java)
-        startActivity(intent)
-    }
 
     private fun initDrawer() {
         toggle =
@@ -175,13 +185,15 @@ class HomeActivity : AppCompatActivity() {
 
             loginHeader.visibility = View.VISIBLE
             guest.visibility = View.INVISIBLE
-            sharedPreferences.getString("userData", null)?.let {
-                user = Gson().fromJson(it, UserLoginDto::class.java)
+            sharedPreferences.getString("userInfo", null)?.let {
+                user = Gson().fromJson(it, UserInformationDto::class.java)
                 val name = header.findViewById<TextView>(R.id.Headername)
                 viewBinding.nav.menu.setGroupVisible(R.menu.drawer_menu, true)
-                name.text = user?.userName.toString()
+                name.text = user?.fullName
                 val email = header.findViewById<TextView>(R.id.headeremail)
-                email.text = user?.email
+                email.text = "@${user?.userName}"
+                val image = header.findViewById<ImageView>(R.id.header_pic)
+                Glide.with(this).load(user?.avatar).placeholder(R.drawable.person).into(image)
             }
             header.setOnClickListener {
                 navigateToProfile()
@@ -228,6 +240,11 @@ class HomeActivity : AppCompatActivity() {
         finish()
     }
 
+    private fun goToDetailsActivity() {
+        val intent = Intent(this, MuseumDetailsActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun navigateToRegister() {
         val intent = Intent(this, SignupActivity::class.java)
         startActivity(intent)
@@ -260,33 +277,13 @@ class HomeActivity : AppCompatActivity() {
             val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.remove("userData")
+            editor.remove("userInfo")
             editor.apply()
-//            SessionProvider.user = null
             navigateToSplash()
             dialog.dismiss()
         }
         dialog.show()
 
-
-//        val dialog = MaterialAlertDialogBuilder(this)
-//        dialog.setTitle("تسجيل الخروج")
-//        dialog.setIcon(R.drawable.mylogo)
-//        dialog.setMessage("هل حقا تريد مغادرة تراثك ؟")
-//        dialog.setPositiveButton(
-//            "نعم"
-//        ) { dialog, which ->
-//            val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
-//            val editor = sharedPreferences.edit()
-//            editor.remove("userData")
-//            editor.apply()
-//            SessionProvider.user = null
-//            navigateToSplash()
-//            dialog.dismiss()
-//        }
-//        dialog.setNegativeButton("لا") { dialog, _ ->
-//            dialog.dismiss()
-//        }
-//        dialog.show()
     }
 
     private fun navigateToSplash() {

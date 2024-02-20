@@ -1,12 +1,12 @@
 package com.graduation.mawruth.ui.resetpassword
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import com.graduation.mawruth.databinding.ActivityLoginBinding
 import com.graduation.mawruth.databinding.ActivityResetpasswordBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ResetPassword : AppCompatActivity() {
     lateinit var viewBinding: ActivityResetpasswordBinding
 
