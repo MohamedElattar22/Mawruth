@@ -1,5 +1,6 @@
 package com.graduation.data.repository
 
+import com.graduation.domain.repositories.CategoriesRepository
 import com.graduation.domain.repositories.EditUserInfoRepository
 import com.graduation.domain.repositories.MuseumRepository
 import com.graduation.domain.repositories.UserAuthenticationRepository
@@ -26,4 +27,7 @@ abstract class di {
 
     @Binds
     abstract fun bindEditUserInfoRepositoryRepository(editUserInfoRepositoryImpl: EditUserInfoRepositoryImpl): EditUserInfoRepository
+
+    @Binds
+    abstract fun bindCategories(categoriesRepositoryImpl: CategoriesRepositoryImpl): CategoriesRepository
 }

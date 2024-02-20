@@ -17,6 +17,7 @@ class ShowProfileViewModel @Inject constructor(
     private val editUserInfoUseCase: EditUserInfoUseCase,
     private val sharedPreferences: SharedPreferences
 ) : ViewModel() {
+
     val infoLiveData = MutableLiveData<Boolean>()
     val error = MutableLiveData<Boolean>()
     val loading = MutableLiveData<Boolean>()

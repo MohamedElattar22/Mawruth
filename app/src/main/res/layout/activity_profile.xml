@@ -53,6 +53,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
+                            android:visibility="invisible"
                             android:indeterminateTint="@color/mainBtn" />
 
                         <ImageView

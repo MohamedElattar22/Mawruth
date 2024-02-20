@@ -11,4 +11,8 @@ class UserInformationRepositoryImpl @Inject constructor(private val userInformat
         return userInformationDataSource.getUserInfo()
     }
 
+    override suspend fun getUserByEmail(email: String): UserInformationDto {
+        return userInformationDataSource.getUserByEmail(email)
+    }
+
 }

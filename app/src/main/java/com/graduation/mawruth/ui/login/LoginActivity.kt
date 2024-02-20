@@ -1,15 +1,21 @@
 package com.graduation.mawruth.ui.login
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
+import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityLoginBinding
 import com.graduation.mawruth.ui.home.HomeActivity
+import com.graduation.mawruth.ui.resetpassword.ResetPassword
 import com.graduation.mawruth.utils.RegexConstants
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
     private var emailTxtWatcher: TextWatcher? = null
     private var passwordTxtWatcher: TextWatcher? = null
     private lateinit var viewModel: LoginViewModel
+    private lateinit var dialog: Dialog
     private var emailValid = false
     private var passwordValid = false
 
@@ -35,6 +42,8 @@ class LoginActivity : AppCompatActivity() {
                     viewBinding.emailInput.text.toString(),
                     viewBinding.passwordInput.text.toString()
                 )
+                dialog.show()
+
             } else {
                 Toast.makeText(this, "InValid Email or Password", Toast.LENGTH_SHORT).show()
             }
@@ -45,15 +54,13 @@ class LoginActivity : AppCompatActivity() {
     private fun observeLiveData() {
         viewModel.userLiveData.observe(this)
         {
-//            val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
-//            val editor = sharedPreferences.edit()
-//            editor.putString("userData", it)
-//            editor.apply()
             if (it) goToHomeActivity()
+            dialog.dismiss()
         }
         viewModel.errorLiveData.observe(this)
         {
             Toast.makeText(this, "error occurred please try again", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
         }
     }
 
@@ -69,7 +76,16 @@ class LoginActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         viewBinding.lifecycleOwner = this
         viewBinding.vm = viewModel
+        dialog = Dialog(this)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(false)
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog, null)
+        dialog.setContentView(dialogView)
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        viewBinding.forgetpassword.setOnClickListener {
+            val intent = Intent(this, ResetPassword::class.java)
+            startActivity(intent)
+        }
     }
 
 

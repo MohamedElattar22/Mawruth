@@ -5,7 +5,8 @@ import com.graduation.domain.repositories.EditUserInfoRepository
 import java.io.File
 import javax.inject.Inject
 
-class EditUserInfoUseCase @Inject constructor(private val editUserInfoRepository: EditUserInfoRepository) {
+class EditUserInfoUseCase @Inject constructor
+    (private val editUserInfoRepository: EditUserInfoRepository) {
     suspend fun invoke(
         fullName: String?,
         userName: String?,

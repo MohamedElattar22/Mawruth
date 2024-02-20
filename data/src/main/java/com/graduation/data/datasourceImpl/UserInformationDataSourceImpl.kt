@@ -18,4 +18,9 @@ class UserInformationDataSourceImpl @Inject constructor(
         }
         return result
     }
+
+    override suspend fun getUserByEmail(email: String): UserInformationDto {
+        return webServices.getUserInfoByEmail(email).toUserInformationDto()
+    }
+
 }

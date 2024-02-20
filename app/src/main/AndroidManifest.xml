@@ -33,7 +33,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.islamicmuseum.IslamicActivity"
-            android:exported="false"></activity> <!-- <service -->
+            android:exported="false">
+
+        </activity> <!-- <service -->
         <!-- android:name="androidx.appcompat.app.AppLocalesMetadataHolderService" -->
         <!-- android:enabled="false" -->
         <!-- android:exported="false"> -->
@@ -52,13 +54,20 @@
             android:exported="false" />
         <activity
             android:name=".ui.arActivity.AgumentedRealityActivity"
-            android:exported="false" />
+            android:exported="true">
+
+        </activity>
+
+
         <activity
             android:name=".ui.museumDetails.MuseumDetailsActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".ui.successfulCreate.SuccessfulCreatedActivity"
-            android:exported="false" />
+            android:exported="false"></activity>
+
         <activity
             android:name=".ui.confirmEmail.ConfirmEmailActivity"
             android:exported="false" />
@@ -93,6 +102,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <meta-data

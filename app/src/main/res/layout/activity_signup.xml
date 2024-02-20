@@ -277,18 +277,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp">
 
-                <ProgressBar
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
 
-                    android:indeterminateTint="@color/mainBtn"
-                    android:visibility="@{vm.loading?View.VISIBLE:View.INVISIBLE}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                </ProgressBar>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/registerBtn"
@@ -296,9 +285,7 @@
                     android:fontFamily="@font/cairo_semibold"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:visibility="@{vm.loading?View.INVISIBLE:View.VISIBLE}"
                     android:enabled="false"
-                    android:onClick="@{()->vm.registerUser()}"
                     android:text="@string/register_acc"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

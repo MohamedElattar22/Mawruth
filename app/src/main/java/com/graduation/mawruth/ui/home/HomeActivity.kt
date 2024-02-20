@@ -59,6 +59,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         viewModel.getMuseumData()
+        viewModel.getCategories()
         viewBinding.content.retryBtn.setOnClickListener {
             viewModel.getMuseumData()
         }
@@ -69,7 +70,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun showShimmer() {
         val shimmer = Shimmer.AlphaHighlightBuilder().setAutoStart(true).setBaseAlpha(0.25f)
-            .setHighlightAlpha(0.75f).setDirection(Shimmer.Direction.LEFT_TO_RIGHT).build()
+            .setHighlightAlpha(0.50f).setDirection(Shimmer.Direction.LEFT_TO_RIGHT).build()
         viewBinding.content.shimmer.setShimmer(shimmer)
         viewBinding.content.shimmer.startShimmer()
         viewBinding.content.shimmer.isVisible = true
@@ -92,6 +93,9 @@ class HomeActivity : AppCompatActivity() {
             viewBinding.viewPager.isVisible = true
             viewBinding.tabLayout.isVisible = true
             museumRecyclerAdapter.bindMuseumsList(it)
+        }
+        viewModel.museumCategory.observe(this) {
+            catAdapter.bindMuseumsList(it)
         }
 
         viewModel.loadingLiveData.observe(this) {
@@ -120,7 +124,7 @@ class HomeActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         adapter = HomeViewPager(TestViewPagerObject.list)
-        catAdapter = CategoriesRecyclerAdapter(TestCategoriesObject.getList())
+        catAdapter = CategoriesRecyclerAdapter(listOf())
         viewBinding.content.catRec.adapter = catAdapter
         viewBinding.content.museumRec.adapter = museumRecyclerAdapter
         viewBinding.viewPager.adapter = adapter
@@ -143,7 +147,7 @@ class HomeActivity : AppCompatActivity() {
         }.attach()
         val handler = android.os.Handler()
         val Update = Runnable {
-            if (currentPage === (TestViewPagerObject.list.size + 1) - 1) {
+            if (currentPage == (TestViewPagerObject.list.size + 1) - 1) {
                 currentPage = 0
             }
             viewBinding.viewPager.setCurrentItem(currentPage++, true)

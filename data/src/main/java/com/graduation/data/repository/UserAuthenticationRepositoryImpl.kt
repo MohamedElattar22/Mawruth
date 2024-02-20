@@ -1,6 +1,7 @@
 package com.graduation.data.repository
 
 import com.graduation.data.dataSourceContract.UserAuthenticationDataSource
+import com.graduation.domain.model.ResendOtpData
 import com.graduation.domain.model.signupdata.EmailConfirmationData
 import com.graduation.domain.model.signupdata.SignUpRequiredData
 import com.graduation.domain.model.signupdata.User
@@ -25,4 +26,10 @@ class UserAuthenticationRepositoryImpl @Inject constructor
         val res = userAuthenticationDataSource.verifyEmail(emailConfirmationData)
         return res
     }
+
+    override suspend fun resendOTP(email: ResendOtpData): String {
+        return userAuthenticationDataSource.resendOTP(email)
+    }
+
+
 }

@@ -49,5 +49,10 @@
         <item name="android:layout_margin">20dp</item>
     </style>
 
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
 
 </resources>

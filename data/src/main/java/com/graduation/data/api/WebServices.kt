@@ -1,10 +1,13 @@
 package com.graduation.data.api
 
+
+import com.graduation.data.model.categories.CategoriesResponseItem
 import com.graduation.data.model.museum.MuseumResponseItem
 import com.graduation.data.model.userinfo.UserInformation
 import com.graduation.data.model.userlogin.UserLoginResponse
 import com.graduation.data.model.usersignup.OTPResponse
 import com.graduation.data.model.usersignup.SignupResponse
+import com.graduation.domain.model.ResendOtpData
 import com.graduation.domain.model.signupdata.EmailConfirmationData
 import com.graduation.domain.model.signupdata.SignUpRequiredData
 import com.graduation.domain.model.userlogin.UserLoginPost
@@ -39,16 +42,27 @@ interface WebServices {
         @Body confirmationData: EmailConfirmationData
     ): OTPResponse
 
+    @POST("users/otp/resend")
+    suspend fun resendOTP(
+        @Body email: ResendOtpData
+    ): OTPResponse
+
+
     @GET("users/{userId}")
     suspend fun getUserInfo(
         @Path("userId") userId: Int
     ): UserInformation
 
+    @GET("users/email/{email}")
+    suspend fun getUserInfoByEmail(
+        @Path("email") userEmail: String
+    ): UserInformation
+
     @Multipart
-    @PATCH("users/{userId}")
+    @PATCH("users/email/{email}")
     suspend fun updateUserData(
-        @Path("userId")
-        userId: Int,
+        @Path("email")
+        emailPath: String,
         @Part("full_name") fullName: RequestBody? = null,
         @Part("username") username: RequestBody? = null,
         @Part("email") email: RequestBody? = null,
@@ -56,4 +70,8 @@ interface WebServices {
         @Part("phone_number") phoneNumber: RequestBody? = null,
         @Part avatar: MultipartBody.Part? = null
     ): UserInformation
+
+    @GET("types")
+    suspend fun getCategories(
+    ): List<CategoriesResponseItem?>?
 }

@@ -26,7 +26,7 @@ class EditUserInfoDataSourceImpl @Inject constructor(
         avatar: File?
     ): UserInformationDto? {
         val result = sharedPreferences.getString("userData", null)?.let { user ->
-            val userId = Gson().fromJson(user, UserLoginDto::class.java).id
+            val emailData = Gson().fromJson(user, UserLoginDto::class.java).email
             val fullNameRB = fullName?.toRequestBody("text/plain".toMediaTypeOrNull())
             val userNameRB = userName?.toRequestBody("text/plain".toMediaTypeOrNull())
             val emailRB = email?.toRequestBody("text/plain".toMediaTypeOrNull())
@@ -40,7 +40,7 @@ class EditUserInfoDataSourceImpl @Inject constructor(
                 )
             }
             webServices.updateUserData(
-                userId!!.toInt(),
+                emailData!!,
                 fullNameRB,
                 userNameRB,
                 emailRB,

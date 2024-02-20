@@ -1,6 +1,9 @@
-package com.graduation.mawruth.ui.profile.fragments
+package com.graduation.mawruth.ui.profile.fragments.editpassword
 
+import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import com.graduation.domain.model.userinfo.UserInformationDto
+import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.FragmentEditPasswordBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class EditPasswordFragment : Fragment() {
     lateinit var viewBinding: FragmentEditPasswordBinding
     private lateinit var viewModel: EditPasswordViewModel
+    private lateinit var dialog: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +39,10 @@ class EditPasswordFragment : Fragment() {
         return viewBinding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setDialog()
         requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE)
             .getString("userInfo", null)?.let {
                 val user = Gson().fromJson(it, UserInformationDto::class.java)
@@ -43,6 +50,7 @@ class EditPasswordFragment : Fragment() {
                 viewBinding.newpasstextconfirm.addTextChangedListener(textWatcher)
                 viewBinding.oldpasstext.addTextChangedListener(passwordTextWatcher)
                 viewBinding.saveBtn.setOnClickListener {
+                    dialog.show()
                     if (handelTextError(user)) {
                         viewModel.editPassword(viewBinding.newpasstextx.text.toString().trim())
                     }
@@ -53,6 +61,15 @@ class EditPasswordFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+    }
+
+    private fun setDialog() {
+        dialog = Dialog(requireActivity())
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(false)
+        val dialogView =
+            LayoutInflater.from(requireContext()).inflate(R.layout.loading_dialog, null)
+        dialog.setContentView(dialogView)
     }
 
     private val textWatcher = object : TextWatcher {
@@ -106,6 +123,7 @@ class EditPasswordFragment : Fragment() {
             if (it) {
                 Toast.makeText(requireContext(), "Data updated Successfully", Toast.LENGTH_SHORT)
                     .show()
+                dialog.dismiss()
                 findNavController().popBackStack()
             } else {
                 Toast.makeText(
@@ -113,6 +131,7 @@ class EditPasswordFragment : Fragment() {
                     "Error Occurred ,Try again later",
                     Toast.LENGTH_SHORT
                 ).show()
+                dialog.dismiss()
 
             }
         }

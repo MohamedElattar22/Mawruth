@@ -2,11 +2,15 @@ package com.graduation.mawruth.ui.confirmEmail
 
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -22,9 +26,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class ConfirmEmailActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityConfirmEmailBinding
     private lateinit var viewModel: ConfirmEmailViewModel
+    private lateinit var dialog: Dialog
     var cTimer: CountDownTimer? = null
     var result: String? = null
-    val inputManager: InputMethodManager? = null
     var txtWatcher: TextWatcher? = null
     var selectedPosition = 0
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +41,11 @@ class ConfirmEmailActivity : AppCompatActivity() {
 
     private fun initViews() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        dialog = Dialog(this)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(false)
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog, null)
+        dialog.setContentView(dialogView)
         startTimer()
         textChanger()
         subscribeToLiveData()
@@ -66,7 +75,7 @@ class ConfirmEmailActivity : AppCompatActivity() {
         if (cTimer != null) cTimer!!.cancel()
     }
 
-    fun textChanger() {
+    private fun textChanger() {
         showKeyBoard(viewBinding.otp1)
         txtWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -86,6 +95,11 @@ class ConfirmEmailActivity : AppCompatActivity() {
                     viewBinding.checkBtn.setBackgroundColor(color)
                     result = firstOtp + secondOtp + thirdOtp + fourthOtp
 
+                } else {
+                    viewBinding.otp1.error = "*"
+                    viewBinding.otp2.error = "*"
+                    viewBinding.otp3.error = "*"
+                    viewBinding.otp4.error = "*"
                 }
             }
 
@@ -122,19 +136,23 @@ class ConfirmEmailActivity : AppCompatActivity() {
         viewModel.navigate.observe(this) {
             if (it) {
                 navigateToSuccess()
+                dialog.dismiss()
             }
         }
         viewModel.errorOcc.observe(this) {
             if (it) {
                 Toast.makeText(this, "OTP is invalid", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
             }
         }
+
     }
 
     private fun validateOTP() {
         val data = intent.getStringExtra("email")
         viewBinding.checkBtn.setOnClickListener {
             viewModel.verifyEmail(data!!, result!!)
+            dialog.show()
         }
     }
 

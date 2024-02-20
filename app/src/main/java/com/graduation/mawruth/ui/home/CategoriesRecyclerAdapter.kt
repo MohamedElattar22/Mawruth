@@ -1,11 +1,14 @@
 package com.graduation.mawruth.ui.home
 
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.graduation.domain.model.categories.CategoriesDtoItem
 import com.graduation.mawruth.databinding.CategoryItemBinding
 
-class CategoriesRecyclerAdapter(var list: MutableList<TestCategoriesObject>) :
+class CategoriesRecyclerAdapter(var list: List<CategoriesDtoItem?>?) :
     RecyclerView.Adapter<CategoriesRecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(val itemBinding: CategoryItemBinding) :
@@ -17,12 +20,21 @@ class CategoriesRecyclerAdapter(var list: MutableList<TestCategoriesObject>) :
         return ViewHolder(itemBinding)
     }
 
+    fun bindMuseumsList(list: List<CategoriesDtoItem?>?) {
+        this.list = list
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int {
-        return list.size
+        return list!!.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemBinding.categoryImage.setImageResource(list[position].image)
-        holder.itemBinding.categoryName.text = list[position].name
+        val item = list?.get(position)
+        Glide.with(holder.itemView)
+            .load(item?.image)
+            .into(holder.itemBinding.categoryImage)
+
+        holder.itemBinding.categoryName.text = item?.name
     }
 }
