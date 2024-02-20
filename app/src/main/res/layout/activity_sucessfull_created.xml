@@ -3,20 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center_horizontal"
     android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".ui.successfulCreate.SuccessfulCreatedActivity">
 
-    <ImageView
-        android:id="@+id/animatedSuccess"
-        android:layout_width="wrap_content"
-        android:layout_height="220dp"
-        android:layout_margin="20dp"
-        android:src="@drawable/succ">
-
-    </ImageView>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/success_anim"
+        app:lottie_url="REPLACE_JSON_URL" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -6,20 +6,31 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@color/transparent"
-    tools:context=".ui.profile.fragments.ShowProfileImageFragment">
+    tools:context=".ui.profile.fragments.showprofile.ShowProfileImageFragment">
 
-    <ImageView
-        android:id="@+id/prof_pic"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:id="@+id/f"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/guest"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/dialog_profile_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="500dp"
+            android:adjustViewBounds="true"
+            tools:src="@drawable/profile_pic" />
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/mainBtn"
+            android:visibility="gone" />
+    </FrameLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/save_btn"
@@ -34,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ignore_btn"
-        app:layout_constraintTop_toBottomOf="@+id/prof_pic" />
+        app:layout_constraintTop_toBottomOf="@id/f" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/ignore_btn"
@@ -44,9 +55,9 @@
         android:layout_margin="20dp"
         android:backgroundTint="@color/inputIcons"
         android:text="تجاهل"
+        android:visibility="gone"
         android:textColor="@color/titlesColor"
         android:textSize="25sp"
-        android:visibility="gone"
         app:icon="@drawable/ignore"
         app:iconGravity="end"
         app:iconTint="@color/titlesColor"
@@ -54,5 +65,5 @@
         app:layout_constraintEnd_toStartOf="@+id/save_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prof_pic" />
+        app:layout_constraintTop_toBottomOf="@id/f" />
 </androidx.constraintlayout.widget.ConstraintLayout>

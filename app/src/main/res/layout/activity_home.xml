@@ -79,6 +79,7 @@
                         android:id="@+id/tabLayout"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:padding="5dp"
                         android:layout_marginTop="10dp"
                         android:backgroundTint="@color/transparent"
                         app:layout_constraintBottom_toBottomOf="parent"

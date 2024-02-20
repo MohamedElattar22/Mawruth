@@ -1,6 +1,6 @@
 package com.graduation.domain.useCase
 
-import com.graduation.domain.model.EmailConfirmationData
+import com.graduation.domain.model.signupdata.EmailConfirmationData
 import com.graduation.domain.repositories.UserAuthenticationRepository
 import javax.inject.Inject
 

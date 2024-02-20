@@ -6,14 +6,18 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityMainBinding
 import com.graduation.mawruth.ui.home.HomeActivity
 import com.graduation.mawruth.ui.onBoarding.OnBoardingActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashScreen : AppCompatActivity() {
-    private lateinit var viewBinding : ActivityMainBinding
+    private lateinit var viewBinding: ActivityMainBinding
+    lateinit var viewModel: SplashViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,17 +29,24 @@ class SplashScreen : AppCompatActivity() {
     }
 
     private fun initViews() {
+        viewModel = ViewModelProvider(this)[SplashViewModel::class.java]
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
-        if (sharedPreferences.contains("userData")) {
-            sharedPreferences.getString("userData", null)?.let {
-                navigateToHome()
-            }
-        } else {
-            startSplash()
-        }
+        viewModel.getUserInfo()
+        observeLiveData()
+
 
     }
+
+    private fun observeLiveData() {
+        viewModel.infoLiveData.observe(this) {
+            if (it) {
+                navigateToHome()
+            } else {
+                startSplash()
+            }
+        }
+    }
+
 
     private fun navigateToHome() {
         animateLogo()

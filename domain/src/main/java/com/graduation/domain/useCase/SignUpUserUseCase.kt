@@ -1,7 +1,7 @@
 package com.graduation.domain.useCase
 
-import com.graduation.domain.model.SignUpRequiredData
-import com.graduation.domain.model.User
+import com.graduation.domain.model.signupdata.SignUpRequiredData
+import com.graduation.domain.model.signupdata.User
 import com.graduation.domain.repositories.UserAuthenticationRepository
 import javax.inject.Inject
 

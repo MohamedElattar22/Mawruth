@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:gravity="end"
     android:orientation="vertical">
@@ -140,7 +141,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:src="@drawable/seperator"></ImageView>
+        android:src="@drawable/seperator">
+
+    </ImageView>
 
     <TextView
         android:layout_width="wrap_content"
@@ -158,6 +161,38 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        android:fontFamily="@font/cairo_semibold"
+        android:text="أفضل القطع"
+        android:textColor="@color/darkBrown"
+        android:textSize="21sp">
+
+    </TextView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/seperator">
+
+    </ImageView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/piecesRV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/piece_recycler_item">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:text="شارك تجربتك"
         android:fontFamily="@font/cairo_semibold"
         android:textColor="@color/darkBrown"
@@ -169,7 +204,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:src="@drawable/seperator"></ImageView>
+        android:src="@drawable/seperator">
+
+    </ImageView>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

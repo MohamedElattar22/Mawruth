@@ -1,8 +1,9 @@
 package com.graduation.data.dataSourceContract
 
-import com.graduation.domain.model.EmailConfirmationData
-import com.graduation.domain.model.SignUpRequiredData
-import com.graduation.domain.model.User
+import com.graduation.domain.model.ResendOtpData
+import com.graduation.domain.model.signupdata.EmailConfirmationData
+import com.graduation.domain.model.signupdata.SignUpRequiredData
+import com.graduation.domain.model.signupdata.User
 import com.graduation.domain.model.userlogin.UserLoginDto
 import com.graduation.domain.model.userlogin.UserLoginPost
 
@@ -12,5 +13,7 @@ interface UserAuthenticationDataSource {
     suspend fun loginUser(userLoginPost: UserLoginPost): UserLoginDto
 
     suspend fun verifyEmail(verifyData: EmailConfirmationData): String
+
+    suspend fun resendOTP(email: ResendOtpData): String
 
 }
