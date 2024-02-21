@@ -2,6 +2,7 @@ package com.graduation.mawruth.ui.arActivity
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
@@ -19,6 +20,7 @@ import com.graduation.mawruth.utils.remoteObjects
 class AgumentedRealityActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityAgumentedRealityBinding
     private lateinit var arFragment: ArFragment
+    var cnt = 0
     private val url = remoteObjects.sourceURL
     private val fromBottom: Animation by lazy {
         AnimationUtils.loadAnimation(
@@ -42,9 +44,12 @@ class AgumentedRealityActivity : AppCompatActivity() {
 
     private fun initViews() {
         arFragment = supportFragmentManager.findFragmentById(R.id.arFragment) as ArFragment
-        arFragment.setOnTapArPlaneListener { hitResult, _, _ ->
 
-            spawnObject(hitResult.createAnchor(), Uri.parse(url))
+        arFragment.setOnTapArPlaneListener { hitResult, _, _ ->
+            if (cnt == 0) {
+                spawnObject(hitResult.createAnchor(), Uri.parse(url))
+                cnt++
+            }
         }
 
         viewBinding.dataBtn.setOnClickListener {
@@ -63,14 +68,22 @@ class AgumentedRealityActivity : AppCompatActivity() {
         dataBottomSheet.show(supportFragmentManager, "")
     }
 
-    fun spawnObject(anchor: Anchor, modelUri: Uri) {
 
-        val renderableSource = RenderableSource.builder()
-            .setSource(this, modelUri, RenderableSource.SourceType.GLB)
-            .setRecenterMode(RenderableSource.RecenterMode.ROOT)
-            .build()
+    private fun spawnObject(anchor: Anchor, modelUri: Uri) {
+
+        if (objectProvider.source == null) {
+            Log.d("mo", objectProvider.source.toString())
+            val renderableSource = RenderableSource.builder()
+                .setSource(this, modelUri, RenderableSource.SourceType.GLB)
+                .setRecenterMode(RenderableSource.RecenterMode.ROOT)
+                .build()
+            objectProvider.source = renderableSource
+
+        }
+
+        Log.d("mo", objectProvider.source.toString())
         ModelRenderable.builder()
-            .setSource(this, renderableSource)
+            .setSource(this, objectProvider.source)
             .setRegistryId(modelUri)
             .build()
             .thenAccept {
@@ -87,7 +100,6 @@ class AgumentedRealityActivity : AppCompatActivity() {
         TransformableNode(arFragment.transformationSystem).apply {
             renderable = modelRenderable
             setParent(anchorNode)
-
         }
         arFragment.arSceneView.scene.addChild(anchorNode)
 
