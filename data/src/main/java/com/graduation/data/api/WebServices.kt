@@ -59,10 +59,8 @@ interface WebServices {
     ): UserInformation
 
     @Multipart
-    @PATCH("users/email/{email}")
+    @PATCH("users")
     suspend fun updateUserData(
-        @Path("email")
-        emailPath: String,
         @Part("full_name") fullName: RequestBody? = null,
         @Part("username") username: RequestBody? = null,
         @Part("email") email: RequestBody? = null,

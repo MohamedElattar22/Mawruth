@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
+import com.graduation.domain.model.userinfo.UserInformationDto
 import com.graduation.domain.useCase.EditUserInfoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -21,11 +22,16 @@ class ShowProfileViewModel @Inject constructor(
     val infoLiveData = MutableLiveData<Boolean>()
     val error = MutableLiveData<Boolean>()
     val loading = MutableLiveData<Boolean>()
+    private var email: String? = null
+
     fun editUserPhoto(photo: File?) {
+        sharedPreferences.getString("userInfo", null).let {
+            email = Gson().fromJson(it, UserInformationDto::class.java).email
+        }
         loading.postValue(true)
         viewModelScope.launch {
             try {
-                val result = editUserInfoUseCase.invoke(null, null, null, null, null, photo)
+                val result = editUserInfoUseCase.invoke(null, null, email!!, null, null, photo)
                 val editor = sharedPreferences.edit()
                 val json = Gson().toJson(result)
                 editor.putString("userInfo", json)

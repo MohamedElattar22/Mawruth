@@ -7,7 +7,7 @@ interface EditUserInfoRepository {
     suspend fun editUserInfo(
         fullName: String?,
         userName: String?,
-        email: String?,
+        email: String,
         password: String?,
         phoneNumber: String?,
         avatar: File?
