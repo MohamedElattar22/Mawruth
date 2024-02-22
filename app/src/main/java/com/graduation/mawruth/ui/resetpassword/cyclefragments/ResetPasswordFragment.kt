@@ -70,7 +70,8 @@ class ResetPasswordFragment : Fragment() {
 
     private fun resetPassword() {
         val password = viewBinding.password.text.toString()
-        viewModel.editPassword(password)
+        val email = emailProvider.emailData
+        viewModel.editPassword(email, password)
         dialog.show()
     }
 
