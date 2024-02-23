@@ -7,7 +7,7 @@ interface EditUserInfoDataSource {
     suspend fun editUserInfo(
         fullName: String? = null,
         userName: String? = null,
-        email: String? = null,
+        email: String,
         password: String? = null,
         phoneNumber: String? = null,
         avatar: File? = null

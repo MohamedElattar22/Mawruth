@@ -10,7 +10,7 @@ class EditUserInfoUseCase @Inject constructor
     suspend fun invoke(
         fullName: String?,
         userName: String?,
-        email: String?,
+        email: String,
         password: String?,
         phoneNumber: String?,
         avatar: File?

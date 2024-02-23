@@ -11,7 +11,7 @@ class EditUserInfoRepositoryImpl @Inject constructor(private val editUserInfoDat
     override suspend fun editUserInfo(
         fullName: String?,
         userName: String?,
-        email: String?,
+        email: String,
         password: String?,
         phoneNumber: String?,
         avatar: File?

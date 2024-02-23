@@ -15,19 +15,12 @@ class ResetPasswordViewModel @Inject constructor(
 ) : ViewModel() {
 
     val infoLiveData = MutableLiveData<Boolean>()
-    fun editPassword(newPassword: String) {
+    fun editPassword(email: String, newPassword: String) {
+
         viewModelScope.launch {
             try {
                 val result =
-                    editUserInfoUseCase
-                        .invoke(
-                            null,
-                            null,
-                            null,
-                            newPassword,
-                            null,
-                            null
-                        )
+                    editUserInfoUseCase.invoke(null, null, email, newPassword, null, null)
                 infoLiveData.postValue(true)
             } catch (e: Exception) {
                 Log.e("userInfo", e.localizedMessage!!)

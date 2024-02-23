@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
+import com.graduation.domain.model.userinfo.UserInformationDto
 import com.graduation.domain.useCase.EditUserInfoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -20,11 +21,23 @@ class EditNameViewModel @Inject constructor(
 
     val infoLiveData = MutableLiveData<Boolean>()
     val error = MutableLiveData<Boolean>()
+    private var email: String? = null
+
     fun editName(name: String?) {
+        sharedPreferences.getString("userInfo", null).let {
+            email = Gson().fromJson(it, UserInformationDto::class.java).email
+        }
         viewModelScope.launch {
             try {
                 val result =
-                    editUserInfoUseCase.invoke(fullName = name, null, null, null, null, null)
+                    editUserInfoUseCase.invoke(
+                        fullName = name,
+                        null,
+                        email = email!!,
+                        null,
+                        null,
+                        null
+                    )
                 val json = Gson().toJson(result)
                 val editor = sharedPreferences.edit()
                 editor.putString("userInfo", json)
