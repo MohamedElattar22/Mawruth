@@ -55,6 +55,7 @@
                 android:fontFamily="@font/cairo_medium"
                 android:text="اسم المستخدم"
                 android:textColor="@color/darkBrown"
+
                 android:textSize="20sp">
 
             </TextView>
@@ -88,7 +89,7 @@
                     android:background="@drawable/edit_text_style"
                     android:drawableEnd="@drawable/user"
                     android:drawablePadding="10dp"
-
+android:inputType="text"
                     android:text="@={vm.userName}"
                     android:fontFamily="@font/cairo_medium"
                     android:gravity="end"
@@ -136,7 +137,8 @@
                 app:hintEnabled="false"
                 app:placeholderTextColor="@color/darkBrown"
                 app:startIconTint="@color/inputIcons"
-                tools:targetApi="p">
+                tools:targetApi="p"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailTxt"
@@ -144,6 +146,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_style"
                     android:drawableEnd="@drawable/email_icon"
+                    android:inputType="text"
                     android:drawablePadding="10dp"
                     android:text="@={vm.email}"
                     android:fontFamily="@font/cairo_medium"
@@ -200,6 +203,7 @@
                     android:drawableEnd="@drawable/password"
                     android:drawablePadding="10dp"
                     android:text="@={vm.password}"
+
                     android:fontFamily="@font/cairo_medium"
                     android:gravity="end"
                     android:hint="password"
@@ -243,7 +247,6 @@
                 app:boxCornerRadiusTopStart="10dp"
                 app:counterEnabled="true"
                 app:counterMaxLength="16"
-
                 app:cursorColor="@color/darkBrown"
                 app:helperText="Required"
                 app:hintEnabled="false"
@@ -263,7 +266,7 @@
                     android:inputType="textPassword"
                     android:text="@={vm.passwordConfirmation}"
                     android:hint="Confirm Password"
-                    android:imeOptions="actionNext"
+                    android:imeOptions="actionDone"
                     android:textColor="@color/darkBrown"
                     android:textColorHighlight="@color/mainSand"
                     tools:targetApi="upside_down_cake">

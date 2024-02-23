@@ -50,8 +50,9 @@ class EditPasswordFragment : Fragment() {
                 viewBinding.newpasstextconfirm.addTextChangedListener(textWatcher)
                 viewBinding.oldpasstext.addTextChangedListener(passwordTextWatcher)
                 viewBinding.saveBtn.setOnClickListener {
-                    dialog.show()
+
                     if (handelTextError(user)) {
+                        dialog.show()
                         viewModel.editPassword(viewBinding.newpasstextx.text.toString().trim())
                     }
                 }

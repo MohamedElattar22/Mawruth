@@ -12,6 +12,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.FragmentProfileContentBinding
+import com.graduation.mawruth.ui.settings.SettingsActivity
 import com.graduation.mawruth.ui.splash.SplashScreen
 
 class ProfileContentFragment : Fragment() {
@@ -33,6 +34,10 @@ class ProfileContentFragment : Fragment() {
         }
         viewBinding.editPassword.setOnClickListener {
             findNavController().navigate(R.id.action_profileContentFragment_to_editPasswordFragment)
+        }
+        viewBinding.settings.setOnClickListener {
+            val intent =Intent(context,SettingsActivity::class.java)
+            startActivity(intent)
         }
         viewBinding.logogut.setOnClickListener {
             handelLogOut()

@@ -36,6 +36,7 @@ class SignUpViewModel @Inject constructor(
                         password = password.value
                     )
                 )
+
                 openActivity.postValue(true)
 
 
