@@ -20,8 +20,8 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/header_pic"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_margin="30dp"
             android:scaleType="centerCrop"
             android:src="@drawable/guest"

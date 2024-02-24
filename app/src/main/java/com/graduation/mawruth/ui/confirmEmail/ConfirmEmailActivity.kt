@@ -96,10 +96,10 @@ class ConfirmEmailActivity : AppCompatActivity() {
                     result = firstOtp + secondOtp + thirdOtp + fourthOtp
 
                 } else {
-                    viewBinding.otp1.error = "*"
-                    viewBinding.otp2.error = "*"
-                    viewBinding.otp3.error = "*"
-                    viewBinding.otp4.error = "*"
+                    viewBinding.otp1Layout.error = "*"
+                    viewBinding.otp2Layout.error = "*"
+                    viewBinding.otp3Layout.error = "*"
+                    viewBinding.otp4Layout.error = "*"
                 }
             }
 
