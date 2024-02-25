@@ -70,7 +70,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun showShimmer() {
         val shimmer = Shimmer.AlphaHighlightBuilder().setAutoStart(true).setBaseAlpha(0.25f)
-            .setHighlightAlpha(0.50f).setDirection(Shimmer.Direction.LEFT_TO_RIGHT).build()
+            .setHighlightAlpha(0.50f).setDirection(Shimmer.Direction.TOP_TO_BOTTOM).build()
         viewBinding.content.shimmer.setShimmer(shimmer)
         viewBinding.content.shimmer.startShimmer()
         viewBinding.content.shimmer.isVisible = true
