@@ -20,13 +20,14 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/musImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/museum_pic">
 
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/museumName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
@@ -42,6 +43,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/musLoc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="30dp"
@@ -51,8 +53,8 @@
                     android:textSize="16sp"
                     app:layout_collapseMode="parallax"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/textView"
-                    app:layout_constraintTop_toBottomOf="@+id/textView">
+                    app:layout_constraintEnd_toEndOf="@+id/museumName"
+                    app:layout_constraintTop_toBottomOf="@+id/museumName">
 
                 </TextView>
 

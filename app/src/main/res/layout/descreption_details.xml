@@ -29,6 +29,7 @@
     </ImageView>
 
     <TextView
+        android:id="@+id/street"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -43,6 +44,7 @@
     </TextView>
 
     <TextView
+        android:id="@+id/workTimeTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -52,15 +54,16 @@
         android:fontFamily="@font/cairo_regular"
         android:textColor="#B3332B1A"
         android:textSize="16sp"
-        app:drawableEndCompat="@drawable/rating">
+        app:drawableEndCompat="@drawable/worktime">
 
     </TextView>
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroup"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_gravity="end"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp">
+        android:layout_marginEnd="20dp">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip1"
@@ -76,6 +79,8 @@
         </com.google.android.material.chip.Chip>
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/chip2"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/mainSand"
@@ -87,42 +92,6 @@
 
         </com.google.android.material.chip.Chip>
 
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/mainSand"
-
-            android:fontFamily="@font/cairo_semibold"
-            android:text="تاريخي"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            app:chipStrokeWidth="0dp">
-
-        </com.google.android.material.chip.Chip>
-
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/mainSand"
-            android:fontFamily="@font/cairo_semibold"
-            android:text="تاريخي"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            app:chipStrokeWidth="0dp">
-
-        </com.google.android.material.chip.Chip>
-
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/mainSand"
-            android:fontFamily="@font/cairo_semibold"
-            android:text="تاريخي"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            app:chipStrokeWidth="0dp">
-
-        </com.google.android.material.chip.Chip>
     </com.google.android.material.chip.ChipGroup>
 
     <TextView
@@ -146,6 +115,7 @@
     </ImageView>
 
     <TextView
+        android:id="@+id/descr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20dp"

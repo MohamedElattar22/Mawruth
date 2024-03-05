@@ -12,7 +12,7 @@ data class MuseumResponseItem(
     val types: List<TypesItem?>? = null,
 
     @field:SerializedName("images")
-    val images: List<Any?>? = null,
+    val images: List<ImageRersponse?>? = null,
 
     @field:SerializedName("city")
     val city: String? = null,
@@ -53,7 +53,7 @@ data class MuseumResponseItem(
     fun toMuseumDto(): MuseumDto {
         return MuseumDto(
             country,
-            images = images,
+            images = listOf(images?.get(0)?.toImageDto()),
             city = city,
             createdAt = createdAt,
             rating = rating,

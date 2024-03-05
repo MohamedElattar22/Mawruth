@@ -89,7 +89,7 @@
                     android:background="@drawable/edit_text_style"
                     android:drawableEnd="@drawable/user"
                     android:drawablePadding="10dp"
-android:inputType="text"
+                    android:inputType="text"
                     android:text="@={vm.userName}"
                     android:fontFamily="@font/cairo_medium"
                     android:gravity="end"
@@ -299,29 +299,7 @@ android:inputType="text"
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/or">
 
-            </ImageView>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/logInBtn"
-                style="@style/strokeBtn"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginStart="20dp"
-                android:text="دخــول بواسطة جوجـل"
-                android:fontFamily="@font/cairo_semibold"
-                app:icon="@drawable/google"
-                app:iconGravity="textEnd"
-                app:iconSize="25dp"
-                app:iconTint="@color/mainBtn">
-
-            </com.google.android.material.button.MaterialButton>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

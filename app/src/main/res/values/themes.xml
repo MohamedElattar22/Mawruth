@@ -1,6 +1,6 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Mawruth" parent="Theme.Material3.DayNight.NoActionBar">
+
+<style name="Base.Theme.Mawruth" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowContentTransitions">true</item>
@@ -9,7 +9,6 @@
         <item name="colorPrimary">@color/mainBtn</item>
         <item name="android:colorPrimary">@color/darkBrown</item>
         <item name="backgroundColor">@color/white</item>
-<!--        <item name="colorOnPrimaryContainer">@color/whiteSand</item>-->
     </style>
 
     <style name="Theme.Mawruth" parent="Base.Theme.Mawruth" />
