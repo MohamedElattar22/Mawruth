@@ -2,7 +2,10 @@ package com.graduation.data.api
 
 
 import com.graduation.data.model.categories.CategoriesResponseItem
+
 import com.graduation.data.model.museum.MuseumResponseItem
+import com.graduation.data.model.museumdata.MuseumDataResponce
+
 import com.graduation.data.model.userinfo.UserInformation
 import com.graduation.data.model.userlogin.UserLoginResponse
 import com.graduation.data.model.usersignup.OTPResponse
@@ -52,6 +55,11 @@ interface WebServices {
     suspend fun getUserInfo(
         @Path("userId") userId: Int
     ): UserInformation
+
+    @GET("museums/{museumId}")
+    suspend fun getMuseumById(
+        @Path("museumId") museumId: Int
+    ): MuseumDataResponce?
 
     @GET("users/email/{email}")
     suspend fun getUserInfoByEmail(

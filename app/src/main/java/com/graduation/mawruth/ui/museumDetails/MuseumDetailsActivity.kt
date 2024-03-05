@@ -5,33 +5,44 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
+import com.google.android.material.snackbar.Snackbar
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityMuseumDetailsBinding
 import com.graduation.mawruth.ui.arActivity.AgumentedRealityActivity
 import com.graduation.mawruth.ui.pieceDetails.PieceDetailsActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MuseumDetailsActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMuseumDetailsBinding
-    private lateinit var adapter: PiecesAdapter
+    private lateinit var viewModel: MuseumDetailsViewModel
+    private var adapter = PiecesAdapter(listOf())
     val animator: ValueAnimator? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMuseumDetailsBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+        viewModel = ViewModelProvider(this)[MuseumDetailsViewModel::class.java]
         initViews()
     }
 
     private fun initViews() {
+        viewBinding.lay.piecesRV.adapter = adapter
         WindowCompat.setDecorFitsSystemWindows(window, false)
         viewBinding.museumName.text = intent.getStringExtra("museumName")
         viewBinding.lay.street.text = intent.getStringExtra("museumStreet")
+        val museumId = intent.getIntExtra("museumId", 0)
+        Log.d("musId", museumId.toString())
+        viewModel.getMuseumById(museumId)
+        observeToLiveData()
         viewBinding.musLoc.text =
             "${intent.getStringExtra("museumCountry")}-${intent.getStringExtra("museumLoc")}"
         viewBinding.lay.chip1.text = "مصري"
@@ -55,22 +66,14 @@ class MuseumDetailsActivity : AppCompatActivity() {
         )
         animator()
         viewBinding.fab.setOnClickListener {
-            navigatetoAR()
+            navigateToAR()
         }
         viewBinding.toolbar.setNavigationOnClickListener {
             finish()
         }
-        adapter = PiecesAdapter(testData.list)
-        viewBinding.lay.piecesRV.adapter = adapter
-        adapter.itemClick = PiecesAdapter.OnPieceClickListener { data, position ->
-            val intent = Intent(this@MuseumDetailsActivity, PieceDetailsActivity::class.java)
-            intent.putExtra("title", data.pieceTitle)
-            intent.putExtra("age", data.pieceAge)
-            intent.putExtra("description", data.description)
 
-            intent.putExtra("image", data.image)
-            startActivity(intent)
-        }
+
+
 
 
     }
@@ -91,9 +94,37 @@ class MuseumDetailsActivity : AppCompatActivity() {
 
     }
 
-    fun navigatetoAR() {
+    private fun navigateToAR() {
         val start = Intent(this, AgumentedRealityActivity::class.java)
         startActivity(start)
     }
+
+    private fun observeToLiveData() {
+        viewModel.infoLiveData.observe(this) {
+            adapter.bindPiecesList(it?.pieces)
+            Log.d("pieces", it?.pieces?.get(0).toString())
+            Log.d("piecesCount", adapter.itemCount.toString())
+
+            adapter.itemClick = PiecesAdapter.OnPieceClickListener { data, position ->
+                val intent = Intent(this@MuseumDetailsActivity, PieceDetailsActivity::class.java)
+                intent.putExtra("title", data.name)
+                intent.putExtra("age", data.masterPiece)
+                intent.putExtra("description", data.description)
+
+                intent.putExtra("image", data.images.toString())
+                startActivity(intent)
+            }
+        }
+        viewModel.error.observe(this) {
+
+            Snackbar.make(
+                this,
+                viewBinding.root,
+                it,
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }
+    }
+
 
 }
