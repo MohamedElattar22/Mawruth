@@ -132,7 +132,17 @@ class HomeActivity : AppCompatActivity() {
         initDrawer()
         museumRecyclerAdapter.onMuseumClickListener = MuseumRecyclerAdapter
             .OnMuseumClickListener { museumDto, position ->
-                goToDetailsActivity()
+                val intent = Intent(this, MuseumDetailsActivity::class.java)
+                intent.putExtra("museumName", museumDto.name)
+                intent.putExtra("museumLoc", museumDto.city)
+                intent.putExtra("museumStreet", museumDto.street)
+                intent.putExtra("museumCountry", museumDto.country)
+                intent.putExtra("museumDesc", museumDto.description)
+                intent.putExtra("museumWork", museumDto.workTime)
+                intent.putExtra("museumImage", museumDto.images?.get(0)?.imagePath)
+                intent.putExtra("museumType1", museumDto.types?.get(0)?.name)
+                intent.putExtra("museumType2", museumDto.types?.get(1)?.name)
+                startActivity(intent)
             }
 
     }

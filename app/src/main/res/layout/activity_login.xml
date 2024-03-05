@@ -223,34 +223,6 @@
 
 
 
-                    <ImageView
-                        android:id="@+id/or"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_marginHorizontal="20dp"
-                        android:src="@drawable/or"
-                        android:layout_marginTop="7dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/logInBtn" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/googlelogin"
-                        style="@style/strokeBtn"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginHorizontal="20dp"
-                        android:text="دخــول بواسطة جوجـل"
-                        app:icon="@drawable/google"
-                        android:elevation="0dp"
-                        app:elevation="0dp"
-                        app:iconGravity="textStart"
-                        app:iconTint="#A7824E"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/logInBtn" />
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

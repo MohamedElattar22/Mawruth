@@ -8,7 +8,7 @@ import kotlinx.parcelize.RawValue
 data class MuseumDto(
     val country: String? = null,
     val types: List<TypesItem?>? = null,
-    val images: @RawValue List<Any?>? = null,
+    val images: @RawValue List<ImageDto?>? = null,
     val city: String? = null,
     val createdAt: String? = null,
     val rating: @RawValue Any? = null,

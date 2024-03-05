@@ -1,11 +1,11 @@
 package com.graduation.mawruth.ui.home
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.graduation.domain.model.museum.MuseumDto
-import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.MuseumItemBinding
 
 class MuseumRecyclerAdapter(var list: List<MuseumDto?>?) :
@@ -33,8 +33,13 @@ class MuseumRecyclerAdapter(var list: List<MuseumDto?>?) :
         holder.itemBinding.museumName.text = list?.get(position)?.name.toString()
         holder.itemBinding.museumLocation.text =
             "${list?.get(position)?.country} ${list?.get(position)?.city}"
-        holder.itemBinding.musImage.background =
-            ContextCompat.getDrawable(holder.itemBinding.root.context, R.drawable.museum_pic)
+        val imagePath = list?.get(position)?.images?.get(0)
+        Glide.with(holder.itemView)
+            .load(list?.get(position)?.images?.get(0)?.imagePath)
+            .into(holder.itemBinding.musImage)
+        Log.d("images", list?.get(0)?.images?.get(0)?.imagePath.toString())
+//        holder.itemBinding.musImage.background =
+//            ContextCompat.getDrawable(holder.itemBinding.root.context, R.drawable.museum_pic)
 
         //----------------------------------------------------------------------------------------------------------------------------------
         onMuseumClickListener?.let { onMuseumClickListener ->
