@@ -136,6 +136,7 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("museumName", museumDto.name)
                 intent.putExtra("museumLoc", museumDto.city)
                 intent.putExtra("museumStreet", museumDto.street)
+                intent.putExtra("museumId", museumDto.iD)
                 intent.putExtra("museumCountry", museumDto.country)
                 intent.putExtra("museumDesc", museumDto.description)
                 intent.putExtra("museumWork", museumDto.workTime)

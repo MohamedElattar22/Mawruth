@@ -1,11 +1,14 @@
 package com.graduation.mawruth.ui.museumDetails
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.graduation.domain.model.museumdata.PiecesItem
 import com.graduation.mawruth.databinding.PieceRecyclerItemBinding
 
-class PiecesAdapter(val list: List<PieceData>) :
+class PiecesAdapter(var list: List<PiecesItem?>?) :
     RecyclerView.Adapter<PiecesAdapter.MyViewHolder>() {
     var itemClick: OnPieceClickListener? = null
 
@@ -18,25 +21,25 @@ class PiecesAdapter(val list: List<PieceData>) :
         return MyViewHolder(view)
     }
 
-    override fun getItemCount(): Int = list.size
+    fun bindPiecesList(list: List<PiecesItem?>?) {
+        this.list = list
+        notifyDataSetChanged()
+    }
+
+    override fun getItemCount(): Int = list!!.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = list[position]
-        holder.viewBinding.apply {
-            pieceTitleTV.text = item.pieceTitle
-            pieceAgeTV.text = item.pieceAge
-            pieceImage.setImageResource(item.image!!)
-            itemClick.let {
-                holder.viewBinding.toPieceDetailsBtn.setOnClickListener {
-                    itemClick?.onClick(list[position], position)
-                }
-            }
+        val item = list?.get(position)
+        holder.viewBinding.pieceTitleTV.text = item?.name.toString()
+        Glide.with(holder.itemView)
+            .load(item?.images?.get(0)?.imagePath.toString())
+            .into(holder.viewBinding.pieceImage)
+        Log.d("imageUrl", item?.images?.get(0)?.imagePath.toString())
 
 
         }
-    }
 
     fun interface OnPieceClickListener {
-        fun onClick(data: PieceData, position: Int)
+        fun onClick(data: PiecesItem, position: Int)
     }
 }
