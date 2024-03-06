@@ -180,6 +180,8 @@
         android:id="@+id/reviewRec"
         android:layout_width="match_parent"
         android:layout_height="500dp"
+        android:overScrollMode="ifContentScrolls"
+        app:stackFromEnd="true"
         android:layout_margin="10dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/review_item" />

@@ -57,7 +57,8 @@
 
         <activity
             android:name=".ui.museumDetails.MuseumDetailsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.successfulCreate.SuccessfulCreatedActivity"
             android:exported="false" />
