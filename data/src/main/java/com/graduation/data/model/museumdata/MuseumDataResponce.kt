@@ -21,7 +21,7 @@ data class MuseumDataResponce(
     val createdAt: String? = null,
 
     @field:SerializedName("rating")
-    val rating: Int? = null,
+    val rating: Float? = null,
 
     @field:SerializedName("description")
     val description: String? = null,

@@ -20,7 +20,6 @@
     <application
         android:name=".mawruthApp.MawruthApp"
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -28,15 +27,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mawruth"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".ui.pieceDetails.PieceDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.islamicmuseum.IslamicActivity"
-            android:exported="false">
-
-        </activity> <!-- <service -->
+            android:exported="false" /> <!-- <service -->
         <!-- android:name="androidx.appcompat.app.AppLocalesMetadataHolderService" -->
         <!-- android:enabled="false" -->
         <!-- android:exported="false"> -->
@@ -55,19 +53,14 @@
             android:exported="false" />
         <activity
             android:name=".ui.arActivity.AgumentedRealityActivity"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="false" />
 
         <activity
             android:name=".ui.museumDetails.MuseumDetailsActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".ui.successfulCreate.SuccessfulCreatedActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
 
         <activity
             android:name=".ui.confirmEmail.ConfirmEmailActivity"
@@ -103,7 +96,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <meta-data

@@ -11,7 +11,7 @@ data class MuseumDataDto(
     val images: List<ImagesItem?>? = null,
     val city: String? = null,
     val createdAt: String? = null,
-    val rating: Int? = null,
+    val rating: Float? = null,
     val description: String? = null,
     val updatedAt: String? = null,
     val pieces: List<PiecesItem?>? = null,

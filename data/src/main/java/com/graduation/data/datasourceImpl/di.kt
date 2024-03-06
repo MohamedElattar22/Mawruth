@@ -1,6 +1,7 @@
 package com.graduation.data.datasourceImpl
 
 import com.graduation.data.dataSourceContract.EditUserInfoDataSource
+import com.graduation.data.dataSourceContract.ReviewsDataSource
 import com.graduation.data.dataSourceContract.UserAuthenticationDataSource
 import com.graduation.data.dataSourceContract.UserInformationDataSource
 import com.graduation.data.dataSourceContract.categories.CategoriesDataSource
@@ -33,4 +34,10 @@ abstract class di {
     @Binds
     abstract fun bindCategories(categoryDataSourceImpl: CategoriesDataSourceImpl)
             : CategoriesDataSource
+
+    @Binds
+    abstract fun bindReviewsDataSource(reviewsDataSourceImpl: ReviewsDataSourceImpl)
+            : ReviewsDataSource
+
+
 }

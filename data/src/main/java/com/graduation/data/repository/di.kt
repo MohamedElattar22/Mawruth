@@ -3,6 +3,7 @@ package com.graduation.data.repository
 import com.graduation.domain.repositories.CategoriesRepository
 import com.graduation.domain.repositories.EditUserInfoRepository
 import com.graduation.domain.repositories.MuseumRepository
+import com.graduation.domain.repositories.ReviewsRepository
 import com.graduation.domain.repositories.UserAuthenticationRepository
 import com.graduation.domain.repositories.UserInformationRepository
 import dagger.Binds
@@ -30,4 +31,7 @@ abstract class di {
 
     @Binds
     abstract fun bindCategories(categoriesRepositoryImpl: CategoriesRepositoryImpl): CategoriesRepository
+
+    @Binds
+    abstract fun bindReviewsRepository(reviewsRepositoryImpl: ReviewsRepositoryImpl): ReviewsRepository
 }

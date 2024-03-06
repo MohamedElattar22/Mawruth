@@ -54,12 +54,16 @@ class HomeActivity : AppCompatActivity() {
         viewBinding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
         initViews()
+        getHomeScreenData()
+    }
+
+    private fun getHomeScreenData() {
+        viewModel.getMuseumData()
+        viewModel.getCategories()
     }
 
     override fun onStart() {
         super.onStart()
-        viewModel.getMuseumData()
-        viewModel.getCategories()
         viewBinding.content.retryBtn.setOnClickListener {
             viewModel.getMuseumData()
         }
@@ -69,8 +73,14 @@ class HomeActivity : AppCompatActivity() {
 
 
     private fun showShimmer() {
-        val shimmer = Shimmer.AlphaHighlightBuilder().setAutoStart(true).setBaseAlpha(0.25f)
-            .setHighlightAlpha(0.50f).setDirection(Shimmer.Direction.TOP_TO_BOTTOM).build()
+        val shimmer = Shimmer
+            .AlphaHighlightBuilder()
+            .setAutoStart(true)
+            .setBaseAlpha(0.25f)
+            .setHighlightAlpha(0.50f)
+            .setDropoff(50f)
+            .setDirection(Shimmer.Direction.TOP_TO_BOTTOM)
+            .build()
         viewBinding.content.shimmer.setShimmer(shimmer)
         viewBinding.content.shimmer.startShimmer()
         viewBinding.content.shimmer.isVisible = true

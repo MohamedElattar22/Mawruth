@@ -5,7 +5,9 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.WindowCompat
@@ -24,7 +26,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class MuseumDetailsActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMuseumDetailsBinding
     private lateinit var viewModel: MuseumDetailsViewModel
+    private val reviewsRecyclerAdapter = ReviewsRecyclerAdapter(mutableListOf())
     private var adapter = PiecesAdapter(listOf())
+    var museumId: Int = 0
     val animator: ValueAnimator? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +36,7 @@ class MuseumDetailsActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
         viewModel = ViewModelProvider(this)[MuseumDetailsViewModel::class.java]
         initViews()
+        observeToLiveData()
     }
 
     private fun initViews() {
@@ -39,10 +44,12 @@ class MuseumDetailsActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         viewBinding.museumName.text = intent.getStringExtra("museumName")
         viewBinding.lay.street.text = intent.getStringExtra("museumStreet")
-        val museumId = intent.getIntExtra("museumId", 0)
+        viewBinding.lay.reviewRec.adapter = reviewsRecyclerAdapter
+        viewBinding.lay.reviewContainer.movementMethod = ScrollingMovementMethod()
+        museumId = intent.getIntExtra("museumId", 0)
+        viewModel.getReviews(museumId)
         Log.d("musId", museumId.toString())
         viewModel.getMuseumById(museumId)
-        observeToLiveData()
         viewBinding.musLoc.text =
             "${intent.getStringExtra("museumCountry")}-${intent.getStringExtra("museumLoc")}"
         viewBinding.lay.chip1.text = "مصري"
@@ -59,6 +66,9 @@ class MuseumDetailsActivity : AppCompatActivity() {
                 }
             })
 
+        viewBinding.lay.sendReview.setOnClickListener {
+            handleReviews()
+        }
 
 
         viewBinding.lay.chip1.typeface = Typeface.create(
@@ -75,6 +85,12 @@ class MuseumDetailsActivity : AppCompatActivity() {
 
 
 
+
+    }
+
+    private fun handleReviews() {
+        if (viewBinding.lay.reviewContainer.text.isNullOrBlank()) return
+        viewModel.sendReview(viewBinding.lay.reviewContainer.text.toString().trim(), museumId)
 
     }
 
@@ -117,12 +133,22 @@ class MuseumDetailsActivity : AppCompatActivity() {
         }
         viewModel.error.observe(this) {
 
+            Log.e("el3ttarError", it.toString())
             Snackbar.make(
                 this,
                 viewBinding.root,
                 it,
                 Snackbar.LENGTH_SHORT
             ).show()
+        }
+        viewModel.reviewLiveData.observe(this) {
+            reviewsRecyclerAdapter.bindSingleReview(it!!)
+            viewBinding.lay.reviewContainer.text!!.clear()
+            Toast.makeText(this, "Review Add Successfully", Toast.LENGTH_SHORT).show()
+        }
+        viewModel.reviewListLiveData.observe(this) {
+            reviewsRecyclerAdapter.bindReviewsList(it?.toMutableList())
+            Log.e("review", it.toString())
         }
     }
 

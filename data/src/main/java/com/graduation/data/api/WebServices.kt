@@ -1,6 +1,7 @@
 package com.graduation.data.api
 
 
+import com.graduation.data.model.ReviewResponse
 import com.graduation.data.model.categories.CategoriesResponseItem
 
 import com.graduation.data.model.museum.MuseumResponseItem
@@ -80,4 +81,15 @@ interface WebServices {
     @GET("types")
     suspend fun getCategories(
     ): List<CategoriesResponseItem?>?
+
+    @POST("reviews")
+    suspend fun sendReview(
+        @Body reviewResponse: ReviewResponse
+    ): ReviewResponse?
+
+
+    @GET("reviews/museum/{museum_id}")
+    suspend fun getReview(
+        @Path("museum_id") museumId: Int
+    ): List<ReviewResponse?>?
 }
