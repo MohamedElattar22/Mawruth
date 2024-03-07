@@ -10,7 +10,7 @@ import com.graduation.mawruth.databinding.CategoryItemBinding
 
 class CategoriesRecyclerAdapter(var list: List<CategoriesDtoItem?>?) :
     RecyclerView.Adapter<CategoriesRecyclerAdapter.ViewHolder>() {
-
+    var onTypeClickListener: OnTypeClickListener? = null
     class ViewHolder(val itemBinding: CategoryItemBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 
@@ -36,5 +36,15 @@ class CategoriesRecyclerAdapter(var list: List<CategoriesDtoItem?>?) :
             .into(holder.itemBinding.categoryImage)
 
         holder.itemBinding.categoryName.text = item?.name
+
+        onTypeClickListener?.let { onTypeClick ->
+            holder.itemBinding.root.setOnClickListener {
+                onTypeClick.onClick(item!!, position)
+            }
+        }
+    }
+
+    fun interface OnTypeClickListener {
+        fun onClick(categoriesDtoItem: CategoriesDtoItem, position: Int)
     }
 }

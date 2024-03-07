@@ -14,7 +14,7 @@ data class MuseumDataDto(
     val rating: Float? = null,
     val description: String? = null,
     val updatedAt: String? = null,
-    val pieces: List<PiecesItem?>? = null,
+    val pieces: List<PiecesItemDto?>? = null,
     val reviews: @RawValue List<Any?>? = null,
     val street: String? = null,
     val name: String? = null,

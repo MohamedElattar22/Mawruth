@@ -18,7 +18,6 @@ import com.bumptech.glide.request.transition.Transition
 import com.google.android.material.snackbar.Snackbar
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityMuseumDetailsBinding
-import com.graduation.mawruth.ui.arActivity.AgumentedRealityActivity
 import com.graduation.mawruth.ui.pieceDetails.PieceDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -48,7 +47,7 @@ class MuseumDetailsActivity : AppCompatActivity() {
         viewBinding.lay.reviewContainer.movementMethod = ScrollingMovementMethod()
         museumId = intent.getIntExtra("museumId", 0)
         viewModel.getReviews(museumId)
-        Log.d("musId", museumId.toString())
+
         viewModel.getMuseumById(museumId)
         viewBinding.musLoc.text =
             "${intent.getStringExtra("museumCountry")}-${intent.getStringExtra("museumLoc")}"
@@ -74,19 +73,14 @@ class MuseumDetailsActivity : AppCompatActivity() {
         viewBinding.lay.chip1.typeface = Typeface.create(
             ResourcesCompat.getFont(this, R.font.cairo_medium), Typeface.NORMAL
         )
-        animator()
-        viewBinding.fab.setOnClickListener {
-            navigateToAR()
-        }
+
+
         viewBinding.toolbar.setNavigationOnClickListener {
             finish()
         }
-
-
-
-
-
     }
+
+
 
     private fun handleReviews() {
         if (viewBinding.lay.reviewContainer.text.isNullOrBlank()) return
@@ -94,26 +88,7 @@ class MuseumDetailsActivity : AppCompatActivity() {
 
     }
 
-    private fun animator() {
 
-        viewBinding.scroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-            if (scrollY > oldScrollY) {
-                //scrolling down
-                viewBinding.fab.shrink()
-            } else if (scrollY < oldScrollY) {
-                // scrolling up
-                viewBinding.fab.extend()
-            }
-
-
-        }
-
-    }
-
-    private fun navigateToAR() {
-        val start = Intent(this, AgumentedRealityActivity::class.java)
-        startActivity(start)
-    }
 
     private fun observeToLiveData() {
         viewModel.infoLiveData.observe(this) {
@@ -124,10 +99,12 @@ class MuseumDetailsActivity : AppCompatActivity() {
             adapter.itemClick = PiecesAdapter.OnPieceClickListener { data, position ->
                 val intent = Intent(this@MuseumDetailsActivity, PieceDetailsActivity::class.java)
                 intent.putExtra("title", data.name)
-                intent.putExtra("age", data.masterPiece)
+                val museumName = viewBinding.museumName.text.toString()
+                intent.putExtra("pieceAR", data.arPath.toString())
+                intent.putExtra("idPiece", data.iD.toString())
+                intent.putExtra("musName", museumName)
                 intent.putExtra("description", data.description)
-
-                intent.putExtra("image", data.images.toString())
+                intent.putExtra("image", data.images?.get(0)?.imagePath.toString())
                 startActivity(intent)
             }
         }

@@ -1,7 +1,7 @@
 package com.graduation.data.model.museumdata
 
 import com.google.gson.annotations.SerializedName
-import com.graduation.domain.model.museumdata.PiecesItem
+import com.graduation.domain.model.museumdata.PiecesItemDto
 
 data class PiecesItem(
 
@@ -38,8 +38,8 @@ data class PiecesItem(
     @field:SerializedName("museum_id")
     val museumId: Int? = null
 ) {
-    fun toPiecesDto(): PiecesItem {
-        return PiecesItem(
+    fun toPiecesDto(): PiecesItemDto {
+        return PiecesItemDto(
             masterPiece = masterPiece,
             images = images?.map {
                 it?.toImageItemDto()

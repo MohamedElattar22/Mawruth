@@ -19,4 +19,11 @@ class MuseumsDataSourceImpl @Inject constructor(private val webServices: WebServ
         val res = webServices.getMuseumById(museumId)
         return res?.toMuseumItemDto()
     }
+
+    override suspend fun getMuseumsByType(typeId: Int): List<MuseumDataDto?> {
+        val result = webServices.getMuseumByType(typeId.toString())
+        return result.map {
+            it?.toMuseumItemDto()
+        }
+    }
 }

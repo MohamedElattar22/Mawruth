@@ -98,24 +98,6 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="@color/darkBrown"
-
-        android:fontFamily="@font/cairo_medium"
-        android:text="ابــدأ رحلتــك !"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:icon="@drawable/museum"
-        app:iconTint="@color/mainSand"
-        app:rippleColor="@color/darkBrown">
-
-    </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

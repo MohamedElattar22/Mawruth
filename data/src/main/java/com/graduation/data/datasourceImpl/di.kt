@@ -6,6 +6,7 @@ import com.graduation.data.dataSourceContract.UserAuthenticationDataSource
 import com.graduation.data.dataSourceContract.UserInformationDataSource
 import com.graduation.data.dataSourceContract.categories.CategoriesDataSource
 import com.graduation.data.dataSourceContract.musums.MuseumsDataSource
+import com.graduation.data.dataSourceContract.pieces.PiecesDataStore
 import com.graduation.data.datasourceImpl.categories.CategoriesDataSourceImpl
 import com.graduation.data.datasourceImpl.museums.MuseumsDataSourceImpl
 import dagger.Binds
@@ -39,5 +40,8 @@ abstract class di {
     abstract fun bindReviewsDataSource(reviewsDataSourceImpl: ReviewsDataSourceImpl)
             : ReviewsDataSource
 
+    @Binds
+    abstract fun bindPiecesDataSource(piecesDataStoreImpl: PiecesDataStoreImpl)
+            : PiecesDataStore
 
 }

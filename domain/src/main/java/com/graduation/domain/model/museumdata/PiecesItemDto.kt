@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 
 @Parcelize
-data class PiecesItem(
+data class PiecesItemDto(
     val masterPiece: Boolean? = null,
     val images: List<ImagesItem?>? = null,
     val categoryId: Int? = null,

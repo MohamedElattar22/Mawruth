@@ -15,4 +15,8 @@ class MuseumRepositoryImpl @Inject constructor(private val museumsDataSource: Mu
     override suspend fun getMuseumById(museumId: Int): MuseumDataDto? {
         return museumsDataSource.getMuseumById(museumId)
     }
+
+    override suspend fun getMuseumsByType(typeId: Int): List<MuseumDataDto?> {
+        return museumsDataSource.getMuseumsByType(typeId)
+    }
 }

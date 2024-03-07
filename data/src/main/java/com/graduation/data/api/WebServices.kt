@@ -6,6 +6,7 @@ import com.graduation.data.model.categories.CategoriesResponseItem
 
 import com.graduation.data.model.museum.MuseumResponseItem
 import com.graduation.data.model.museumdata.MuseumDataResponce
+import com.graduation.data.model.museumdata.PiecesItem
 
 import com.graduation.data.model.userinfo.UserInformation
 import com.graduation.data.model.userlogin.UserLoginResponse
@@ -24,6 +25,7 @@ import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 
 interface WebServices {
@@ -61,6 +63,16 @@ interface WebServices {
     suspend fun getMuseumById(
         @Path("museumId") museumId: Int
     ): MuseumDataResponce?
+
+    @GET("museums")
+    suspend fun getMuseumByType(
+        @Query("q") q: String
+    ): List<MuseumDataResponce?>
+
+    @GET("pieces/{pieceId}")
+    suspend fun getPieceById(
+        @Path("pieceId") pieceId: Int
+    ): PiecesItem?
 
     @GET("users/email/{email}")
     suspend fun getUserInfoByEmail(

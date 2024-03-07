@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.graduation.domain.model.museumdata.PiecesItem
+import com.graduation.domain.model.museumdata.PiecesItemDto
 import com.graduation.mawruth.databinding.PieceRecyclerItemBinding
 
-class PiecesAdapter(var list: List<PiecesItem?>?) :
+class PiecesAdapter(var list: List<PiecesItemDto?>?) :
     RecyclerView.Adapter<PiecesAdapter.MyViewHolder>() {
     var itemClick: OnPieceClickListener? = null
 
@@ -21,7 +21,7 @@ class PiecesAdapter(var list: List<PiecesItem?>?) :
         return MyViewHolder(view)
     }
 
-    fun bindPiecesList(list: List<PiecesItem?>?) {
+    fun bindPiecesList(list: List<PiecesItemDto?>?) {
         this.list = list
         notifyDataSetChanged()
     }
@@ -35,11 +35,13 @@ class PiecesAdapter(var list: List<PiecesItem?>?) :
             .load(item?.images?.get(0)?.imagePath.toString())
             .into(holder.viewBinding.pieceImage)
         Log.d("imageUrl", item?.images?.get(0)?.imagePath.toString())
-
+        holder.viewBinding.toPieceDetailsBtn.setOnClickListener {
+            itemClick?.onClick(item!!, position)
+        }
 
         }
 
     fun interface OnPieceClickListener {
-        fun onClick(data: PiecesItem, position: Int)
+        fun onClick(data: PiecesItemDto, position: Int)
     }
 }

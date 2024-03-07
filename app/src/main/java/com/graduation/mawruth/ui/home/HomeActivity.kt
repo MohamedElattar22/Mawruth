@@ -24,6 +24,7 @@ import com.google.gson.Gson
 import com.graduation.domain.model.userinfo.UserInformationDto
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityHomeBinding
+import com.graduation.mawruth.ui.home.musumsbytype.CategoryMuseumActivity
 import com.graduation.mawruth.ui.home.viewpager.HomeViewPager
 import com.graduation.mawruth.ui.home.viewpager.TestViewPagerObject
 import com.graduation.mawruth.ui.login.LoginActivity
@@ -153,6 +154,13 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("museumImage", museumDto.images?.get(0)?.imagePath)
                 intent.putExtra("museumType1", museumDto.types?.get(0)?.name)
                 intent.putExtra("museumType2", museumDto.types?.get(1)?.name)
+                startActivity(intent)
+            }
+        catAdapter.onTypeClickListener =
+            CategoriesRecyclerAdapter.OnTypeClickListener { categoriesDtoItem, _ ->
+                val intent = Intent(this@HomeActivity, CategoryMuseumActivity::class.java)
+                val typeId = categoriesDtoItem.iD.toString()
+                intent.putExtra("typeId", typeId)
                 startActivity(intent)
             }
 

@@ -3,8 +3,6 @@ package com.graduation.mawruth.ui.arActivity
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.ar.core.Anchor
@@ -15,25 +13,11 @@ import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityAgumentedRealityBinding
-import com.graduation.mawruth.utils.remoteObjects
 
 class AgumentedRealityActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityAgumentedRealityBinding
     private lateinit var arFragment: ArFragment
-    var cnt = 0
-    private val url = remoteObjects.sourceURL
-    private val fromBottom: Animation by lazy {
-        AnimationUtils.loadAnimation(
-            this,
-            R.anim.from_bottom_anim
-        )
-    }
-    private val toBottom: Animation by lazy {
-        AnimationUtils.loadAnimation(
-            this,
-            R.anim.to_bottom_anim
-        )
-    }
+    private var cnt = 0
     private var clicked = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,11 +27,15 @@ class AgumentedRealityActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        arFragment = supportFragmentManager.findFragmentById(R.id.arFragment) as ArFragment
 
+        arFragment = supportFragmentManager.findFragmentById(R.id.arFragment) as ArFragment
+        val arData = intent.getStringExtra("agmunted").toString()
+        val pieceName = intent.getStringExtra("pieceName")
+        Log.i("pieceData", arData)
+        Log.i("pieceData", pieceName.toString())
         arFragment.setOnTapArPlaneListener { hitResult, _, _ ->
             if (cnt == 0) {
-                spawnObject(hitResult.createAnchor(), Uri.parse(url))
+                spawnObject(hitResult.createAnchor(), Uri.parse(arData))
                 cnt++
             }
         }
@@ -72,16 +60,15 @@ class AgumentedRealityActivity : AppCompatActivity() {
     private fun spawnObject(anchor: Anchor, modelUri: Uri) {
 
         if (objectProvider.source == null) {
-            Log.d("mo", objectProvider.source.toString())
             val renderableSource = RenderableSource.builder()
                 .setSource(this, modelUri, RenderableSource.SourceType.GLB)
-                .setRecenterMode(RenderableSource.RecenterMode.ROOT)
+                .setScale(0.3f)
+                .setRecenterMode(RenderableSource.RecenterMode.CENTER)
                 .build()
             objectProvider.source = renderableSource
 
         }
 
-        Log.d("mo", objectProvider.source.toString())
         ModelRenderable.builder()
             .setSource(this, objectProvider.source)
             .setRegistryId(modelUri)
