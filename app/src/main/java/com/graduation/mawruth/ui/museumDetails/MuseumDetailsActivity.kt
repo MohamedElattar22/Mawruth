@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.WindowCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
@@ -48,6 +49,12 @@ class MuseumDetailsActivity : AppCompatActivity() {
         museumId = intent.getIntExtra("museumId", 0)
         viewModel.getReviews(museumId)
 
+        val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
+        if (!sharedPreferences.contains("userInfo")) {
+            viewBinding.lay.review.isVisible = false
+            viewBinding.lay.sendReviewBtn.isVisible = false
+
+        }
         viewModel.getMuseumById(museumId)
         viewBinding.musLoc.text =
             "${intent.getStringExtra("museumCountry")}-${intent.getStringExtra("museumLoc")}"

@@ -209,6 +209,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/review"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -241,6 +242,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
+        android:id="@+id/sendReviewBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
