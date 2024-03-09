@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
-    android:paddingVertical="40dp">
+    android:paddingVertical="@dimen/_40sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loginHeader"
@@ -20,23 +20,23 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/header_pic"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="30dp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_margin="@dimen/_30sdp"
             android:scaleType="centerCrop"
             android:src="@drawable/guest"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:riv_corner_radius="500dp" />
+            app:riv_corner_radius="@dimen/_500sdp" />
 
         <TextView
             android:id="@+id/Headername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
             android:fontFamily="@font/cairo_semibold"
             android:textColor="@color/whiteSand"
-            android:textSize="18sp"
+            android:textSize="@dimen/_12ssp"
             app:layout_constraintBottom_toTopOf="@+id/headeremail"
             app:layout_constraintEnd_toStartOf="@+id/header_pic"
             app:layout_constraintTop_toTopOf="@+id/header_pic"
@@ -55,7 +55,7 @@
             android:text="example@gmail.@"
             android:textAlignment="viewEnd"
             android:textColor="@color/white"
-            android:textSize="10sp"
+            android:textSize="@dimen/_4ssp"
             app:layout_constraintBottom_toBottomOf="@+id/header_pic"
             app:layout_constraintEnd_toEndOf="@+id/Headername"
             app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +66,7 @@
         android:id="@+id/guestHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/_10sdp"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
@@ -77,14 +77,14 @@
             android:id="@+id/headerLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/_5sdp"
             android:backgroundTint="@color/transparent"
-            android:paddingVertical="15dp"
+            android:paddingVertical="@dimen/_15sdp"
             android:textColor="@color/mainBtn"
             android:text="تسجيل الدخول"
             android:fontFamily="@font/cairo_medium"
             app:strokeColor="@color/mainBtn"
-            app:strokeWidth="2dp" />
+            app:strokeWidth="@dimen/_2sdp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/headerRegister"
@@ -92,9 +92,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:fontFamily="@font/cairo_medium"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/_5sdp"
             android:backgroundTint="@color/mainBtn"
-            android:paddingVertical="15dp"
+            android:paddingVertical="@dimen/_15sdp"
             android:text="تسجيل حساب جديد" />
     </LinearLayout>
 

@@ -12,7 +12,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="@dimen/_20sdp"
         app:cardUseCompatPadding="true"
         app:strokeWidth="0dp">
 
@@ -21,19 +21,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="#F1F0EB"
-            android:paddingBottom="20dp">
+            android:paddingBottom="@dimen/_20sdp">
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/pro_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="20dp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_margin="@dimen/_20sdp"
                 android:background="#F1F0EB"
                 android:scaleType="centerCrop"
                 app:imageUrl="@{review.creator.avatar}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:riv_corner_radius="100dp"
+                app:riv_corner_radius="@dimen/_100sdp"
                 tools:src="@drawable/profile_pic">
 
             </com.makeramen.roundedimageview.RoundedImageView>
@@ -43,13 +43,13 @@
                 android:id="@+id/museum_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:backgroundTint="@color/whiteSand"
                 android:fontFamily="@font/cairo_semibold"
                 android:maxLines="1"
                 android:text="@{review.creator.fullName}"
                 android:textColor="@color/darkBrown"
-                android:textSize="16sp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintEnd_toStartOf="@+id/pro_image"
                 app:layout_constraintTop_toTopOf="@+id/pro_image"
                 app:layout_constraintVertical_chainStyle="packed"
@@ -59,7 +59,7 @@
                 android:id="@+id/user_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_marginTop="-5dp"
                 android:fontFamily="@font/cairo_regular"
                 android:gravity="end"
@@ -76,9 +76,9 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="12dp"
+                android:layout_marginVertical="@dimen/_12sdp"
                 android:maxLines="3"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:scrollbars="vertical"
                 android:text="@{review.content}"
                 android:textAlignment="viewEnd"

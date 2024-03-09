@@ -10,19 +10,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
         android:fontFamily="@font/cairo_semibold"
         android:text="معلومات أساسية"
         android:textColor="@color/darkBrown"
-        android:textSize="21sp">
+        android:textSize="@dimen/_15ssp">
 
     </TextView>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="@dimen/_20sdp"
         android:src="@drawable/seperator">
 
     </ImageView>
@@ -31,13 +31,13 @@
         android:id="@+id/museumNameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:drawablePadding="10dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:drawablePadding="@dimen/_10sdp"
         android:fontFamily="@font/cairo_regular"
         android:text="المتحف المصري"
         android:textColor="#B3332B1A"
-        android:textSize="16sp"
+        android:textSize="@dimen/_10ssp"
         app:drawableEndCompat="@drawable/map_loc">
 
     </TextView>
@@ -45,13 +45,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:drawablePadding="10dp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:drawablePadding="@dimen/_10sdp"
         android:fontFamily="@font/cairo_regular"
         android:text="4.9"
         android:textColor="#B3332B1A"
-        android:textSize="16sp"
+        android:textSize="@dimen/_10ssp"
         app:drawableEndCompat="@drawable/rating">
 
     </TextView>
@@ -60,7 +60,7 @@
         android:id="@+id/chipGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp">
+        android:layout_marginStart="@dimen/_20sdp">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip1"
@@ -70,7 +70,7 @@
             android:fontFamily="@font/cairo_medium"
             android:text="تاريخي"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="@dimen/_8ssp"
             app:chipStrokeWidth="0dp">
 
         </com.google.android.material.chip.Chip>
@@ -82,7 +82,7 @@
             android:fontFamily="@font/cairo_semibold"
             android:text="تاريخي"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="@dimen/_8ssp"
             app:chipStrokeWidth="0dp">
 
         </com.google.android.material.chip.Chip>
@@ -95,7 +95,7 @@
             android:fontFamily="@font/cairo_semibold"
             android:text="تاريخي"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="@dimen/_8ssp"
             app:chipStrokeWidth="0dp">
 
         </com.google.android.material.chip.Chip>
@@ -107,7 +107,7 @@
             android:fontFamily="@font/cairo_semibold"
             android:text="تاريخي"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="@dimen/_8ssp"
             app:chipStrokeWidth="0dp">
 
         </com.google.android.material.chip.Chip>
@@ -119,7 +119,7 @@
             android:fontFamily="@font/cairo_semibold"
             android:text="تاريخي"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="@dimen/_8ssp"
             app:chipStrokeWidth="0dp">
 
         </com.google.android.material.chip.Chip>
@@ -128,19 +128,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
         android:fontFamily="@font/cairo_semibold"
         android:text="عن القطعة"
         android:textColor="@color/darkBrown"
-        android:textSize="21sp">
+        android:textSize="@dimen/_15ssp">
 
     </TextView>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="@dimen/_20sdp"
         android:src="@drawable/seperator">
 
     </ImageView>
@@ -150,10 +150,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/cairo_regular"
-        android:padding="20dp"
+        android:padding="@dimen/_20sdp"
         android:text="@string/museum_descrip"
         android:textColor="#B3332B1A"
-        android:textSize="14sp">
+        android:textSize="@dimen/_8ssp">
 
     </TextView>
 
