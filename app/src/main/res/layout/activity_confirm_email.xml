@@ -11,7 +11,7 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="260dp"
+        android:layout_height="@dimen/_260sdp"
         android:src="@drawable/email_confirm">
 
     </ImageView>
@@ -19,34 +19,34 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:text="أكد بريدك الإلكتروني"
         android:textColor="@color/darkBrown"
-        android:textSize="24sp" />
+        android:textSize="@dimen/_18ssp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
         android:fontFamily="@font/cairo_regular"
         android:text="@string/confirmation_textx"
         android:textAlignment="center"
         android:textColor="#262C26"
-        android:textSize="14sp" />
+        android:textSize="@dimen/_14ssp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/_40sdp"
         android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/otp1Layout"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="20dp"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
             android:outlineSpotShadowColor="@color/paragraph"
             android:textColorHint="@color/inputIcons"
             android:textDirection="locale"
@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:cursorVisible="false"
-                android:drawablePadding="10dp"
+                android:drawablePadding="@dimen/_10sdp"
                 android:fontFamily="@font/cairo_semibold"
                 android:gravity="center"
                 android:hint="-"
@@ -76,7 +76,7 @@
                 android:textAlignment="center"
                 android:textColor="#B9A474"
                 android:textColorHighlight="@color/mainSand"
-                android:textSize="24sp"
+                android:textSize="@dimen/_24ssp"
                 tools:targetApi="upside_down_cake">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -87,7 +87,7 @@
             android:id="@+id/otp2Layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="@dimen/_20sdp"
             android:outlineSpotShadowColor="@color/paragraph"
             android:textColorHint="@color/inputIcons"
             android:textDirection="locale"
@@ -101,10 +101,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/otp2"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
                 android:cursorVisible="false"
-                android:drawablePadding="10dp"
+                android:drawablePadding="@dimen/_10sdp"
                 android:fontFamily="@font/cairo_semibold"
                 android:gravity="center"
                 android:hint="-"
@@ -117,7 +117,7 @@
                 android:textAlignment="center"
                 android:textColor="#B9A474"
                 android:textColorHighlight="@color/mainSand"
-                android:textSize="24sp"
+                android:textSize="@dimen/_18ssp"
                 tools:targetApi="upside_down_cake">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -128,7 +128,7 @@
             android:id="@+id/otp3Layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="@dimen/_20sdp"
             android:outlineSpotShadowColor="@color/paragraph"
             android:textColorHint="@color/inputIcons"
             android:textDirection="locale"
@@ -142,10 +142,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/otp3"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
                 android:cursorVisible="false"
-                android:drawablePadding="10dp"
+                android:drawablePadding="@dimen/_10sdp"
                 android:fontFamily="@font/cairo_semibold"
                 android:gravity="center"
                 android:hint="-"
@@ -158,7 +158,7 @@
                 android:textAlignment="center"
                 android:textColor="#B9A474"
                 android:textColorHighlight="@color/mainSand"
-                android:textSize="24sp"
+                android:textSize="@dimen/_18ssp"
                 tools:targetApi="upside_down_cake">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -169,7 +169,7 @@
             android:id="@+id/otp4Layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="@dimen/_20sdp"
             android:outlineSpotShadowColor="@color/paragraph"
             android:textColorHint="@color/inputIcons"
             android:textDirection="locale"
@@ -183,10 +183,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/otp4"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
                 android:cursorVisible="false"
-                android:drawablePadding="10dp"
+                android:drawablePadding="@dimen/_10sdp"
                 android:fontFamily="@font/cairo_semibold"
                 android:gravity="center"
                 android:hint="-"
@@ -198,7 +198,7 @@
                 android:textAlignment="center"
                 android:textColor="#B9A474"
                 android:textColorHighlight="@color/mainSand"
-                android:textSize="24sp"
+                android:textSize="@dimen/_24ssp"
                 tools:targetApi="upside_down_cake">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -215,21 +215,21 @@
             android:id="@+id/timerTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:fontFamily="@font/cairo_semibold"
             android:text="1:00"
-            android:textSize="18sp">
+            android:textSize="@dimen/_12ssp">
 
         </TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:text="ستنتهي صلاحية الرمز بعد:"
             android:textColor="#A17C48"
-            android:textSize="18sp">
+            android:textSize="@dimen/_12ssp">
 
         </TextView>
     </LinearLayout>
@@ -237,16 +237,16 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/checkBtn"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
         android:enabled="false"
         android:text="تحقق"
 
-        android:textSize="20sp"
-        app:cornerRadius="10dp"
-        app:iconSize="25dp"
+        android:textSize="@dimen/_20ssp"
+        app:cornerRadius="@dimen/_10sdp"
+        app:iconSize="@dimen/_25sdp"
         app:iconTint="@color/mainBtn">
 
     </com.google.android.material.button.MaterialButton>
@@ -255,11 +255,11 @@
         android:id="@+id/logInBtn"
         style="@style/strokeBtn"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginStart="@dimen/_20sdp"
         android:text="إعادة الإرسال"
         app:iconGravity="textEnd"
-        app:iconSize="25dp"
+        app:iconSize="@dimen/_25sdp"
         app:iconTint="@color/mainBtn">
 
     </com.google.android.material.button.MaterialButton>

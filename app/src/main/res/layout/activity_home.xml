@@ -47,7 +47,7 @@
                             android:id="@+id/search_bar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="70dp"
+                            android:layout_marginTop="@dimen/_70sdp"
                             android:backgroundTint="@color/white"
                             app:backgroundTint="@color/white"
                             android:hint="إلي أي تراث تتطلع ....؟"
@@ -59,7 +59,7 @@
                             app:layout_constraintVertical_bias="0.15"
                             app:navigationIcon="@drawable/search_icon"
                             app:strokeColor="#B7B2AB"
-                            app:strokeWidth="1dp" />
+                            app:strokeWidth="@dimen/_1sdp" />
 
 
 
@@ -78,9 +78,9 @@
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tabLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:padding="5dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:padding="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:backgroundTint="@color/transparent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/view_pager"
@@ -94,7 +94,7 @@
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="@dimen/_60sdp"
                     android:gravity="center"
                     app:buttonGravity="bottom"
                     app:layout_collapseMode="pin"
@@ -141,10 +141,10 @@
         android:layout_gravity="start"
         android:background="@drawable/header_back"
         android:fitsSystemWindows="true"
-        android:padding="10dp"
+        android:padding="@dimen/_10sdp"
         app:headerLayout="@layout/header"
         app:itemBackground="@drawable/header_menu_item_back"
-        app:itemIconSize="25dp"
+        app:itemIconSize="@dimen/_25sdp"
         app:itemIconTint="@color/header_menu_item_colour"
         app:itemTextColor="@color/header_menu_item_colour"
         app:menu="@menu/drawer_menu" />

@@ -1,6 +1,5 @@
 package com.graduation.mawruth.ui.museumDetails
 
-import android.animation.ValueAnimator
 import android.content.Intent
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
@@ -28,8 +27,7 @@ class MuseumDetailsActivity : AppCompatActivity() {
     private lateinit var viewModel: MuseumDetailsViewModel
     private val reviewsRecyclerAdapter = ReviewsRecyclerAdapter(mutableListOf())
     private var adapter = PiecesAdapter(listOf())
-    var museumId: Int = 0
-    val animator: ValueAnimator? = null
+    private var museumId: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMuseumDetailsBinding.inflate(layoutInflater)
@@ -53,10 +51,11 @@ class MuseumDetailsActivity : AppCompatActivity() {
         if (!sharedPreferences.contains("userInfo")) {
             viewBinding.lay.review.isVisible = false
             viewBinding.lay.sendReviewBtn.isVisible = false
-
         }
         viewModel.getMuseumById(museumId)
-        viewBinding.musLoc.text =
+        viewBinding
+            .musLoc
+            .text =
             "${intent.getStringExtra("museumCountry")}-${intent.getStringExtra("museumLoc")}"
         viewBinding.lay.chip1.text = "مصري"
         viewBinding.lay.descr.text = intent.getStringExtra("museumDesc")
@@ -88,13 +87,11 @@ class MuseumDetailsActivity : AppCompatActivity() {
     }
 
 
-
     private fun handleReviews() {
         if (viewBinding.lay.reviewContainer.text.isNullOrBlank()) return
         viewModel.sendReview(viewBinding.lay.reviewContainer.text.toString().trim(), museumId)
 
     }
-
 
 
     private fun observeToLiveData() {
@@ -103,7 +100,7 @@ class MuseumDetailsActivity : AppCompatActivity() {
             Log.d("pieces", it?.pieces?.get(0).toString())
             Log.d("piecesCount", adapter.itemCount.toString())
 
-            adapter.itemClick = PiecesAdapter.OnPieceClickListener { data, position ->
+            adapter.itemClick = PiecesAdapter.OnPieceClickListener { data, _ ->
                 val intent = Intent(this@MuseumDetailsActivity, PieceDetailsActivity::class.java)
                 intent.putExtra("title", data.name)
                 val museumName = viewBinding.museumName.text.toString()
@@ -112,6 +109,7 @@ class MuseumDetailsActivity : AppCompatActivity() {
                 intent.putExtra("musName", museumName)
                 intent.putExtra("description", data.description)
                 intent.putExtra("image", data.images?.get(0)?.imagePath.toString())
+                intent.putExtra("isMaster", data.masterPiece)
                 startActivity(intent)
             }
         }
