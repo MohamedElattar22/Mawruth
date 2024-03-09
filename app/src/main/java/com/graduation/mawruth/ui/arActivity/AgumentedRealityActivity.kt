@@ -17,8 +17,7 @@ import com.graduation.mawruth.databinding.ActivityAgumentedRealityBinding
 class AgumentedRealityActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityAgumentedRealityBinding
     private lateinit var arFragment: ArFragment
-    private var cnt = 0
-    private var clicked = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityAgumentedRealityBinding.inflate(layoutInflater)
@@ -31,13 +30,10 @@ class AgumentedRealityActivity : AppCompatActivity() {
         arFragment = supportFragmentManager.findFragmentById(R.id.arFragment) as ArFragment
         val arData = intent.getStringExtra("agmunted").toString()
         val pieceName = intent.getStringExtra("pieceName")
-        Log.i("pieceData", arData)
+        Log.i("pieceAr", arData)
         Log.i("pieceData", pieceName.toString())
         arFragment.setOnTapArPlaneListener { hitResult, _, _ ->
-            if (cnt == 0) {
                 spawnObject(hitResult.createAnchor(), Uri.parse(arData))
-                cnt++
-            }
         }
 
         viewBinding.dataBtn.setOnClickListener {
@@ -45,7 +41,6 @@ class AgumentedRealityActivity : AppCompatActivity() {
         }
         viewBinding.fab.setOnClickListener {
             showDataSheet()
-
         }
 
     }
@@ -59,18 +54,15 @@ class AgumentedRealityActivity : AppCompatActivity() {
 
     private fun spawnObject(anchor: Anchor, modelUri: Uri) {
 
-        if (objectProvider.source == null) {
+
             val renderableSource = RenderableSource.builder()
                 .setSource(this, modelUri, RenderableSource.SourceType.GLB)
-                .setScale(0.3f)
-                .setRecenterMode(RenderableSource.RecenterMode.CENTER)
+                .setRecenterMode(RenderableSource.RecenterMode.ROOT)
+                .setScale(0.5f)
                 .build()
-            objectProvider.source = renderableSource
-
-        }
 
         ModelRenderable.builder()
-            .setSource(this, objectProvider.source)
+            .setSource(this, renderableSource)
             .setRegistryId(modelUri)
             .build()
             .thenAccept {

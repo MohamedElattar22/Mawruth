@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.graduation.domain.model.museumdata.PiecesItemDto
@@ -55,7 +56,7 @@ class PieceDetailsActivity : AppCompatActivity() {
         viewBinding.details.museumNameTV.text = museumName.toString()
         val pieceAr = intent.getStringExtra("pieceAR").toString()
         Log.d("AR", pieceAr)
-
+        viewBinding.fab.isVisible = pieceData.masterPiece!!
         viewBinding.fab.setOnClickListener {
             val start = Intent(this, AgumentedRealityActivity::class.java)
             start.putExtra("agmunted", pieceData.arPath.toString())
@@ -84,7 +85,6 @@ class PieceDetailsActivity : AppCompatActivity() {
 
     private fun observeLiveData() {
         viewModel.pieceData.observe(this) {
-
             pieceData = it!!
             Log.d("wa7ed", pieceData.toString())
         }

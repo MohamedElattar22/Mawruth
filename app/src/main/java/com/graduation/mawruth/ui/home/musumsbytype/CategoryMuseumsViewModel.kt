@@ -15,7 +15,7 @@ class CategoryMuseumsViewModel @Inject constructor(
     private val getMuseumsByTypeUseCase: GetMuseumsByTypeUseCase
 ) : ViewModel() {
     val museumData = MutableLiveData<List<MuseumDataDto?>?>()
-    val isLoading = MutableLiveData<Boolean>()
+    val isLoading = MutableLiveData<Boolean>() // observer
     val error = MutableLiveData<String>()
     fun getMuseumByType(typeId: Int) {
         viewModelScope.launch {

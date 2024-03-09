@@ -95,11 +95,6 @@ class ConfirmEmailActivity : AppCompatActivity() {
                     viewBinding.checkBtn.setBackgroundColor(color)
                     result = firstOtp + secondOtp + thirdOtp + fourthOtp
 
-                } else {
-                    viewBinding.otp1Layout.error = "*"
-                    viewBinding.otp2Layout.error = "*"
-                    viewBinding.otp3Layout.error = "*"
-                    viewBinding.otp4Layout.error = "*"
                 }
             }
 

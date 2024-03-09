@@ -25,8 +25,8 @@
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/pro_image"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_margin="20dp"
                 android:background="#F1F0EB"
                 android:scaleType="centerCrop"
@@ -66,9 +66,10 @@
                 android:singleLine="true"
                 android:text="@{review.creator.userName}"
                 android:textColor="@color/paragraph"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/pro_image"
                 app:layout_constraintEnd_toStartOf="@+id/pro_image"
                 app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/museum_name"
                 tools:text="abdelrahman" />
 
@@ -77,11 +78,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="12dp"
                 android:maxLines="3"
+                android:layout_marginHorizontal="20dp"
                 android:scrollbars="vertical"
                 android:text="@{review.content}"
                 android:textAlignment="viewEnd"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/pro_image"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/user_name"
                 tools:text="تجربة كانت عظيمو وتوب التوب" />
