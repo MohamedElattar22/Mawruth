@@ -4,7 +4,6 @@ plugins {
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id("kotlin-parcelize")
-
 }
 
 android {
@@ -65,9 +64,9 @@ dependencies {
     implementation("io.coil-kt:coil:2.5.0")
 
     // viewModel and LiveData Dependencies
-    val lifecycle_version = "2.7.0"
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    val lifecycleVersion = "2.7.0"
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
 
     //Kotlin coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
