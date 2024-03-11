@@ -1,8 +1,8 @@
 package com.graduation.mawruth.ui.onBoarding
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityOnboardingBinding
@@ -31,7 +31,7 @@ class OnBoardingActivity : AppCompatActivity() {
     fun contentCreate(){
 
         imagesList.add(R.drawable.ar_onboard)
-        imagesList.add(R.drawable.ai_onboarding)
+        imagesList.add(R.drawable.maps_onboarding)
         imagesList.add(R.drawable.maps_onboarding)
         headerList.add("تجربة بصرية فريدة !")
         headerList.add("معزز بالذكاء الاصطناعي !")
