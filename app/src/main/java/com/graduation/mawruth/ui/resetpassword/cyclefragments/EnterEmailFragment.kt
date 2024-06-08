@@ -46,7 +46,7 @@ class EnterEmailFragment : Fragment() {
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCancelable(false)
         val dialogView =
-            LayoutInflater.from(requireContext()).inflate(R.layout.loading_dialog, null)
+            LayoutInflater.from(requireContext()).inflate(R.layout.loading_dialog, viewBinding.root)
         dialog.setContentView(dialogView)
         initViews()
 
@@ -78,7 +78,7 @@ class EnterEmailFragment : Fragment() {
 
     }
 
-    fun sendOTPToUser() {
+    private fun sendOTPToUser() {
         val email = viewBinding.userInput.text.toString()
         emailProvider.emailData = email
         viewModel.sendOTPToEmail(email)
@@ -87,7 +87,7 @@ class EnterEmailFragment : Fragment() {
 
     }
 
-    fun textChanger() {
+    private fun textChanger() {
 
         txtWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
