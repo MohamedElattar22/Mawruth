@@ -28,7 +28,8 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 
-interface WebServices {
+interface
+WebServices {
 
     @POST("users/register")
     suspend fun signUpUser(
@@ -90,7 +91,7 @@ interface WebServices {
         @Part avatar: MultipartBody.Part? = null
     ): UserInformation
 
-    @GET("types")
+    @GET("categories")
     suspend fun getCategories(
     ): List<CategoriesResponseItem?>?
 

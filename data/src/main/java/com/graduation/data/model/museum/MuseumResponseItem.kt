@@ -3,7 +3,8 @@ package com.graduation.data.model.museum
 import com.google.gson.annotations.SerializedName
 import com.graduation.domain.model.museum.MuseumDto
 
-data class MuseumResponseItem(
+data class
+MuseumResponseItem(
 
     @field:SerializedName("country")
     val country: String? = null,
