@@ -16,7 +16,7 @@
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/_300sdp"
             android:fitsSystemWindows="true"
             app:collapsedTitleGravity="start"
             app:collapsedTitleTextAppearance="@style/toolbarTitle"
@@ -50,16 +50,16 @@
                         android:layout_height="wrap_content">
 
                         <ProgressBar
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
                             android:layout_gravity="center"
                             android:visibility="invisible"
                             android:indeterminateTint="@color/mainBtn" />
 
                         <ImageView
                             android:id="@+id/prof_pic"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:layout_width="@dimen/_120sdp"
+                            android:layout_height="@dimen/_120sdp"
                             android:layout_gravity="center"
                             android:scaleType="centerCrop"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -70,8 +70,8 @@
 
                 <ImageButton
                     android:id="@+id/edit_image"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
                     android:layout_marginEnd="-8dp"
                     android:layout_marginBottom="-8dp"
                     android:background="@drawable/edit_button_back"
@@ -84,9 +84,9 @@
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="@font/cairo_semibold"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/_14ssp"
                     android:text="Abdelrahman Moahmed"
                     android:textColor="@color/lightSand"
                     app:layout_constraintEnd_toEndOf="@+id/prof_pic_card"
@@ -101,7 +101,7 @@
                     android:layout_marginTop="-7dp"
                     android:text="Example@gmail.com"
                     android:fontFamily="@font/cairo_regular"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/_6ssp"
                     android:textColor="@color/secTitleColor"
                     app:layout_constraintEnd_toEndOf="@+id/name"
                     app:layout_constraintStart_toStartOf="@+id/name"

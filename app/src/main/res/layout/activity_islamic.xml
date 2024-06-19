@@ -15,7 +15,7 @@
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="@dimen/_400sdp"
             app:collapsedTitleGravity="start"
             app:collapsedTitleTextColor="@color/lightSand"
             app:contentScrim="@color/whiteSand"
@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/transparent"
-                    android:padding="5dp"
+                    android:padding="@dimen/_5sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:tabBackground="@drawable/viewpagerselected"
                     app:tabGravity="center"
@@ -61,7 +61,7 @@
                 app:buttonGravity="bottom"
                 app:layout_collapseMode="pin"
                 app:menu="@menu/profile_menu"
-                app:navigationIcon="@drawable/navigation_drawer_icon">
+                app:navigationIcon="@drawable/more">
 
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>

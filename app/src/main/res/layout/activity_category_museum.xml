@@ -38,7 +38,7 @@
                         android:id="@+id/search_bar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="70dp"
+                        android:layout_marginTop="@dimen/_70sdp"
                         android:backgroundTint="@color/white"
                         android:hint="إلي أي تراث تتطلع ....؟"
                         app:backgroundTint="@color/white"
@@ -50,7 +50,7 @@
                         app:layout_constraintVertical_bias="0.15"
                         app:navigationIcon="@drawable/search_icon"
                         app:strokeColor="#B7B2AB"
-                        app:strokeWidth="1dp" />
+                        app:strokeWidth="@dimen/_1sdp" />
 
 
                 </LinearLayout>
@@ -62,7 +62,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="@dimen/_60sdp"
                 android:gravity="center"
                 app:buttonGravity="bottom"
                 app:layout_collapseMode="pin"
@@ -89,7 +89,7 @@
         android:layout_height="match_parent"
         app:backgroundTint="@color/lightSand"
         app:layout_anchor="@id/search_bar"
-        app:searchIcon="@drawable/search_icon">
+        app:searchIcon="@drawable/search_ic">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
