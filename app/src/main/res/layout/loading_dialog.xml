@@ -9,8 +9,8 @@
     app:strokeWidth="0dp">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_120sdp"
         android:backgroundTint="#F1F0EB"
         app:strokeWidth="0dp">
 
@@ -21,8 +21,8 @@
 
             <ProgressBar
                 android:id="@+id/progressBar"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
                 android:indeterminateTint="@color/mainBtn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -12,7 +12,12 @@ import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
 
 class ARViewModel : ViewModel() {
-    fun spawnObject(anchor: Anchor, modelUri: Uri, context: Context, arFragment: ArFragment) {
+    suspend fun spawnObject(
+        anchor: Anchor,
+        modelUri: Uri,
+        context: Context,
+        arFragment: ArFragment
+    ) {
 
 
         val renderableSource = RenderableSource.builder()

@@ -9,14 +9,10 @@
 
     <ImageView
         android:id="@+id/animatedLogo"
-        android:layout_width="280dp"
+        android:layout_width="@dimen/_280sdp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-   
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,9 +6,12 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.ar.sceneform.ux.ArFragment
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityAgumentedRealityBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class AgumentedRealityActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityAgumentedRealityBinding
@@ -29,10 +32,14 @@ class AgumentedRealityActivity : AppCompatActivity() {
         Log.i("pieceAr", arData)
         Log.i("pieceData", pieceName.toString())
         arFragment.setOnTapArPlaneListener { hitResult, _, _ ->
-            viewModel.spawnObject(
-                hitResult.createAnchor(),
-                Uri.parse(arData), this@AgumentedRealityActivity, arFragment
-            )
+            lifecycleScope.launch(Dispatchers.Unconfined) {
+                viewModel.spawnObject(
+                    hitResult.createAnchor(),
+                    Uri.parse(arData), this@AgumentedRealityActivity, arFragment
+                )
+            }
+
+
         }
 
         viewBinding.dataBtn.setOnClickListener {
