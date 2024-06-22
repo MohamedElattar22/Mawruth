@@ -1,14 +1,14 @@
 package com.graduation.domain.useCase
 
-import com.graduation.domain.model.signupdata.SignUpRequiredData
-import com.graduation.domain.model.signupdata.User
+import com.graduation.domain.model.VerificationResponse
+import com.graduation.domain.model.authenticationuser.User
 import com.graduation.domain.repositories.UserAuthenticationRepository
 import javax.inject.Inject
 
 class SignUpUserUseCase @Inject constructor(
     private val signUpRepository: UserAuthenticationRepository
 ) {
-    suspend fun invoke(userData: SignUpRequiredData): User {
+    suspend fun invoke(userData: User): VerificationResponse {
         return signUpRepository.registerUser(userData)
     }
 }

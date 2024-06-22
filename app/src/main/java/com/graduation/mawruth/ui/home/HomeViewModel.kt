@@ -5,11 +5,11 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.graduation.domain.model.categories.CategoriesDtoItem
-import com.graduation.domain.model.museum.MuseumDto
-import com.graduation.domain.model.userinfo.UserInformationDto
+import com.graduation.domain.model.authenticationuser.User
+import com.graduation.domain.model.categories.CategoriesResponse
+import com.graduation.domain.model.museums.MuseumsResponse
 import com.graduation.domain.useCase.CategoriesUseCase
-import com.graduation.domain.useCase.GetMuseumsDataUseCase
+import com.graduation.domain.useCase.GetMuseumsAllUseCase
 import com.graduation.domain.useCase.GetUserInformationUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -17,19 +17,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getMuseumsDataUseCase: GetMuseumsDataUseCase,
+    private val getMuseumsAllUseCase: GetMuseumsAllUseCase,
     private val categoriesUseCase: CategoriesUseCase,
     private val getUserInformationUseCase: GetUserInformationUseCase,
     private val sharedPreferences: SharedPreferences
 ) :
     ViewModel() {
 
-    val museumData = MutableLiveData<List<MuseumDto?>?>()
-    val museumCategory = MutableLiveData<List<CategoriesDtoItem?>?>()
+    val museumData = MutableLiveData<MuseumsResponse?>()
+    val museumCategory = MutableLiveData<CategoriesResponse?>()
     val loadingLiveData = MutableLiveData<Boolean>()
 
     val error = MutableLiveData<String>()
-    val infoLiveData = MutableLiveData<UserInformationDto>()
+    val infoLiveData = MutableLiveData<User>()
 
     fun getCategories() {
         viewModelScope.launch {
@@ -47,7 +47,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             loadingLiveData.postValue(true)
             try {
-                val result = getMuseumsDataUseCase.invoke()
+                val result = getMuseumsAllUseCase.invoke()
                 museumData.postValue(result)
                 Log.e("list", result.toString())
             } catch (e: Exception) {

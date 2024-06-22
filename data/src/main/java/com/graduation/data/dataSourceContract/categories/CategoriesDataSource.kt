@@ -1,9 +1,9 @@
 package com.graduation.data.dataSourceContract.categories
 
 
-import com.graduation.domain.model.categories.CategoriesDtoItem
+import com.graduation.domain.model.categories.CategoriesResponse
 
 interface CategoriesDataSource {
-    suspend fun getCategories(): List<CategoriesDtoItem?>?
+    suspend fun getCategories(): CategoriesResponse?
 
 }

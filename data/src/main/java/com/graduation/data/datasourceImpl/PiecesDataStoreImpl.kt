@@ -2,13 +2,23 @@ package com.graduation.data.datasourceImpl
 
 import com.graduation.data.api.WebServices
 import com.graduation.data.dataSourceContract.pieces.PiecesDataStore
-import com.graduation.domain.model.museumdata.PiecesItemDto
+import com.graduation.domain.model.pieces.PiecesItem
+import com.graduation.domain.model.pieces.PiecesResponse
 import javax.inject.Inject
 
 class PiecesDataStoreImpl @Inject constructor(private val webServices: WebServices) :
     PiecesDataStore {
-    override suspend fun getPieceById(pieceId: Int): PiecesItemDto? {
+    override suspend fun getPieceById(pieceId: Int): PiecesItem? {
         val result = webServices.getPieceById(pieceId)
-        return result?.toPiecesDto()
+        return result?.toPiecesItem()
+    }
+
+    override suspend fun getMuseumPieces(
+        museumId: Int,
+        page: Int,
+        limit: Int,
+        name: String?
+    ): PiecesResponse? {
+        return webServices.getMuseumPieces(museumId, page, limit, name)?.toPiecesResponse()
     }
 }

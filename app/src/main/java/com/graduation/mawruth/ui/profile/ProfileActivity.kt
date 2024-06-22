@@ -13,6 +13,7 @@ import com.graduation.mawruth.databinding.ActivityProfileBinding
 import com.graduation.mawruth.ui.profile.fragments.showprofile.ShowProfileImageFragment
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class ProfileActivity : AppCompatActivity() {
     lateinit var viewBinding: ActivityProfileBinding
@@ -45,6 +46,8 @@ class ProfileActivity : AppCompatActivity() {
         viewBinding.toolbar.setNavigationOnClickListener {
             finish()
         }
+
+
     }
 
 

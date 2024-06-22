@@ -4,7 +4,7 @@ package com.graduation.mawruth.ui.signup
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.graduation.domain.model.signupdata.SignUpRequiredData
+import com.graduation.domain.model.authenticationuser.User
 import com.graduation.domain.useCase.SignUpUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -29,10 +29,10 @@ class SignUpViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 signUpUserUseCase.invoke(
-                    SignUpRequiredData(
-                        full_name = null,
+                    User(
+                        name = "test",
                         email = email.value,
-                        user_name = userName.value,
+                        username = userName.value,
                         password = password.value
                     )
                 )

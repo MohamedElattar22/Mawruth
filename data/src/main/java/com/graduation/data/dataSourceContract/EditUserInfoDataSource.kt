@@ -1,15 +1,14 @@
 package com.graduation.data.dataSourceContract
 
-import com.graduation.domain.model.userinfo.UserInformationDto
+import com.graduation.domain.model.authenticationuser.AuthenticationResponse
 import java.io.File
 
 interface EditUserInfoDataSource {
-    suspend fun editUserInfo(
-        fullName: String? = null,
-        userName: String? = null,
-        email: String,
-        password: String? = null,
-        phoneNumber: String? = null,
-        avatar: File? = null
-    ): UserInformationDto?
+    suspend fun editUserName(
+        name: String?
+    ): AuthenticationResponse?
+
+    suspend fun editUserImage(
+        image: File?
+    ): AuthenticationResponse?
 }

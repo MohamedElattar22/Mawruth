@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
-import com.graduation.domain.model.userlogin.UserLoginPost
+import com.graduation.domain.model.authenticationuser.User
 import com.graduation.domain.useCase.GetUserInformationUseCase
 import com.graduation.domain.useCase.LoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,7 +23,7 @@ class LoginViewModel @Inject constructor(
     val userLiveData = MutableLiveData<Boolean>()
     val errorLiveData = MutableLiveData<String?>()
     fun login(email: String, password: String) {
-        val user = UserLoginPost(email, password)
+        val user = User(email = email, password = password)
         loadingLiveData.postValue(true)
         viewModelScope.launch {
             try {

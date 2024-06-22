@@ -1,6 +1,5 @@
 package com.graduation.mawruth.ui.museumDetails
 
-import android.content.Intent
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -18,7 +17,6 @@ import com.bumptech.glide.request.transition.Transition
 import com.google.android.material.snackbar.Snackbar
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityMuseumDetailsBinding
-import com.graduation.mawruth.ui.pieceDetails.PieceDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -96,22 +94,23 @@ class MuseumDetailsActivity : AppCompatActivity() {
 
     private fun observeToLiveData() {
         viewModel.infoLiveData.observe(this) {
-            adapter.bindPiecesList(it?.pieces)
-            Log.d("pieces", it?.pieces?.get(0).toString())
-            Log.d("piecesCount", adapter.itemCount.toString())
 
-            adapter.itemClick = PiecesAdapter.OnPieceClickListener { data, _ ->
-                val intent = Intent(this@MuseumDetailsActivity, PieceDetailsActivity::class.java)
-                intent.putExtra("title", data.name)
-                val museumName = viewBinding.museumName.text.toString()
-                intent.putExtra("pieceAR", data.arPath.toString())
-                intent.putExtra("idPiece", data.iD.toString())
-                intent.putExtra("musName", museumName)
-                intent.putExtra("description", data.description)
-                intent.putExtra("image", data.images?.get(0)?.imagePath.toString())
-                intent.putExtra("isMaster", data.masterPiece)
-                startActivity(intent)
-            }
+//            adapter.bindPiecesList(it?.pieces)
+//            Log.d("pieces", it?.pieces?.get(0).toString())
+//            Log.d("piecesCount", adapter.itemCount.toString())
+
+//            adapter.itemClick = PiecesAdapter.OnPieceClickListener { data, _ ->
+//                val intent = Intent(this@MuseumDetailsActivity, PieceDetailsActivity::class.java)
+//                intent.putExtra("title", data.name)
+//                val museumName = viewBinding.museumName.text.toString()
+//                intent.putExtra("pieceAR", data.arPath.toString())
+//                intent.putExtra("idPiece", data.iD.toString())
+//                intent.putExtra("musName", museumName)
+//                intent.putExtra("description", data.description)
+//                intent.putExtra("image", data.images?.get(0)?.imagePath.toString())
+//                intent.putExtra("isMaster", data.masterPiece)
+//                startActivity(intent)
+//            }
         }
         viewModel.error.observe(this) {
 
@@ -129,7 +128,7 @@ class MuseumDetailsActivity : AppCompatActivity() {
             Toast.makeText(this, "Review Add Successfully", Toast.LENGTH_SHORT).show()
         }
         viewModel.reviewListLiveData.observe(this) {
-            reviewsRecyclerAdapter.bindReviewsList(it?.toMutableList())
+            reviewsRecyclerAdapter.bindReviewsList(it?.data?.toMutableList())
             Log.e("review", it.toString())
         }
     }

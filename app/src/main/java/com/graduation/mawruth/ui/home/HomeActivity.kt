@@ -21,7 +21,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
-import com.graduation.domain.model.userinfo.UserInformationDto
+import com.graduation.domain.model.authenticationuser.User
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityHomeBinding
 import com.graduation.mawruth.ui.home.musumsbytype.CategoryMuseumActivity
@@ -49,7 +49,7 @@ class HomeActivity : AppCompatActivity() {
     private val DELAY_MS: Long = 500 //delay in milliseconds before task is to be executed
     private val PERIOD_MS: Long = 3000
     private lateinit var viewModel: HomeViewModel
-    var user: UserInformationDto? = null
+    var user: User? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityHomeBinding.inflate(layoutInflater)
@@ -103,10 +103,10 @@ class HomeActivity : AppCompatActivity() {
             viewBinding.content.failedContent.isVisible = false
             viewBinding.viewPager.isVisible = true
             viewBinding.tabLayout.isVisible = true
-            museumRecyclerAdapter.bindMuseumsList(it)
+            museumRecyclerAdapter.bindMuseumsList(it?.data)
         }
         viewModel.museumCategory.observe(this) {
-            catAdapter.bindMuseumsList(it)
+            catAdapter.bindMuseumsList(it?.data)
         }
 
         viewModel.loadingLiveData.observe(this) {
@@ -147,19 +147,19 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("museumName", museumDto.name)
                 intent.putExtra("museumLoc", museumDto.city)
                 intent.putExtra("museumStreet", museumDto.street)
-                intent.putExtra("museumId", museumDto.iD)
-                intent.putExtra("museumCountry", museumDto.country)
+                intent.putExtra("museumId", museumDto.id)
+                intent.putExtra("museumCountry", museumDto.city)
                 intent.putExtra("museumDesc", museumDto.description)
-                intent.putExtra("museumWork", museumDto.workTime)
+                intent.putExtra("museumWork", "")
                 intent.putExtra("museumImage", museumDto.images?.get(0)?.imagePath)
-                intent.putExtra("museumType1", museumDto.types?.get(0)?.name)
-                intent.putExtra("museumType2", museumDto.types?.get(1)?.name)
+                intent.putExtra("museumType1", museumDto.categories?.get(0)?.museumCategory?.name)
+                intent.putExtra("museumType2", museumDto.categories?.get(1)?.museumCategory?.name)
                 startActivity(intent)
             }
         catAdapter.onTypeClickListener =
             CategoriesRecyclerAdapter.OnTypeClickListener { categoriesDtoItem, _ ->
                 val intent = Intent(this@HomeActivity, CategoryMuseumActivity::class.java)
-                val typeId = categoriesDtoItem.iD.toString()
+                val typeId = categoriesDtoItem.id.toString()
                 intent.putExtra("typeId", typeId)
                 startActivity(intent)
             }
@@ -215,14 +215,14 @@ class HomeActivity : AppCompatActivity() {
             loginHeader.visibility = View.VISIBLE
             guest.visibility = View.INVISIBLE
             sharedPreferences.getString("userInfo", null)?.let {
-                user = Gson().fromJson(it, UserInformationDto::class.java)
+                user = Gson().fromJson(it, User::class.java)
                 val name = header.findViewById<TextView>(R.id.Headername)
                 viewBinding.nav.menu.setGroupVisible(R.menu.drawer_menu, true)
-                name.text = user?.fullName
+                name.text = user?.name
                 val email = header.findViewById<TextView>(R.id.headeremail)
-                email.text = "@${user?.userName}"
+                email.text = "@${user?.username}"
                 val image = header.findViewById<ImageView>(R.id.header_pic)
-                Glide.with(this).load(user?.avatar).placeholder(R.drawable.person).into(image)
+                Glide.with(this).load(user?.image).placeholder(R.drawable.person).into(image)
             }
             header.setOnClickListener {
                 navigateToProfile()

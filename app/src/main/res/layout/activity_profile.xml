@@ -9,12 +9,14 @@
     android:background="@color/white">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/back_prof"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_300sdp"
             android:fitsSystemWindows="true"
@@ -116,7 +118,7 @@
                 app:buttonGravity="bottom"
                 app:layout_collapseMode="pin"
                 app:menu="@menu/profile_menu"
-                app:navigationIcon="@drawable/backbtn" />
+                app:navigationIcon="@drawable/backbtn"></androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

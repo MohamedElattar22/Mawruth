@@ -1,19 +1,16 @@
 package com.graduation.data.dataSourceContract
 
-import com.graduation.domain.model.ResendOtpData
-import com.graduation.domain.model.signupdata.EmailConfirmationData
-import com.graduation.domain.model.signupdata.SignUpRequiredData
-import com.graduation.domain.model.signupdata.User
-import com.graduation.domain.model.userlogin.UserLoginDto
-import com.graduation.domain.model.userlogin.UserLoginPost
+import com.graduation.domain.model.VerificationResponse
+import com.graduation.domain.model.authenticationuser.AuthenticationResponse
+import com.graduation.domain.model.authenticationuser.User
 
 interface UserAuthenticationDataSource {
-    suspend fun signUpUser(userData: SignUpRequiredData): User
+    suspend fun signUpUser(userSignUpPost: User): VerificationResponse?
 
-    suspend fun loginUser(userLoginPost: UserLoginPost): UserLoginDto
+    suspend fun loginUser(userLoginPost: User): AuthenticationResponse?
 
-    suspend fun verifyEmail(verifyData: EmailConfirmationData): String
+    suspend fun verifyEmail(verifyData: User): AuthenticationResponse?
 
-    suspend fun resendOTP(email: ResendOtpData): String
+    suspend fun resendOTP(email: User): VerificationResponse?
 
 }

@@ -2,33 +2,27 @@ package com.graduation.data.datasourceImpl
 
 import com.graduation.data.api.WebServices
 import com.graduation.data.dataSourceContract.UserAuthenticationDataSource
-import com.graduation.domain.model.ResendOtpData
-import com.graduation.domain.model.signupdata.EmailConfirmationData
-import com.graduation.domain.model.signupdata.SignUpRequiredData
-import com.graduation.domain.model.signupdata.User
-import com.graduation.domain.model.userlogin.UserLoginDto
-import com.graduation.domain.model.userlogin.UserLoginPost
+import com.graduation.domain.model.VerificationResponse
+import com.graduation.domain.model.authenticationuser.AuthenticationResponse
+import com.graduation.domain.model.authenticationuser.User
 import javax.inject.Inject
 
 class UserAuthenticationDataSourceImpl @Inject constructor(private val webServices: WebServices) :
     UserAuthenticationDataSource {
-    override suspend fun signUpUser(userData: SignUpRequiredData): User {
-        val user = webServices.signUpUser(userData)
-        return user.toUser()
+    override suspend fun signUpUser(userSignUpPost: User): VerificationResponse? {
+        return webServices.signUpUser(userSignUpPost)?.toVerificationResponse()
     }
 
-    override suspend fun loginUser(userLoginPost: UserLoginPost): UserLoginDto {
+    override suspend fun loginUser(userLoginPost: User): AuthenticationResponse? {
         val result = webServices.loginUser(userLoginPost)
-        return result.toUserDto()
+        return result?.toAuthenticationResponse()
     }
 
-    override suspend fun verifyEmail(verifyData: EmailConfirmationData): String {
-        return webServices.verifyOTP(verifyData).message.toString()
+    override suspend fun verifyEmail(verifyData: User): AuthenticationResponse? {
+        return webServices.verifyOTP(verifyData)?.toAuthenticationResponse()
     }
 
-    override suspend fun resendOTP(email: ResendOtpData): String {
-        return webServices.resendOTP(email).message!!
+    override suspend fun resendOTP(email: User): VerificationResponse? {
+        return webServices.resendOTP(email)?.toVerificationResponse()
     }
-
-
 }
