@@ -1,5 +1,6 @@
 package com.graduation.mawruth.ui.museumDetails
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -17,6 +18,7 @@ import com.bumptech.glide.request.transition.Transition
 import com.google.android.material.snackbar.Snackbar
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityMuseumDetailsBinding
+import com.graduation.mawruth.ui.pieceDetails.PieceDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,11 +40,15 @@ class MuseumDetailsActivity : AppCompatActivity() {
     private fun initViews() {
         viewBinding.lay.piecesRV.adapter = adapter
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        val museumID = intent.getStringExtra("museumId")
+//
+        Log.d("museumId", museumID.toString())
         viewBinding.museumName.text = intent.getStringExtra("museumName")
         viewBinding.lay.street.text = intent.getStringExtra("museumStreet")
         viewBinding.lay.reviewRec.adapter = reviewsRecyclerAdapter
         viewBinding.lay.reviewContainer.movementMethod = ScrollingMovementMethod()
         museumId = intent.getIntExtra("museumId", 0)
+        viewModel.getMuseumPieces(museumId)
         viewModel.getReviews(museumId)
 
         val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
@@ -93,45 +99,52 @@ class MuseumDetailsActivity : AppCompatActivity() {
 
 
     private fun observeToLiveData() {
-        viewModel.infoLiveData.observe(this) {
+        viewModel.piecesList.observe(this) {
+            adapter.bindPiecesList(listOf(it))
+            adapter.itemClick = PiecesAdapter.OnPieceClickListener { data, _ ->
+                val intent = Intent(this@MuseumDetailsActivity, PieceDetailsActivity::class.java)
+                intent.putExtra("title", data.data?.get(0)?.name)
+                Log.d("livea", data.data?.get(0)?.name.toString())
+                val museumName = viewBinding.museumName.text.toString()
+                intent.putExtra("pieceAR", data.data?.get(0)?.arPath)
+
+                intent.putExtra("idPiece", data.data?.get(0)?.id)
+                intent.putExtra("musName", museumName)
+                intent.putExtra("description", data.data?.get(0)?.description)
+                intent.putExtra("image", data.data?.get(0)?.image)
+                intent.putExtra("isMaster", data.data?.get(0)?.isMasterpiece)
+                startActivity(intent)
+            }
+            viewModel.infoLiveData.observe(this) {
 
 //            adapter.bindPiecesList(it?.pieces)
 //            Log.d("pieces", it?.pieces?.get(0).toString())
 //            Log.d("piecesCount", adapter.itemCount.toString())
 
-//            adapter.itemClick = PiecesAdapter.OnPieceClickListener { data, _ ->
-//                val intent = Intent(this@MuseumDetailsActivity, PieceDetailsActivity::class.java)
-//                intent.putExtra("title", data.name)
-//                val museumName = viewBinding.museumName.text.toString()
-//                intent.putExtra("pieceAR", data.arPath.toString())
-//                intent.putExtra("idPiece", data.iD.toString())
-//                intent.putExtra("musName", museumName)
-//                intent.putExtra("description", data.description)
-//                intent.putExtra("image", data.images?.get(0)?.imagePath.toString())
-//                intent.putExtra("isMaster", data.masterPiece)
-//                startActivity(intent)
+
 //            }
-        }
-        viewModel.error.observe(this) {
+            }
+            viewModel.error.observe(this) {
 
-            Log.e("el3ttarError", it.toString())
-            Snackbar.make(
-                this,
-                viewBinding.root,
-                it,
-                Snackbar.LENGTH_SHORT
-            ).show()
+                Log.e("el3ttarError", it.toString())
+                Snackbar.make(
+                    this,
+                    viewBinding.root,
+                    it,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+            viewModel.reviewLiveData.observe(this) {
+//            reviewsRecyclerAdapter.bindSingleReview(it)
+                viewBinding.lay.reviewContainer.text!!.clear()
+                Toast.makeText(this, "Review Add Successfully", Toast.LENGTH_SHORT).show()
+            }
+            viewModel.reviewListLiveData.observe(this) {
+//            reviewsRecyclerAdapter.bindReviewsList(it?.data?.toMutableList())
+                Log.e("review", it.toString())
+            }
         }
-        viewModel.reviewLiveData.observe(this) {
-            reviewsRecyclerAdapter.bindSingleReview(it!!)
-            viewBinding.lay.reviewContainer.text!!.clear()
-            Toast.makeText(this, "Review Add Successfully", Toast.LENGTH_SHORT).show()
-        }
-        viewModel.reviewListLiveData.observe(this) {
-            reviewsRecyclerAdapter.bindReviewsList(it?.data?.toMutableList())
-            Log.e("review", it.toString())
-        }
+
+
     }
-
-
 }

@@ -2,6 +2,7 @@ package com.graduation.mawruth.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -22,8 +23,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
 import com.graduation.domain.model.authenticationuser.User
+
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityHomeBinding
+import com.graduation.mawruth.ui.favourities.FavouriteActivity
 import com.graduation.mawruth.ui.home.musumsbytype.CategoryMuseumActivity
 import com.graduation.mawruth.ui.home.viewpager.HomeViewPager
 import com.graduation.mawruth.ui.home.viewpager.TestViewPagerObject
@@ -141,6 +144,10 @@ class HomeActivity : AppCompatActivity() {
         viewBinding.viewPager.adapter = adapter
         handelTabLayoutForPager()
         initDrawer()
+     museumRecyclerAdapter.onLoveClickListener= MuseumRecyclerAdapter.OnMuseumClickListener { museumDto, position ->
+         viewModel.sendfavouritemuseum(position)
+
+     }
         museumRecyclerAdapter.onMuseumClickListener = MuseumRecyclerAdapter
             .OnMuseumClickListener { museumDto, position ->
                 val intent = Intent(this, MuseumDetailsActivity::class.java)
@@ -148,12 +155,13 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("museumLoc", museumDto.city)
                 intent.putExtra("museumStreet", museumDto.street)
                 intent.putExtra("museumId", museumDto.id)
+                Log.d("museumIdMain", museumDto.id.toString())
                 intent.putExtra("museumCountry", museumDto.city)
                 intent.putExtra("museumDesc", museumDto.description)
                 intent.putExtra("museumWork", "")
                 intent.putExtra("museumImage", museumDto.images?.get(0)?.imagePath)
-                intent.putExtra("museumType1", museumDto.categories?.get(0)?.museumCategory?.name)
-                intent.putExtra("museumType2", museumDto.categories?.get(1)?.museumCategory?.name)
+         //     intent.putExtra("museumType1", museumDto.categories?.get(0)?.museumCategory?.name)
+           //   intent.putExtra("museumType2", museumDto.categories?.get(1)?.museumCategory?.name)
                 startActivity(intent)
             }
         catAdapter.onTypeClickListener =
@@ -231,6 +239,9 @@ class HomeActivity : AppCompatActivity() {
 
             viewBinding.nav.setNavigationItemSelectedListener {
                 when (it.itemId) {
+                    R.id.fav ->{
+                        navigatetofavourite()
+                    }
                     R.id.person -> {
 
                         navigateToProfile()
@@ -261,6 +272,11 @@ class HomeActivity : AppCompatActivity() {
                 navigateToRegister()
             }
         }
+    }
+
+    private fun navigatetofavourite() {
+        val intent = Intent(this, FavouriteActivity::class.java)
+        startActivity(intent)
     }
 
     private fun navigateToLogin() {

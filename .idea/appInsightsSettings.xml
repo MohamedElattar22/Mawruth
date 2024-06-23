@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.graduation.mawruth" />
-                  <option name="mobileSdkAppId" value="1:767664460058:android:2521ee94c9da80680f1ca3" />
-                  <option name="projectId" value="mawruth-a039e" />
-                  <option name="projectNumber" value="767664460058" />
+                  <option name="appId" value="PLACEHOLDER" />
+                  <option name="mobileSdkAppId" value="" />
+                  <option name="projectId" value="" />
+                  <option name="projectNumber" value="" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

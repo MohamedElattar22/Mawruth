@@ -2,8 +2,8 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_220sdp"
-    app:cardCornerRadius="@dimen/_20sdp"
+    android:layout_height="@dimen/_160sdp"
+    app:cardCornerRadius="@dimen/_12sdp"
     app:cardUseCompatPadding="true"
     app:strokeWidth="0dp">
 
@@ -27,7 +27,7 @@
         </ImageView>
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/love_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
@@ -61,7 +61,7 @@
             android:text="القاهرة - مصر"
             android:textColor="#80F1F0EB"
             android:fontFamily="@font/cairo_regular"
-            android:textSize="@dimen/_4ssp"
+            android:textSize="@dimen/_6ssp"
             app:layout_constraintHorizontal_bias="1"
             app:layout_constraintBottom_toTopOf="@+id/rate"
             app:layout_constraintEnd_toStartOf="@+id/imageView6"
@@ -70,8 +70,8 @@
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="@dimen/_15sdp"
-            android:layout_height="@dimen/_15sdp"
+            android:layout_width="@dimen/_8sdp"
+            android:layout_height="@dimen/_8sdp"
             android:src="@drawable/location"
             android:layout_marginEnd="@dimen/_7sdp"
             app:layout_constraintBottom_toBottomOf="@+id/museum_location"
@@ -88,7 +88,7 @@
             android:fontFamily="@font/cairo_regular"
             android:text="4.9"
             android:textColor="#80F1F0EB"
-            android:textSize="@dimen/_3ssp"
+            android:textSize="@dimen/_6ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/museum_location" />

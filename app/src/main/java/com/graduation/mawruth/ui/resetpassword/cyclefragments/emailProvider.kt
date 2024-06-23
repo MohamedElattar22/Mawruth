@@ -1,8 +1,9 @@
 package com.graduation.mawruth.ui.resetpassword.cyclefragments
 
-import com.graduation.domain.model.userinfo.UserInformationDto
+import com.graduation.data.model.authuserdata.AuthenticationUserDto
+
 
 object emailProvider {
     var emailData: String = ""
-    var accountData: UserInformationDto? = null
+    var accountData: AuthenticationUserDto? = null
 }

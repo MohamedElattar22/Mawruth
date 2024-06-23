@@ -15,7 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
-import com.graduation.domain.model.userinfo.UserInformationDto
+import com.graduation.data.model.authuserdata.AuthenticationUserDto
+
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.FragmentEditPasswordBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,17 +46,17 @@ class EditPasswordFragment : Fragment() {
         setDialog()
         requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE)
             .getString("userInfo", null)?.let {
-                val user = Gson().fromJson(it, UserInformationDto::class.java)
+                val user = Gson().fromJson(it, AuthenticationUserDto::class.java)
                 viewBinding.newpasstextx.addTextChangedListener(textWatcher)
                 viewBinding.newpasstextconfirm.addTextChangedListener(textWatcher)
                 viewBinding.oldpasstext.addTextChangedListener(passwordTextWatcher)
-                viewBinding.saveBtn.setOnClickListener {
-
-                    if (handelTextError(user)) {
-                        dialog.show()
-                        viewModel.editPassword(viewBinding.newpasstextx.text.toString().trim())
-                    }
-                }
+//                viewBinding.saveBtn.setOnClickListener {
+//
+//                    if (handelTextError(user)) {
+//                        dialog.show()
+//                        viewModel.editPassword(viewBinding.newpasstextx.text.toString().trim())
+//                    }
+//                }
             }
         observeLiveData()
         viewBinding.ignoreBtn.setOnClickListener {
@@ -138,28 +139,28 @@ class EditPasswordFragment : Fragment() {
         }
     }
 
-    private fun handelTextError(user: UserInformationDto): Boolean {
-        var isInvalid = false
-        if (user.password.toString() != viewBinding.oldpasstext.text.toString().trim()) {
-            viewBinding.oldpass.error = "Invalid password"
-        } else {
-            viewBinding.oldpass.error = null
-            isInvalid = true
-        }
-        if (viewBinding.newpasstextx.text.toString().trim()
-                .isBlank() || viewBinding.newpasstextconfirm.text.toString().trim()
-                .isBlank()
-        ) {
-            viewBinding.newpassconfirm.error = "Password is not match"
-            viewBinding.newpass.error = "Password is not match"
-        } else {
-            viewBinding.newpassconfirm.error = null
-            viewBinding.newpass.error = null
-            isInvalid = true
-        }
-
-
-        return isInvalid
-    }
+//    private fun handelTextError(user: AuthenticationUserDto): Boolean {
+//        var isInvalid = false
+//        if (user..toString() != viewBinding.oldpasstext.text.toString().trim()) {
+//            viewBinding.oldpass.error = "Invalid password"
+//        } else {
+//            viewBinding.oldpass.error = null
+//            isInvalid = true
+//        }
+//        if (viewBinding.newpasstextx.text.toString().trim()
+//                .isBlank() || viewBinding.newpasstextconfirm.text.toString().trim()
+//                .isBlank()
+//        ) {
+//            viewBinding.newpassconfirm.error = "Password is not match"
+//            viewBinding.newpass.error = "Password is not match"
+//        } else {
+//            viewBinding.newpassconfirm.error = null
+//            viewBinding.newpass.error = null
+//            isInvalid = true
+//        }
+//
+//
+//        return isInvalid
+//    }
 
 }

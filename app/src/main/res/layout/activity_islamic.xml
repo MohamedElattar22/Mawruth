@@ -61,7 +61,7 @@
                 app:buttonGravity="bottom"
                 app:layout_collapseMode="pin"
                 app:menu="@menu/profile_menu"
-                app:navigationIcon="@drawable/more">
+                app:navigationIcon="@drawable/more_s">
 
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>

@@ -8,7 +8,7 @@ class GetMuseumsAllUseCase
 @Inject constructor(private val museumRepository: MuseumRepository) {
 
     suspend fun invoke(
-        page: Int = 10,
+        page: Int = 1,
         limit: Int = 10,
         name: String? = null,
         category: String? = null,

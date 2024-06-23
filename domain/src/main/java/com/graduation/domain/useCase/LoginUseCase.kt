@@ -9,6 +9,6 @@ class LoginUseCase @Inject constructor(private val userAuthenticationRepository:
 
     suspend fun invoke(user: User): AuthenticationResponse {
         val result = userAuthenticationRepository.loginUser(user)
-        return result
+        return result!!
     }
 }

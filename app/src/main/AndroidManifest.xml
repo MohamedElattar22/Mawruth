@@ -40,6 +40,14 @@
             android:name=".ui.pieceDetails.PieceDetailsActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.notificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.favourities.FavouriteActivity"
+            android:exported="false" />
+
+
+        <activity
             android:name=".ui.islamicmuseum.IslamicActivity"
             android:exported="false" /> <!-- <service -->
         <!-- android:name="androidx.appcompat.app.AppLocalesMetadataHolderService" -->
@@ -108,13 +116,13 @@
             android:name="com.google.ar.core"
             android:value="required" />
 
-        <service
-            android:name=".utils.FirebaseCloudMessaging"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
+        <!--        <service-->
+        <!--            android:name=".utils.FirebaseCloudMessaging"-->
+        <!--            android:exported="false">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+        <!--            </intent-filter>-->
+        <!--        </service>-->
     </application>
 
 </manifest>

@@ -54,9 +54,21 @@ WebServices {
         @Body email: User
     ): VerificationResponseDto?
 
+    @POST("/auth/forget-password")
+    suspend fun forgetPassword(
+        @Body email: User
+    ): VerificationResponseDto?
+
+    @POST("/auth/reset-password")
+    suspend fun resetPassword(
+        @Body email: User,
+        @Body password: User
+    ): VerificationResponseDto?
 
     @GET("users/me")
-    suspend fun getUserInfo(): AuthenticationResponseDto?
+    suspend fun getUserInfo(
+
+    ): AuthenticationResponseDto?
 
     @GET("museums/{museumId}")
     suspend fun getMuseumById(
@@ -68,7 +80,7 @@ WebServices {
         @Path("pieceId") pieceId: Int
     ): PiecesItemDto?
 
-    @GET("museum/pieces/{museumId}")
+    @GET("pieces/museum/{museumId}")
     suspend fun getMuseumPieces(
         @Path("museumId") museumId: Int,
         @Query("page") page: Int? = 1,
@@ -108,4 +120,13 @@ WebServices {
         @Query("page") page: Int? = 1,
         @Query("limit") limit: Int? = 10,
     ): AllReviewsResponseDto?
+
+    @GET("favorites/museums")
+    suspend fun getfavouriteMuseum(
+
+    ):MuseumsResponseDto
+    @POST("favorites/museums/{id}")
+suspend fun postfavouriteMuseums(
+        @Path("id") museumId: Int
+):VerificationResponseDto
 }

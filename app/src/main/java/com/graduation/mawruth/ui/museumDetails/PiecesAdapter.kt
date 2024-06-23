@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.graduation.domain.model.museumdata.PiecesItemDto
+import com.graduation.domain.model.pieces.PiecesResponse
 import com.graduation.mawruth.databinding.PieceRecyclerItemBinding
 
-class PiecesAdapter(var list: List<PiecesItemDto?>?) :
+class PiecesAdapter(var list: List<PiecesResponse?>) :
     RecyclerView.Adapter<PiecesAdapter.MyViewHolder>() {
     var itemClick: OnPieceClickListener? = null
 
@@ -21,20 +21,20 @@ class PiecesAdapter(var list: List<PiecesItemDto?>?) :
         return MyViewHolder(view)
     }
 
-    fun bindPiecesList(list: List<PiecesItemDto?>?) {
+    fun bindPiecesList(list: List<PiecesResponse?>) {
         this.list = list
         notifyDataSetChanged()
     }
 
-    override fun getItemCount(): Int = list!!.size
+    override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = list?.get(position)
-        holder.viewBinding.pieceTitleTV.text = item?.name.toString()
+        val item = list.get(position)
+        holder.viewBinding.pieceTitleTV.text = item?.data?.get(0)?.name
         Glide.with(holder.itemView)
-            .load(item?.images?.get(0)?.imagePath.toString())
+            .load(item?.data?.get(0)?.image.toString())
             .into(holder.viewBinding.pieceImage)
-        Log.d("imageUrl", item?.images?.get(0)?.imagePath.toString())
+        Log.d("imageUrl", item?.data?.get(0)?.image.toString())
         holder.viewBinding.toPieceDetailsBtn.setOnClickListener {
             itemClick?.onClick(item!!, position)
         }
@@ -42,6 +42,6 @@ class PiecesAdapter(var list: List<PiecesItemDto?>?) :
         }
 
     fun interface OnPieceClickListener {
-        fun onClick(data: PiecesItemDto, position: Int)
+        fun onClick(data: PiecesResponse, position: Int)
     }
 }

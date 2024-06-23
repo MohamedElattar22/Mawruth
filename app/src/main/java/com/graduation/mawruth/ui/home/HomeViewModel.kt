@@ -11,6 +11,7 @@ import com.graduation.domain.model.museums.MuseumsResponse
 import com.graduation.domain.useCase.CategoriesUseCase
 import com.graduation.domain.useCase.GetMuseumsAllUseCase
 import com.graduation.domain.useCase.GetUserInformationUseCase
+import com.graduation.domain.useCase.sendFavouriteMuseumUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,7 +21,8 @@ class HomeViewModel @Inject constructor(
     private val getMuseumsAllUseCase: GetMuseumsAllUseCase,
     private val categoriesUseCase: CategoriesUseCase,
     private val getUserInformationUseCase: GetUserInformationUseCase,
-    private val sharedPreferences: SharedPreferences
+    private val sharedPreferences: SharedPreferences,
+    private val sendFavouriteMuseumUseCase: sendFavouriteMuseumUseCase
 ) :
     ViewModel() {
 
@@ -50,6 +52,20 @@ class HomeViewModel @Inject constructor(
                 val result = getMuseumsAllUseCase.invoke()
                 museumData.postValue(result)
                 Log.e("list", result.toString())
+            } catch (e: Exception) {
+                error.postValue(e.localizedMessage)
+                Log.e("list", e.localizedMessage!!)
+            } finally {
+                loadingLiveData.postValue(false)
+            }
+        }
+    }
+    fun sendfavouritemuseum(museumid:Int){
+        viewModelScope.launch {
+            loadingLiveData.postValue(true)
+            try {
+                val result = sendFavouriteMuseumUseCase.sendFavouriteMuseums(museumid)
+                Log.e("postresponse", result?.status!!)
             } catch (e: Exception) {
                 error.postValue(e.localizedMessage)
                 Log.e("list", e.localizedMessage!!)

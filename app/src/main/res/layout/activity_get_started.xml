@@ -28,18 +28,18 @@
 
             <ImageView
                 android:layout_marginTop="80dp"
-                android:layout_width="@dimen/_290sdp"
-                android:layout_height="@dimen/_300sdp"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_200sdp"
                 android:src="@drawable/full_logo_size"
               >
             </ImageView>
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/toRegisterBtn"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_55sdp"
+                android:layout_height="@dimen/_45sdp"
                 android:fontFamily="@font/cairo_regular"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
                 style="@style/heroBtn"
                 android:text="@string/register_acc"
                 >
@@ -50,7 +50,7 @@
                 style="@style/strokeBtn"
                 android:fontFamily="@font/cairo_regular"
                 android:text="تسجيــل الدخـــول"
-                android:layout_height="@dimen/_65sdp">
+                android:layout_height="@dimen/_47sdp">
 
             </com.google.android.material.button.MaterialButton>
             <ImageView

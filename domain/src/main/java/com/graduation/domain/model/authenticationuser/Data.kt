@@ -5,7 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Data(
-
     val user: User? = null,
     val token: String? = null,
     val message: String? = null,
