@@ -11,7 +11,7 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_260sdp"
+        android:layout_height="@dimen/_200sdp"
         android:src="@drawable/email_confirm">
 
     </ImageView>
@@ -60,13 +60,14 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/otp1"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_55sdp"
                 android:cursorVisible="false"
                 android:drawablePadding="@dimen/_10sdp"
                 android:fontFamily="@font/cairo_semibold"
                 android:gravity="center"
                 android:hint="-"
+                android:layout_marginStart="@dimen/_15sdp"
                 android:imeOptions="actionNext"
                 android:inputType="number"
                 android:maxEms="1"

@@ -18,9 +18,11 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#F1F0EB"
             app:cardCornerRadius="@dimen/_30sdp"
-            app:strokeWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeWidth="0dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -32,11 +34,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/_5sdp"
+                    android:drawableTint="@color/darkBrown"
                     android:text="الحساب"
                     android:textColor="@color/darkBrown"
-                    android:drawableTint="@color/darkBrown"
-                    app:drawableEndCompat="@drawable/person"
                     android:textSize="@dimen/_18ssp"
+                    app:drawableEndCompat="@drawable/person"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -169,8 +171,9 @@
                     app:iconGravity="start"
                     app:iconSize="@null"
                     app:iconTint="@color/paragraph"
-                    app:layout_constraintStart_toStsartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v3" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lang_btn" />
 
                 <ImageView
                     android:id="@+id/imageView3"

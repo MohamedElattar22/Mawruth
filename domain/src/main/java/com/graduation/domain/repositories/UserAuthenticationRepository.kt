@@ -10,5 +10,8 @@ interface UserAuthenticationRepository {
     suspend fun confirmEmail(emailConfirmationData: User): AuthenticationResponse?
     suspend fun resendOTP(email: User): VerificationResponse?
 
+    suspend fun forgetPassword(email: User): VerificationResponse?
+    suspend fun resetPassword(email: User, password: User): VerificationResponse?
+
 
 }

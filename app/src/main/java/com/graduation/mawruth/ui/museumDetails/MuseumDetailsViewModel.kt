@@ -7,10 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.graduation.domain.model.authenticationuser.User
 import com.graduation.domain.model.museums.MuseumItem
+import com.graduation.domain.model.pieces.PiecesResponse
 import com.graduation.domain.model.reviews.AllReviewsResponse
 import com.graduation.domain.model.reviews.ReviewsData
 import com.graduation.domain.model.reviews.ReviewsResponse
 import com.graduation.domain.useCase.GetMuseumByIdUseCase
+import com.graduation.domain.useCase.GetMuseumPieces
 import com.graduation.domain.useCase.GetReviewsUseCase
 import com.graduation.domain.useCase.SendReviewUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,12 +22,14 @@ import javax.inject.Inject
 @HiltViewModel
 class MuseumDetailsViewModel @Inject constructor(
     private val getMuseumByIDUseCase: GetMuseumByIdUseCase,
+    private val getMuseumPieces: GetMuseumPieces,
     private val sendReviewUseCase: SendReviewUseCase,
     private val sharedPreferences: SharedPreferences,
     private val getReviewsUseCase: GetReviewsUseCase,
 ) : ViewModel() {
     val error = MutableLiveData<String>()
     val infoLiveData = MutableLiveData<MuseumItem?>()
+    val piecesList = MutableLiveData<PiecesResponse?>()
     val reviewLiveData = MutableLiveData<ReviewsResponse?>()
     val reviewListLiveData = MutableLiveData<AllReviewsResponse?>()
     fun getMuseumById(museumId: Int) {
@@ -54,6 +58,18 @@ class MuseumDetailsViewModel @Inject constructor(
             } catch (e: Exception) {
                 error.postValue(e.localizedMessage)
             }
+        }
+    }
+
+    fun getMuseumPieces(museumId: Int) {
+        viewModelScope.launch {
+            try {
+                val result = getMuseumPieces.invoke(museumId = museumId)
+                piecesList.postValue(result)
+            } catch (e: Exception) {
+                error.postValue(e.localizedMessage)
+            }
+
         }
     }
 

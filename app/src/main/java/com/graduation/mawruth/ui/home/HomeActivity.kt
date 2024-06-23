@@ -2,6 +2,7 @@ package com.graduation.mawruth.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -148,6 +149,7 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("museumLoc", museumDto.city)
                 intent.putExtra("museumStreet", museumDto.street)
                 intent.putExtra("museumId", museumDto.id)
+                Log.d("museumIdMain", museumDto.id.toString())
                 intent.putExtra("museumCountry", museumDto.city)
                 intent.putExtra("museumDesc", museumDto.description)
                 intent.putExtra("museumWork", "")

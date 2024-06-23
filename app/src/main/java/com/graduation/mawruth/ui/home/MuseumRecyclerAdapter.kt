@@ -1,6 +1,5 @@
 package com.graduation.mawruth.ui.home
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -29,15 +28,18 @@ class MuseumRecyclerAdapter(var list: List<MuseumItem?>?) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.itemBinding.rate.text = list?.get(position)?..toString()
+
         holder.itemBinding.museumName.text = list?.get(position)?.name.toString()
         holder.itemBinding.museumLocation.text =
             "${list?.get(position)?.city} ${list?.get(position)?.street}"
-        val imagePath = list?.get(position)?.images?.get(0)?.imagePath
-        Glide.with(holder.itemView)
-            .load(imagePath)
-            .into(holder.itemBinding.musImage)
-        Log.d("images", list?.get(0)?.images?.get(0)?.imagePath.toString())
+
+        list?.get(position)?.images?.get(0)?.imagePath?.let {
+            Glide.with(holder.itemView)
+                .load(it)
+                .into(holder.itemBinding.musImage)
+        }
+
+//        Log.d("images", list?.get(0)?.images?.get(0)?.imagePath.toString())
 //        holder.itemBinding.musImage.background =
 //            ContextCompat.getDrawable(holder.itemBinding.root.context, R.drawable.museum_pic)
 

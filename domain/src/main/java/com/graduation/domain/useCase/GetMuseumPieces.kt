@@ -8,10 +8,7 @@ class GetMuseumPieces @Inject constructor(private val piecesRepository: PiecesRe
 
     suspend fun invoke(
         museumId: Int,
-        page: Int = 1,
-        limit: Int = 10,
-        name: String? = null
     ): PiecesResponse? {
-        return piecesRepository.getAllMuseumPieces(museumId, page, limit, name)
+        return piecesRepository.getAllMuseumPieces(museumId)
     }
 }

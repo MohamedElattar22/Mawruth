@@ -9,6 +9,6 @@ class SignUpUserUseCase @Inject constructor(
     private val signUpRepository: UserAuthenticationRepository
 ) {
     suspend fun invoke(userData: User): VerificationResponse {
-        return signUpRepository.registerUser(userData)
+        return signUpRepository.registerUser(userData)!!
     }
 }

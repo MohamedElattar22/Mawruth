@@ -25,4 +25,12 @@ class UserAuthenticationDataSourceImpl @Inject constructor(private val webServic
     override suspend fun resendOTP(email: User): VerificationResponse? {
         return webServices.resendOTP(email)?.toVerificationResponse()
     }
+
+    override suspend fun forgetPassword(email: User): VerificationResponse? {
+        return webServices.forgetPassword(email)?.toVerificationResponse()
+    }
+
+    override suspend fun resetPassword(email: User, password: User): VerificationResponse? {
+        return webServices.resetPassword(email, password)?.toVerificationResponse()
+    }
 }

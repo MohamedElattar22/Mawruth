@@ -8,7 +8,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.graduation.domain.model.museumdata.PiecesItemDto
+import com.graduation.domain.model.pieces.PiecesItem
 import com.graduation.mawruth.databinding.ActivityPieceDetailsBinding
 import com.graduation.mawruth.ui.arActivity.AgumentedRealityActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,7 +18,7 @@ class PieceDetailsActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityPieceDetailsBinding
     private lateinit var viewModel: PieceDataViewModel
     private var pieceName: String? = null
-    private var pieceData = PiecesItemDto()
+    private var pieceData = PiecesItem()
     private var pieceDes: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,6 @@ class PieceDetailsActivity : AppCompatActivity() {
         super.onStart()
         val id = intent.getStringExtra("idPiece").toString()
         Log.d("id", id)
-        viewModel.getPieceById(id.toInt())
     }
 
     private fun getData() {
