@@ -23,7 +23,7 @@
             app:collapsedTitleTextColor="@color/lightSand"
             app:contentScrim="@color/darkBrown"
             app:expandedTitleGravity="center|top"
-            app:expandedTitleMarginTop="@dimen/_70sdp"
+            app:expandedTitleMarginTop="@dimen/_50sdp"
             app:expandedTitleTextAppearance="@style/toolbarTitle"
             app:expandedTitleTextColor="@color/darkBrown"
             app:layout_scrollFlags="snap|scroll|exitUntilCollapsed"

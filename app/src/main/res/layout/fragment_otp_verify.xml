@@ -42,11 +42,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_40sdp"
         android:orientation="horizontal">
-
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_20sdp"
+            android:id="@+id/otp1Layout"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
             android:outlineSpotShadowColor="@color/paragraph"
             android:textColorHint="@color/inputIcons"
             android:textDirection="locale"
@@ -60,14 +60,13 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/otp1"
-                android:layout_width="@dimen/_55sdp"
-                android:layout_height="@dimen/_55sdp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:cursorVisible="false"
-                android:drawablePadding="@dimen/_10sdp"
+                android:drawablePadding="@dimen/_8sdp"
                 android:fontFamily="@font/cairo_semibold"
                 android:gravity="center"
                 android:hint="-"
-                android:layout_marginStart="@dimen/_15sdp"
                 android:imeOptions="actionNext"
                 android:inputType="number"
                 android:maxEms="1"
@@ -76,7 +75,7 @@
                 android:textAlignment="center"
                 android:textColor="#B9A474"
                 android:textColorHighlight="@color/mainSand"
-                android:textSize="@dimen/_18ssp"
+                android:textSize="@dimen/_16ssp"
                 tools:targetApi="upside_down_cake">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -84,9 +83,10 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_20sdp"
+            android:id="@+id/otp2Layout"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
             android:outlineSpotShadowColor="@color/paragraph"
             android:textColorHint="@color/inputIcons"
             android:textDirection="locale"
@@ -100,15 +100,14 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/otp2"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:cursorVisible="false"
-                android:drawablePadding="@dimen/_10sdp"
+                android:drawablePadding="@dimen/_8sdp"
                 android:fontFamily="@font/cairo_semibold"
                 android:gravity="center"
                 android:hint="-"
                 android:imeOptions="actionNext"
-
                 android:inputType="number"
                 android:maxEms="1"
                 android:maxLength="1"
@@ -116,7 +115,7 @@
                 android:textAlignment="center"
                 android:textColor="#B9A474"
                 android:textColorHighlight="@color/mainSand"
-                android:textSize="@dimen/_18ssp"
+                android:textSize="@dimen/_16ssp"
                 tools:targetApi="upside_down_cake">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -124,9 +123,10 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_20sdp"
+            android:id="@+id/otp3Layout"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
             android:outlineSpotShadowColor="@color/paragraph"
             android:textColorHint="@color/inputIcons"
             android:textDirection="locale"
@@ -140,10 +140,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/otp3"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:cursorVisible="false"
-                android:drawablePadding="@dimen/_10sdp"
+                android:drawablePadding="@dimen/_8sdp"
                 android:fontFamily="@font/cairo_semibold"
                 android:gravity="center"
                 android:hint="-"
@@ -155,17 +155,17 @@
                 android:textAlignment="center"
                 android:textColor="#B9A474"
                 android:textColorHighlight="@color/mainSand"
-                android:textSize="@dimen/_18ssp"
+                android:textSize="@dimen/_16ssp"
                 tools:targetApi="upside_down_cake">
 
             </com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_20sdp"
+            android:id="@+id/otp4Layout"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
             android:outlineSpotShadowColor="@color/paragraph"
             android:textColorHint="@color/inputIcons"
             android:textDirection="locale"
@@ -179,10 +179,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/otp4"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:cursorVisible="false"
-                android:drawablePadding="@dimen/_10sdp"
+                android:drawablePadding="@dimen/_8sdp"
                 android:fontFamily="@font/cairo_semibold"
                 android:gravity="center"
                 android:hint="-"
@@ -194,12 +194,14 @@
                 android:textAlignment="center"
                 android:textColor="#B9A474"
                 android:textColorHighlight="@color/mainSand"
-                android:textSize="@dimen/_18ssp"
+                android:textSize="@dimen/_16ssp"
                 tools:targetApi="upside_down_cake">
 
             </com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -234,7 +236,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/checkBtn"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_60sdp"
+        android:layout_height="@dimen/_50sdp"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_40sdp"
         android:layout_marginEnd="@dimen/_20sdp"
@@ -252,7 +254,7 @@
         android:id="@+id/logInBtn"
         style="@style/strokeBtn"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_60sdp"
+        android:layout_height="@dimen/_50sdp"
         android:layout_marginStart="@dimen/_20sdp"
         android:fontFamily="@font/cairo_regular"
         android:text="إعادة الإرسال"

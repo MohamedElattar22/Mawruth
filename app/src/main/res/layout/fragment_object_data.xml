@@ -30,7 +30,7 @@
         android:fontFamily="@font/cairo_regular"
         android:text="مصر- العصر المملوكي"
         android:textColor="@color/darkBrown"
-        android:textSize="@dimen/_6ssp"
+        android:textSize="@dimen/_10ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pieceTitle">
@@ -69,8 +69,8 @@
 
     <ImageView
         android:id="@+id/soundResource"
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_40sdp"
         android:src="@drawable/speake"
         app:layout_constraintBottom_toBottomOf="@+id/age"
         app:layout_constraintEnd_toEndOf="parent"

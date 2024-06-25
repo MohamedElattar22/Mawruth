@@ -19,7 +19,7 @@
         <ImageView
             android:id="@+id/dialog_profile_pic"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_500sdp"
+            android:layout_height="@dimen/_450sdp"
             android:adjustViewBounds="true"
             tools:src="@drawable/profile_pic" />
 

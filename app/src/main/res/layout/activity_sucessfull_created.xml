@@ -12,8 +12,8 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
-        android:layout_width="@dimen/_250sdp"
-        android:layout_height="@dimen/_250sdp"
+        android:layout_width="@dimen/_220sdp"
+        android:layout_height="@dimen/_220sdp"
         app:lottie_autoPlay="true"
         app:lottie_loop="false"
         app:lottie_rawRes="@raw/success_anim"
@@ -25,7 +25,7 @@
         android:textColor="@color/darkBrown"
         android:fontFamily="@font/cairo_semibold"
         android:text="تـم إنشــاء حسابــك بنجــاح !"
-        android:textSize="@dimen/_22ssp">
+        android:textSize="@dimen/_20ssp">
 
     </TextView>
 
@@ -45,7 +45,7 @@
         android:id="@+id/toRegisterBtn"
         style="@style/heroBtn"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_55sdp"
+        android:layout_height="@dimen/_45sdp"
         android:fontFamily="@font/cairo_semibold"
         android:text="سجل دخولك الآن !"
         android:layout_marginStart="@dimen/_20sdp"
