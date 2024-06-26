@@ -1,12 +1,13 @@
 package com.graduation.domain.useCase
 
-import com.graduation.domain.model.ResendOtpData
+import com.graduation.domain.model.VerificationResponse
+import com.graduation.domain.model.authenticationuser.User
 import com.graduation.domain.repositories.UserAuthenticationRepository
 import javax.inject.Inject
 
-class ResendOTPUseCase @Inject constructor(val userAuthenticationRepository: UserAuthenticationRepository) {
+class ResendOTPUseCase @Inject constructor(private val userAuthenticationRepository: UserAuthenticationRepository) {
 
-    suspend fun invoke(email: ResendOtpData): String {
+    suspend fun invoke(email: User): VerificationResponse? {
         return userAuthenticationRepository.resendOTP(email)
     }
 }

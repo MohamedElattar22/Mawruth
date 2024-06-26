@@ -1,14 +1,13 @@
 package com.graduation.mawruth.ui.home
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.graduation.domain.model.museum.MuseumDto
+import com.graduation.domain.model.museums.MuseumItem
 import com.graduation.mawruth.databinding.MuseumItemBinding
 
-class MuseumRecyclerAdapter(var list: List<MuseumDto?>?) :
+class MuseumRecyclerAdapter(var list: List<MuseumItem?>?) :
     RecyclerView.Adapter<MuseumRecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(var itemBinding: MuseumItemBinding) : RecyclerView.ViewHolder(itemBinding.root)
@@ -23,21 +22,25 @@ class MuseumRecyclerAdapter(var list: List<MuseumDto?>?) :
         return list?.size!!
     }
 
-    fun bindMuseumsList(list: List<MuseumDto?>?) {
+    fun bindMuseumsList(list: List<MuseumItem?>?) {
         this.list = list
         notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemBinding.rate.text = list?.get(position)?.rating.toString()
+
+
         holder.itemBinding.museumName.text = list?.get(position)?.name.toString()
         holder.itemBinding.museumLocation.text =
-            "${list?.get(position)?.country} ${list?.get(position)?.city}"
-        val imagePath = list?.get(position)?.images?.get(0)
-        Glide.with(holder.itemView)
-            .load(list?.get(position)?.images?.get(0)?.imagePath)
-            .into(holder.itemBinding.musImage)
-        Log.d("images", list?.get(0)?.images?.get(0)?.imagePath.toString())
+            "${list?.get(position)?.city} ${list?.get(position)?.street}"
+
+        list?.get(position)?.images?.get(0)?.imagePath?.let {
+            Glide.with(holder.itemView)
+                .load(it)
+                .into(holder.itemBinding.musImage)
+        }
+
+//        Log.d("images", list?.get(0)?.images?.get(0)?.imagePath.toString())
 //        holder.itemBinding.musImage.background =
 //            ContextCompat.getDrawable(holder.itemBinding.root.context, R.drawable.museum_pic)
 
@@ -47,12 +50,17 @@ class MuseumRecyclerAdapter(var list: List<MuseumDto?>?) :
                 onMuseumClickListener.onClick(list?.get(position)!!, position)
             }
         }
+        onLoveClickListener?.let { onLoveClickListener ->
+            holder.itemBinding.loveBtn.setOnClickListener {
+
+            }
+        }
 
     }
 
     var onMuseumClickListener: OnMuseumClickListener? = null
-
+var onLoveClickListener:OnMuseumClickListener?=null
     fun interface OnMuseumClickListener {
-        fun onClick(museumDto: MuseumDto, position: Int)
+        fun onClick(museumDto: MuseumItem, position: Int)
     }
 }

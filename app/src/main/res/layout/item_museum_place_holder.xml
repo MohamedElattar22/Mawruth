@@ -1,8 +1,8 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_220sdp"
-    app:cardCornerRadius="@dimen/_20sdp"
+    android:layout_height="@dimen/_160sdp"
+    app:cardCornerRadius="@dimen/_10sdp"
     app:cardUseCompatPadding="true"
     app:strokeWidth="0dp">
 
@@ -25,7 +25,7 @@
         </ImageView>
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/love_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
@@ -35,8 +35,8 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/museum_name"
-            android:layout_width="@dimen/_150sdp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_16sdp"
             android:layout_marginVertical="@dimen/_2sdp"
             android:backgroundTint="@color/whiteSand"
             android:fontFamily="@font/cairo_semibold"
@@ -54,7 +54,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/museum_location"
             android:layout_width="@dimen/_75sdp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_height="@dimen/_16sdp"
             android:layout_marginVertical="@dimen/_2sdp"
             android:backgroundTint="@color/whiteSand"
             android:fontFamily="@font/cairo_regular"
@@ -72,7 +72,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/rate"
             android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_height="@dimen/_13sdp"
             android:layout_marginVertical="@dimen/_2sdp"
             android:backgroundTint="@color/whiteSand"
             android:fontFamily="@font/cairo_regular"

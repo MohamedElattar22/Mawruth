@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.graduation.domain.model.categories.CategoriesDtoItem
+import com.graduation.domain.model.categories.CategoryItem
 import com.graduation.mawruth.databinding.CategoryItemBinding
 
-class CategoriesRecyclerAdapter(var list: List<CategoriesDtoItem?>?) :
+class CategoriesRecyclerAdapter(var list: List<CategoryItem?>?) :
     RecyclerView.Adapter<CategoriesRecyclerAdapter.ViewHolder>() {
     var onTypeClickListener: OnTypeClickListener? = null
     class ViewHolder(val itemBinding: CategoryItemBinding) :
@@ -20,7 +20,7 @@ class CategoriesRecyclerAdapter(var list: List<CategoriesDtoItem?>?) :
         return ViewHolder(itemBinding)
     }
 
-    fun bindMuseumsList(list: List<CategoriesDtoItem?>?) {
+    fun bindMuseumsList(list: List<CategoryItem?>?) {
         this.list = list
         notifyDataSetChanged()
     }
@@ -45,6 +45,6 @@ class CategoriesRecyclerAdapter(var list: List<CategoriesDtoItem?>?) :
     }
 
     fun interface OnTypeClickListener {
-        fun onClick(categoriesDtoItem: CategoriesDtoItem, position: Int)
+        fun onClick(categoriesDtoItem: CategoryItem, position: Int)
     }
 }

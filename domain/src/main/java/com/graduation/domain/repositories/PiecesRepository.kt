@@ -1,9 +1,16 @@
 package com.graduation.domain.repositories
 
-import com.graduation.domain.model.museumdata.PiecesItemDto
+import com.graduation.domain.model.pieces.PiecesItem
+import com.graduation.domain.model.pieces.PiecesResponse
 
 interface PiecesRepository {
 
-    suspend fun getPieceById(pieceId: Int): PiecesItemDto?
+    suspend fun getPieceById(pieceId: Int): PiecesItem?
+    suspend fun getAllMuseumPieces(
+        museumId: Int,
+        page: Int = 1,
+        limit: Int = 10,
+        name: String? = null
+    ): PiecesResponse?
 
 }

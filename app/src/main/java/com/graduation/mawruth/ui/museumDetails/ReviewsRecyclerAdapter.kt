@@ -3,10 +3,10 @@ package com.graduation.mawruth.ui.museumDetails
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.graduation.domain.model.ReviewDto
+import com.graduation.data.model.reviews.ReviewsDataDto
 import com.graduation.mawruth.databinding.ReviewItemBinding
 
-class ReviewsRecyclerAdapter(var list: MutableList<ReviewDto?>?) :
+class ReviewsRecyclerAdapter(var list: MutableList<ReviewsDataDto?>?) :
     RecyclerView.Adapter<ReviewsRecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(val viewBinding: ReviewItemBinding) : RecyclerView.ViewHolder(viewBinding.root)
@@ -17,12 +17,12 @@ class ReviewsRecyclerAdapter(var list: MutableList<ReviewDto?>?) :
         return ViewHolder(view)
     }
 
-    fun bindReviewsList(list: MutableList<ReviewDto?>?) {
+    fun bindReviewsList(list: MutableList<ReviewsDataDto?>?) {
         this.list = list
         notifyDataSetChanged()
     }
 
-    fun bindSingleReview(review: ReviewDto) {
+    fun bindSingleReview(review: ReviewsDataDto) {
         this.list?.add(review)
         notifyDataSetChanged()
     }

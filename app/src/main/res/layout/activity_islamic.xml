@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:fitsSystemWindows="true"
     tools:context=".ui.islamicmuseum.IslamicActivity">
 
@@ -61,7 +62,7 @@
                 app:buttonGravity="bottom"
                 app:layout_collapseMode="pin"
                 app:menu="@menu/profile_menu"
-                app:navigationIcon="@drawable/more">
+                app:navigationIcon="@drawable/more_s">
 
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>

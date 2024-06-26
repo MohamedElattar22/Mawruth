@@ -1,17 +1,17 @@
 package com.graduation.domain.repositories
 
-import com.graduation.domain.model.ResendOtpData
-import com.graduation.domain.model.signupdata.EmailConfirmationData
-import com.graduation.domain.model.signupdata.SignUpRequiredData
-import com.graduation.domain.model.signupdata.User
-import com.graduation.domain.model.userlogin.UserLoginDto
-import com.graduation.domain.model.userlogin.UserLoginPost
+import com.graduation.domain.model.VerificationResponse
+import com.graduation.domain.model.authenticationuser.AuthenticationResponse
+import com.graduation.domain.model.authenticationuser.User
 
 interface UserAuthenticationRepository {
-    suspend fun registerUser(userData: SignUpRequiredData): User
-    suspend fun loginUser(userLoginPost: UserLoginPost): UserLoginDto
-    suspend fun confirmEmail(emailConfirmationData: EmailConfirmationData): String
-    suspend fun resendOTP(email: ResendOtpData): String
+    suspend fun registerUser(userData: User): VerificationResponse?
+    suspend fun loginUser(userLoginPost: User): AuthenticationResponse?
+    suspend fun confirmEmail(emailConfirmationData: User): AuthenticationResponse?
+    suspend fun resendOTP(email: User): VerificationResponse?
+
+    suspend fun forgetPassword(email: User): VerificationResponse?
+    suspend fun resetPassword(email: User, password: User): VerificationResponse?
 
 
 }

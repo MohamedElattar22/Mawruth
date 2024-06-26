@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.graduation.domain.model.museumdata.MuseumDataDto
+import com.graduation.domain.model.museums.MuseumItem
 import com.graduation.mawruth.databinding.MuseumItemBinding
 
-class MuseumByTypeAdapter(var list: List<MuseumDataDto?>?) :
+class MuseumByTypeAdapter(var list: List<MuseumItem?>?) :
     RecyclerView.Adapter<MuseumByTypeAdapter.ViewHolder>() {
 
     class ViewHolder(var itemBinding: MuseumItemBinding) : RecyclerView.ViewHolder(itemBinding.root)
@@ -24,16 +24,16 @@ class MuseumByTypeAdapter(var list: List<MuseumDataDto?>?) :
         return list?.size!!
     }
 
-    fun bindMuseumsList(list: List<MuseumDataDto?>?) {
+    fun bindMuseumsList(list: List<MuseumItem?>?) {
         this.list = list
         notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemBinding.rate.text = list?.get(position)?.rating.toString()
+//        holder.itemBinding.rate.text = list?.get(position)?.rating.toString()
         holder.itemBinding.museumName.text = list?.get(position)?.name.toString()
         holder.itemBinding.museumLocation.text =
-            "${list?.get(position)?.country} ${list?.get(position)?.city}"
+            "${list?.get(position)?.city} ${list?.get(position)?.street}"
         val imagePath = list?.get(position)?.images?.get(0)
         Glide.with(holder.itemView)
             .load(list?.get(position)?.images?.get(0)?.imagePath)
@@ -54,6 +54,6 @@ class MuseumByTypeAdapter(var list: List<MuseumDataDto?>?) :
     var onMuseumClickListener: OnMuseumClickListener? = null
 
     fun interface OnMuseumClickListener {
-        fun onClick(museumDataDto: MuseumDataDto, position: Int)
+        fun onClick(museumDataDto: MuseumItem, position: Int)
     }
 }

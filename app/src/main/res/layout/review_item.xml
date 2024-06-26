@@ -6,7 +6,7 @@
 
         <variable
             name="review"
-            type="com.graduation.domain.model.ReviewDto" />
+            type="com.graduation.data.model.reviews.ReviewsDataDto" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -30,7 +30,7 @@
                 android:layout_margin="@dimen/_20sdp"
                 android:background="#F1F0EB"
                 android:scaleType="centerCrop"
-                app:imageUrl="@{review.creator.avatar}"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:riv_corner_radius="@dimen/_100sdp"
@@ -47,9 +47,9 @@
                 android:backgroundTint="@color/whiteSand"
                 android:fontFamily="@font/cairo_semibold"
                 android:maxLines="1"
-                android:text="@{review.creator.fullName}"
+                android:text="@{review.userId}"
                 android:textColor="@color/darkBrown"
-                android:textSize="@dimen/_10ssp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toStartOf="@+id/pro_image"
                 app:layout_constraintTop_toTopOf="@+id/pro_image"
                 app:layout_constraintVertical_chainStyle="packed"
@@ -64,7 +64,7 @@
                 android:fontFamily="@font/cairo_regular"
                 android:gravity="end"
                 android:singleLine="true"
-                android:text="@{review.creator.userName}"
+                android:text="@{review.userId}"
                 android:textColor="@color/paragraph"
                 app:layout_constraintBottom_toBottomOf="@+id/pro_image"
                 app:layout_constraintEnd_toStartOf="@+id/pro_image"

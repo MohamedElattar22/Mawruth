@@ -1,28 +1,23 @@
 package com.graduation.data.api
 
 
-import com.graduation.data.model.ReviewResponse
-import com.graduation.data.model.categories.CategoriesResponseItem
-
-import com.graduation.data.model.museum.MuseumResponseItem
-import com.graduation.data.model.museumdata.MuseumDataResponce
-import com.graduation.data.model.museumdata.PiecesItem
-
-import com.graduation.data.model.userinfo.UserInformation
-import com.graduation.data.model.userlogin.UserLoginResponse
-import com.graduation.data.model.usersignup.OTPResponse
-import com.graduation.data.model.usersignup.SignupResponse
-import com.graduation.domain.model.ResendOtpData
-import com.graduation.domain.model.signupdata.EmailConfirmationData
-import com.graduation.domain.model.signupdata.SignUpRequiredData
-import com.graduation.domain.model.userlogin.UserLoginPost
+import com.graduation.data.model.VerificationResponseDto
+import com.graduation.data.model.authuserdata.AuthenticationResponseDto
+import com.graduation.data.model.categories.CategoriesResponseDto
+import com.graduation.data.model.museums.MuseumItemDto
+import com.graduation.data.model.museums.MuseumsResponseDto
+import com.graduation.data.model.pieces.PiecesItemDto
+import com.graduation.data.model.pieces.PiecesResponseDto
+import com.graduation.data.model.reviews.AllReviewsResponseDto
+import com.graduation.data.model.reviews.ReviewsResponseDto
+import com.graduation.domain.model.authenticationuser.User
+import com.graduation.domain.model.reviews.ReviewsData
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Multipart
-import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -30,79 +25,109 @@ import retrofit2.http.Query
 
 interface
 WebServices {
-
-    @POST("users/register")
+    @POST("auth/signup")
     suspend fun signUpUser(
-        @Body userData: SignUpRequiredData
-    ): SignupResponse
+        @Body userData: User
+    ): VerificationResponseDto?
 
     @GET("museums")
-    suspend fun getMuseums(): List<MuseumResponseItem?>?
+    suspend fun getAllMuseums(
+        @Query("page") page: Int? = 1,
+        @Query("limit") limit: Int? = 10,
+        @Query("name") name: String? = null,
+        @Query("category") category: String? = null,
+        @Query("city") city: String? = null,
+    ): MuseumsResponseDto?
 
-    @POST("users/login")
+    @POST("auth/login")
     suspend fun loginUser(
-        @Body userLoginPost: UserLoginPost
-    ): UserLoginResponse
+        @Body userLoginPost: User
+    ): AuthenticationResponseDto?
 
-    @POST("users/otp/verify")
+    @POST("auth/verify-otp")
     suspend fun verifyOTP(
-        @Body confirmationData: EmailConfirmationData
-    ): OTPResponse
+        @Body confirmationData: User
+    ): AuthenticationResponseDto?
 
-    @POST("users/otp/resend")
+    @POST("auth/resend-otp")
     suspend fun resendOTP(
-        @Body email: ResendOtpData
-    ): OTPResponse
+        @Body email: User
+    ): VerificationResponseDto?
 
+    @POST("/auth/forget-password")
+    suspend fun forgetPassword(
+        @Body email: User
+    ): VerificationResponseDto?
 
-    @GET("users/{userId}")
+    @POST("/auth/reset-password")
+    suspend fun resetPassword(
+        @Body email: User,
+        @Body password: User
+    ): VerificationResponseDto?
+
+    @GET("users/me")
     suspend fun getUserInfo(
-        @Path("userId") userId: Int
-    ): UserInformation
+
+    ): AuthenticationResponseDto?
 
     @GET("museums/{museumId}")
     suspend fun getMuseumById(
         @Path("museumId") museumId: Int
-    ): MuseumDataResponce?
-
-    @GET("museums")
-    suspend fun getMuseumByType(
-        @Query("q") q: String
-    ): List<MuseumDataResponce?>
+    ): MuseumItemDto?
 
     @GET("pieces/{pieceId}")
     suspend fun getPieceById(
         @Path("pieceId") pieceId: Int
-    ): PiecesItem?
+    ): PiecesItemDto?
 
-    @GET("users/email/{email}")
-    suspend fun getUserInfoByEmail(
-        @Path("email") userEmail: String
-    ): UserInformation
+    @GET("pieces/museum/{museumId}")
+    suspend fun getMuseumPieces(
+        @Path("museumId") museumId: Int,
+        @Query("page") page: Int? = 1,
+        @Query("limit") limit: Int? = 10,
+        @Query("name") name: String? = null,
+    ): PiecesResponseDto?
+
+
 
     @Multipart
-    @PATCH("users")
-    suspend fun updateUserData(
-        @Part("full_name") fullName: RequestBody? = null,
-        @Part("username") username: RequestBody? = null,
-        @Part("email") email: RequestBody? = null,
-        @Part("password") password: RequestBody? = null,
-        @Part("phone_number") phoneNumber: RequestBody? = null,
-        @Part avatar: MultipartBody.Part? = null
-    ): UserInformation
+    @PUT("users/upload-image")
+    suspend fun updateUserImage(
+        @Part avatar: MultipartBody.Part?
+    ): AuthenticationResponseDto?
+
+    @PUT("users/me")
+    suspend fun updateUserName(
+        @Body name: String?
+    ): AuthenticationResponseDto?
 
     @GET("categories")
     suspend fun getCategories(
-    ): List<CategoriesResponseItem?>?
+        @Query("page") page: Int? = 1,
+        @Query("limit") limit: Int? = 10,
+    ): CategoriesResponseDto?
 
-    @POST("reviews")
+    @POST("museums/{museum_id}/reviews")
     suspend fun sendReview(
-        @Body reviewResponse: ReviewResponse
-    ): ReviewResponse?
+        @Path("museum_id") museumId: Int,
+        @Body review: ReviewsData
+    ): ReviewsResponseDto?
 
 
-    @GET("reviews/museum/{museum_id}")
+    @GET("museum/{museum_id}/reviews")
     suspend fun getReview(
-        @Path("museum_id") museumId: Int
-    ): List<ReviewResponse?>?
+        @Path("museum_id") museumId: Int,
+        @Query("page") page: Int? = 1,
+        @Query("limit") limit: Int? = 10,
+    ): AllReviewsResponseDto?
+
+    @GET("favorites/museums")
+    suspend fun getfavouriteMuseum(
+
+    ):MuseumsResponseDto
+    @POST("favorites/museums/{id}")
+suspend fun postfavouriteMuseums(
+        @Path("id") museumId: Int
+):VerificationResponseDto
+
 }

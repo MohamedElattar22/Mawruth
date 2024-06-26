@@ -20,13 +20,12 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.FragmentOtpVerifyBinding
-import com.graduation.mawruth.ui.confirmEmail.ConfirmEmailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class OtpVerifyFragment : Fragment() {
     private lateinit var viewBinding: FragmentOtpVerifyBinding
-    private lateinit var viewModel: ConfirmEmailViewModel
+    private lateinit var viewModel: confirmOTPViewModel
     private lateinit var dialog: Dialog
     private var txtWatcher: TextWatcher? = null
     private var cTimer: CountDownTimer? = null
@@ -44,7 +43,7 @@ class OtpVerifyFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity())[ConfirmEmailViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[confirmOTPViewModel::class.java]
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -67,7 +66,6 @@ class OtpVerifyFragment : Fragment() {
         textChanger()
         viewBinding.checkBtn.setOnClickListener {
             verifyOTP()
-
         }
         subscribeToLiveData()
         viewBinding.logInBtn.setOnClickListener {
@@ -147,7 +145,6 @@ class OtpVerifyFragment : Fragment() {
     private fun subscribeToLiveData() {
         viewModel.navigate.observe(viewLifecycleOwner) {
             if (it) {
-                viewModel.getUserByEmail(emailProvider.emailData)
                 setNavigation()
                 dialog.dismiss()
             }

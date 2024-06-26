@@ -15,6 +15,10 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
+    <uses-permission
+        android:name="android.permission.POST_NOTIFICATIONS"
+        tools:node="remove" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -29,12 +33,21 @@
         android:theme="@style/Theme.Mawruth"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
+
+    <activity
             android:name=".ui.home.musumsbytype.CategoryMuseumActivity"
             android:exported="false" />
         <activity
             android:name=".ui.pieceDetails.PieceDetailsActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.notificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.favourities.FavouriteActivity"
+            android:exported="false" />
+
+
         <activity
             android:name=".ui.islamicmuseum.IslamicActivity"
             android:exported="false" /> <!-- <service -->
@@ -103,6 +116,14 @@
         <meta-data
             android:name="com.google.ar.core"
             android:value="required" />
+
+        <!--        <service-->
+        <!--            android:name=".utils.FirebaseCloudMessaging"-->
+        <!--            android:exported="false">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+        <!--            </intent-filter>-->
+        <!--        </service>-->
     </application>
 
 </manifest>
