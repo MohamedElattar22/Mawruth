@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.story.storyActivity"
+android:background="@drawable/storybg"
+    android:fitsSystemWindows="true"
+
+ >
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/storybg"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+
+    />
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+android:background=""
+        android:id="@+id/topAppBar"
+        >
+
+        <com.google.android.material.appbar.MaterialToolbar
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/backbtn"
+            app:titleTextColor="@color/white"
+            app:title="حكايات متحف الفن"
+            app:titleCentered="true" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/storylayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/topAppBar">
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:src="@drawable/storytelling"
+    android:scaleType="centerCrop"
+    />
+
+        <ImageView
+            android:id="@+id/keyImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/storyimage" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/keyImage"
+            android:layout_alignTop="@id/keyImage"
+            android:layout_marginTop="@dimen/_25sdp"
+           android:layout_marginStart="@dimen/_55sdp"
+            android:text="سر المفتاح"
+            android:textColor="#514B45"
+            android:fontFamily="@font/cairo_regular"
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/keyImage"
+            android:layout_below="@id/title"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:text="أقدم نسخة صنعت لمفتاح الكعبة، من النحاس المكثف بالفضة"
+           android:fontFamily="@font/cairo_regular"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/bodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/keyImage"
+            android:layout_marginTop="@dimen/_28sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:text="تطوق نفوس العالمين إلى زيارة بيت الله الحرام بمكة المكرمة، ومسجد النبي صلي الله عليه وسلم بالمدينة المنورة، وستظل رحلة الحج مليئة بالأسرار الروحية و المادية\n\nتطوق نفوس العالمين إلى زيارة بيت الله الحرام بمكة المكرمة، ومسجد النبي صلي الله عليه وسلم بالمدينة المنورة، وستظل رحلة الحج مليئة بالأسرار الروحية و المادية"
+      android:fontFamily="@font/cairo_regular"
+            android:textSize="@dimen/_10ssp" />
+
+    </RelativeLayout>
+
+<TextView
+    android:id="@+id/anotherstory_tv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/storylayout"
+   app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginEnd="@dimen/_8sdp"
+    android:layout_marginTop="@dimen/_8sdp"
+    android:text="حكايات اخرى"
+    android:fontFamily="@font/cairo_medium"
+    android:textColor="@color/white"
+android:textSize="@dimen/_18ssp"
+    />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15sdp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/anotherstory_tv"
+        tools:listitem="@layout/story_item"
+        app:layout_constraintBaseline_toTopOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

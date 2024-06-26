@@ -1,9 +1,10 @@
 package com.graduation.data.dataSourceContract
 
-import com.graduation.data.model.museum.MuseumResponse
+import com.graduation.domain.model.VerificationResponse
+import com.graduation.domain.model.museums.MuseumsResponse
 
 
 interface FavouriteMuseumsDataSource {
-   suspend fun getFavouriteMuseums(): MuseumResponse?
-   suspend fun sendFavouriteMuseums(museumId: Int): Verificat?
+   suspend fun getFavouriteMuseums(): MuseumsResponse?
+   suspend fun sendFavouriteMuseums(museumId: Int): VerificationResponse?
 }

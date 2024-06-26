@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_113sdp"
+    android:layout_height="@dimen/_150sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#676058"
+    android:layout_marginStart="@dimen/_8sdp"
+    android:layout_marginEnd="@dimen/_8sdp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#676058">
+        <ImageView
+            android:scaleType="center"
+            android:id="@+id/storyimage"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/storyitemimage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+/>
+        <TextView
+            android:id="@+id/storyname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/storyimage"
+android:text="موناليزا الفنون"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:fontFamily="@font/cairo_medium"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+          android:textSize="@dimen/_13sdp"
+            />
+        <TextView
+            android:id="@+id/imagedate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="القرن 8هـ/14م"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:textColor="#B7B2AB"
+            app:layout_constraintTop_toBottomOf="@+id/storyname"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:fontFamily="@font/cairo_medium"
+            android:textSize="@dimen/_8sdp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

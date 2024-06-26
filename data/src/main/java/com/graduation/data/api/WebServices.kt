@@ -37,6 +37,7 @@ WebServices {
         @Query("name") name: String? = null,
         @Query("category") category: String? = null,
         @Query("city") city: String? = null,
+
     ): MuseumsResponseDto?
 
     @POST("auth/login")

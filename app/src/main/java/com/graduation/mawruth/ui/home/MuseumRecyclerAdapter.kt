@@ -2,6 +2,7 @@ package com.graduation.mawruth.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.graduation.domain.model.museums.MuseumItem
@@ -52,7 +53,6 @@ class MuseumRecyclerAdapter(var list: List<MuseumItem?>?) :
         }
         onLoveClickListener?.let { onLoveClickListener ->
             holder.itemBinding.loveBtn.setOnClickListener {
-
             }
         }
 
