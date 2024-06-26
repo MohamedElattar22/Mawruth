@@ -28,6 +28,8 @@ class MuseumRecyclerAdapter(var list: List<MuseumItem?>?) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+
         holder.itemBinding.museumName.text = list?.get(position)?.name.toString()
         holder.itemBinding.museumLocation.text =
             "${list?.get(position)?.city} ${list?.get(position)?.street}"

@@ -17,7 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#F1F0EB"
-            app:cardCornerRadius="@dimen/_30sdp"
+
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_18sdp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +146,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/spinner_back"
                     android:entries="@array/languages"
-                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingHorizontal="@dimen/_12sdp"
                     android:paddingVertical="@dimen/_5sdp"
                     android:spinnerMode="dialog"
                     app:layout_constraintBottom_toBottomOf="@+id/lang_btn"

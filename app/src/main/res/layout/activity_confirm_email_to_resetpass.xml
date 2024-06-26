@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".ui.resetpassword.ResetPassword"
-    android:orientation="vertical"
     android:layout_gravity="center_horizontal"
-    android:gravity="center"
+    android:background="@color/white"
     android:fitsSystemWindows="true"
-    >
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.resetpassword.ResetPassword">
 
 
     <ImageView
@@ -21,32 +20,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/resetpasswordtxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:fontFamily="@font/cairo_semibold"
-                android:text="إستعادة كلمة المرور "
-                android:textSize="@dimen/_20ssp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/guideline1"
+    <TextView
+        android:id="@+id/resetpasswordtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:fontFamily="@font/cairo_semibold"
+        android:text="إستعادة كلمة المرور "
+        android:textSize="@dimen/_18ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline1"
 
-                />
+        />
 
-            <TextView
-                android:id="@+id/paragraphpassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:fontFamily="@font/cairo_medium"
-                android:text="أدخل بريدك الإلكتروني لإستعادة كلمة"
-                android:textColor="@color/paragraph"
-                android:textSize="@dimen/_18ssp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/resetpasswordtxt" />
+    <TextView
+        android:id="@+id/paragraphpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:fontFamily="@font/cairo_medium"
+        android:text="أدخل بريدك الإلكتروني لإستعادة كلمة"
+        android:textColor="@color/paragraph"
+        android:textSize="@dimen/_16ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resetpasswordtxt" />
+
     <TextView
         android:id="@+id/paragraphpassword1"
         android:layout_width="wrap_content"
@@ -55,68 +55,67 @@
         android:fontFamily="@font/cairo_medium"
         android:text="المرور الخاصة بك"
         android:textColor="@color/paragraph"
-        android:textSize="@dimen/_18ssp"
+        android:textSize="@dimen/_16ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/paragraphpassword" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/new_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
-                android:gravity="center_horizontal"
-                android:textDirection="locale"
-                app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
-                app:boxCornerRadiusBottomStart="@dimen/_10sdp"
-                app:boxCornerRadiusTopEnd="@dimen/_10sdp"
-                app:boxCornerRadiusTopStart="@dimen/_7sdp"
-                app:boxStrokeColor="@color/mainBtn"
-                app:hintEnabled="false"
-                app:layout_constraintTop_toBottomOf="@id/paragraphpassword"
-               >
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/new_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:gravity="center_horizontal"
+        android:textDirection="locale"
+        app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+        app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+        app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+        app:boxCornerRadiusTopStart="@dimen/_7sdp"
+        app:boxStrokeColor="@color/mainBtn"
+        app:hintEnabled="false"
+        app:layout_constraintTop_toBottomOf="@id/paragraphpassword">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/userInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:drawableEnd="@drawable/email_icon"
-                    android:drawablePadding="@dimen/_10sdp"
-                    android:fontFamily="@font/cairo_medium"
-                    android:gravity="end"
-                    android:hint="example@gmail.com"
-                    android:maxLines="1"
-                    android:minLines="1"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:imeOptions="actionNext"
-                    tools:targetApi="upside_down_cake">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/userInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableEnd="@drawable/email_icon"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/cairo_medium"
+            android:gravity="end"
+            android:hint="example@gmail.com"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1"
+            android:minLines="1"
+            tools:targetApi="upside_down_cake">
 
-                </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputEditText>
 
-            </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/passwordsaveBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_20sdp"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/passwordsaveBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
 
-                android:backgroundTint="@color/mainBtn"
-                android:fontFamily="@font/cairo_semibold"
-                android:text="أرســل الرمــــز"
-                android:textColor="@color/white"
-                app:cornerRadius="@dimen/_10sdp"
-                android:textSize="@dimen/_15ssp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/confirm_password"
-                app:layout_constraintVertical_bias="0.1" />
+        android:backgroundTint="@color/mainBtn"
+        android:fontFamily="@font/cairo_semibold"
+        android:text="أرســل الرمــــز"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        app:cornerRadius="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirm_password"
+        app:layout_constraintVertical_bias="0.1" />
 
 </LinearLayout>

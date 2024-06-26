@@ -49,7 +49,7 @@
                 android:maxLines="1"
                 android:text="@{review.userId}"
                 android:textColor="@color/darkBrown"
-                android:textSize="@dimen/_10ssp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toStartOf="@+id/pro_image"
                 app:layout_constraintTop_toTopOf="@+id/pro_image"
                 app:layout_constraintVertical_chainStyle="packed"

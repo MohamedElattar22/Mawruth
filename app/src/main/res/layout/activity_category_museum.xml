@@ -2,6 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/Base.Theme.Mawruth"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -38,7 +39,7 @@
                         android:id="@+id/search_bar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_70sdp"
+                        android:layout_marginTop="@dimen/_55sdp"
                         android:backgroundTint="@color/white"
                         android:hint="إلي أي تراث تتطلع ....؟"
                         app:backgroundTint="@color/white"
@@ -62,7 +63,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:gravity="center"
                 app:buttonGravity="bottom"
                 app:layout_collapseMode="pin"
@@ -77,6 +78,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
                         android:src="@drawable/my_logo" />
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>

@@ -9,13 +9,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_320sdp"
+        android:layout_height="@dimen/_260sdp"
         android:background="@color/darkBrown"
         android:orientation="vertical"
         android:weightSum="3">
 
         <ImageView
-            android:layout_width="@dimen/_35sdp"
+            android:layout_width="@dimen/_25sdp"
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -39,13 +39,13 @@
                 android:fontFamily="@font/cairo_semibold"
                 android:gravity="center"
                 android:text="هل حـقًا تريد تسجيل الخـروج ؟"
-                android:textSize="@dimen/_19ssp" />
+                android:textSize="@dimen/_16ssp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/stay"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginHorizontal="@dimen/_80sdp"
+                android:layout_height="@dimen/_7sdp"
+                android:layout_marginHorizontal="@dimen/_40sdp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/mainSand"
                 android:paddingVertical="0dp"
@@ -55,8 +55,8 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/log"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginHorizontal="@dimen/_80sdp"
+                android:layout_height="@dimen/_7sdp"
+                android:layout_marginHorizontal="@dimen/_40sdp"
                 android:layout_marginVertical="@dimen/_10sdp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/transparent"

@@ -129,4 +129,5 @@ WebServices {
 suspend fun postfavouriteMuseums(
         @Path("id") museumId: Int
 ):VerificationResponseDto
+
 }

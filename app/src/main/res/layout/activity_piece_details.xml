@@ -15,7 +15,7 @@
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_450sdp"
+            android:layout_height="@dimen/_300sdp"
             app:contentScrim="@color/darkBrown"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -27,7 +27,9 @@
                     android:id="@+id/image2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/edit_button_image"
+
+                    android:src="@drawable/museum_pic"
+
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -41,12 +43,12 @@
                     android:id="@+id/pieceNameTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_20sdp"
-                    android:layout_marginBottom="@dimen/_40sdp"
+                    android:layout_marginEnd="@dimen/_18sdp"
+                    android:layout_marginBottom="@dimen/_30sdp"
                     android:fontFamily="@font/cairo_semibold"
                     android:text="قناع الملك"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_26ssp"
+                    android:textSize="@dimen/_21ssp"
                     app:layout_collapseMode="parallax"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent">
@@ -61,7 +63,7 @@
                     android:fontFamily="@font/cairo_regular"
                     android:text="المتحف الكبير"
                     android:textColor="#928E8A"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:layout_collapseMode="parallax"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/pieceNameTV"
@@ -115,13 +117,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_60sdp"
+        android:layout_marginBottom="@dimen/_40sdp"
         android:backgroundTint="@color/darkBrown"
 
         android:fontFamily="@font/cairo_medium"
         android:text="عرض القطعة"
         android:textColor="@color/white"
-        android:textSize="@dimen/_20ssp"
+        android:textSize="@dimen/_14ssp"
         app:icon="@drawable/museum"
         app:iconTint="@color/mainSand"
         app:rippleColor="@color/darkBrown">

@@ -29,7 +29,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="@dimen/_45sdp"
             android:layout_marginHorizontal="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:backgroundTint="#33FFFFFF"
@@ -47,13 +47,13 @@
                     android:id="@+id/pieceTitleTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:fontFamily="@font/cairo_semibold"
                     android:text="تمثال الملك رمسيس"
                     android:textColor="@color/white"
                     android:maxLines="2"
-                    android:textSize="@dimen/_4ssp"
+                    android:textSize="@dimen/_8ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -67,7 +67,7 @@
                     android:fontFamily="@font/cairo_semibold"
                     android:text="1380 قبل الميلاج"
                     android:textColor="@color/mainSand"
-                    android:textSize="@dimen/_4ssp"
+                    android:textSize="@dimen/_6ssp"
                     app:drawableEndCompat="@drawable/map_loc"
                     app:drawableTint="#66FFFFFF"
                     app:layout_constraintEnd_toEndOf="@+id/pieceTitleTV"
@@ -77,10 +77,11 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/toPieceDetailsBtn"
-                    android:layout_width="@dimen/_40sdp"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:background="@color/transparent"
                     app:icon="@drawable/backbtn"
+                    android:layout_marginStart="@dimen/_8sdp"
                     app:iconGravity="textStart"
                     app:layout_constraintBottom_toBottomOf="parent"
 

@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@color/darkBrown"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
-    android:paddingVertical="@dimen/_40sdp">
+    android:paddingVertical="@dimen/_30sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loginHeader"
@@ -20,8 +21,8 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/header_pic"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
             android:layout_margin="@dimen/_30sdp"
             android:scaleType="centerCrop"
             android:src="@drawable/guest"
@@ -33,10 +34,10 @@
             android:id="@+id/Headername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_12sdp"
             android:fontFamily="@font/cairo_semibold"
             android:textColor="@color/whiteSand"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="@dimen/_13ssp"
             app:layout_constraintBottom_toTopOf="@+id/headeremail"
             app:layout_constraintEnd_toStartOf="@+id/header_pic"
             app:layout_constraintTop_toTopOf="@+id/header_pic"
@@ -55,7 +56,7 @@
             android:text="example@gmail.@"
             android:textAlignment="viewEnd"
             android:textColor="@color/white"
-            android:textSize="@dimen/_4ssp"
+            android:textSize="@dimen/_9ssp"
             app:layout_constraintBottom_toBottomOf="@+id/header_pic"
             app:layout_constraintEnd_toEndOf="@+id/Headername"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,25 +77,27 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/headerLogin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_55sdp"
             android:layout_margin="@dimen/_5sdp"
             android:backgroundTint="@color/transparent"
-            android:paddingVertical="@dimen/_15sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:textSize="@dimen/_11ssp"
             android:textColor="@color/mainBtn"
             android:text="تسجيل الدخول"
             android:fontFamily="@font/cairo_medium"
             app:strokeColor="@color/mainBtn"
-            app:strokeWidth="@dimen/_2sdp" />
+            app:strokeWidth="@dimen/_1sdp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/headerRegister"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_55sdp"
             android:textColor="@color/white"
             android:fontFamily="@font/cairo_medium"
+            android:paddingVertical="@dimen/_10sdp"
             android:layout_margin="@dimen/_5sdp"
             android:backgroundTint="@color/mainBtn"
-            android:paddingVertical="@dimen/_15sdp"
+            android:textSize="@dimen/_11ssp"
             android:text="تسجيل حساب جديد" />
     </LinearLayout>
 
