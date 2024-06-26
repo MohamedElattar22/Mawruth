@@ -121,4 +121,13 @@ WebServices {
         @Query("limit") limit: Int? = 10,
     ): AllReviewsResponseDto?
 
+    @GET("favorites/museums")
+    suspend fun getfavouriteMuseum(
+
+    ):MuseumsResponseDto
+    @POST("favorites/museums/{id}")
+suspend fun postfavouriteMuseums(
+        @Path("id") museumId: Int
+):VerificationResponseDto
+
 }

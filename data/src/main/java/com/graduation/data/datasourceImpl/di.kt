@@ -1,6 +1,7 @@
 package com.graduation.data.datasourceImpl
 
 import com.graduation.data.dataSourceContract.EditUserInfoDataSource
+import com.graduation.data.dataSourceContract.FavouriteMuseumsDataSource
 import com.graduation.data.dataSourceContract.ReviewsDataSource
 import com.graduation.data.dataSourceContract.UserAuthenticationDataSource
 import com.graduation.data.dataSourceContract.UserInformationDataSource
@@ -9,6 +10,8 @@ import com.graduation.data.dataSourceContract.musums.MuseumsDataSource
 import com.graduation.data.dataSourceContract.pieces.PiecesDataStore
 import com.graduation.data.datasourceImpl.categories.CategoriesDataSourceImpl
 import com.graduation.data.datasourceImpl.museums.MuseumsDataSourceImpl
+import com.graduation.data.repository.FavouriteMuseumsRepositoryImpl
+import com.graduation.domain.repositories.FavouriteMuseumsRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -43,5 +46,9 @@ abstract class di {
     @Binds
     abstract fun bindPiecesDataSource(piecesDataStoreImpl: PiecesDataStoreImpl)
             : PiecesDataStore
+    @Binds
+    abstract fun bindFavouriteMuseumsDataSource(favouriteMuseumsDataSourceImpl: FavouriteMuseumsDataSourceImpl)
+    : FavouriteMuseumsDataSource
+
 
 }

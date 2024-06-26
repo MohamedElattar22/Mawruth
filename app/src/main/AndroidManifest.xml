@@ -41,6 +41,14 @@
             android:name=".ui.pieceDetails.PieceDetailsActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.notificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.favourities.FavouriteActivity"
+            android:exported="false" />
+
+
+        <activity
             android:name=".ui.islamicmuseum.IslamicActivity"
             android:exported="false" /> <!-- <service -->
         <!-- android:name="androidx.appcompat.app.AppLocalesMetadataHolderService" -->

@@ -29,6 +29,7 @@ class MuseumRecyclerAdapter(var list: List<MuseumItem?>?) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
+
         holder.itemBinding.museumName.text = list?.get(position)?.name.toString()
         holder.itemBinding.museumLocation.text =
             "${list?.get(position)?.city} ${list?.get(position)?.street}"
@@ -49,11 +50,16 @@ class MuseumRecyclerAdapter(var list: List<MuseumItem?>?) :
                 onMuseumClickListener.onClick(list?.get(position)!!, position)
             }
         }
+        onLoveClickListener?.let { onLoveClickListener ->
+            holder.itemBinding.loveBtn.setOnClickListener {
+
+            }
+        }
 
     }
 
     var onMuseumClickListener: OnMuseumClickListener? = null
-
+var onLoveClickListener:OnMuseumClickListener?=null
     fun interface OnMuseumClickListener {
         fun onClick(museumDto: MuseumItem, position: Int)
     }

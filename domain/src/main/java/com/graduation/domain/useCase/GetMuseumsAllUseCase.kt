@@ -9,7 +9,9 @@ class GetMuseumsAllUseCase
 
     suspend fun invoke(
         page: Int = 1,
-        limit: Int = 3,
+
+        limit: Int = 10,
+
         name: String? = null,
         category: String? = null,
         city: String? = null

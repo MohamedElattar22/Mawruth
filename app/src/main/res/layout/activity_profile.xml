@@ -88,7 +88,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="@font/cairo_semibold"
+
                     android:textSize="@dimen/_16ssp"
+
                     tools:text="Abdelrahman Moahmed"
                     android:textColor="@color/lightSand"
                     app:layout_constraintEnd_toEndOf="@+id/prof_pic_card"
@@ -103,7 +105,9 @@
                     android:layout_marginTop="-7dp"
                     android:text="Example@gmail.com"
                     android:fontFamily="@font/cairo_regular"
+
                     android:textSize="@dimen/_10ssp"
+
                     android:textColor="@color/secTitleColor"
                     app:layout_constraintEnd_toEndOf="@+id/name"
                     app:layout_constraintStart_toStartOf="@+id/name"
