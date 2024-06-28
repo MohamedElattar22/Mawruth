@@ -34,23 +34,25 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.favourites.FavouriteActivity"
-            android:exported="false" />
+            android:name=".ui.halls.IslamicMuseumHallsActivity"
+            android:exported="true">
+
+        </activity>
         <activity
-            android:name=".ui.home.musumsbytype.CategoryMuseumActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.pieceDetails.PieceDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.notificationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.favourities.FavouriteActivity"
-            android:exported="false" />
+            android:name=".ui.stories.StoriesActivity"
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".ui.islamicmuseum.IslamicActivity"
-            android:exported="false" /> <!-- <service -->
+            android:exported="true">
+
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity> <!-- <service -->
         <!-- android:name="androidx.appcompat.app.AppLocalesMetadataHolderService" -->
         <!-- android:enabled="false" -->
         <!-- android:exported="false"> -->
@@ -111,6 +113,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <meta-data

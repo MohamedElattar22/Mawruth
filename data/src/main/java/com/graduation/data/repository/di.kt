@@ -3,9 +3,11 @@ package com.graduation.data.repository
 import com.graduation.domain.repositories.CategoriesRepository
 import com.graduation.domain.repositories.EditUserInfoRepository
 import com.graduation.domain.repositories.FavouriteMuseumsRepository
+import com.graduation.domain.repositories.HallRepository
 import com.graduation.domain.repositories.MuseumRepository
 import com.graduation.domain.repositories.PiecesRepository
 import com.graduation.domain.repositories.ReviewsRepository
+import com.graduation.domain.repositories.StoriesRepository
 import com.graduation.domain.repositories.UserAuthenticationRepository
 import com.graduation.domain.repositories.UserInformationRepository
 import dagger.Binds
@@ -43,4 +45,10 @@ abstract class di {
     @Binds
     abstract fun bindFavouriteMuseumsRepository(favouriteMuseumsRepositoryImpl :FavouriteMuseumsRepositoryImpl) :FavouriteMuseumsRepository
 
+    @Binds
+    abstract fun bindStoriesRepository(storiesRepositoryImpl: StoriesRepositoryImpl): StoriesRepository
+
+
+    @Binds
+    abstract fun bindHallsRepository(hallsRepositoryImpl: HallsRepositoryImpl): HallRepository
 }

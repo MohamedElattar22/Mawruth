@@ -3,10 +3,12 @@
 <style name="Base.Theme.Mawruth" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowTranslucentStatus">false</item>
+    <item name="colorSurfaceContainerLow">@color/white</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:statusBarColor">@color/transparent</item>
         <item name="fontFamily">@font/cairo_medium</item>
         <item name="colorPrimary">@color/mainBtn</item>
+    <item name="colorOnSecondaryContainer">@color/darkBrown</item>
         <item name="android:colorPrimary">@color/darkBrown</item>
         <item name="backgroundColor">@color/white</item>
     </style>
@@ -48,6 +50,7 @@
         <item name="android:layout_margin">@dimen/_15sdp</item>
 
     </style>
+
 
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="backgroundTint">@android:color/transparent</item>

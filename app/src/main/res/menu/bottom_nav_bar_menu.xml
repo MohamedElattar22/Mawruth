@@ -2,22 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/home"
+        android:id="@+id/homeIconBottom"
         android:icon="@drawable/home"
+
         android:title="الرئيسيـة"
         app:showAsAction="always" />
     <item
-        android:id="@+id/discover"
+        android:id="@+id/discoverIconBottom"
         android:icon="@drawable/cat"
         android:title="استكشف"
         app:showAsAction="always" />
     <item
-        android:id="@+id/fav_nav_bar"
+        android:id="@+id/fav_nav_barIconBottom"
         android:icon="@drawable/diamond"
         android:title="المفضلة"
         app:showAsAction="always" />
     <item
-        android:id="@+id/more"
+        android:id="@+id/moreIconBottom"
         android:icon="@drawable/more_s"
         android:title="المـزيد"
         app:showAsAction="always" />
