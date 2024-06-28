@@ -20,23 +20,23 @@
         android:id="@+id/bottom_appbar"
         style="@style/Widget.MaterialComponents.BottomAppBar"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="70dp"
         android:layout_gravity="bottom"
         app:fabAlignmentModeEndMargin="10dp"
 
 
         android:backgroundTint="@color/white"
         app:fabAlignmentMode="center"
-        app:fabCradleRoundedCornerRadius="@dimen/_10sdp"
+        app:fabCradleRoundedCornerRadius="@dimen/_20sdp"
         app:fabCradleMargin="0dp">
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav_bar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/_10sdp"
             app:itemIconSize="@dimen/_18sdp"
+
+            android:layout_height="match_parent"
             android:background="#00000000"
             app:elevation="0dp"
             app:itemActiveIndicatorStyle="@null"
@@ -49,10 +49,10 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add"
-        android:layout_width="@dimen/_60sdp"
+        android:layout_width="@dimen/_55sdp"
         android:layout_height="@dimen/_55sdp"
-        android:contentDescription="TODO"
         app:backgroundTint="@color/darkBrown"
+        android:contentDescription="TODO"
         app:layout_anchor="@id/bottom_appbar"
         app:shapeAppearance="?floatingActionButtonSmallStyle"
         app:tint="@color/whiteSand" />

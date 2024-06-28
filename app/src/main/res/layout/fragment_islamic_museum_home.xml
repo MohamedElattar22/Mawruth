@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
+    android:layout_height="match_parent"
     tools:context=".ui.islamicmuseum.fragments.home.IslamicMuseumHomeFragment">
-
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,8 +39,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_70sdp"
                         android:backgroundTint="@color/white"
-                        android:hint="إلي أي تراث تتطلع ....؟"
                         app:backgroundTint="@color/white"
+                        android:hint="إلي أي تراث تتطلع ....؟"
                         app:layout_constraintBottom_toTopOf="@+id/view_pager"
                         app:layout_constraintEnd_toStartOf="@+id/imageButton"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -51,6 +50,7 @@
                         app:navigationIcon="@drawable/search_icon"
                         app:strokeColor="#B7B2AB"
                         app:strokeWidth="@dimen/_1sdp" />
+
 
 
                 </LinearLayout>
@@ -69,9 +69,9 @@
                     android:id="@+id/tabLayout"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_30sdp"
+                    android:padding="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:backgroundTint="@color/transparent"
-                    android:padding="@dimen/_5sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view_pager"
                     app:tabBackground="@drawable/viewpagerselected"
@@ -96,10 +96,10 @@
                     android:gravity="center">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_width="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content"
                         android:src="@drawable/my_logo" />
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>

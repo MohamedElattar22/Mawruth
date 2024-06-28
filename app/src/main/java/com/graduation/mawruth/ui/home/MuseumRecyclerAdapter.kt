@@ -52,6 +52,7 @@ class MuseumRecyclerAdapter(var list: List<MuseumItem?>?) :
         }
         onLoveClickListener?.let { onLoveClickListener ->
             holder.itemBinding.loveBtn.setOnClickListener {
+
             }
         }
 
