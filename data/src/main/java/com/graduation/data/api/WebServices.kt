@@ -4,12 +4,14 @@ package com.graduation.data.api
 import com.graduation.data.model.VerificationResponseDto
 import com.graduation.data.model.authuserdata.AuthenticationResponseDto
 import com.graduation.data.model.categories.CategoriesResponseDto
+import com.graduation.data.model.halls.HallsResponseDto
 import com.graduation.data.model.museums.MuseumItemDto
 import com.graduation.data.model.museums.MuseumsResponseDto
 import com.graduation.data.model.pieces.PiecesItemDto
 import com.graduation.data.model.pieces.PiecesResponseDto
 import com.graduation.data.model.reviews.AllReviewsResponseDto
 import com.graduation.data.model.reviews.ReviewsResponseDto
+import com.graduation.data.model.stories.StoriesResponceDto
 import com.graduation.domain.model.authenticationuser.User
 import com.graduation.domain.model.reviews.ReviewsData
 import okhttp3.MultipartBody
@@ -37,6 +39,7 @@ WebServices {
         @Query("name") name: String? = null,
         @Query("category") category: String? = null,
         @Query("city") city: String? = null,
+
     ): MuseumsResponseDto?
 
     @POST("auth/login")
@@ -89,7 +92,6 @@ WebServices {
     ): PiecesResponseDto?
 
 
-
     @Multipart
     @PUT("users/upload-image")
     suspend fun updateUserImage(
@@ -123,11 +125,23 @@ WebServices {
 
     @GET("favorites/museums")
     suspend fun getfavouriteMuseum(
+    ): MuseumsResponseDto
 
-    ):MuseumsResponseDto
     @POST("favorites/museums/{id}")
-suspend fun postfavouriteMuseums(
+    suspend fun postfavouriteMuseums(
         @Path("id") museumId: Int
-):VerificationResponseDto
+    ): VerificationResponseDto
+
+
+    @GET("/museums/{id}/stories")
+    suspend fun getStoriesOfMuseum(
+        @Path("id") museumId: Int
+    ): StoriesResponceDto
+
+    @GET("/halls/museums/{id}")
+    suspend fun getAllHallsOfMuseum(
+        @Path("id") museumId: Int
+    ): HallsResponseDto
+
 
 }

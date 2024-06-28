@@ -7,6 +7,7 @@
         <item name="android:statusBarColor">@color/transparent</item>
         <item name="fontFamily">@font/cairo_medium</item>
         <item name="colorPrimary">@color/mainBtn</item>
+    <item name="colorOnSecondaryContainer">@color/darkBrown</item>
         <item name="android:colorPrimary">@color/darkBrown</item>
         <item name="backgroundColor">@color/white</item>
     </style>

@@ -8,84 +8,35 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.islamicmuseum.IslamicActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+
+    <FrameLayout
+        android:id="@+id/mainFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/settings_back"
-        android:fitsSystemWindows="true">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_400sdp"
-            app:collapsedTitleGravity="start"
-            app:collapsedTitleTextColor="@color/lightSand"
-            app:contentScrim="@color/whiteSand"
-            app:expandedTitleGravity="center|top"
-            app:expandedTitleTextColor="@color/lightSand"
-            app:layout_scrollFlags="snap|scroll|exitUntilCollapsed">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_collapseMode="parallax">
-
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tabLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/transparent"
-                    android:padding="@dimen/_5sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:tabBackground="@drawable/viewpagerselected"
-                    app:tabGravity="center"
-                    app:tabIndicator="@null" />
-
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/view_pager"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toTopOf="@+id/tabLayout"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                android:gravity="center"
-                app:buttonGravity="bottom"
-                app:layout_collapseMode="pin"
-                app:menu="@menu/profile_menu"
-                app:navigationIcon="@drawable/more_s">
-
-            </androidx.appcompat.widget.Toolbar>
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <include layout="@layout/islamic_content" />
+    </FrameLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_appbar"
         style="@style/Widget.MaterialComponents.BottomAppBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         android:layout_gravity="bottom"
+        app:fabAlignmentModeEndMargin="10dp"
+
+
         android:backgroundTint="@color/white"
         app:fabAlignmentMode="center"
-        app:fabAlignmentModeEndMargin="0dp"
+        app:fabCradleRoundedCornerRadius="@dimen/_10sdp"
         app:fabCradleMargin="0dp">
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:itemIconSize="@dimen/_18sdp"
             android:background="#00000000"
             app:elevation="0dp"
             app:itemActiveIndicatorStyle="@null"
@@ -98,12 +49,13 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/eye"
-        android:tint="@color/white"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_55sdp"
+        android:contentDescription="TODO"
+        app:backgroundTint="@color/darkBrown"
         app:layout_anchor="@id/bottom_appbar"
-        app:shapeAppearance="?floatingActionButtonSmallStyle" />
+        app:shapeAppearance="?floatingActionButtonSmallStyle"
+        app:tint="@color/whiteSand" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,613 @@
+Subject: [PATCH] Uncommitted changes before Merge at 6/28/2024 3:28 AM [Changes]
+---
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	
++++ b/app/src/main/AndroidManifest.xml	
+@@ -45,12 +45,20 @@
+         <activity
+             android:name=".ui.notificationActivity"
+             android:exported="false" />
+-        <activity
+-            android:name=".ui.favourities.FavouriteActivity"
+-            android:exported="false" />
++
+         <activity
+             android:name=".ui.islamicmuseum.IslamicActivity"
+-            android:exported="false" /> <!-- <service -->
++            android:exported="true">
++            <intent-filter>
++                <action android:name="android.intent.action.MAIN" />
++
++                <category android:name="android.intent.category.LAUNCHER" />
++            </intent-filter>
++
++        </activity>
++
++
++        <!-- <service -->
+         <!-- android:name="androidx.appcompat.app.AppLocalesMetadataHolderService" -->
+         <!-- android:enabled="false" -->
+         <!-- android:exported="false"> -->
+@@ -106,11 +114,7 @@
+             android:name=".ui.splash.SplashScreen"
+             android:exported="true"
+             android:screenOrientation="portrait">
+-            <intent-filter>
+-                <action android:name="android.intent.action.MAIN" />
+ 
+-                <category android:name="android.intent.category.LAUNCHER" />
+-            </intent-filter>
+         </activity>
+ 
+         <meta-data
+Index: app/src/main/java/com/graduation/mawruth/ui/islamicmuseum/fragments/favourite/IslamicMuseumFavouriteFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/graduation/mawruth/ui/islamicmuseum/fragments/favourite/IslamicMuseumFavouriteFragment.kt b/app/src/main/java/com/graduation/mawruth/ui/islamicmuseum/fragments/favourite/IslamicMuseumFavouriteFragment.kt
+new file mode 100644
+--- /dev/null	
++++ b/app/src/main/java/com/graduation/mawruth/ui/islamicmuseum/fragments/favourite/IslamicMuseumFavouriteFragment.kt	
+@@ -0,0 +1,31 @@
++package com.graduation.mawruth.ui.islamicmuseum.fragments.favourite
++
++import android.os.Bundle
++import android.view.LayoutInflater
++import android.view.View
++import android.view.ViewGroup
++import androidx.fragment.app.Fragment
++import com.graduation.mawruth.R
++
++/**
++ * A simple [Fragment] subclass.
++ * Use the [IslamicMuseumFavouriteFragment.newInstance] factory method to
++ * create an instance of this fragment.
++ */
++class IslamicMuseumFavouriteFragment : Fragment() {
++    // TODO: Rename and change types of parameters
++    private var param1: String? = null
++    private var param2: String? = null
++
++
++
++    override fun onCreateView(
++        inflater: LayoutInflater, container: ViewGroup?,
++        savedInstanceState: Bundle?
++    ): View? {
++        // Inflate the layout for this fragment
++        return inflater.inflate(R.layout.fragment_islamic_museum_favourite, container, false)
++    }
++
++
++}
+\ No newline at end of file
+Index: data/src/main/java/com/graduation/data/api/WebServices.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data/src/main/java/com/graduation/data/api/WebServices.kt b/data/src/main/java/com/graduation/data/api/WebServices.kt
+--- a/data/src/main/java/com/graduation/data/api/WebServices.kt	
++++ b/data/src/main/java/com/graduation/data/api/WebServices.kt	
+@@ -4,12 +4,14 @@
+ import com.graduation.data.model.VerificationResponseDto
+ import com.graduation.data.model.authuserdata.AuthenticationResponseDto
+ import com.graduation.data.model.categories.CategoriesResponseDto
++import com.graduation.data.model.halls.HallsResponseDto
+ import com.graduation.data.model.museums.MuseumItemDto
+ import com.graduation.data.model.museums.MuseumsResponseDto
+ import com.graduation.data.model.pieces.PiecesItemDto
+ import com.graduation.data.model.pieces.PiecesResponseDto
+ import com.graduation.data.model.reviews.AllReviewsResponseDto
+ import com.graduation.data.model.reviews.ReviewsResponseDto
++import com.graduation.data.model.stories.StoriesResponceDto
+ import com.graduation.domain.model.authenticationuser.User
+ import com.graduation.domain.model.reviews.ReviewsData
+ import okhttp3.MultipartBody
+@@ -89,7 +91,6 @@
+     ): PiecesResponseDto?
+ 
+ 
+-
+     @Multipart
+     @PUT("users/upload-image")
+     suspend fun updateUserImage(
+@@ -123,11 +124,23 @@
+ 
+     @GET("favorites/museums")
+     suspend fun getfavouriteMuseum(
+-
+-    ):MuseumsResponseDto
++    ): MuseumsResponseDto
++
+     @POST("favorites/museums/{id}")
+-suspend fun postfavouriteMuseums(
++    suspend fun postfavouriteMuseums(
+         @Path("id") museumId: Int
+-):VerificationResponseDto
++    ): VerificationResponseDto
+ 
++
++    @GET("/museums/{id}/stories")
++    suspend fun getStoriesOfMuseum(
++      @Path  ("id") museumId: Int
++    ):StoriesResponceDto
++
++    @GET("/halls/museums/{id}")
++    suspend fun getAllHallsOfMuseum(
++        @Path("id")museumId: Int
++    ):HallsResponseDto
++
++
+ }
+\ No newline at end of file
+Index: data/src/main/java/com/graduation/data/dataSourceContract/stories/StoriesDataSource.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data/src/main/java/com/graduation/data/dataSourceContract/stories/StoriesDataSource.kt b/data/src/main/java/com/graduation/data/dataSourceContract/stories/StoriesDataSource.kt
+new file mode 100644
+--- /dev/null	
++++ b/data/src/main/java/com/graduation/data/dataSourceContract/stories/StoriesDataSource.kt	
+@@ -0,0 +1,10 @@
++package com.graduation.data.dataSourceContract.stories
++
++import com.graduation.domain.model.stories.StoriesResponse
++
++interface StoriesDataSource {
++    suspend fun getAllStoriesOfMuseum(
++        museumId: Int
++    ): StoriesResponse?
++
++}
+\ No newline at end of file
+Index: data/src/main/java/com/graduation/data/datasourceImpl/stories/StoriesDataSourceImpl.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data/src/main/java/com/graduation/data/datasourceImpl/stories/StoriesDataSourceImpl.kt b/data/src/main/java/com/graduation/data/datasourceImpl/stories/StoriesDataSourceImpl.kt
+new file mode 100644
+--- /dev/null	
++++ b/data/src/main/java/com/graduation/data/datasourceImpl/stories/StoriesDataSourceImpl.kt	
+@@ -0,0 +1,13 @@
++package com.graduation.data.datasourceImpl.stories
++
++import com.graduation.data.api.WebServices
++import com.graduation.data.dataSourceContract.stories.StoriesDataSource
++import com.graduation.domain.model.stories.StoriesResponse
++import javax.inject.Inject
++
++class StoriesDataSourceImpl @Inject constructor(private val webServices: WebServices) : StoriesDataSource {
++    override suspend fun getAllStoriesOfMuseum(museumId: Int): StoriesResponse {
++        return webServices.getStoriesOfMuseum(museumId).toStoryResponse()
++    }
++
++}
+\ No newline at end of file
+Index: app/src/main/java/com/graduation/mawruth/ui/islamicmuseum/IslamicActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/graduation/mawruth/ui/islamicmuseum/IslamicActivity.kt b/app/src/main/java/com/graduation/mawruth/ui/islamicmuseum/IslamicActivity.kt
+--- a/app/src/main/java/com/graduation/mawruth/ui/islamicmuseum/IslamicActivity.kt	
++++ b/app/src/main/java/com/graduation/mawruth/ui/islamicmuseum/IslamicActivity.kt	
+@@ -2,32 +2,67 @@
+ 
+ import android.os.Bundle
+ import androidx.appcompat.app.AppCompatActivity
++import androidx.fragment.app.Fragment
++import androidx.lifecycle.ViewModelProvider
+ import com.google.android.material.tabs.TabLayoutMediator
++import com.graduation.mawruth.R
+ import com.graduation.mawruth.databinding.ActivityIslamicBinding
+ import com.graduation.mawruth.ui.home.viewpager.HomeViewPager
+ import com.graduation.mawruth.ui.home.viewpager.TestViewPagerObject
++import com.graduation.mawruth.ui.islamicmuseum.fragments.discover.IslamicMuseumDiscoverFragment
++import com.graduation.mawruth.ui.islamicmuseum.fragments.favourite.IslamicMuseumFavouriteFragment
++import com.graduation.mawruth.ui.islamicmuseum.fragments.home.IslamicMuseumHomeFragment
++import dagger.hilt.android.AndroidEntryPoint
+ 
++@AndroidEntryPoint
+ class IslamicActivity : AppCompatActivity() {
+     lateinit var viewBinding: ActivityIslamicBinding
+-    lateinit var adapter: HomeViewPager
++    lateinit var viewModel: IslamicMuseumHomeViewModel
++
++
++
+ 
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         viewBinding = ActivityIslamicBinding.inflate(layoutInflater)
++        viewModel = ViewModelProvider(this)[IslamicMuseumHomeViewModel::class.java]
+         setContentView(viewBinding.root)
+         initViews()
+     }
+ 
+     private fun initViews() {
+-        adapter = HomeViewPager(TestViewPagerObject.list)
+-        viewBinding.viewPager.adapter = adapter
+-        TabLayoutMediator(
+-            viewBinding.tabLayout,
+-            viewBinding.viewPager,
+-            true,
+-            true
+-        ) { tab, position ->
+-        }.attach()
++        navigateFragment(IslamicMuseumHomeFragment())
++        setupBottomNavigation()
++
++
++
++    }
++    private fun navigateFragment(fragment : Fragment) {
++        supportFragmentManager
++            .beginTransaction()
++            .replace(R.id.mainFragment, fragment)
++            .commit()
++    }
++
++    private fun setupBottomNavigation(){
++        viewBinding.bottomNavBar.setOnItemSelectedListener { item->
++            if(item.itemId == R.id.homeIconBottom){
++
++                navigateFragment(IslamicMuseumHomeFragment())
++
++            }
++            else if(item.itemId == R.id.discoverIconBottom){
++                navigateFragment(IslamicMuseumDiscoverFragment())
++            }
++            else if(item.itemId == R.id.fav_nav_barIconBottom){
++                navigateFragment(IslamicMuseumFavouriteFragment())
++            }
++            else if(item.itemId == R.id.moreIconBottom){
++                navigateFragment(IslamicMuseumFavouriteFragment())
++            }
++
++            return@setOnItemSelectedListener true
++        }
+ 
+     }
+ 
+Index: app/src/main/res/layout/islamic_content.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/islamic_content.xml b/app/src/main/res/layout/islamic_content.xml
+--- a/app/src/main/res/layout/islamic_content.xml	
++++ b/app/src/main/res/layout/islamic_content.xml	
+@@ -1,11 +1,14 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
++<androidx.core.widget.NestedScrollView
++    android:id="@+id/islamicContent"
++    xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:fillViewport="true"
+-    android:padding="@dimen/_10sdp"
++    android:background="@color/white"
++    android:layout_margin="@dimen/_10sdp"
+     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+ 
+     <androidx.constraintlayout.widget.ConstraintLayout
+@@ -17,7 +20,7 @@
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="المزيد"
+-            android:textSize="@dimen/_19ssp"
++            android:textSize="@dimen/_11ssp"
+             app:layout_constraintBottom_toBottomOf="@+id/textView9"
+             app:layout_constraintEnd_toStartOf="@+id/textView9"
+             app:layout_constraintHorizontal_bias="0.5"
+@@ -29,8 +32,8 @@
+             android:id="@+id/textView7"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+-            android:text="العصــور"
+-            android:textSize="@dimen/_19ssp"
++            android:text="المقتنيات"
++            android:textSize="@dimen/_13ssp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.5"
+             app:layout_constraintStart_toEndOf="@+id/textView8"
+@@ -38,7 +41,7 @@
+ 
+         <View
+             android:id="@+id/line_view"
+-            android:layout_width="@dimen/_80sdp"
++            android:layout_width="@dimen/_55sdp"
+             android:layout_height="@dimen/_1sdp"
+             android:background="@color/mainBtn"
+             app:layout_constraintBottom_toBottomOf="@+id/coloured_view"
+@@ -58,7 +61,7 @@
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="المزيد"
+-            android:textSize="@dimen/_19ssp"
++            android:textSize="@dimen/_11ssp"
+             app:layout_constraintBottom_toBottomOf="@+id/textView7"
+             app:layout_constraintEnd_toStartOf="@+id/textView7"
+             app:layout_constraintHorizontal_bias="0.5"
+@@ -71,10 +74,11 @@
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="@dimen/_15sdp"
++
+             android:orientation="horizontal"
+             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+             app:layout_constraintTop_toBottomOf="@+id/line_view"
+-            tools:listitem="@layout/category_item" />
++            tools:listitem="@layout/museum_collection_item" />
+ 
+         <TextView
+             android:id="@+id/textView9"
+@@ -82,7 +86,7 @@
+             android:layout_height="wrap_content"
+             android:layout_marginTop="@dimen/_25sdp"
+             android:text="حكايات متحف الفن"
+-            android:textSize="@dimen/_19ssp"
++            android:textSize="@dimen/_13ssp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.5"
+             app:layout_constraintStart_toEndOf="@+id/textView10"
+@@ -113,7 +117,7 @@
+             android:orientation="horizontal"
+             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+             app:layout_constraintTop_toBottomOf="@+id/view"
+-            tools:listitem="@layout/category_item" />
++            tools:listitem="@layout/homescreen_stories_item" />
+ 
+         <TextView
+             android:id="@+id/textView11"
+@@ -121,7 +125,7 @@
+             android:layout_height="wrap_content"
+             android:layout_marginTop="@dimen/_25sdp"
+             android:text="تصنيف القاعات"
+-            android:textSize="@dimen/_19ssp"
++            android:textSize="@dimen/_13ssp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/stories" />
+ 
+@@ -143,13 +147,16 @@
+             app:layout_constraintStart_toStartOf="@+id/textView11" />
+ 
+         <androidx.recyclerview.widget.RecyclerView
+-            android:id="@+id/museum_rec"
++            android:id="@+id/hallsRecycler"
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
++            android:layout_marginTop="@dimen/_10sdp"
+             android:orientation="vertical"
+             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/view3"
++            app:layout_constraintVertical_bias="1.0"
++            tools:layout_editor_absoluteX="0dp"
+             tools:listitem="@layout/halls_item" />
+     </androidx.constraintlayout.widget.ConstraintLayout>
+ 
+Index: data/src/main/java/com/graduation/data/repository/StoriesRepositoryImpl.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data/src/main/java/com/graduation/data/repository/StoriesRepositoryImpl.kt b/data/src/main/java/com/graduation/data/repository/StoriesRepositoryImpl.kt
+new file mode 100644
+--- /dev/null	
++++ b/data/src/main/java/com/graduation/data/repository/StoriesRepositoryImpl.kt	
+@@ -0,0 +1,13 @@
++package com.graduation.data.repository
++
++import com.graduation.data.datasourceImpl.stories.StoriesDataSourceImpl
++import com.graduation.domain.model.stories.StoriesResponse
++import com.graduation.domain.repositories.StoriesRepository
++import javax.inject.Inject
++
++class StoriesRepositoryImpl @Inject constructor(private val storiesDataSourceImpl: StoriesDataSourceImpl)
++    : StoriesRepository {
++    override suspend fun getAllStoriesOfMuseum(museumId: Int): StoriesResponse {
++        return storiesDataSourceImpl.getAllStoriesOfMuseum(museumId)
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/layout/museum_collection_item.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/museum_collection_item.xml b/app/src/main/res/layout/museum_collection_item.xml
+new file mode 100644
+--- /dev/null	
++++ b/app/src/main/res/layout/museum_collection_item.xml	
+@@ -0,0 +1,50 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="wrap_content"
++    android:layout_height="wrap_content"
++    android:background="@color/white"
++    android:layout_margin="@dimen/_10sdp">
++
++    <com.google.android.material.card.MaterialCardView
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:background="@color/white"
++        app:cardCornerRadius="0dp"
++        app:cardElevation="0dp"
++        app:strokeWidth="0dp">
++
++        <androidx.constraintlayout.widget.ConstraintLayout
++            android:layout_width="match_parent"
++            android:layout_height="match_parent"
++            android:background="@color/white"
++            android:gravity="center"
++            android:orientation="vertical">
++
++            <ImageView
++                android:id="@+id/category_image"
++                android:layout_width="@dimen/_60sdp"
++                android:layout_height="@dimen/_60sdp"
++
++                android:src="@drawable/collectio1"
++                app:layout_constraintBottom_toTopOf="@+id/category_name"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintTop_toTopOf="parent" />
++
++            <TextView
++                android:id="@+id/category_name"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_gravity="center"
++                android:gravity="center"
++                android:fontFamily="@font/cairo_regular"
++                android:text="فنون"
++                android:textSize="@dimen/_10ssp"
++                app:layout_constraintBottom_toBottomOf="parent"
++                app:layout_constraintEnd_toEndOf="@+id/category_image"
++                app:layout_constraintStart_toStartOf="@+id/category_image" />
++        </androidx.constraintlayout.widget.ConstraintLayout>
++
++    </com.google.android.material.card.MaterialCardView>
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_islamic_museum_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_islamic_museum_home.xml b/app/src/main/res/layout/fragment_islamic_museum_home.xml
+new file mode 100644
+--- /dev/null	
++++ b/app/src/main/res/layout/fragment_islamic_museum_home.xml	
+@@ -0,0 +1,116 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.coordinatorlayout.widget.CoordinatorLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:background="@color/white"
++    android:layout_height="match_parent"
++    tools:context=".ui.islamicmuseum.fragments.home.IslamicMuseumHomeFragment">
++    <com.google.android.material.appbar.AppBarLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:background="@drawable/settings_back"
++      >
++
++        <com.google.android.material.appbar.CollapsingToolbarLayout
++            android:layout_width="match_parent"
++            android:layout_height="match_parent"
++            app:collapsedTitleGravity="start"
++            app:collapsedTitleTextColor="@color/lightSand"
++            app:contentScrim="@color/whiteSand"
++            app:expandedTitleGravity="center|top"
++            app:expandedTitleTextColor="@color/lightSand"
++            app:layout_scrollFlags="snap|scroll|exitUntilCollapsed">
++
++            <LinearLayout
++                android:layout_width="match_parent"
++                android:layout_height="match_parent"
++                android:orientation="vertical"
++
++                app:layout_collapseMode="parallax">
++
++                <LinearLayout
++                    android:layout_width="match_parent"
++                    android:layout_height="wrap_content"
++                    android:orientation="horizontal">
++
++                    <com.google.android.material.search.SearchBar
++                        android:id="@+id/search_bar"
++                        android:layout_width="match_parent"
++                        android:layout_height="wrap_content"
++                        android:layout_marginTop="@dimen/_70sdp"
++                        android:backgroundTint="@color/white"
++                        app:backgroundTint="@color/white"
++                        android:hint="إلي أي تراث تتطلع ....؟"
++                        app:layout_constraintBottom_toTopOf="@+id/view_pager"
++                        app:layout_constraintEnd_toStartOf="@+id/imageButton"
++                        app:layout_constraintHorizontal_bias="0.5"
++                        app:layout_constraintStart_toStartOf="parent"
++                        app:layout_constraintTop_toTopOf="parent"
++                        app:layout_constraintVertical_bias="0.15"
++                        app:navigationIcon="@drawable/search_icon"
++                        app:strokeColor="#B7B2AB"
++                        app:strokeWidth="@dimen/_1sdp" />
++
++
++
++                </LinearLayout>
++
++                <androidx.viewpager2.widget.ViewPager2
++                    android:id="@+id/view_pager"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    app:layout_constraintBottom_toTopOf="@+id/tabLayout"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintHorizontal_bias="0.5"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toBottomOf="@+id/search_bar" />
++
++                <com.google.android.material.tabs.TabLayout
++                    android:id="@+id/tabLayout"
++                    android:layout_width="match_parent"
++                    android:layout_height="@dimen/_30sdp"
++                    android:padding="@dimen/_5sdp"
++                    android:layout_marginTop="@dimen/_10sdp"
++                    android:backgroundTint="@color/transparent"
++                    app:layout_constraintBottom_toBottomOf="parent"
++                    app:layout_constraintTop_toBottomOf="@+id/view_pager"
++                    app:tabBackground="@drawable/viewpagerselected"
++                    app:tabGravity="center"
++                    app:tabIndicator="@null" />
++
++            </LinearLayout>
++
++
++            <androidx.appcompat.widget.Toolbar
++                android:id="@+id/toolbar"
++                android:layout_width="match_parent"
++                android:layout_height="@dimen/_50sdp"
++                android:gravity="center"
++                app:buttonGravity="bottom"
++                app:layout_collapseMode="pin"
++                app:menu="@menu/profile_menu"
++               >
++
++                <LinearLayout
++                    android:layout_width="match_parent"
++                    android:layout_height="match_parent"
++                    android:gravity="center">
++
++                    <ImageView
++                        android:layout_marginStart="@dimen/_25sdp"
++                        android:layout_width="wrap_content"
++                        android:layout_marginTop="@dimen/_5sdp"
++                        android:layout_height="wrap_content"
++                        android:src="@drawable/my_logo" />
++                </LinearLayout>
++            </androidx.appcompat.widget.Toolbar>
++        </com.google.android.material.appbar.CollapsingToolbarLayout>
++    </com.google.android.material.appbar.AppBarLayout>
++
++    <include
++        android:id="@+id/islamicContent"
++        layout="@layout/islamic_content" />
++
++</androidx.coordinatorlayout.widget.CoordinatorLayout>
+\ No newline at end of file
