@@ -2,6 +2,7 @@ package com.graduation.mawruth.ui.islamicmuseum
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.graduation.mawruth.R
@@ -9,6 +10,7 @@ import com.graduation.mawruth.databinding.ActivityIslamicBinding
 import com.graduation.mawruth.ui.islamicmuseum.fragments.discover.IslamicMuseumDiscoverFragment
 import com.graduation.mawruth.ui.islamicmuseum.fragments.favourite.IslamicMuseumFavouriteFragment
 import com.graduation.mawruth.ui.islamicmuseum.fragments.home.IslamicMuseumHomeFragment
+import com.graduation.mawruth.ui.islamicmuseum.fragments.more.MoreFeaturesFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,6 +32,7 @@ class IslamicActivity : AppCompatActivity() {
     private fun initViews() {
         navigateFragment(IslamicMuseumHomeFragment())
         setupBottomNavigation()
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
 
     }
@@ -52,12 +55,17 @@ class IslamicActivity : AppCompatActivity() {
             } else if (item.itemId == R.id.fav_nav_barIconBottom) {
                 navigateFragment(IslamicMuseumFavouriteFragment())
             } else if (item.itemId == R.id.moreIconBottom) {
-                navigateFragment(IslamicMuseumFavouriteFragment())
+                showDataSheet()
             }
 
             return@setOnItemSelectedListener true
         }
 
+    }
+
+    private fun showDataSheet() {
+        val dataBottomSheet = MoreFeaturesFragment()
+        dataBottomSheet.show(supportFragmentManager, "")
     }
 
 }

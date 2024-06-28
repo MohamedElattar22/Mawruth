@@ -20,9 +20,9 @@
         android:id="@+id/bottom_appbar"
         style="@style/Widget.MaterialComponents.BottomAppBar"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="@dimen/_55sdp"
         android:layout_gravity="bottom"
-        app:fabAlignmentModeEndMargin="10dp"
+
 
 
         android:backgroundTint="@color/white"
@@ -35,7 +35,9 @@
             android:id="@+id/bottom_nav_bar"
             android:layout_width="match_parent"
             app:itemIconSize="@dimen/_18sdp"
-
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:elevation="0dp"
+            app:itemRippleColor="@color/white"
             android:layout_height="match_parent"
             android:background="#00000000"
             app:elevation="0dp"
@@ -53,6 +55,10 @@
         android:layout_height="@dimen/_55sdp"
         app:backgroundTint="@color/darkBrown"
         android:contentDescription="TODO"
+        android:elevation="0dp"
+        android:padding="@dimen/_10sdp"
+        app:fabCustomSize="@dimen/_30sdp"
+        app:fabSize="mini"
         app:layout_anchor="@id/bottom_appbar"
         app:shapeAppearance="?floatingActionButtonSmallStyle"
         app:tint="@color/whiteSand" />

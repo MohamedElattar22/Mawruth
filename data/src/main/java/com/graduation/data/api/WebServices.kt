@@ -142,5 +142,10 @@ WebServices {
         @Path("id") museumId: Int
     ): HallsResponseDto
 
+    @GET("/halls/{id}")
+    suspend fun getHallById(
+        @Path("id") hallID: Int
+    ): HallsResponseDto
+
 
 }

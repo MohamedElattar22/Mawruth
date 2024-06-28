@@ -11,4 +11,9 @@ class HallsRepositoryImpl @Inject constructor(private val hallsDataSource: Halls
         return hallsDataSource.getAllHallsOfMuseum(museumId)
     }
 
+    override suspend fun getHallById(hallID: Int): HallsResponse {
+        return hallsDataSource.getHallById(hallID)
+    }
+
+
 }

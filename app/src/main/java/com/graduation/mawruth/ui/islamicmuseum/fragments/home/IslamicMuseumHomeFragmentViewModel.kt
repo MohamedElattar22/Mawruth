@@ -20,24 +20,36 @@ class IslamicMuseumHomeFragmentViewModel @Inject constructor(
     val storiesList = MutableLiveData<StoriesResponse>()
     val hallsList = MutableLiveData<HallsResponse>()
     val error = MutableLiveData<String>()
+    val loadingLiveData = MutableLiveData<Boolean>()
+
+
     fun getStories(museumId: Int) {
+        loadingLiveData.postValue(true)
         viewModelScope.launch {
             try {
                 val result = getAllStoriesOfMuseumUseCase.invoke(museumId)
                 storiesList.postValue(result)
             } catch (e: Exception) {
                 error.postValue(e.localizedMessage)
+            } finally {
+                loadingLiveData.postValue(false)
             }
         }
     }
 
     fun getHalls(museumId: Int) {
+        loadingLiveData.postValue(true)
         viewModelScope.launch {
             try {
                 val result = getAllHallsOfMuseumUseCase.invoke(museumId)
                 hallsList.postValue(result)
+                loadingLiveData.postValue(false)
             } catch (e: Exception) {
                 error.postValue(e.localizedMessage)
+                loadingLiveData.postValue(false)
+
+            } finally {
+                loadingLiveData.postValue(false)
             }
         }
     }

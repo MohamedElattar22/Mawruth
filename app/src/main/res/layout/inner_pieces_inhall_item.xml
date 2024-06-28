@@ -3,14 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_70sdp"
-    android:layout_margin="@dimen/_5sdp"
-    app:strokeColor="@color/white"
-    android:backgroundTint="#F1F0EB"
-    app:cardCornerRadius="@dimen/_15sdp"
-    android:padding="@dimen/_8sdp">
+    android:layout_marginHorizontal="@dimen/_15sdp"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:backgroundTint="#676058"
+    android:padding="@dimen/_8sdp"
+    app:cardCornerRadius="@dimen/_7sdp"
+    app:strokeWidth="0dp">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="wrap_content"
@@ -20,10 +23,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="@dimen/_45sdp"
-                android:layout_marginEnd="@dimen/_12sdp"
                 android:layout_height="@dimen/_45sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 app:cardCornerRadius="@dimen/_12sdp"
                 app:strokeWidth="0dp">
 
@@ -31,51 +35,42 @@
                     android:id="@+id/hall_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-
                     android:adjustViewBounds="true"
-                    android:src="@drawable/museum_pic" />
 
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/museum_pic" />
 
 
             </com.google.android.material.card.MaterialCardView>
 
 
-
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/hall_name"
+            android:id="@+id/pieceNameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_10sdp"
-            android:text="الأموي و العباسي"
             android:layout_marginTop="@dimen/_3sdp"
+            android:text="مفتاح الكعبة من النحاس"
+            android:textColor="@color/white"
             android:textSize="@dimen/_13ssp"
             app:layout_constraintEnd_toStartOf="@+id/cardView"
             app:layout_constraintTop_toTopOf="@+id/cardView" />
 
         <TextView
-            android:id="@+id/hall_num"
+            android:id="@+id/pieceAgeTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:maxEms="3"
             android:maxLines="1"
             android:paddingTop="@dimen/_3sdp"
-            android:text="القاعة 1"
-            android:textColor="#66424242"
+            android:text="القرن 8هـ/14م"
+            android:textColor="#B7B2AB"
             android:textSize="@dimen/_11ssp"
-            app:layout_constraintEnd_toEndOf="@+id/hall_name"
-            app:layout_constraintTop_toBottomOf="@+id/hall_name" />
+            app:layout_constraintEnd_toEndOf="@+id/pieceNameTV"
+            app:layout_constraintTop_toBottomOf="@+id/pieceNameTV" />
 
-        <ImageView
-            android:layout_width="@dimen/_26sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:src="@drawable/halls_back"
-            android:layout_marginStart="@dimen/_20sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

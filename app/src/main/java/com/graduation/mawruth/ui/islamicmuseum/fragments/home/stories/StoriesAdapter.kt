@@ -1,4 +1,4 @@
-package com.graduation.mawruth.ui.islamicmuseum.stories
+package com.graduation.mawruth.ui.islamicmuseum.fragments.home.stories
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

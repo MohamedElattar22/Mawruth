@@ -26,6 +26,9 @@ class HallsAdapter(var list: List<HallItem?>) : RecyclerView.Adapter<HallsAdapte
         notifyDataSetChanged()
     }
 
+    var onStoryClickListener: OnHallListener? = null
+
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val hall = list.get(position)
         holder.itemBinding.hallName.text = hall?.name.toString()
@@ -34,6 +37,16 @@ class HallsAdapter(var list: List<HallItem?>) : RecyclerView.Adapter<HallsAdapte
             .load(hall?.imagePath.toString())
             .into(holder.itemBinding.hallImage)
 
+        onStoryClickListener.let {
+            holder.itemBinding.root.setOnClickListener {
+                onStoryClickListener?.onClick(list[position]!!, position)
+            }
+        }
+
+    }
+
+    fun interface OnHallListener {
+        fun onClick(hallData: HallItem, position: Int)
     }
 
 }

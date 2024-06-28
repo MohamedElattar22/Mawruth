@@ -10,4 +10,8 @@ class HallsDataSourceImpl @Inject constructor(private val webServices: WebServic
     override suspend fun getAllHallsOfMuseum(museumId: Int): HallsResponse {
         return webServices.getAllHallsOfMuseum(museumId).toHallsResponse()
     }
+
+    override suspend fun getHallById(hallID: Int): HallsResponse {
+        return webServices.getHallById(hallID).toHallsResponse()
+    }
 }

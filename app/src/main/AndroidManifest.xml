@@ -33,22 +33,26 @@
         android:theme="@style/Theme.Mawruth"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.halls.IslamicMuseumHallsActivity"
+            android:exported="true">
 
+        </activity>
+        <activity
+            android:name=".ui.stories.StoriesActivity"
+            android:exported="true">
 
+        </activity>
         <activity
             android:name=".ui.islamicmuseum.IslamicActivity"
             android:exported="true">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-
-        </activity>
-
-
-        <!-- <service -->
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity> <!-- <service -->
         <!-- android:name="androidx.appcompat.app.AppLocalesMetadataHolderService" -->
         <!-- android:enabled="false" -->
         <!-- android:exported="false"> -->
@@ -102,8 +106,13 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.splash.SplashScreen"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
 
