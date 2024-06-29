@@ -1,6 +1,7 @@
 package com.graduation.data.repository
 
 import com.graduation.domain.repositories.CategoriesRepository
+import com.graduation.domain.repositories.CollectionsRepository
 import com.graduation.domain.repositories.EditUserInfoRepository
 import com.graduation.domain.repositories.FavouriteMuseumsRepository
 import com.graduation.domain.repositories.HallRepository
@@ -51,4 +52,8 @@ abstract class di {
 
     @Binds
     abstract fun bindHallsRepository(hallsRepositoryImpl: HallsRepositoryImpl): HallRepository
+
+
+    @Binds
+    abstract fun bindCollectionsRepository(collectionsRepositoryImpl: CollectionsRepositoryImpl): CollectionsRepository
 }

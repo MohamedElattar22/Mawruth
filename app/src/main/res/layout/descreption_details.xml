@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,6 +9,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tx1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
@@ -16,14 +17,19 @@
         android:textColor="@color/darkBrown"
         android:layout_marginEnd="@dimen/_20sdp"
         android:text="معلومات أساسية"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:textSize="@dimen/_15ssp">
 
     </TextView>
 
     <ImageView
+        android:id="@+id/img1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tx1"
         android:src="@drawable/seperator">
 
     </ImageView>
@@ -39,6 +45,8 @@
         android:text="القاهرة - مصر"
         android:textColor="#B3332B1A"
         android:textSize="@dimen/_10ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img1"
         app:drawableEndCompat="@drawable/map_loc">
 
     </TextView>
@@ -51,6 +59,8 @@
         android:layout_marginEnd="@dimen/_20sdp"
         android:drawablePadding="@dimen/_10sdp"
         android:text="4.9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/street"
         android:fontFamily="@font/cairo_regular"
         android:textColor="#B3332B1A"
         android:textSize="@dimen/_10ssp"
@@ -63,6 +73,8 @@
         android:layout_width="wrap_content"
         android:layout_gravity="end"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/workTimeTV"
         android:layout_marginEnd="@dimen/_20sdp">
 
         <com.google.android.material.chip.Chip
@@ -95,21 +107,27 @@
     </com.google.android.material.chip.ChipGroup>
 
     <TextView
+        android:id="@+id/aboutTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:fontFamily="@font/cairo_semibold"
         android:textColor="@color/darkBrown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipGroup"
         android:text="عن المتحف"
         android:textSize="@dimen/_15ssp">
 
     </TextView>
 
     <ImageView
+        android:id="@+id/img2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/aboutTV"
         android:src="@drawable/seperator">
 
     </ImageView>
@@ -120,18 +138,23 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/_20sdp"
         android:fontFamily="@font/cairo_regular"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/museum_descrip"
         android:textColor="#B3332B1A"
-        android:textSize="@dimen/_8ssp">
+        app:layout_constraintTop_toBottomOf="@id/img2">
 
     </TextView>
 
 
     <TextView
+        android:id="@+id/bestTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descr"
         android:fontFamily="@font/cairo_semibold"
         android:text="أفضل القطع"
         android:textColor="@color/darkBrown"
@@ -140,8 +163,11 @@
     </TextView>
 
     <ImageView
+        android:id="@+id/img5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bestTV"
         android:layout_marginEnd="@dimen/_20sdp"
         android:src="@drawable/seperator">
 
@@ -153,57 +179,66 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img5"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/piece_recycler_item">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
+        android:id="@+id/visitorsOpenion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:fontFamily="@font/cairo_semibold"
         android:text="راي الزوار"
         android:textColor="@color/darkBrown"
-        android:textSize="@dimen/_15ssp">
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sendReviewBtn">
 
     </TextView>
 
     <ImageView
+        android:id="@+id/imageView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:src="@drawable/seperator" />
+        android:src="@drawable/seperator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/visitorsOpenion" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reviewRec"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_500sdp"
-        android:overScrollMode="ifContentScrolls"
-        app:stackFromEnd="true"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10sdp"
+        android:overScrollMode="ifContentScrolls"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/review_item" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/visitorsOpenion"
+        app:stackFromEnd="true" />
 
 
     <TextView
+        android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:text="شارك تجربتك"
         android:fontFamily="@font/cairo_semibold"
+        android:text="شارك تجربتك"
         android:textColor="@color/darkBrown"
-        android:textSize="@dimen/_15ssp">
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/piecesRV">
 
     </TextView>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:src="@drawable/seperator">
+        android:src="@drawable/seperator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15">
 
     </ImageView>
 
@@ -211,7 +246,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/review"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_120sdp"
+        android:layout_gravity="bottom|center"
         android:layout_margin="@dimen/_20sdp"
         android:gravity="end"
         app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
@@ -221,21 +257,22 @@
         app:boxStrokeColor="@color/mainSand"
         app:cursorColor="@color/darkBrown"
         app:hintEnabled="false"
-        android:layout_gravity="bottom|center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15"
         app:placeholderTextColor="@color/darkBrown">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/reviewContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="اكتب تجربتك هنا..."
             android:gravity="start"
+            android:hint="اكتب تجربتك هنا..."
             android:imeOptions="flagNoExtractUi"
             android:lines="5"
             android:maxLines="5"
+            android:minLines="5"
             android:textColor="@color/darkBrown"
             android:textColorHint="#AEB7AE"
-            android:minLines="5"
             android:textSize="@dimen/_10ssp">
 
         </com.google.android.material.textfield.TextInputEditText>
@@ -247,20 +284,22 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:padding="@dimen/_5sdp">
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/review">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/ignoreReview"
-            android:layout_width="@dimen/_180sdp"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_50sdp"
             android:layout_gravity="start"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:padding="@dimen/_10sdp"
             android:fontFamily="@font/cairo_semibold"
-            android:textColor="@color/darkBrown"
-            android:textSize="@dimen/_8ssp"
-            app:backgroundTint="@color/white"
+            android:padding="@dimen/_10sdp"
             android:text="@string/ثءهف"
+            android:textColor="@color/darkBrown"
+            android:textSize="@dimen/_12ssp"
+            app:backgroundTint="@color/white"
             app:cornerRadius="@dimen/_8sdp"
             app:strokeColor="@color/mainSand"
             app:strokeWidth="@dimen/_1sdp">
@@ -269,13 +308,13 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/sendReview"
-            android:layout_width="@dimen/_180sdp"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_50sdp"
             android:fontFamily="@font/cairo_semibold"
             android:padding="@dimen/_10sdp"
             android:text="تعليق"
-            android:textSize="@dimen/_8ssp"
             android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
             app:backgroundTint="@color/mainSand"
             app:cornerRadius="@dimen/_8sdp">
 
@@ -283,6 +322,4 @@
     </LinearLayout>
 
 
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

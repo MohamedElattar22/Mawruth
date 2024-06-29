@@ -27,7 +27,7 @@ class MuseumDetailsViewModel @Inject constructor(
     private val sharedPreferences: SharedPreferences,
     private val getReviewsUseCase: GetReviewsUseCase,
 ) : ViewModel() {
-    val error = MutableLiveData<String>()
+    val error = MutableLiveData<Boolean>()
     val infoLiveData = MutableLiveData<MuseumItem?>()
     val piecesList = MutableLiveData<PiecesResponse?>()
     val reviewLiveData = MutableLiveData<ReviewsResponse?>()
@@ -38,7 +38,7 @@ class MuseumDetailsViewModel @Inject constructor(
                 val result = getMuseumByIDUseCase.invoke(museumId)
                 infoLiveData.postValue(result)
             } catch (e: Exception) {
-                error.postValue(e.localizedMessage)
+                error.postValue(true)
             }
 
         }
@@ -56,7 +56,7 @@ class MuseumDetailsViewModel @Inject constructor(
                 val result = sendReviewUseCase.invoke(museumId, reviewDto!!)
                 reviewLiveData.postValue(result)
             } catch (e: Exception) {
-                error.postValue(e.localizedMessage)
+                error.postValue(true)
             }
         }
     }
@@ -67,7 +67,7 @@ class MuseumDetailsViewModel @Inject constructor(
                 val result = getMuseumPieces.invoke(museumId = museumId)
                 piecesList.postValue(result)
             } catch (e: Exception) {
-                error.postValue(e.localizedMessage)
+                error.postValue(true)
             }
 
         }
@@ -79,7 +79,7 @@ class MuseumDetailsViewModel @Inject constructor(
                 val result = getReviewsUseCase.invoke(museumId)
                 reviewListLiveData.postValue(result)
             } catch (e: Exception) {
-                error.postValue(e.localizedMessage)
+                error.postValue(true)
             }
         }
     }

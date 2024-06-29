@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/stories_back"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        tools:context=".AudioActivity">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_20sdp"
+            android:src="@drawable/backbtn">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/audioImage"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/omayt" />
+
+        <TextView
+            android:id="@+id/audioText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_35sdp"
+            android:text="العصــر الأمـــوي
+و العباسي"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_21ssp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/_15sdp"
+            android:text="جولة صوتية للقاعة الثانية ومحتوياتها من العصرين
+ الأموي والعباسي"
+            android:textAlignment="center"
+            android:textColor="#B7B2AB"
+            android:textSize="@dimen/_12ssp">
+
+        </TextView>
+
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+
+            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginEnd="20dp"
+            android:progressBackgroundTint="#4DFFFFFF"
+            android:progressTint="#B9A474"
+            android:thumbTint="#B9A474" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/timeSeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:text="00:00"
+                android:textColor="#B7B2AB"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/time" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:text="00:00"
+                android:textColor="#B7B2AB"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/playPauseButton"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/play_btn" />
+
+    </LinearLayout>
+</layout>

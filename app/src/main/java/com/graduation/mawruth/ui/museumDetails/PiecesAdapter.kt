@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.graduation.domain.model.pieces.PiecesResponse
 import com.graduation.mawruth.databinding.PieceRecyclerItemBinding
 
-class PiecesAdapter(var list: List<PiecesResponse?>) :
+class PiecesAdapter(var list: List<PiecesResponse>) :
     RecyclerView.Adapter<PiecesAdapter.MyViewHolder>() {
     var itemClick: OnPieceClickListener? = null
 
@@ -21,7 +21,7 @@ class PiecesAdapter(var list: List<PiecesResponse?>) :
         return MyViewHolder(view)
     }
 
-    fun bindPiecesList(list: List<PiecesResponse?>) {
+    fun bindPiecesList(list: List<PiecesResponse>) {
         this.list = list
         notifyDataSetChanged()
     }
@@ -29,14 +29,16 @@ class PiecesAdapter(var list: List<PiecesResponse?>) :
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = list.get(position)
-        holder.viewBinding.pieceTitleTV.text = item?.data?.get(0)?.name
+        val item = list[position]
+        holder.viewBinding.pieceTitleTV.text = item.data?.get(0)?.name
         Glide.with(holder.itemView)
-            .load(item?.data?.get(0)?.image.toString())
+            .load(item.data?.get(0)?.image.toString())
             .into(holder.viewBinding.pieceImage)
-        Log.d("imageUrl", item?.data?.get(0)?.image.toString())
+        Log.d("imageUrl", item.data?.get(0)?.image.toString())
         holder.viewBinding.toPieceDetailsBtn.setOnClickListener {
-            itemClick?.onClick(item!!, position)
+
+            itemClick?.onClick(item, position)
+
         }
 
         }

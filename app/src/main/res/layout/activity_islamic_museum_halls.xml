@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/stories_back"
-    tools:context=".ui.museumDetails.MuseumDetailsActivity">
+    tools:context=".ui.halls.IslamicMuseumHallsActivity">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll"
@@ -22,7 +22,6 @@
                 android:id="@+id/hallName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_190sdp"
                 android:fontFamily="@font/cairo_semibold"
                 android:lineSpacingExtra="-11dp"
                 android:maxEms="5"
@@ -34,8 +33,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/halliImage"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintStart_toStartOf="parent">
 
             </TextView>
 
@@ -45,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/cairo_semibold"
                 android:maxLines="3"
-                android:padding="@dimen/_8sdp"
+                android:padding="@dimen/_15sdp"
                 android:text="مقدمة المتحف تضم مجموعة من أبرز التحف الموجودة
 في العالم الإسلامي , كنسخة مصحف مكتوب بالخط الكوفي
 وكذلك مفتاح الكعبة المشرفة"
@@ -62,7 +60,7 @@
                 android:id="@+id/toVirtualTours"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_45sdp"
-                android:layout_margin="@dimen/_10sdp"
+                android:layout_margin="@dimen/_15sdp"
                 android:backgroundTint="#B9A474"
                 android:fontFamily="@font/cairo_semibold"
                 android:text="الذهاب في جولة افتراضية"
@@ -78,7 +76,7 @@
             <ImageView
                 android:id="@+id/halliImage"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_550sdp"
+                android:layout_height="@dimen/_400sdp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/omayat"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -102,16 +100,101 @@
             </TextView>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView14"
-                tools:listitem="@layout/inner_pieces_inhall_item">
+                app:layout_constraintTop_toBottomOf="@+id/textView14">
 
             </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/soundTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:text="جولة صوتية بالقاعة"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView">
+
+            </TextView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/soundd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/soundTV"
+                app:strokeWidth="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <ImageView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:foreground="#8C000000"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/omayt"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </ImageView>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/materialButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:backgroundTint="#B9A474"
+                        android:text="صوتيات"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_8ssp"
+                        app:cornerRadius="@dimen/_8sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </com.google.android.material.button.MaterialButton>
+
+                    <TextView
+                        android:id="@+id/soundText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:text="العصر الأموي و العباسي"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_17sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/materialButton">
+
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/playImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_20sdp"
+                        android:src="@drawable/subtract"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                    </ImageView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline5"

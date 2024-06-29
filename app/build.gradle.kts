@@ -113,4 +113,7 @@ dependencies {
     implementation ("com.intuit.sdp:sdp-android:1.1.1")
     implementation ("com.intuit.ssp:ssp-android:1.1.1")
 
+    //Expo Player
+    implementation("com.google.android.exoplayer:exoplayer:2.18.4")
+
 }
