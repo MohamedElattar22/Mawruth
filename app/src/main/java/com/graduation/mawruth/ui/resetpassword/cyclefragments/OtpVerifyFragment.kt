@@ -130,7 +130,7 @@ class OtpVerifyFragment : Fragment() {
     private fun verifyOTP() {
         Log.d("attar", emailProvider.emailData)
         Log.d("attar", result!!)
-        viewModel.verifyEmail(emailProvider.emailData, result!!)
+        viewModel.verifyEmail(result!!)
         dialog.show()
 
     }
@@ -138,7 +138,7 @@ class OtpVerifyFragment : Fragment() {
     private fun resendOTP() {
         cancelTimer()
         startTimer()
-        viewModel.sendOTPToEmail(emailProvider.emailData)
+        viewModel.sendOTPToEmail()
         dialog.show()
     }
 

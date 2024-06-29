@@ -12,15 +12,11 @@ class ResetPassword : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         viewBinding = ActivityResetpasswordBinding.inflate(layoutInflater)
-
         setContentView(viewBinding.root)
         initViews()
     }
     private fun initViews() {
         WindowCompat.setDecorFitsSystemWindows(window , false)
     }
-
-
 }

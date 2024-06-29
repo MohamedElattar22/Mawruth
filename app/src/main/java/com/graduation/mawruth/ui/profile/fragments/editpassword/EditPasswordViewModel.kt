@@ -1,21 +1,18 @@
 package com.graduation.mawruth.ui.profile.fragments.editpassword
 
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.gson.Gson
-import com.graduation.data.model.authuserdata.AuthenticationUserDto
-import com.graduation.domain.model.authenticationuser.User
-import com.graduation.domain.useCase.ResetPasswordUseCase
+import com.graduation.domain.model.PasswordData
+import com.graduation.domain.useCase.UpdateUserPassword
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class EditPasswordViewModel @Inject constructor(
-    private val editUserInfoUseCase: ResetPasswordUseCase,
+    private val updateUserPassword: UpdateUserPassword,
     private val sharedPreferences: SharedPreferences
 ) : ViewModel() {
 
@@ -23,21 +20,16 @@ class EditPasswordViewModel @Inject constructor(
     private var email: String? = null
 
 
-    fun editPassword(newPassword: String) {
-        sharedPreferences.getString("userInfo", null).let {
-            email = Gson().fromJson(it, AuthenticationUserDto::class.java).email
-        }
+    fun editPassword(newPassword: String, currentPassword: String) {
+        val data = PasswordData(currentPassword, newPassword)
         viewModelScope.launch {
             try {
-                val result =
-                    editUserInfoUseCase.invoke(User(email = email), User(password = newPassword))
-                val json = Gson().toJson(result)
+                val result = updateUserPassword.invoke(data)
                 val editor = sharedPreferences.edit()
-                editor.putString("userInfo", json)
+                editor.putString("token", result?.data?.token)
                 editor.apply()
                 infoLiveData.postValue(true)
             } catch (e: Exception) {
-                Log.e("userInfo", e.localizedMessage!!)
                 infoLiveData.postValue(false)
             }
         }

@@ -3,6 +3,7 @@ package com.graduation.data.datasourceImpl
 import android.util.Log
 import com.graduation.data.api.WebServices
 import com.graduation.data.dataSourceContract.EditUserInfoDataSource
+import com.graduation.domain.model.PasswordData
 import com.graduation.domain.model.authenticationuser.AuthenticationResponse
 import com.graduation.domain.model.authenticationuser.User
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -31,5 +32,9 @@ class EditUserInfoDataSourceImpl @Inject constructor(
         Log.e("userDataS", webServices.updateUserImage(avatarRB).toString())
         return webServices.updateUserImage(avatarRB)?.toAuthenticationResponse()!!
 
+    }
+
+    override suspend fun editUserPassword(passwordData: PasswordData): AuthenticationResponse? {
+        return webServices.updateUserPassword(passwordData)?.toAuthenticationResponse()
     }
 }
