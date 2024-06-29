@@ -64,7 +64,7 @@ class ShowProfileImageFragment : DialogFragment() {
             }
             viewBinding.saveBtn.setOnClickListener {
                 val fileDir = requireContext().filesDir
-                val file = File(fileDir, "image.jpg")
+                val file = File(fileDir, "image.jpeg")
                 val inputStream = requireContext().contentResolver.openInputStream(image!!.toUri())
                 val outPutStream = FileOutputStream(file)
                 inputStream!!.copyTo(outPutStream)

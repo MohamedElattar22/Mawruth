@@ -23,11 +23,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
 import com.graduation.domain.model.authenticationuser.User
-
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityHomeBinding
 import com.graduation.mawruth.ui.favourites.FavouriteActivity
-
 import com.graduation.mawruth.ui.home.musumsbytype.CategoryMuseumActivity
 import com.graduation.mawruth.ui.home.viewpager.HomeViewPager
 import com.graduation.mawruth.ui.home.viewpager.TestViewPagerObject
@@ -224,21 +222,19 @@ class HomeActivity : AppCompatActivity() {
 
             loginHeader.visibility = View.VISIBLE
             guest.visibility = View.INVISIBLE
-            sharedPreferences.getString("userInfo", null)?.let {
+            sharedPreferences.getString("userData", null)?.let {
                 user = Gson().fromJson(it, User::class.java)
                 val name = header.findViewById<TextView>(R.id.Headername)
                 viewBinding.nav.menu.setGroupVisible(R.menu.drawer_menu, true)
                 name.text = user?.name
                 val email = header.findViewById<TextView>(R.id.headeremail)
-                email.text = "@${user?.username}"
+                email.text = "@${user?.email}"
                 val image = header.findViewById<ImageView>(R.id.header_pic)
                 Glide.with(this).load(user?.image).placeholder(R.drawable.person).into(image)
             }
             header.setOnClickListener {
                 navigateToProfile()
             }
-
-
             viewBinding.nav.setNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.fav -> {

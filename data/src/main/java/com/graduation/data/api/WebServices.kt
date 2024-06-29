@@ -99,7 +99,7 @@ WebServices {
 
     @PUT("users/me")
     suspend fun updateUserName(
-        @Body name: String?
+        @Body name: User?
     ): AuthenticationResponseDto?
 
     @GET("categories")

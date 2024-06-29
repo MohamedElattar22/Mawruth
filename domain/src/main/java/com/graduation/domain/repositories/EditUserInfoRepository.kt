@@ -10,5 +10,5 @@ interface EditUserInfoRepository {
 
     suspend fun editUserImage(
         image: File?,
-    ): AuthenticationResponse?
+    ): AuthenticationResponse
 }

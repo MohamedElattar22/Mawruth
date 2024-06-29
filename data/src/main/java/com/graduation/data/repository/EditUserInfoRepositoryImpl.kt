@@ -1,5 +1,6 @@
 package com.graduation.data.repository
 
+import android.util.Log
 import com.graduation.data.dataSourceContract.EditUserInfoDataSource
 import com.graduation.domain.model.authenticationuser.AuthenticationResponse
 import com.graduation.domain.repositories.EditUserInfoRepository
@@ -12,7 +13,8 @@ class EditUserInfoRepositoryImpl @Inject constructor(private val editUserInfoDat
         return editUserInfoDataSource.editUserName(name)
     }
 
-    override suspend fun editUserImage(image: File?): AuthenticationResponse? {
+    override suspend fun editUserImage(image: File?): AuthenticationResponse {
+        Log.e("userRepo", editUserInfoDataSource.editUserImage(image).toString())
         return editUserInfoDataSource.editUserImage(image)
     }
 

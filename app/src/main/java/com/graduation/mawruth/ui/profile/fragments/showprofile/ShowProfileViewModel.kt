@@ -6,43 +6,40 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
-import com.graduation.data.model.authuserdata.AuthenticationUserDto
-import com.graduation.domain.useCase.EditUserName
+import com.graduation.domain.useCase.EditUserImageUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
 class ShowProfileViewModel @Inject constructor(
-    private val editUserInfoUseCase: EditUserName,
+    private val editUserImageUseCase: EditUserImageUseCase,
     private val sharedPreferences: SharedPreferences
 ) : ViewModel() {
 
     val infoLiveData = MutableLiveData<Boolean>()
     val error = MutableLiveData<Boolean>()
     val loading = MutableLiveData<Boolean>()
-    private var email: String? = null
 
     fun editUserPhoto(photo: File?) {
-        sharedPreferences.getString("userInfo", null).let {
-            email = Gson().fromJson(it, AuthenticationUserDto::class.java).email
-        }
-        loading.postValue(true)
         viewModelScope.launch {
+            loading.postValue(true)
             try {
-//                val result = editUserInfoUseCase.invoke(name = photo)
-                val editor = sharedPreferences.edit()
-//                val json = Gson().toJson(result)
-//                editor.putString("userInfo", json)
-                editor.apply()
+                Log.e("user", "before")
+                val result = editUserImageUseCase.invoke(photo)
+                Log.e("userafter", result.toString())
+                val userData = Gson().toJson(result.data?.user)
+                Log.e("userafter1", userData)
+                sharedPreferences.edit().putString("userData", userData).apply()
                 infoLiveData.postValue(true)
 
+            } catch (e: HttpException) {
+                Log.e("m", e.localizedMessage.toString())
+                infoLiveData.postValue(false)
             } catch (e: Exception) {
-                Log.e("photo", e.localizedMessage!!)
-                error.postValue(true)
-            } finally {
-                loading.postValue(false)
+                Log.e("m", e.localizedMessage.toString())
             }
         }
     }
