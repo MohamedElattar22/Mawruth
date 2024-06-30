@@ -18,6 +18,7 @@ import com.bumptech.glide.request.transition.Transition
 import com.google.android.material.snackbar.Snackbar
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityMuseumDetailsBinding
+import com.graduation.mawruth.ui.islamicmuseum.IslamicActivity
 import com.graduation.mawruth.ui.pieceDetails.PieceDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,7 +42,9 @@ class MuseumDetailsActivity : AppCompatActivity() {
         viewBinding.piecesRV.adapter = adapter
         WindowCompat.setDecorFitsSystemWindows(window, false)
         val museumID = intent.getStringExtra("museumId")
-//
+        viewModel.getMuseumPieces(museumID!!.toInt())
+        viewModel.getReviews(museumID.toInt())
+
         Log.d("museumId", museumID.toString())
         adapter.itemClick = PiecesAdapter.OnPieceClickListener { data, _ ->
             val intent = Intent(this@MuseumDetailsActivity, PieceDetailsActivity::class.java)
@@ -62,10 +65,16 @@ class MuseumDetailsActivity : AppCompatActivity() {
         viewBinding.street.text = intent.getStringExtra("museumStreet")
         viewBinding.reviewRec.adapter = reviewsRecyclerAdapter
         viewBinding.reviewContainer.movementMethod = ScrollingMovementMethod()
-        museumId = intent.getIntExtra("museumId", 0)
+        museumId = intent.getIntExtra("museumId", 0).toInt()
+        Log.d("ass", museumID.toString())
+        if (museumID.toString() == "49") {
+            viewBinding.bottomAppBar.isVisible = true
+            viewBinding.navigateMuseum.isVisible = true
+            viewBinding.navigateMuseum.setOnClickListener {
+                navigateToIslamicMuseum()
+            }
+        }
 
-        viewModel.getMuseumPieces(museumId)
-        viewModel.getReviews(museumId)
 
         val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
         if (!sharedPreferences.contains("userInfo")) {
@@ -104,6 +113,12 @@ class MuseumDetailsActivity : AppCompatActivity() {
         viewBinding.toolbar.setNavigationOnClickListener {
             finish()
         }
+    }
+
+    private fun navigateToIslamicMuseum() {
+        val navigate = Intent(this, IslamicActivity::class.java)
+        startActivity(navigate)
+        finish()
     }
 
 

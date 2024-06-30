@@ -159,7 +159,7 @@
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:drawablePadding="@dimen/_10sdp"
                 android:fontFamily="@font/cairo_regular"
-                android:text="4.9"
+                android:text="5pm - 9am"
                 android:textColor="#B3332B1A"
                 android:textSize="@dimen/_10ssp"
                 app:drawableEndCompat="@drawable/worktime"
@@ -385,13 +385,14 @@
 
             <LinearLayout
                 android:id="@+id/sendReviewBtn"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:layout_margin="@dimen/_20sdp"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal"
                 android:padding="@dimen/_5sdp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/review">
 
                 <com.google.android.material.button.MaterialButton
@@ -404,7 +405,7 @@
                     android:padding="@dimen/_10sdp"
                     android:text="@string/ثءهف"
                     android:textColor="@color/darkBrown"
-                    android:textSize="@dimen/_12ssp"
+                    android:textSize="@dimen/_10ssp"
                     app:backgroundTint="@color/white"
                     app:cornerRadius="@dimen/_8sdp"
                     app:strokeColor="@color/mainSand"
@@ -427,12 +428,34 @@
                 </com.google.android.material.button.MaterialButton>
             </LinearLayout>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.core.widget.NestedScrollView>
 
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:backgroundTint="#F1F0EB"
+        android:visibility="invisible">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/navigateMuseum"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:backgroundTint="@color/darkBrown"
+            android:fontFamily="@font/cairo_medium"
+            android:text="انتقل إلي المتحف !"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            android:visibility="invisible"
+            app:cornerRadius="@dimen/_5sdp"
+            app:icon="@drawable/museum"
+            app:iconGravity="textEnd"
+            app:iconTint="@color/mainSand"
+            app:rippleColor="@color/darkBrown">
 
+        </com.google.android.material.button.MaterialButton>
+    </com.google.android.material.bottomappbar.BottomAppBar>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

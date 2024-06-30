@@ -54,8 +54,8 @@ class PieceDetailsActivity : AppCompatActivity() {
         viewBinding.details.museumNameTV.text = museumName.toString()
         val pieceAr = intent.getStringExtra("pieceAR").toString()
         Log.d("moha", intent.getBooleanExtra("isMaster", false).toString())
-
-        viewBinding.navigateToAR.isVisible = intent.getBooleanExtra("isMaster", false)
+        val isMasterPiece = intent.getBooleanExtra("isMaster", false)
+        viewBinding.navigateToAR.isVisible = isMasterPiece
         viewBinding.navigateToAR.setOnClickListener {
             val start = Intent(this, AgumentedRealityActivity::class.java)
             start.putExtra("agmunted", pieceAr)
