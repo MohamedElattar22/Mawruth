@@ -1,7 +1,6 @@
 package com.graduation.mawruth.ui.profile.fragments.editpassword
 
 import android.app.Dialog
-import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -14,9 +13,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.gson.Gson
-import com.graduation.data.model.authuserdata.AuthenticationUserDto
-
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.FragmentEditPasswordBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +22,7 @@ class EditPasswordFragment : Fragment() {
     lateinit var viewBinding: FragmentEditPasswordBinding
     private lateinit var viewModel: EditPasswordViewModel
     private lateinit var dialog: Dialog
+    var isValid = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,23 +41,21 @@ class EditPasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setDialog()
-        requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE)
-            .getString("userInfo", null)?.let {
-                val user = Gson().fromJson(it, AuthenticationUserDto::class.java)
-                viewBinding.newpasstextx.addTextChangedListener(textWatcher)
-                viewBinding.newpasstextconfirm.addTextChangedListener(textWatcher)
-                viewBinding.oldpasstext.addTextChangedListener(passwordTextWatcher)
-//                viewBinding.saveBtn.setOnClickListener {
-//
-//                    if (handelTextError(user)) {
-//                        dialog.show()
-//                        viewModel.editPassword(viewBinding.newpasstextx.text.toString().trim())
-//                    }
-//                }
-            }
+        viewBinding.newpasstextx.addTextChangedListener(textWatcher)
+        viewBinding.newpasstextconfirm.addTextChangedListener(textWatcher)
+        viewBinding.oldpasstext.addTextChangedListener(passwordTextWatcher)
         observeLiveData()
         viewBinding.ignoreBtn.setOnClickListener {
             findNavController().popBackStack()
+        }
+        viewBinding.saveBtn.setOnClickListener {
+            if (isValid) {
+                dialog.show()
+                viewModel.editPassword(
+                    viewBinding.newpasstextconfirm.text.toString(),
+                    viewBinding.oldpasstext.text.toString()
+                )
+            }
         }
 
     }
@@ -91,9 +86,11 @@ class EditPasswordFragment : Fragment() {
             ) {
                 viewBinding.newpassconfirm.error = "Password is not match"
                 viewBinding.newpass.error = "Password is not match"
+                isValid = false
             } else {
                 viewBinding.newpassconfirm.error = null
                 viewBinding.newpass.error = null
+                isValid = true
             }
         }
 
@@ -109,9 +106,10 @@ class EditPasswordFragment : Fragment() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             if (viewBinding.oldpasstext.text.toString().trim().isNotBlank()) {
                 viewBinding.oldpass.error = ""
+                isValid = true
             } else {
                 viewBinding.oldpass.error = "Invalid password"
-
+                isValid = false
             }
         }
 
@@ -123,7 +121,11 @@ class EditPasswordFragment : Fragment() {
     private fun observeLiveData() {
         viewModel.infoLiveData.observe(viewLifecycleOwner) {
             if (it) {
-                Toast.makeText(requireContext(), "Data updated Successfully", Toast.LENGTH_SHORT)
+                Toast
+                    .makeText(
+                        requireContext(),
+                        "Data updated Successfully", Toast.LENGTH_SHORT
+                    )
                     .show()
                 dialog.dismiss()
                 findNavController().popBackStack()
@@ -138,29 +140,4 @@ class EditPasswordFragment : Fragment() {
             }
         }
     }
-
-//    private fun handelTextError(user: AuthenticationUserDto): Boolean {
-//        var isInvalid = false
-//        if (user..toString() != viewBinding.oldpasstext.text.toString().trim()) {
-//            viewBinding.oldpass.error = "Invalid password"
-//        } else {
-//            viewBinding.oldpass.error = null
-//            isInvalid = true
-//        }
-//        if (viewBinding.newpasstextx.text.toString().trim()
-//                .isBlank() || viewBinding.newpasstextconfirm.text.toString().trim()
-//                .isBlank()
-//        ) {
-//            viewBinding.newpassconfirm.error = "Password is not match"
-//            viewBinding.newpass.error = "Password is not match"
-//        } else {
-//            viewBinding.newpassconfirm.error = null
-//            viewBinding.newpass.error = null
-//            isInvalid = true
-//        }
-//
-//
-//        return isInvalid
-//    }
-
 }

@@ -30,7 +30,7 @@ class SignUpViewModel @Inject constructor(
             try {
                 signUpUserUseCase.invoke(
                     User(
-                        name = "test",
+                        name = userName.value,
                         email = email.value,
                         username = userName.value,
                         password = password.value

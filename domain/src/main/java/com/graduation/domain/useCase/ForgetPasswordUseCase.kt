@@ -5,11 +5,8 @@ import com.graduation.domain.model.authenticationuser.User
 import com.graduation.domain.repositories.UserAuthenticationRepository
 import javax.inject.Inject
 
-class ResetPasswordUseCase @Inject constructor
-    (private val userAuthenticationRepository: UserAuthenticationRepository) {
+class ForgetPasswordUseCase @Inject constructor(private val userAuthenticationRepository: UserAuthenticationRepository) {
     suspend fun invoke(email: User): VerificationResponse? {
-        return userAuthenticationRepository.resetPassword(email)
+        return userAuthenticationRepository.forgetPassword(email)
     }
-
-
 }

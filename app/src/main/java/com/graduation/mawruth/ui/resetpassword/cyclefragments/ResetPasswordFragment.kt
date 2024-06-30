@@ -40,6 +40,8 @@ class ResetPasswordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        textChanger()
+        viewBinding.passwordsaveBtn.isEnabled = false
         dialog = Dialog(requireActivity())
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCancelable(false)
@@ -47,9 +49,7 @@ class ResetPasswordFragment : Fragment() {
             LayoutInflater.from(requireContext()).inflate(R.layout.loading_dialog, null)
         dialog.setContentView(dialogView)
         initViews()
-
     }
-
     private fun initViews() {
         viewBinding.passwordsaveBtn.setOnClickListener {
             resetPassword()
@@ -69,9 +69,7 @@ class ResetPasswordFragment : Fragment() {
     }
 
     private fun resetPassword() {
-        val password = viewBinding.password.text.toString()
-        val email = emailProvider.emailData
-        viewModel.editPassword(email, password)
+        viewModel.editPassword(viewBinding.password.text.toString())
         dialog.show()
     }
 
@@ -95,28 +93,29 @@ class ResetPasswordFragment : Fragment() {
         txtWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val password = viewBinding.password.text.toString()
-                val passwordConfirm = viewBinding.passwordConf.text.toString()
-                if (password.isBlank()) {
+//                val passwordConfirm = viewBinding.passwordConf.text.toString()
+                if (password.isBlank() || password.length < 8) {
                     viewBinding.passwordsaveBtn.isEnabled = false
-                    viewBinding.newPassword.error = "Password shouldn't be empty !"
-                    viewBinding.confirmPassword.error = "Password shouldn't be empty !"
-
+                    viewBinding.newPassword.error = "Password is Invalid !"
+//                    viewBinding.confirmPassword.error = "Password shouldn't be empty !"
                 } else {
                     viewBinding.newPassword.error = ""
-                    viewBinding.passwordConf.isEnabled = true
+//                    viewBinding.passwordConf.isEnabled = true
+                    viewBinding.passwordsaveBtn.isEnabled = true
 
                 }
-                if (password != passwordConfirm) {
-                    viewBinding.passwordsaveBtn.isEnabled = false
-                    viewBinding.confirmPassword.error = "Password confirmation is wrong ! "
-                } else {
-                    viewBinding.confirmPassword.error = ""
-                    viewBinding.passwordConf.isEnabled = true
-
-                }
+//                if (password != passwordConfirm) {
+//                    viewBinding.passwordsaveBtn.isEnabled = false
+//                    viewBinding.confirmPassword.error = "Password confirmation is wrong ! "
+//                    viewBinding.passwordsaveBtn.isEnabled = false
+//                } else {
+//                    viewBinding.confirmPassword.error = ""
+//                    viewBinding.passwordConf.isEnabled = true
+//                    viewBinding.passwordsaveBtn.isEnabled = true
+//
+//                }
 
             }
 
@@ -125,7 +124,7 @@ class ResetPasswordFragment : Fragment() {
 
         }
         viewBinding.password.addTextChangedListener(txtWatcher)
-        viewBinding.passwordConf.addTextChangedListener(txtWatcher)
+//        viewBinding.passwordConf.addTextChangedListener(txtWatcher)
 
     }
 

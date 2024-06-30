@@ -1,8 +1,5 @@
 package com.graduation.mawruth.ui.resetpassword.cyclefragments
 
-import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.FragmentEnterEmailBinding
 import com.graduation.mawruth.utils.RegexConstants
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,14 +19,13 @@ class EnterEmailFragment : Fragment() {
     private lateinit var viewBinding: FragmentEnterEmailBinding
     private lateinit var viewModel: EnterEmailViewModel
     private var txtWatcher: TextWatcher? = null
-    private lateinit var dialog: Dialog
+//    private lateinit var dialog: Dialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         viewBinding = FragmentEnterEmailBinding.inflate(inflater)
-
         return viewBinding.root
     }
 
@@ -42,12 +37,13 @@ class EnterEmailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dialog = Dialog(requireActivity())
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setCancelable(false)
-        val dialogView =
-            LayoutInflater.from(requireContext()).inflate(R.layout.loading_dialog, viewBinding.root)
-        dialog.setContentView(dialogView)
+
+//        dialog = Dialog(requireActivity())
+//        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//        dialog.setCancelable(false)
+//        val dialogView =
+//            LayoutInflater.from(requireContext()).inflate(R.layout.loading_dialog, viewBinding.root)
+//        dialog.setContentView(dialogView)
         initViews()
 
 
@@ -57,10 +53,9 @@ class EnterEmailFragment : Fragment() {
 
         textChanger()
         viewBinding.sendOTPBtn.setOnClickListener {
-            sendOTPToUser()
+            viewModel.verifyEmail(viewBinding.userInput.text.toString())
         }
         subscribe()
-
     }
 
     private fun setNavigation() {
@@ -78,14 +73,12 @@ class EnterEmailFragment : Fragment() {
 
     }
 
-    private fun sendOTPToUser() {
-        val email = viewBinding.userInput.text.toString()
-        emailProvider.emailData = email
-        viewModel.sendOTPToEmail(email)
-        dialog.show()
-
-
-    }
+//    private fun sendOTPToUser() {
+//        val email = viewBinding.userInput.text.toString()
+//        emailProvider.emailData = email
+//        viewModel.verifyEmail(email)
+//        dialog.show()
+//    }
 
     private fun textChanger() {
 
@@ -120,15 +113,15 @@ class EnterEmailFragment : Fragment() {
     }
 
     private fun subscribe() {
-        viewModel.data.observe(viewLifecycleOwner) {
+        viewModel.navigate.observe(viewLifecycleOwner) {
             if (it) {
                 setNavigation()
-                dialog.dismiss()
+//                dialog.dismiss()
             } else {
                 Snackbar.make(
                     requireContext(), viewBinding.root, "حدث خطأ ما", Snackbar.LENGTH_SHORT
                 ).show()
-                dialog.dismiss()
+//                dialog.dismiss()
 
             }
 

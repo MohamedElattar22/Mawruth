@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
-import com.graduation.data.model.authuserdata.DataDto
+import com.graduation.domain.model.authenticationuser.User
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.FragmentEditNameBinding
 import com.graduation.mawruth.ui.profile.ProfileActivity
@@ -25,7 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class EditNameFragment : Fragment() {
 
     private lateinit var viewBinding: FragmentEditNameBinding
-    var user: DataDto? = null
+    var user: User? = null
     private lateinit var dialog: Dialog
     lateinit var viewModel: EditNameViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,9 +60,9 @@ class EditNameFragment : Fragment() {
 
     private fun initViews() {
         val sharedReference = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE)
-        sharedReference.getString("userInfo", null)?.let {
-            user = Gson().fromJson(it, DataDto::class.java)
-            viewBinding.editName.setText(user?.user?.name)
+        sharedReference.getString("userData", null)?.let {
+            user = Gson().fromJson(it, User::class.java)
+            viewBinding.editName.setText(user?.name)
         }
         viewBinding.ignoreBtn.setOnClickListener {
             findNavController().popBackStack()
@@ -111,8 +111,7 @@ class EditNameFragment : Fragment() {
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             viewBinding.saveBtn.isEnabled =
-                viewBinding.editName.text.toString() != user?.user
-                    ?.name.toString()
+                viewBinding.editName.text.toString() != user?.username
 
         }
 

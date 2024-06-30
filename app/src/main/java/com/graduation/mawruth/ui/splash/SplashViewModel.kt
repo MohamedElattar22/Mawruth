@@ -22,6 +22,7 @@ class SplashViewModel @Inject constructor(
                 if (sharedPreferences.contains("userData")) {
                     sharedPreferences.getString("userData", null)?.let {
                         infoLiveData.postValue(true)
+                        Log.e("user", it)
                     }
 
                 } else {

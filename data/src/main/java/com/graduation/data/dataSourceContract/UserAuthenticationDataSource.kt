@@ -13,6 +13,6 @@ interface UserAuthenticationDataSource {
 
     suspend fun resendOTP(email: User): VerificationResponse?
     suspend fun forgetPassword(email: User): VerificationResponse?
-    suspend fun resetPassword(email: User, password: User): VerificationResponse?
+    suspend fun resetPassword(email: User): VerificationResponse?
 
 }

@@ -2,7 +2,6 @@ package com.graduation.mawruth.ui.login
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -32,11 +31,11 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val result = loginUseCase.invoke(user)
-                val json = Gson().toJson(result)
-                sharedPreferences =
-                    context.getSharedPreferences("user", AppCompatActivity.MODE_PRIVATE)
+
+                val userData = Gson().toJson(result.data?.user)
                 val editor = sharedPreferences.edit()
-                editor.putString("userData", json)
+                editor.putString("userData", userData)
+                editor.putString("token", result.data?.token)
                 editor.apply()
                 userLiveData.postValue(true)
             } catch (e: Exception) {

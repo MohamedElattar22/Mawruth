@@ -13,6 +13,7 @@ import com.graduation.data.model.pieces.PiecesResponseDto
 import com.graduation.data.model.reviews.AllReviewsResponseDto
 import com.graduation.data.model.reviews.ReviewsResponseDto
 import com.graduation.data.model.stories.StoriesResponceDto
+import com.graduation.domain.model.PasswordData
 import com.graduation.domain.model.authenticationuser.User
 import com.graduation.domain.model.reviews.ReviewsData
 import okhttp3.MultipartBody
@@ -62,16 +63,18 @@ WebServices {
         @Body email: User
     ): VerificationResponseDto?
 
+    @POST("auth/change-password")
+    suspend fun updateUserPassword(
+        @Body passwordData: PasswordData
+    ): AuthenticationResponseDto?
+
     @POST("/auth/reset-password")
     suspend fun resetPassword(
-        @Body email: User,
-        @Body password: User
+        @Body data: User,
     ): VerificationResponseDto?
 
     @GET("users/me")
-    suspend fun getUserInfo(
-
-    ): AuthenticationResponseDto?
+    suspend fun getUserInfo(): AuthenticationResponseDto?
 
     @GET("museums/{museumId}")
     suspend fun getMuseumById(
@@ -106,7 +109,7 @@ WebServices {
 
     @PUT("users/me")
     suspend fun updateUserName(
-        @Body name: String?
+        @Body name: User?
     ): AuthenticationResponseDto?
 
     @GET("categories")

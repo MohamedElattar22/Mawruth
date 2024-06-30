@@ -22,8 +22,6 @@ class ConfirmEmailViewModel
     val navigate = MutableLiveData<Boolean>()
     val resendStatus = MutableLiveData<Boolean>()
     val getEmailLiveData = MutableLiveData<Boolean>()
-
-
     fun verifyEmail(email: String, otp: String) {
         viewModelScope.launch {
             try {

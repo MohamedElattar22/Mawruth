@@ -32,8 +32,8 @@ class UserAuthenticationRepositoryImpl @Inject constructor
         return userAuthenticationDataSource.forgetPassword(email)
     }
 
-    override suspend fun resetPassword(email: User, password: User): VerificationResponse? {
-        return userAuthenticationDataSource.resetPassword(email, password)
+    override suspend fun resetPassword(email: User): VerificationResponse? {
+        return userAuthenticationDataSource.resetPassword(email)
     }
 
 
