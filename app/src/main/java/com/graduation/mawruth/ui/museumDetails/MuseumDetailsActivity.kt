@@ -85,7 +85,8 @@ class MuseumDetailsActivity : AppCompatActivity() {
         viewBinding
             .musLoc
             .text =
-            "${intent.getStringExtra("museumCountry")}-${intent.getStringExtra("museumLoc")}"
+            "${intent.getStringExtra("museumStreet")}-${intent.getStringExtra("museumLoc")}"
+
         viewBinding.chip1.text = "مصري"
         viewBinding.descr.text = intent.getStringExtra("museumDesc")
         viewBinding.workTimeTV.text = intent.getStringExtra("museumWork")

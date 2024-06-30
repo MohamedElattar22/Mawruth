@@ -270,7 +270,6 @@
             android:imeOptions="flagNoExtractUi"
             android:lines="5"
             android:maxLines="5"
-            android:minLines="5"
             android:textColor="@color/darkBrown"
             android:textColorHint="#AEB7AE"
             android:textSize="@dimen/_10ssp">

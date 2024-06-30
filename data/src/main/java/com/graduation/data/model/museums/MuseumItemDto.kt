@@ -24,7 +24,10 @@ data class MuseumItemDto(
     val id: Int? = null,
 
     @field:SerializedName("categories")
-    val categories: List<MuseumsCategoriesItemDto?>? = null
+    val categories: List<MuseumsCategoriesItemDto?>? = null,
+    @field:SerializedName("isFavorite")
+    val isFavourite: Boolean? = null,
+
 ) {
     fun toMuseumItem(): MuseumItem {
         return MuseumItem(
@@ -34,6 +37,7 @@ data class MuseumItemDto(
             name,
             description,
             id,
-            categories?.map { it?.toMuseumCategoriesItem() })
+            categories?.map { it?.toMuseumCategoriesItem() },
+            isFavourite)
     }
 }

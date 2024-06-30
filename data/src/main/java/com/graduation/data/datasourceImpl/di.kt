@@ -2,6 +2,7 @@ package com.graduation.data.datasourceImpl
 
 import com.graduation.data.dataSourceContract.EditUserInfoDataSource
 import com.graduation.data.dataSourceContract.FavouriteMuseumsDataSource
+import com.graduation.data.dataSourceContract.FavouritePiecesDataSource
 import com.graduation.data.dataSourceContract.ReviewsDataSource
 import com.graduation.data.dataSourceContract.UserAuthenticationDataSource
 import com.graduation.data.dataSourceContract.UserInformationDataSource
@@ -65,5 +66,8 @@ abstract class di {
     @Binds
     abstract fun bindCollectionsDataSource(collectionsDataSourceImpl: CollectionsDataSourceImpl): CollectionsDataSource
 
+    @Binds
+    abstract fun bindFavouritePiecesDataSource(favouritePiecesDataSourceImpl: FavouritePiecesDataSourceImpl)
+    : FavouritePiecesDataSource
 
 }

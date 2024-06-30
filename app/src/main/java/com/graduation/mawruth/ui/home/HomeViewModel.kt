@@ -5,13 +5,17 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.graduation.domain.model.Favourite.FavouriteMuseumItem
 import com.graduation.domain.model.authenticationuser.User
 import com.graduation.domain.model.categories.CategoriesResponse
+import com.graduation.domain.model.museums.MuseumItem
 import com.graduation.domain.model.museums.MuseumsResponse
 import com.graduation.domain.useCase.CategoriesUseCase
+import com.graduation.domain.useCase.DeleteFavouriteMuseumUseCase
 import com.graduation.domain.useCase.GetMuseumsAllUseCase
 import com.graduation.domain.useCase.GetUserInformationUseCase
-import com.graduation.domain.useCase.SendFavouriteUseCase
+import com.graduation.domain.useCase.SendFavouriteMuseumUseCase
+
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,17 +26,17 @@ class HomeViewModel @Inject constructor(
     private val categoriesUseCase: CategoriesUseCase,
     private val getUserInformationUseCase: GetUserInformationUseCase,
     private val sharedPreferences: SharedPreferences,
-    private val sendFavouriteMuseumUseCase: SendFavouriteUseCase
+    private val sendFavouriteMuseumUseCase: SendFavouriteMuseumUseCase,
+   private val deleteFavouritemUseumUseCase: DeleteFavouriteMuseumUseCase
 ) :
     ViewModel() {
 
     val museumData = MutableLiveData<MuseumsResponse?>()
     val museumCategory = MutableLiveData<CategoriesResponse?>()
     val loadingLiveData = MutableLiveData<Boolean>()
-
     val error = MutableLiveData<String>()
     val infoLiveData = MutableLiveData<User>()
-
+val responseLiveData=MutableLiveData<MuseumItem?>()
     fun getCategories() {
         viewModelScope.launch {
             try {
@@ -49,7 +53,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             loadingLiveData.postValue(true)
             try {
-                val result = getMuseumsAllUseCase.invoke()
+                val result = getMuseumsAllUseCase.invoke(userId = 21)
                 museumData.postValue(result)
                 Log.e("list", result.toString())
             } catch (e: Exception) {
@@ -62,15 +66,26 @@ class HomeViewModel @Inject constructor(
     }
     fun sendfavouritemuseum(museumid:Int){
         viewModelScope.launch {
-            loadingLiveData.postValue(true)
+          //  loadingLiveData.postValue(true)
             try {
-                val result = sendFavouriteMuseumUseCase.invoke(museumid)
+                val result = sendFavouriteMuseumUseCase.sendFavouriteMuseums(museumid)
                 Log.e("postresponse", result?.status!!)
+                responseLiveData.postValue(result?.data?.get(0)?.museum)
             } catch (e: Exception) {
-                error.postValue(e.localizedMessage)
+             //   error.postValue(e.localizedMessage)
                 Log.e("list", e.localizedMessage!!)
             } finally {
-                loadingLiveData.postValue(false)
+            //    loadingLiveData.postValue(false)
+            }
+        }
+    }
+    fun deleteMuseumData(museumid : Int) {
+        viewModelScope.launch {
+            try {
+                val result = deleteFavouritemUseumUseCase.invoke(museumid)
+                Log.e("deleteresponse", result?.message!!)
+            } catch (e: Exception) {
+                Log.e("list", e.localizedMessage!!)
             }
         }
     }
