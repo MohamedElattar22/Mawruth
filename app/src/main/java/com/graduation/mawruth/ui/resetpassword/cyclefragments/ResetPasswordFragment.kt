@@ -46,7 +46,7 @@ class ResetPasswordFragment : Fragment() {
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCancelable(false)
         val dialogView =
-            LayoutInflater.from(requireContext()).inflate(R.layout.loading_dialog, null)
+            LayoutInflater.from(requireContext()).inflate(R.layout.loading_dialog, viewBinding.root)
         dialog.setContentView(dialogView)
         initViews()
     }
@@ -104,7 +104,6 @@ class ResetPasswordFragment : Fragment() {
                     viewBinding.newPassword.error = ""
 //                    viewBinding.passwordConf.isEnabled = true
                     viewBinding.passwordsaveBtn.isEnabled = true
-
                 }
 //                if (password != passwordConfirm) {
 //                    viewBinding.passwordsaveBtn.isEnabled = false
