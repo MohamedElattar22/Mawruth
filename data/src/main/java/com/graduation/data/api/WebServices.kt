@@ -4,6 +4,9 @@ package com.graduation.data.api
 import com.graduation.data.model.VerificationResponseDto
 import com.graduation.data.model.authuserdata.AuthenticationResponseDto
 import com.graduation.data.model.categories.CategoriesResponseDto
+import com.graduation.data.model.collection.CollectionsResponseDto
+import com.graduation.data.model.favourite.FavouriteMuseumResponseDto
+import com.graduation.data.model.favourite.FavouritePiecesResponseDto
 import com.graduation.data.model.halls.HallsResponseDto
 import com.graduation.data.model.museums.MuseumItemDto
 import com.graduation.data.model.museums.MuseumsResponseDto
@@ -17,6 +20,7 @@ import com.graduation.domain.model.authenticationuser.User
 import com.graduation.domain.model.reviews.ReviewsData
 import okhttp3.MultipartBody
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
@@ -40,6 +44,7 @@ WebServices {
         @Query("name") name: String? = null,
         @Query("category") category: String? = null,
         @Query("city") city: String? = null,
+        @Query("user_id") userId: Int? = null
     ): MuseumsResponseDto?
 
     @POST("auth/login")
@@ -93,6 +98,14 @@ WebServices {
         @Query("name") name: String? = null,
     ): PiecesResponseDto?
 
+    @GET("/pieces/museum/{id}")
+    suspend fun getPiecesOfCollection(
+        @Path("id") museumID: Int,
+        @Query("collection") collectionID: Int? = null,
+        @Query("hall") hallID: Int? = null,
+        @Query("ar") ar: Boolean? = null
+    ): PiecesResponseDto?
+
 
     @Multipart
     @PUT("users/upload-image")
@@ -127,10 +140,32 @@ WebServices {
 
     @GET("favorites/museums")
     suspend fun getfavouriteMuseum(
-    ): MuseumsResponseDto
+    ): FavouriteMuseumResponseDto
 
     @POST("favorites/museums/{id}")
     suspend fun postfavouriteMuseums(
+        @Path("id") museumId: Int
+    ): FavouriteMuseumResponseDto
+
+
+    @DELETE("/favorites/museums/{id}")
+    suspend fun deletefavouritemuseum(
+        @Path("id") museumId: Int
+    ): VerificationResponseDto
+
+    @GET("/favorites/pieces")
+    suspend fun getFavouritePiece(
+
+    ): FavouritePiecesResponseDto
+
+    @POST("favorites/pieces/{id}")
+    suspend fun postfavouritePieces(
+        @Path("id") museumId: Int
+    ): VerificationResponseDto
+
+
+    @DELETE("/favorites/pieces/{id}")
+    suspend fun deletefavouritePieces(
         @Path("id") museumId: Int
     ): VerificationResponseDto
 
@@ -149,6 +184,13 @@ WebServices {
     suspend fun getHallById(
         @Path("id") hallID: Int
     ): HallsResponseDto
+
+
+    @GET("/museums/{museumId}/collections")
+    suspend fun getCollectionOfMuseum(
+        @Path("museumId") museumId: Int
+    ): CollectionsResponseDto
+
 
 
 }

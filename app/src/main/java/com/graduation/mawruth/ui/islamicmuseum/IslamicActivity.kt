@@ -1,5 +1,6 @@
 package com.graduation.mawruth.ui.islamicmuseum
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -11,15 +12,13 @@ import com.graduation.mawruth.ui.islamicmuseum.fragments.discover.IslamicMuseumD
 import com.graduation.mawruth.ui.islamicmuseum.fragments.favourite.IslamicMuseumFavouriteFragment
 import com.graduation.mawruth.ui.islamicmuseum.fragments.home.IslamicMuseumHomeFragment
 import com.graduation.mawruth.ui.islamicmuseum.fragments.more.MoreFeaturesFragment
+import com.graduation.mawruth.ui.virtualtours.VirtualToursActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class IslamicActivity : AppCompatActivity() {
     lateinit var viewBinding: ActivityIslamicBinding
     lateinit var viewModel: IslamicMuseumHomeViewModel
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +44,10 @@ class IslamicActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNavigation() {
+        viewBinding.add.setOnClickListener {
+            val intent = Intent(this, VirtualToursActivity::class.java)
+            startActivity(intent)
+        }
         viewBinding.bottomNavBar.setOnItemSelectedListener { item ->
             if (item.itemId == R.id.homeIconBottom) {
 

@@ -2,12 +2,14 @@ package com.graduation.mawruth.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.graduation.domain.model.museums.MuseumItem
+import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.MuseumItemBinding
 
-class MuseumRecyclerAdapter(var list: List<MuseumItem?>?) :
+class MuseumRecyclerAdapter(var list: MutableList<MuseumItem?>?) :
     RecyclerView.Adapter<MuseumRecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(var itemBinding: MuseumItemBinding) : RecyclerView.ViewHolder(itemBinding.root)
@@ -22,7 +24,7 @@ class MuseumRecyclerAdapter(var list: List<MuseumItem?>?) :
         return list?.size!!
     }
 
-    fun bindMuseumsList(list: List<MuseumItem?>?) {
+    fun bindMuseumsList(list: MutableList<MuseumItem?>?) {
         this.list = list
         notifyDataSetChanged()
     }
@@ -39,6 +41,13 @@ class MuseumRecyclerAdapter(var list: List<MuseumItem?>?) :
                 .load(it)
                 .into(holder.itemBinding.musImage)
         }
+        if (list?.get(position)?.isFavourite==true){
+            holder.itemBinding.loveBtn.setImageResource(R.drawable.asemheart)
+        }else
+        {
+            holder.itemBinding.loveBtn.setImageResource(R.drawable.outlined_heart)
+
+        }
 
 //        Log.d("images", list?.get(0)?.images?.get(0)?.imagePath.toString())
 //        holder.itemBinding.musImage.background =
@@ -52,12 +61,19 @@ class MuseumRecyclerAdapter(var list: List<MuseumItem?>?) :
         }
         onLoveClickListener?.let { onLoveClickListener ->
             holder.itemBinding.loveBtn.setOnClickListener {
+                onLoveClickListener.onClick(list?.get(position)!!,position)
+
 
             }
         }
 
     }
+fun binditem(museumDto: MuseumItem,position: Int){
 
+   list?.set(position,museumDto)
+  notifyDataSetChanged()
+
+}
     var onMuseumClickListener: OnMuseumClickListener? = null
 var onLoveClickListener:OnMuseumClickListener?=null
     fun interface OnMuseumClickListener {

@@ -7,12 +7,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+
     android:background="@color/white"
-    android:layout_margin="@dimen/_10sdp"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -32,6 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="المقتنيات"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:textSize="@dimen/_13ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -41,6 +41,7 @@
                 android:layout_width="@dimen/_55sdp"
                 android:layout_height="@dimen/_1sdp"
                 android:background="@color/mainBtn"
+
                 app:layout_constraintBottom_toBottomOf="@+id/coloured_view"
                 app:layout_constraintEnd_toStartOf="@+id/coloured_view" />
 
@@ -48,19 +49,21 @@
                 android:id="@+id/coloured_view"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_4sdp"
                 android:background="@color/mainBtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/cat_rec"
+                android:id="@+id/collectionsRV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
 
+                android:layout_marginTop="@dimen/_15sdp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:spanCount="2"
                 app:layout_constraintTop_toBottomOf="@+id/line_view"
                 tools:listitem="@layout/museum_collection_item" />
 
@@ -68,18 +71,20 @@
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:text="حكايات متحف الفن"
                 android:textSize="@dimen/_13ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
 
-                app:layout_constraintTop_toBottomOf="@+id/cat_rec" />
+                app:layout_constraintTop_toBottomOf="@+id/collectionsRV" />
 
             <View
                 android:id="@+id/view"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_5sdp"
+
                 android:background="@color/mainBtn"
                 app:layout_constraintEnd_toEndOf="@+id/textView9"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -89,6 +94,7 @@
                 android:id="@+id/view2"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_1sdp"
+
                 android:background="@color/mainBtn"
                 app:layout_constraintBottom_toBottomOf="@+id/view"
                 app:layout_constraintEnd_toStartOf="@+id/view"
@@ -107,9 +113,10 @@
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_7sdp"
                 android:text="تصنيف القاعات"
                 android:textSize="@dimen/_13ssp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stories" />
 
@@ -118,6 +125,7 @@
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_5sdp"
                 android:background="@color/mainBtn"
+
                 app:layout_constraintEnd_toEndOf="@+id/textView11"
                 app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
@@ -125,6 +133,7 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_1sdp"
                 android:background="@color/mainBtn"
+
 
                 app:layout_constraintBottom_toBottomOf="@+id/view3"
                 app:layout_constraintEnd_toStartOf="@+id/view3"
@@ -135,7 +144,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view3"

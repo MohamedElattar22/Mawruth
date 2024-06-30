@@ -21,4 +21,17 @@ class PiecesDataStoreImpl @Inject constructor(private val webServices: WebServic
     ): PiecesResponse? {
         return webServices.getMuseumPieces(museumId, page, limit, name)?.toPiecesResponse()
     }
+
+    override suspend fun getPiecesOfCollection(
+        collectionID: Int?,
+        museumID: Int,
+        hallID: Int?,
+        ar: Boolean?
+    ): PiecesResponse? {
+        return webServices.getPiecesOfCollection(
+            museumID, collectionID, hallID, ar
+        )?.toPiecesResponse()
+    }
+
+
 }

@@ -14,5 +14,7 @@ data class MuseumItem(
 
     val id: Int? = null,
 
-    val categories: List<MuseumCategoriesItem?>? = null
+    val categories: List<MuseumCategoriesItem?>? = null,
+
+    var isFavourite: Boolean?=null
 )

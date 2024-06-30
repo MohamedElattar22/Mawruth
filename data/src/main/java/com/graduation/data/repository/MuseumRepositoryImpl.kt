@@ -13,9 +13,10 @@ class MuseumRepositoryImpl @Inject constructor(private val museumsDataSource: Mu
         limit: Int,
         name: String?,
         category: String?,
-        city: String?
+        city: String?,
+        userId:Int?
     ): MuseumsResponse? {
-        return museumsDataSource.getAllMuseums(page, limit, name, category, city)
+        return museumsDataSource.getAllMuseums(page, limit, name, category, city,userId)
     }
 
     override suspend fun getMuseumById(museumId: Int): MuseumItem? {

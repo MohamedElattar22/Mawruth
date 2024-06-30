@@ -14,8 +14,9 @@ class MuseumsDataSourceImpl @Inject constructor(private val webServices: WebServ
         name: String?,
         category: String?,
         city: String?,
+        userId:Int?
     ): MuseumsResponse? {
-        return webServices.getAllMuseums(page, limit, name, category, city)?.toMuseumsResponse()
+        return webServices.getAllMuseums(page, limit, name, category, city,userId )?.toMuseumsResponse()
     }
 
     override suspend fun getMuseumById(museumId: Int): MuseumItem? {

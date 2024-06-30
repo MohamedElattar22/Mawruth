@@ -24,8 +24,8 @@
 
             <ImageView
                 android:id="@+id/category_image"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
 
                 android:src="@drawable/keyy"
                 app:layout_constraintBottom_toTopOf="@+id/category_name"
@@ -40,8 +40,10 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/cairo_regular"
                 android:gravity="center"
-                android:text="فنون"
-                android:textSize="@dimen/_10ssp"
+                android:maxEms="3"
+                android:maxLines="2"
+                android:text="قصة الشفر السرية"
+                android:textSize="@dimen/_14ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/category_image"
                 app:layout_constraintStart_toStartOf="@+id/category_image" />

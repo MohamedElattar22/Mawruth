@@ -15,9 +15,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
-import com.google.android.material.snackbar.Snackbar
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityMuseumDetailsBinding
+import com.graduation.mawruth.ui.islamicmuseum.IslamicActivity
 import com.graduation.mawruth.ui.pieceDetails.PieceDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,32 +38,57 @@ class MuseumDetailsActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        viewBinding.lay.piecesRV.adapter = adapter
+        viewBinding.piecesRV.adapter = adapter
         WindowCompat.setDecorFitsSystemWindows(window, false)
         val museumID = intent.getStringExtra("museumId")
-//
+        viewModel.getMuseumPieces(museumID!!.toInt())
+        viewModel.getReviews(museumID.toInt())
+
         Log.d("museumId", museumID.toString())
+        adapter.itemClick = PiecesAdapter.OnPieceClickListener { data, _ ->
+            val intent = Intent(this@MuseumDetailsActivity, PieceDetailsActivity::class.java)
+            intent.putExtra("title", data.name.toString())
+            val museumName = viewBinding.museumName.text.toString()
+            intent.putExtra("pieceAR", data.arPath.toString())
+            intent.putExtra("idPiece", data.id.toString())
+            intent.putExtra("musName", museumName)
+            intent.putExtra("description", data.description.toString())
+            intent.putExtra("image", data.image.toString())
+            Log.d("LogPieces", data.name.toString())
+            intent.putExtra("isMaster", data.isMasterpiece)
+            startActivity(intent)
+        }
+
+
         viewBinding.museumName.text = intent.getStringExtra("museumName")
-        viewBinding.lay.street.text = intent.getStringExtra("museumStreet")
-        viewBinding.lay.reviewRec.adapter = reviewsRecyclerAdapter
-        viewBinding.lay.reviewContainer.movementMethod = ScrollingMovementMethod()
-        museumId = intent.getIntExtra("museumId", 0)
-        viewModel.getMuseumPieces(museumId)
-        viewModel.getReviews(museumId)
+        viewBinding.street.text = intent.getStringExtra("museumStreet")
+        viewBinding.reviewRec.adapter = reviewsRecyclerAdapter
+        viewBinding.reviewContainer.movementMethod = ScrollingMovementMethod()
+        museumId = intent.getIntExtra("museumId", 0).toInt()
+        Log.d("ass", museumID.toString())
+        if (museumID.toString() == "49") {
+            viewBinding.bottomAppBar.isVisible = true
+            viewBinding.navigateMuseum.isVisible = true
+            viewBinding.navigateMuseum.setOnClickListener {
+                navigateToIslamicMuseum()
+            }
+        }
+
 
         val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
         if (!sharedPreferences.contains("userInfo")) {
-            viewBinding.lay.review.isVisible = false
-            viewBinding.lay.sendReviewBtn.isVisible = false
+            viewBinding.review.isVisible = false
+            viewBinding.sendReviewBtn.isVisible = false
         }
         viewModel.getMuseumById(museumId)
         viewBinding
             .musLoc
             .text =
-            "${intent.getStringExtra("museumCountry")}-${intent.getStringExtra("museumLoc")}"
-        viewBinding.lay.chip1.text = "مصري"
-        viewBinding.lay.descr.text = intent.getStringExtra("museumDesc")
-        viewBinding.lay.workTimeTV.text = intent.getStringExtra("museumWork")
+            "${intent.getStringExtra("museumStreet")}-${intent.getStringExtra("museumLoc")}"
+
+        viewBinding.chip1.text = "مصري"
+        viewBinding.descr.text = intent.getStringExtra("museumDesc")
+        viewBinding.workTimeTV.text = intent.getStringExtra("museumWork")
         Glide.with(this)
             .load(intent.getStringExtra("museumImage").toString())
             .into(object : SimpleTarget<Drawable?>() {
@@ -75,12 +100,12 @@ class MuseumDetailsActivity : AppCompatActivity() {
                 }
             })
 
-        viewBinding.lay.sendReview.setOnClickListener {
+        viewBinding.sendReview.setOnClickListener {
             handleReviews()
         }
 
 
-        viewBinding.lay.chip1.typeface = Typeface.create(
+        viewBinding.chip1.typeface = Typeface.create(
             ResourcesCompat.getFont(this, R.font.cairo_medium), Typeface.NORMAL
         )
 
@@ -90,61 +115,45 @@ class MuseumDetailsActivity : AppCompatActivity() {
         }
     }
 
+    private fun navigateToIslamicMuseum() {
+        val navigate = Intent(this, IslamicActivity::class.java)
+        startActivity(navigate)
+        finish()
+    }
+
 
     private fun handleReviews() {
-        if (viewBinding.lay.reviewContainer.text.isNullOrBlank()) return
-        viewModel.sendReview(viewBinding.lay.reviewContainer.text.toString().trim(), museumId)
+        if (viewBinding.reviewContainer.text.isNullOrBlank()) return
+        viewModel.sendReview(viewBinding.reviewContainer.text.toString().trim(), museumId)
 
     }
 
 
     private fun observeToLiveData() {
         viewModel.piecesList.observe(this) {
-            adapter.bindPiecesList(listOf(it))
-            adapter.itemClick = PiecesAdapter.OnPieceClickListener { data, _ ->
-                val intent = Intent(this@MuseumDetailsActivity, PieceDetailsActivity::class.java)
-                intent.putExtra("title", data.data?.get(0)?.name)
-                Log.d("livea", data.data?.get(0)?.name.toString())
-                val museumName = viewBinding.museumName.text.toString()
-                intent.putExtra("pieceAR", data.data?.get(0)?.arPath)
-
-                intent.putExtra("idPiece", data.data?.get(0)?.id)
-                intent.putExtra("musName", museumName)
-                intent.putExtra("description", data.data?.get(0)?.description)
-                intent.putExtra("image", data.data?.get(0)?.image)
-                intent.putExtra("isMaster", data.data?.get(0)?.isMasterpiece)
-                startActivity(intent)
-            }
-            viewModel.infoLiveData.observe(this) {
-
-//            adapter.bindPiecesList(it?.pieces)
-//            Log.d("pieces", it?.pieces?.get(0).toString())
-//            Log.d("piecesCount", adapter.itemCount.toString())
-
-
-//            }
-            }
-            viewModel.error.observe(this) {
-
-                Log.e("el3ttarError", it.toString())
-                Snackbar.make(
-                    this,
-                    viewBinding.root,
-                    it,
-                    Snackbar.LENGTH_SHORT
-                ).show()
-            }
-            viewModel.reviewLiveData.observe(this) {
-//            reviewsRecyclerAdapter.bindSingleReview(it)
-                viewBinding.lay.reviewContainer.text!!.clear()
-                Toast.makeText(this, "Review Add Successfully", Toast.LENGTH_SHORT).show()
-            }
-            viewModel.reviewListLiveData.observe(this) {
-//            reviewsRecyclerAdapter.bindReviewsList(it?.data?.toMutableList())
-                Log.e("review", it.toString())
-            }
+            adapter.bindPiecesList(it?.data!!)
         }
-
+//        viewModel.error.observe(this) {
+//            if (it) {
+//                Log.e("el3ttarError", it.toString())
+//                Snackbar.make(
+//                    this,
+//                    viewBinding.root,
+//                    "حدث خطأ ما",
+//                    Snackbar.LENGTH_SHORT
+//                ).show()
+//            }
+//
+//        }
+        viewModel.reviewLiveData.observe(this) {
+//            reviewsRecyclerAdapter.bindSingleReview(it)
+//                viewBinding..reviewContainer.text!!.clear()
+            Toast.makeText(this, "Review Add Successfully", Toast.LENGTH_SHORT).show()
+        }
+        viewModel.reviewListLiveData.observe(this) {
+//            reviewsRecyclerAdapter.bindReviewsList(it?.data?.toMutableList())
+            Log.e("review", it.toString())
+        }
 
     }
 }

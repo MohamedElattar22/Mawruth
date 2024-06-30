@@ -13,4 +13,12 @@ interface PiecesRepository {
         name: String? = null
     ): PiecesResponse?
 
+    suspend fun getPiecesOfCollection(
+        collectionID: Int? = null,
+        museumID: Int,
+        hallID: Int? = null,
+        ar: Boolean? = null
+    ): PiecesResponse?
+
+
 }

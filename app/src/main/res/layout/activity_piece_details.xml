@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_300sdp"
             app:contentScrim="@color/darkBrown"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                     android:id="@+id/image2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:foreground="@drawable/half_gradient"
                     android:src="@drawable/museum_pic"
 
                     android:scaleType="centerCrop"
@@ -44,11 +44,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_18sdp"
-                    android:layout_marginBottom="@dimen/_30sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
                     android:fontFamily="@font/cairo_semibold"
-                    android:text="قناع الملك"
+                    android:maxEms="6"
+                    android:text="مبخرة من النحاس المكثف بالذهب و الفضة"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_21ssp"
+                    android:textSize="@dimen/_16ssp"
                     app:layout_collapseMode="parallax"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent">
@@ -59,9 +60,9 @@
                     android:id="@+id/pieceAgeTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_22sdp"
+                    android:layout_marginBottom="@dimen/_25sdp"
                     android:fontFamily="@font/cairo_regular"
-                    android:text="المتحف الكبير"
+
                     android:textColor="#928E8A"
                     android:textSize="@dimen/_12ssp"
                     app:layout_collapseMode="parallax"
@@ -79,7 +80,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:layout_margin="@dimen/_20sdp"
+                android:layout_margin="@dimen/_18sdp"
                 android:contentDescription="asd"
                 android:outlineAmbientShadowColor="@color/black"
                 app:layout_collapseMode="pin"
@@ -111,24 +112,30 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_40sdp"
-        android:backgroundTint="@color/darkBrown"
+        android:layout_gravity="bottom"
+        android:backgroundTint="#F1F0EB">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/navigateToAR"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            app:cornerRadius="@dimen/_5sdp"
+        android:backgroundTint="@color/darkBrown"
         android:fontFamily="@font/cairo_medium"
         android:text="عرض القطعة"
+            app:iconGravity="textStart"
         android:textColor="@color/white"
         android:textSize="@dimen/_14ssp"
         app:icon="@drawable/museum"
         app:iconTint="@color/mainSand"
         app:rippleColor="@color/darkBrown">
 
-    </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+        </com.google.android.material.button.MaterialButton>
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="@dimen/_150sdp"
-    android:layout_height="@dimen/_200sdp"
-    android:layout_marginHorizontal="@dimen/_5sdp"
+    android:layout_width="@dimen/_140sdp"
+    android:layout_height="@dimen/_170sdp"
+    android:layout_marginHorizontal="@dimen/_2sdp"
     app:cardCornerRadius="@dimen/_10sdp"
     app:cardUseCompatPadding="true"
     app:strokeWidth="0dp">
@@ -13,13 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <ImageView
             android:id="@+id/pieceImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
+            android:foreground="@drawable/half_gradient"
             android:contentDescription="pieceImage"
-            android:src="@drawable/ramsis"
+
+            android:src="@drawable/omayt"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,32 +51,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
                     android:fontFamily="@font/cairo_semibold"
-                    android:text="تمثال الملك رمسيس"
-                    android:textColor="@color/white"
+                    android:maxEms="6"
                     android:maxLines="2"
-                    android:textSize="@dimen/_8ssp"
+                    android:text="مبخرة من النحاس المكثف بالذهب و الفضة"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_7ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                 </TextView>
 
-                <TextView
-                    android:id="@+id/pieceAgeTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/_5sdp"
-                    android:fontFamily="@font/cairo_semibold"
-                    android:text="1380 قبل الميلاج"
-                    android:textColor="@color/mainSand"
-                    android:textSize="@dimen/_6ssp"
-                    app:drawableEndCompat="@drawable/map_loc"
-                    app:drawableTint="#66FFFFFF"
-                    app:layout_constraintEnd_toEndOf="@+id/pieceTitleTV"
-                    app:layout_constraintTop_toBottomOf="@+id/pieceTitleTV">
-
-                </TextView>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/toPieceDetailsBtn"
