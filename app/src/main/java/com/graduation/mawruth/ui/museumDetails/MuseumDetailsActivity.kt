@@ -15,7 +15,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
-import com.google.android.material.snackbar.Snackbar
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityMuseumDetailsBinding
 import com.graduation.mawruth.ui.islamicmuseum.IslamicActivity
@@ -134,25 +133,27 @@ class MuseumDetailsActivity : AppCompatActivity() {
         viewModel.piecesList.observe(this) {
             adapter.bindPiecesList(it?.data!!)
         }
-        viewModel.error.observe(this) {
-            if (it) {
-                Log.e("el3ttarError", it.toString())
-                Snackbar.make(
-                    this,
-                    viewBinding.root,
-                    "حدث خطأ ما",
-                    Snackbar.LENGTH_SHORT
-                ).show()
-            }
-            viewModel.reviewLiveData.observe(this) {
+//        viewModel.error.observe(this) {
+//            if (it) {
+//                Log.e("el3ttarError", it.toString())
+//                Snackbar.make(
+//                    this,
+//                    viewBinding.root,
+//                    "حدث خطأ ما",
+//                    Snackbar.LENGTH_SHORT
+//                ).show()
+//            }
+//
+//        }
+        viewModel.reviewLiveData.observe(this) {
 //            reviewsRecyclerAdapter.bindSingleReview(it)
-                viewBinding.reviewContainer.text!!.clear()
-                Toast.makeText(this, "Review Add Successfully", Toast.LENGTH_SHORT).show()
-            }
-            viewModel.reviewListLiveData.observe(this) {
-//            reviewsRecyclerAdapter.bindReviewsList(it?.data?.toMutableList())
-                Log.e("review", it.toString())
-            }
+//                viewBinding..reviewContainer.text!!.clear()
+            Toast.makeText(this, "Review Add Successfully", Toast.LENGTH_SHORT).show()
         }
+        viewModel.reviewListLiveData.observe(this) {
+//            reviewsRecyclerAdapter.bindReviewsList(it?.data?.toMutableList())
+            Log.e("review", it.toString())
+        }
+
     }
 }

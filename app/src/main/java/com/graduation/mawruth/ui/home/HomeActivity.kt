@@ -25,7 +25,8 @@ import com.google.gson.Gson
 import com.graduation.domain.model.authenticationuser.User
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityHomeBinding
-import com.graduation.mawruth.ui.favourites.FavouriteActivity
+import com.graduation.mawruth.ui.favourities.FavouriteActivity
+
 import com.graduation.mawruth.ui.home.musumsbytype.CategoryMuseumActivity
 import com.graduation.mawruth.ui.home.viewpager.HomeViewPager
 import com.graduation.mawruth.ui.home.viewpager.TestViewPagerObject
