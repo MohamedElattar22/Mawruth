@@ -57,5 +57,10 @@
         <item name="android:background">@color/transparent</item>
     </style>
 
+    <style name="shapableImageViewRounded" parent="Base.Theme.Mawruth">
+
+        <item name="cornerSize">150dp</item>
+    </style>
+
 
 </resources>
