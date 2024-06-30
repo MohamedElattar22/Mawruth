@@ -4,6 +4,7 @@ package com.graduation.data.api
 import com.graduation.data.model.VerificationResponseDto
 import com.graduation.data.model.authuserdata.AuthenticationResponseDto
 import com.graduation.data.model.categories.CategoriesResponseDto
+import com.graduation.data.model.collection.CollectionsResponseDto
 import com.graduation.data.model.halls.HallsResponseDto
 import com.graduation.data.model.museums.MuseumItemDto
 import com.graduation.data.model.museums.MuseumsResponseDto
@@ -90,6 +91,12 @@ WebServices {
         @Query("name") name: String? = null,
     ): PiecesResponseDto?
 
+    @GET("/pieces/museum/{id}")
+    suspend fun getPiecesOfCollection(
+        @Path("id") museumID: Int,
+        @Query("collection") collectionID: Int
+    ): PiecesResponseDto?
+
 
     @Multipart
     @PUT("users/upload-image")
@@ -146,6 +153,13 @@ WebServices {
     suspend fun getHallById(
         @Path("id") hallID: Int
     ): HallsResponseDto
+
+
+    @GET("/museums/{museumId}/collections")
+    suspend fun getCollectionOfMuseum(
+        @Path("museumId") museumId: Int
+    ): CollectionsResponseDto
+
 
 
 }

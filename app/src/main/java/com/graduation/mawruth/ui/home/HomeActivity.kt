@@ -140,7 +140,7 @@ class HomeActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         adapter = HomeViewPager(TestViewPagerObject.list)
         catAdapter = CategoriesRecyclerAdapter(listOf())
-        viewBinding.content.catRec.adapter = catAdapter
+        viewBinding.content.catRV.adapter = catAdapter
         viewBinding.content.museumRec.adapter = museumRecyclerAdapter
         viewBinding.viewPager.adapter = adapter
         handelTabLayoutForPager()

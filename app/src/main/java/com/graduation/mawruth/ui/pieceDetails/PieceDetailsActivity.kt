@@ -27,7 +27,6 @@ class PieceDetailsActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[PieceDataViewModel::class.java]
         getData()
         observeLiveData()
-        animator()
     }
 
     override fun onStart() {
@@ -54,33 +53,34 @@ class PieceDetailsActivity : AppCompatActivity() {
         val museumName = intent.getStringExtra("musName")
         viewBinding.details.museumNameTV.text = museumName.toString()
         val pieceAr = intent.getStringExtra("pieceAR").toString()
-        Log.d("AR", pieceAr)
-        viewBinding.fab.isVisible = intent.getBooleanExtra("isMaster", false)
-        viewBinding.fab.setOnClickListener {
+        Log.d("moha", intent.getBooleanExtra("isMaster", false).toString())
+
+        viewBinding.navigateToAR.isVisible = intent.getBooleanExtra("isMaster", false)
+        viewBinding.navigateToAR.setOnClickListener {
             val start = Intent(this, AgumentedRealityActivity::class.java)
-            start.putExtra("agmunted", pieceData.arPath.toString())
-            start.putExtra("pieceName", pieceData.name.toString())
+            start.putExtra("agmunted", pieceAr)
+            start.putExtra("pieceName", title)
             start.putExtra("pieceDes", pieceDes.toString())
             startActivity(start)
         }
 
     }
 
-    private fun animator() {
-
-        viewBinding.scroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-            if (scrollY > oldScrollY) {
-                //scrolling down
-                viewBinding.fab.shrink()
-            } else if (scrollY < oldScrollY) {
-                // scrolling up
-                viewBinding.fab.extend()
-            }
-
-
-        }
-
-    }
+//    private fun animator() {
+//
+//        viewBinding.scroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+//            if (scrollY > oldScrollY) {
+//                //scrolling down
+//                viewBinding.fab.shrink()
+//            } else if (scrollY < oldScrollY) {
+//                // scrolling up
+//                viewBinding.fab.extend()
+//            }
+//
+//
+//        }
+//
+//    }
 
     private fun observeLiveData() {
         viewModel.pieceData.observe(this) {

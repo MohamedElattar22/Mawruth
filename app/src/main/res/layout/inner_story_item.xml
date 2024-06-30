@@ -16,10 +16,10 @@
 
         <ImageView
             android:id="@+id/storyimage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
             android:layout_marginTop="@dimen/_13sdp"
-            android:scaleType="center"
+
             android:src="@drawable/ka3ba_key"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,20 +41,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/storyimage" />
-
-        <TextView
-            android:id="@+id/imagedate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:fontFamily="@font/cairo_medium"
-            android:text="القرن 8هـ/14م"
-            android:textAlignment="center"
-            android:textColor="#B7B2AB"
-            android:textSize="@dimen/_8sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/storyname" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
