@@ -3,6 +3,7 @@ package com.graduation.data.repository
 import com.graduation.domain.repositories.CategoriesRepository
 import com.graduation.domain.repositories.EditUserInfoRepository
 import com.graduation.domain.repositories.FavouriteMuseumsRepository
+import com.graduation.domain.repositories.FavouritePieceRepository
 import com.graduation.domain.repositories.MuseumRepository
 import com.graduation.domain.repositories.PiecesRepository
 import com.graduation.domain.repositories.ReviewsRepository
@@ -42,5 +43,8 @@ abstract class di {
 
     @Binds
     abstract fun bindFavouriteMuseumsRepository(favouriteMuseumsRepositoryImpl :FavouriteMuseumsRepositoryImpl) :FavouriteMuseumsRepository
+
+    @Binds
+    abstract fun bindFavouritePiecesRepository(favouritePieceRepositoryImpl: FavouritePieceRepositoryImpl) :FavouritePieceRepository
 
 }

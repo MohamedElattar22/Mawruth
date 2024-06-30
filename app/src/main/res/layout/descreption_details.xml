@@ -50,7 +50,7 @@
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:drawablePadding="@dimen/_10sdp"
-        android:text="4.9"
+        android:text="5-9"
         android:fontFamily="@font/cairo_regular"
         android:textColor="#B3332B1A"
         android:textSize="@dimen/_10ssp"

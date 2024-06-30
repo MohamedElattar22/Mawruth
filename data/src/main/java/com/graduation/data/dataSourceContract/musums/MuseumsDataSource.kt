@@ -10,7 +10,7 @@ interface MuseumsDataSource {
         name: String? = null,
         category: String? = null,
         city: String? = null,
-
+userId:Int? = null
     ): MuseumsResponse?
 
     suspend fun getMuseumById(museumId: Int): MuseumItem?

@@ -46,13 +46,15 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityHomeBinding
     private lateinit var adapter: HomeViewPager
     private lateinit var catAdapter: CategoriesRecyclerAdapter
-    private val museumRecyclerAdapter = MuseumRecyclerAdapter(listOf())
+    private val museumRecyclerAdapter = MuseumRecyclerAdapter(mutableListOf())
     private lateinit var toggle: ActionBarDrawerToggle
     private var currentPage = 0
     private var timer: Timer? = null
     private val DELAY_MS: Long = 500 //delay in milliseconds before task is to be executed
     private val PERIOD_MS: Long = 3000
     private lateinit var viewModel: HomeViewModel
+  var position:Int?=null
+
     var user: User? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,10 +109,20 @@ class HomeActivity : AppCompatActivity() {
             viewBinding.content.failedContent.isVisible = false
             viewBinding.viewPager.isVisible = true
             viewBinding.tabLayout.isVisible = true
-            museumRecyclerAdapter.bindMuseumsList(it?.data)
+            museumRecyclerAdapter.bindMuseumsList(it?.data?.toMutableList())
         }
         viewModel.museumCategory.observe(this) {
             catAdapter.bindMuseumsList(it?.data)
+        }
+        viewModel.responseLiveData.observe(this){
+            Snackbar.make(
+                this,
+                viewBinding.root,
+                "success",
+                Snackbar.LENGTH_SHORT
+            ).show()
+        museumRecyclerAdapter.binditem(it!!,position!!)
+            Log.e("Asem",it.toString())
         }
 
         viewModel.loadingLiveData.observe(this) {
@@ -143,11 +155,24 @@ class HomeActivity : AppCompatActivity() {
         viewBinding.content.catRec.adapter = catAdapter
         viewBinding.content.museumRec.adapter = museumRecyclerAdapter
         viewBinding.viewPager.adapter = adapter
+
         handelTabLayoutForPager()
         initDrawer()
+
         museumRecyclerAdapter.onLoveClickListener =
             MuseumRecyclerAdapter.OnMuseumClickListener { museumDto, position ->
-                viewModel.sendfavouritemuseum(position)
+               if (museumDto.isFavourite==false){
+                   Log.d("museumIdMainonlove", museumDto.toString())
+                   museumDto.id?.let { viewModel.sendfavouritemuseum(museumDto.id!!) }
+this.position=position
+               }
+                else {
+                   Log.d("deletemuseumIdMainonlove",museumDto.toString())
+                   museumDto.id?.let { viewModel.deleteMuseumData(museumDto.id!!)
+
+                   }
+               }
+
 
             }
         museumRecyclerAdapter.onMuseumClickListener = MuseumRecyclerAdapter
@@ -158,9 +183,8 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("museumStreet", museumDto.street)
                 intent.putExtra("museumId", museumDto.id)
                 Log.d("museumIdMain", museumDto.id.toString())
-                intent.putExtra("museumCountry", museumDto.city)
                 intent.putExtra("museumDesc", museumDto.description)
-                intent.putExtra("museumWork", "")
+                intent.putExtra("museumWork", "9AM - 5PM")
                 intent.putExtra("museumImage", museumDto.images?.get(0)?.imagePath)
                 //     intent.putExtra("museumType1", museumDto.categories?.get(0)?.museumCategory?.name)
                 //   intent.putExtra("museumType2", museumDto.categories?.get(1)?.museumCategory?.name)
@@ -173,6 +197,9 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("typeId", typeId)
                 startActivity(intent)
             }
+
+
+
 
     }
 
