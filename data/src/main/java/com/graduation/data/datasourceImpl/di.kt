@@ -6,12 +6,14 @@ import com.graduation.data.dataSourceContract.FavouritePiecesDataSource
 import com.graduation.data.dataSourceContract.ReviewsDataSource
 import com.graduation.data.dataSourceContract.UserAuthenticationDataSource
 import com.graduation.data.dataSourceContract.UserInformationDataSource
+
 import com.graduation.data.dataSourceContract.categories.CategoriesDataSource
 import com.graduation.data.dataSourceContract.collections.CollectionsDataSource
 import com.graduation.data.dataSourceContract.halls.HallsDataSource
 import com.graduation.data.dataSourceContract.musums.MuseumsDataSource
 import com.graduation.data.dataSourceContract.pieces.PiecesDataStore
 import com.graduation.data.dataSourceContract.stories.StoriesDataSource
+
 import com.graduation.data.datasourceImpl.categories.CategoriesDataSourceImpl
 import com.graduation.data.datasourceImpl.collections.CollectionsDataSourceImpl
 import com.graduation.data.datasourceImpl.halls.HallsDataSourceImpl
@@ -69,5 +71,8 @@ abstract class di {
     @Binds
     abstract fun bindFavouritePiecesDataSource(favouritePiecesDataSourceImpl: FavouritePiecesDataSourceImpl)
     : FavouritePiecesDataSource
+
+//    @Binds
+//    abstract fun bindAIModelDataSource(aiModelDataSourceImpl: AIModelDataSourceImpl):AIModelDataSource
 
 }

@@ -54,11 +54,12 @@
         android:contentDescription="TODO"
         android:elevation="0dp"
         android:padding="@dimen/_10sdp"
-        app:fabCustomSize="@dimen/_30sdp"
+        android:src="@drawable/cirtt"
         app:fabSize="mini"
+        app:fabCustomSize="@dimen/_55sdp"
         app:layout_anchor="@id/bottom_appbar"
         app:shapeAppearance="?floatingActionButtonSmallStyle"
-        app:tint="@color/whiteSand" />
+        app:tint="@color/mainSand" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
