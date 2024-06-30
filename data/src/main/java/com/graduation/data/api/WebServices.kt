@@ -4,9 +4,9 @@ package com.graduation.data.api
 import com.graduation.data.model.VerificationResponseDto
 import com.graduation.data.model.authuserdata.AuthenticationResponseDto
 import com.graduation.data.model.categories.CategoriesResponseDto
+import com.graduation.data.model.collection.CollectionsResponseDto
 import com.graduation.data.model.favourite.FavouriteMuseumResponseDto
 import com.graduation.data.model.favourite.FavouritePiecesResponseDto
-import com.graduation.data.model.collection.CollectionsResponseDto
 import com.graduation.data.model.halls.HallsResponseDto
 import com.graduation.data.model.museums.MuseumItemDto
 import com.graduation.data.model.museums.MuseumsResponseDto
@@ -44,7 +44,7 @@ WebServices {
         @Query("name") name: String? = null,
         @Query("category") category: String? = null,
         @Query("city") city: String? = null,
-        @Query("user_id") userId: Int?=null
+        @Query("user_id") userId: Int? = null
     ): MuseumsResponseDto?
 
     @POST("auth/login")
@@ -101,7 +101,9 @@ WebServices {
     @GET("/pieces/museum/{id}")
     suspend fun getPiecesOfCollection(
         @Path("id") museumID: Int,
-        @Query("collection") collectionID: Int
+        @Query("collection") collectionID: Int? = null,
+        @Query("hall") hallID: Int? = null,
+        @Query("ar") ar: Boolean? = null
     ): PiecesResponseDto?
 
 
@@ -138,34 +140,34 @@ WebServices {
 
     @GET("favorites/museums")
     suspend fun getfavouriteMuseum(
-    ):FavouriteMuseumResponseDto
+    ): FavouriteMuseumResponseDto
 
     @POST("favorites/museums/{id}")
-suspend fun postfavouriteMuseums(
+    suspend fun postfavouriteMuseums(
         @Path("id") museumId: Int
-):FavouriteMuseumResponseDto
+    ): FavouriteMuseumResponseDto
 
 
-@DELETE("/favorites/museums/{id}")
-suspend fun deletefavouritemuseum(
-    @Path("id") museumId: Int
-):VerificationResponseDto
+    @DELETE("/favorites/museums/{id}")
+    suspend fun deletefavouritemuseum(
+        @Path("id") museumId: Int
+    ): VerificationResponseDto
 
-@GET("/favorites/pieces")
-suspend fun getFavouritePiece(
+    @GET("/favorites/pieces")
+    suspend fun getFavouritePiece(
 
-):FavouritePiecesResponseDto
+    ): FavouritePiecesResponseDto
+
     @POST("favorites/pieces/{id}")
     suspend fun postfavouritePieces(
         @Path("id") museumId: Int
-    ):VerificationResponseDto
+    ): VerificationResponseDto
 
 
     @DELETE("/favorites/pieces/{id}")
     suspend fun deletefavouritePieces(
         @Path("id") museumId: Int
-    ):VerificationResponseDto
-
+    ): VerificationResponseDto
 
 
     @GET("/museums/{id}/stories")

@@ -3,6 +3,8 @@ package com.graduation.mawruth.ui.home.musumsbytype
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import com.graduation.mawruth.databinding.ActivityCategoryMuseumBinding
 import com.graduation.mawruth.ui.museumDetails.MuseumDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -11,12 +13,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class CategoryMuseumActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityCategoryMuseumBinding
 
-    //    private lateinit var viewModel: CategoryMuseumsViewModel
+    private lateinit var viewModel: CategoryMuseumsViewModel
     val adapter = MuseumByTypeAdapter(listOf())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityCategoryMuseumBinding.inflate(layoutInflater)
-//        viewModel = ViewModelProvider(this)[CategoryMuseumsViewModel::class.java]
+        viewModel = ViewModelProvider(this)[CategoryMuseumsViewModel::class.java]
         setContentView(viewBinding.root)
         initViews()
     }
@@ -50,20 +52,20 @@ class CategoryMuseumActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val typeId = intent.getStringExtra("typeId")
-//        viewModel.getMuseumByType(typeId!!.toInt())
+        viewModel.getMuseumByType(typeId!!.toInt())
     }
 
     private fun observeLiveData() {
-//        viewModel.museumData.observe(this) {
-//            adapter.bindMuseumsList(it)
-//        }
-//        viewModel.error.observe(this) {
-//            Snackbar.make(
-//                this,
-//                viewBinding.root,
-//                it,
-//                Snackbar.LENGTH_SHORT
-//            ).show()
-//        }
+        viewModel.museumData.observe(this) {
+            adapter.bindMuseumsList(listOf(it))
+        }
+        viewModel.error.observe(this) {
+            Snackbar.make(
+                this,
+                viewBinding.root,
+                it,
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }
     }
 }
