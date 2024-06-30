@@ -18,9 +18,6 @@ class IslamicActivity : AppCompatActivity() {
     lateinit var viewBinding: ActivityIslamicBinding
     lateinit var viewModel: IslamicMuseumHomeViewModel
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityIslamicBinding.inflate(layoutInflater)
