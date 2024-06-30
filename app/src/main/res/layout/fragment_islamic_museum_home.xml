@@ -19,7 +19,7 @@
             app:contentScrim="@color/whiteSand"
             app:expandedTitleGravity="center|top"
             app:expandedTitleTextColor="@color/lightSand"
-            app:layout_scrollFlags="snap|scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
 
             <LinearLayout
                 android:layout_width="match_parent"

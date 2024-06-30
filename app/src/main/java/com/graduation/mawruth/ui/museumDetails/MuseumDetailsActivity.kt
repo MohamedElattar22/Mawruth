@@ -45,15 +45,15 @@ class MuseumDetailsActivity : AppCompatActivity() {
         Log.d("museumId", museumID.toString())
         adapter.itemClick = PiecesAdapter.OnPieceClickListener { data, _ ->
             val intent = Intent(this@MuseumDetailsActivity, PieceDetailsActivity::class.java)
-            intent.putExtra("title", data.data?.get(0)?.name)
+            intent.putExtra("title", data.name.toString())
             val museumName = viewBinding.museumName.text.toString()
-            intent.putExtra("pieceAR", data.data?.get(0)?.arPath.toString())
-            intent.putExtra("idPiece", data.data?.get(0)?.id.toString())
+            intent.putExtra("pieceAR", data.arPath.toString())
+            intent.putExtra("idPiece", data.id.toString())
             intent.putExtra("musName", museumName)
-            intent.putExtra("description", data.data?.get(0)?.description.toString())
-            intent.putExtra("image", data.data?.get(0)?.image.toString())
-            Log.d("LogPieces", data.data?.get(0)?.name.toString())
-            intent.putExtra("isMaster", data.data?.get(0)?.isMasterpiece.toString())
+            intent.putExtra("description", data.description.toString())
+            intent.putExtra("image", data.image.toString())
+            Log.d("LogPieces", data.name.toString())
+            intent.putExtra("isMaster", data.isMasterpiece)
             startActivity(intent)
         }
 
@@ -63,6 +63,7 @@ class MuseumDetailsActivity : AppCompatActivity() {
         viewBinding.reviewRec.adapter = reviewsRecyclerAdapter
         viewBinding.reviewContainer.movementMethod = ScrollingMovementMethod()
         museumId = intent.getIntExtra("museumId", 0)
+
         viewModel.getMuseumPieces(museumId)
         viewModel.getReviews(museumId)
 
@@ -115,32 +116,27 @@ class MuseumDetailsActivity : AppCompatActivity() {
 
     private fun observeToLiveData() {
         viewModel.piecesList.observe(this) {
-            adapter.bindPiecesList(listOf(it!!))
-
-            viewModel.error.observe(this) {
-                if (it) {
-
-
-                    Log.e("el3ttarError", it.toString())
-                    Snackbar.make(
-                        this,
-                        viewBinding.root,
-                        "حدث خطأ ما",
-                        Snackbar.LENGTH_SHORT
-                    ).show()
-                }
-                viewModel.reviewLiveData.observe(this) {
-//            reviewsRecyclerAdapter.bindSingleReview(it)
-                    viewBinding.reviewContainer.text!!.clear()
-                    Toast.makeText(this, "Review Add Successfully", Toast.LENGTH_SHORT).show()
-                }
-                viewModel.reviewListLiveData.observe(this) {
-//            reviewsRecyclerAdapter.bindReviewsList(it?.data?.toMutableList())
-                    Log.e("review", it.toString())
-                }
+            adapter.bindPiecesList(it?.data!!)
+        }
+        viewModel.error.observe(this) {
+            if (it) {
+                Log.e("el3ttarError", it.toString())
+                Snackbar.make(
+                    this,
+                    viewBinding.root,
+                    "حدث خطأ ما",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
-
-
+            viewModel.reviewLiveData.observe(this) {
+//            reviewsRecyclerAdapter.bindSingleReview(it)
+                viewBinding.reviewContainer.text!!.clear()
+                Toast.makeText(this, "Review Add Successfully", Toast.LENGTH_SHORT).show()
+            }
+            viewModel.reviewListLiveData.observe(this) {
+//            reviewsRecyclerAdapter.bindReviewsList(it?.data?.toMutableList())
+                Log.e("review", it.toString())
+            }
         }
     }
 }

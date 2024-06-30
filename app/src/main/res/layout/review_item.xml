@@ -11,7 +11,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_120sdp"
         app:cardCornerRadius="@dimen/_20sdp"
         app:cardUseCompatPadding="true"
         app:strokeWidth="0dp">
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="#F1F0EB"
-            android:paddingBottom="@dimen/_20sdp">
+            android:paddingBottom="@dimen/_10sdp">
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/pro_image"

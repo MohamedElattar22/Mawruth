@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:backgroundTint="@color/white"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/white"
     tools:context=".ui.islamicmuseum.fragments.home.collections.CollectionPiecesActivity">
 
     <ImageView
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_30sdp"
-        android:text="استكشف"
+        android:text="المقتنيات"
         android:textColor="@color/darkBrown"
         android:textSize="@dimen/_16ssp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@id/mainTV"></View>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/hallsRV"
+        android:id="@+id/piecesOfCollectionRV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_5sdp"
@@ -57,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view4"
         app:spanCount="2"
-        tools:listitem="@layout/halls_item">
+        tools:listitem="@layout/piece_recycler_item">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -71,7 +71,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/hallsRV">
+        app:layout_constraintTop_toTopOf="@+id/piecesOfCollectionRV">
 
         <ImageView
             android:layout_width="wrap_content"

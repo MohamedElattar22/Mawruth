@@ -21,4 +21,11 @@ class PiecesRepositoryImpl
         return piecesDataStore.getMuseumPieces(museumId, page, limit, name)
     }
 
+    override suspend fun getPiecesOfCollection(collectionID: Int, museumID: Int): PiecesResponse? {
+        return piecesDataStore.getPiecesOfCollection(
+            collectionID = collectionID,
+            museumID = museumID
+        )
+    }
+
 }

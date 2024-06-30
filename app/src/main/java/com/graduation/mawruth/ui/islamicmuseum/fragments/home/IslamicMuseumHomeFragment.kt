@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.graduation.mawruth.databinding.FragmentIslamicMuseumHomeBinding
 import com.graduation.mawruth.ui.halls.IslamicMuseumHallsActivity
 import com.graduation.mawruth.ui.home.viewpager.HomeViewPager
+import com.graduation.mawruth.ui.islamicmuseum.fragments.home.collections.CollectionPiecesActivity
 import com.graduation.mawruth.ui.islamicmuseum.fragments.home.collections.CollectionsAdapter
 import com.graduation.mawruth.ui.islamicmuseum.fragments.home.halls.HallsAdapter
 import com.graduation.mawruth.ui.islamicmuseum.fragments.home.stories.StoriesAdapter
@@ -77,6 +78,7 @@ class IslamicMuseumHomeFragment : Fragment() {
         viewModel.getCollections(49)
         subscribeToLive()
         settingStoriesClick()
+        setCollectionsOnCLick()
     }
 
     private fun subscribeToLive() {
@@ -142,6 +144,18 @@ class IslamicMuseumHomeFragment : Fragment() {
                 intent.putExtra("storyName", storyData.name.toString())
                 intent.putExtra("storyImage", storyData.image.toString())
                 intent.putExtra("storyContent", storyData.content.toString())
+                startActivity(intent)
+
+            }
+    }
+
+    private fun setCollectionsOnCLick() {
+        collectionsAdapter.onCollectionClickListener =
+            CollectionsAdapter.OnCollectionListener { collectionData, position ->
+                val intent = Intent(requireActivity(), CollectionPiecesActivity::class.java)
+                intent.putExtra("collectionsName", collectionData.name.toString())
+                intent.putExtra("collectionID", collectionData.id.toString())
+                intent.putExtra("museumID", collectionData.museumId.toString())
                 startActivity(intent)
 
             }

@@ -32,7 +32,7 @@ class CollectionsAdapter(var list: List<CollectionsItem?>) :
         fun onClick(collectionData: CollectionsItem, position: Int)
     }
 
-    val onCollectionClickListener: OnCollectionListener? = null
+    var onCollectionClickListener: OnCollectionListener? = null
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val collection = list[position]
         holder.itemBinding.categoryName.text = collection?.name

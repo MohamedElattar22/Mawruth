@@ -91,6 +91,12 @@ WebServices {
         @Query("name") name: String? = null,
     ): PiecesResponseDto?
 
+    @GET("/pieces/museum/{id}")
+    suspend fun getPiecesOfCollection(
+        @Path("id") museumID: Int,
+        @Query("collection") collectionID: Int
+    ): PiecesResponseDto?
+
 
     @Multipart
     @PUT("users/upload-image")

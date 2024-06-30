@@ -9,6 +9,7 @@ import com.graduation.domain.model.stories.StoriesResponse
 import com.graduation.domain.useCase.GetAllHallsOfMuseumUseCase
 import com.graduation.domain.useCase.GetAllStoriesOfMuseumUseCase
 import com.graduation.domain.useCase.GetCollectionsOfMuseumUseCase
+import com.graduation.domain.useCase.GetPiecesOfCollectionUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -17,7 +18,8 @@ import javax.inject.Inject
 class IslamicMuseumHomeFragmentViewModel @Inject constructor(
     private val getAllStoriesOfMuseumUseCase: GetAllStoriesOfMuseumUseCase,
     private val getAllHallsOfMuseumUseCase: GetAllHallsOfMuseumUseCase,
-    private val getAllCollectionsOfMuseumUseCase: GetCollectionsOfMuseumUseCase
+    private val getAllCollectionsOfMuseumUseCase: GetCollectionsOfMuseumUseCase,
+    private val getPiecesOfCollectionUseCase: GetPiecesOfCollectionUseCase
 ) : ViewModel() {
 
     val storiesList = MutableLiveData<StoriesResponse>()
@@ -72,6 +74,10 @@ class IslamicMuseumHomeFragmentViewModel @Inject constructor(
                 loadingLiveData.postValue(false)
             }
         }
+    }
+
+    fun getPiecesOfCollection(museumId: Int, collectionID: Int) {
+
     }
 
 }
