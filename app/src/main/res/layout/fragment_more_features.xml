@@ -80,6 +80,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/feature2"
                 android:layout_width="wrap_content"
+                android:visibility="gone"
                 android:layout_height="@dimen/_120sdp"
                 android:layout_margin="@dimen/_18sdp"
                 android:backgroundTint="@color/white"

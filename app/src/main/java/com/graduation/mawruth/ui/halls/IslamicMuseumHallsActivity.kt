@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.graduation.mawruth.databinding.ActivityIslamicMuseumHallsBinding
 import com.graduation.mawruth.ui.halls.audio.AudioActivity
 import com.graduation.mawruth.ui.museumDetails.PiecesAdapter
+import com.graduation.mawruth.ui.pieceDetails.PieceDetailsActivity
 import com.graduation.mawruth.ui.virtualtours.VirtualToursActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,7 +41,18 @@ class IslamicMuseumHallsActivity : AppCompatActivity() {
     private fun subscribeToLiveData() {
         viewModel.piecesList.observe(this) {
             piecesAdapter.bindPiecesList(it?.data!!)
+            piecesAdapter.itemClick = PiecesAdapter.OnPieceClickListener { data, position ->
+                val intent = Intent(this, PieceDetailsActivity::class.java)
+                intent.putExtra("title", data.name)
+                intent.putExtra("image", data.image)
+                intent.putExtra("description", data.description)
+                intent.putExtra("isMaster", data.isMasterpiece)
+                intent.putExtra("pieceAR", data.arPath)
+                startActivity(intent)
+
+            }
         }
+
 //        viewModel.hallList.observe(this){ hallData->
 //            val data = hallData.data?.get(0)
 //            intent.putExtra("soundImage" , data?.soundImage)
