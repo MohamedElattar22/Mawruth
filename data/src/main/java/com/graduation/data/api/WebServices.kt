@@ -2,11 +2,13 @@ package com.graduation.data.api
 
 
 import com.graduation.data.model.VerificationResponseDto
+import com.graduation.data.model.ai.AIResponseDto
 import com.graduation.data.model.authuserdata.AuthenticationResponseDto
 import com.graduation.data.model.categories.CategoriesResponseDto
 import com.graduation.data.model.collection.CollectionsResponseDto
 import com.graduation.data.model.favourite.FavouriteMuseumResponseDto
 import com.graduation.data.model.favourite.FavouritePiecesResponseDto
+import com.graduation.data.model.favourite.FavouriteTestDto
 import com.graduation.data.model.halls.HallsResponseDto
 import com.graduation.data.model.museums.MuseumItemDto
 import com.graduation.data.model.museums.MuseumsResponseDto
@@ -130,6 +132,11 @@ WebServices {
         @Body review: ReviewsData
     ): ReviewsResponseDto?
 
+    @Multipart
+    @POST("api/v1/classify-image")
+    suspend fun CalssifyImage(
+        @Part avatar: MultipartBody.Part?
+    ): AIResponseDto?
 
     @GET("museum/{museum_id}/reviews")
     suspend fun getReview(
@@ -145,7 +152,7 @@ WebServices {
     @POST("favorites/museums/{id}")
     suspend fun postfavouriteMuseums(
         @Path("id") museumId: Int
-    ): FavouriteMuseumResponseDto
+    ): FavouriteTestDto
 
 
     @DELETE("/favorites/museums/{id}")

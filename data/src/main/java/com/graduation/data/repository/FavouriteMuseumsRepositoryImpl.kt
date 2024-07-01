@@ -1,24 +1,25 @@
 package com.graduation.data.repository
 
-import com.graduation.data.api.WebServices
+import com.graduation.data.dataSourceContract.FavouriteMuseumsDataSource
 import com.graduation.domain.model.Favourite.FavouriteMuseumResponse
+import com.graduation.domain.model.FavouriteTest
 import com.graduation.domain.model.VerificationResponse
 import com.graduation.domain.repositories.FavouriteMuseumsRepository
 import javax.inject.Inject
 
 class FavouriteMuseumsRepositoryImpl @Inject constructor(
-    val webServices: WebServices
+    private val favouriteMuseumsDataSource: FavouriteMuseumsDataSource
 ) :FavouriteMuseumsRepository {
     override suspend fun getFavouriteMuseums(): FavouriteMuseumResponse? {
-       return webServices.getfavouriteMuseum().toFavouriteResponse()
+        return favouriteMuseumsDataSource.getFavouriteMuseums()
     }
 
-    override suspend fun sendFavouriteMuseums(museumid: Int): FavouriteMuseumResponse? {
-        return webServices.postfavouriteMuseums(museumid).toFavouriteResponse()
+    override suspend fun sendFavouriteMuseums(museumid: Int): FavouriteTest? {
+        return favouriteMuseumsDataSource.sendFavouriteMuseums(museumid)
     }
 
     override suspend fun deleteFavouriteMuseums(museumid: Int): VerificationResponse? {
-        return webServices.deletefavouritemuseum(museumid).toVerificationResponse()
+        return favouriteMuseumsDataSource.deleteFavouriteMuseums(museumid)
 
     }
 }

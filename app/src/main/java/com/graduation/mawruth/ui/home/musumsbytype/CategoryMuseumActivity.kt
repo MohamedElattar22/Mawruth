@@ -24,6 +24,8 @@ class CategoryMuseumActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
+        val typeId = intent.getStringExtra("typeId")
+        viewModel.getMuseumByType(typeId!!)
         viewBinding.content.MusRV.adapter = adapter
         observeLiveData()
         adapter.onMuseumClickListener =
@@ -49,15 +51,9 @@ class CategoryMuseumActivity : AppCompatActivity() {
             }
     }
 
-    override fun onStart() {
-        super.onStart()
-        val typeId = intent.getStringExtra("typeId")
-        viewModel.getMuseumByType(typeId!!.toInt())
-    }
-
     private fun observeLiveData() {
         viewModel.museumData.observe(this) {
-            adapter.bindMuseumsList(listOf(it))
+            adapter.bindMuseumsList(it?.data)
         }
         viewModel.error.observe(this) {
             Snackbar.make(

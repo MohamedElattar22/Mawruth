@@ -34,40 +34,38 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-
+            android:name=".ui.ClassifyingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.HistoricalIntroActivity"
             android:exported="false" />
         <activity
             android:name=".ui.halls.IslamicMuseumHallsActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
+        <activity
             android:name=".ui.virtualtours.VirtualToursActivity"
-            android:exported="true">
-
-
-      </activity>
+            android:exported="true" />
         <activity
             android:name=".ui.islamicmuseum.fragments.home.collections.CollectionPiecesActivity"
             android:exported="false" />
         <activity
             android:name=".ui.halls.audio.AudioActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ui.halls.IslamicMuseumHallsActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ui.stories.StoriesActivity"
-            android:exported="true"></activity>
-
+            android:exported="true" />
         <activity
             android:name=".ui.favourities.FavouriteActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".ui.pieceDetails.PieceDetailsActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".ui.islamicmuseum.IslamicActivity"
-            android:exported="true"></activity>
-
+            android:exported="true" />
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="false" />
@@ -122,6 +120,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.home.musumsbytype.CategoryMuseumActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.ar.core"

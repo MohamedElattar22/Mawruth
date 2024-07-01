@@ -1,8 +1,8 @@
 package com.graduation.mawruth.ui.home
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.graduation.domain.model.museums.MuseumItem
@@ -41,14 +41,6 @@ class MuseumRecyclerAdapter(var list: MutableList<MuseumItem?>?) :
                 .load(it)
                 .into(holder.itemBinding.musImage)
         }
-        if (list?.get(position)?.isFavourite==true){
-            holder.itemBinding.loveBtn.setImageResource(R.drawable.asemheart)
-        }else
-        {
-            holder.itemBinding.loveBtn.setImageResource(R.drawable.outlined_heart)
-
-        }
-
 //        Log.d("images", list?.get(0)?.images?.get(0)?.imagePath.toString())
 //        holder.itemBinding.musImage.background =
 //            ContextCompat.getDrawable(holder.itemBinding.root.context, R.drawable.museum_pic)
@@ -62,18 +54,29 @@ class MuseumRecyclerAdapter(var list: MutableList<MuseumItem?>?) :
         onLoveClickListener?.let { onLoveClickListener ->
             holder.itemBinding.loveBtn.setOnClickListener {
                 onLoveClickListener.onClick(list?.get(position)!!,position)
-
-
             }
         }
+        if (list?.get(position)?.isFavourite == true) {
+            holder.itemBinding.loveBtn.setImageResource(R.drawable.asemheart)
+        } else {
+            holder.itemBinding.loveBtn.setImageResource(R.drawable.outlined_heart)
+
+        }
+
 
     }
 fun binditem(museumDto: MuseumItem,position: Int){
-
-   list?.set(position,museumDto)
-  notifyDataSetChanged()
-
+    Log.e("list1", list.toString())
+    list?.set(position, museumDto)
+    Log.e("list2", list.toString())
+    notifyDataSetChanged()
 }
+
+    fun removeitem(position: Int) {
+        list?.removeAt(position)
+        notifyDataSetChanged()
+    }
+
     var onMuseumClickListener: OnMuseumClickListener? = null
 var onLoveClickListener:OnMuseumClickListener?=null
     fun interface OnMuseumClickListener {

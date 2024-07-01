@@ -22,6 +22,7 @@ class ProfileActivity : AppCompatActivity() {
     var user: User? = null
     val bundle = Bundle()
     private var dialog = ShowProfileImageFragment()
+
     private var launcher: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {

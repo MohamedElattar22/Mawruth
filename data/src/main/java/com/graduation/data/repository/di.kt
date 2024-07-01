@@ -1,6 +1,7 @@
 package com.graduation.data.repository
 
 
+import com.graduation.domain.repositories.AIModelRepository
 import com.graduation.domain.repositories.CategoriesRepository
 import com.graduation.domain.repositories.CollectionsRepository
 import com.graduation.domain.repositories.EditUserInfoRepository
@@ -61,6 +62,6 @@ abstract class di {
     @Binds
     abstract fun bindFavouritePiecesRepository(favouritePieceRepositoryImpl: FavouritePieceRepositoryImpl) :FavouritePieceRepository
 
-//    @Binds
-//    abstract fun bindAIModelRepository(aiModelRepositoryImpl: AIModelRepositoryImpl):AIModelRepository
+    @Binds
+    abstract fun bindAIModelRepository(aiModelRepositoryImpl: AIModelRepositoryImpl): AIModelRepository
 }

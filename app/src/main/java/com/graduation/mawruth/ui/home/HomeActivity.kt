@@ -23,10 +23,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
 import com.graduation.domain.model.authenticationuser.User
+import com.graduation.domain.model.museums.MuseumItem
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityHomeBinding
 import com.graduation.mawruth.ui.favourities.FavouriteActivity
-
 import com.graduation.mawruth.ui.home.musumsbytype.CategoryMuseumActivity
 import com.graduation.mawruth.ui.home.viewpager.HomeViewPager
 import com.graduation.mawruth.ui.home.viewpager.TestViewPagerObject
@@ -47,12 +47,13 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var catAdapter: CategoriesRecyclerAdapter
     private val museumRecyclerAdapter = MuseumRecyclerAdapter(mutableListOf())
     private lateinit var toggle: ActionBarDrawerToggle
+    var museum: MuseumItem? = null
     private var currentPage = 0
     private var timer: Timer? = null
     private val DELAY_MS: Long = 500 //delay in milliseconds before task is to be executed
     private val PERIOD_MS: Long = 3000
     private lateinit var viewModel: HomeViewModel
-  var position:Int?=null
+    var position: Int? = null
 
     var user: User? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -110,18 +111,19 @@ class HomeActivity : AppCompatActivity() {
             viewBinding.tabLayout.isVisible = true
             museumRecyclerAdapter.bindMuseumsList(it?.data?.toMutableList())
         }
+        viewModel.deleteLiveData.observe(this)
+        {
+            if (it?.status == "Success") {
+                museumRecyclerAdapter.binditem(museum!!, position!!)
+            }
+        }
         viewModel.museumCategory.observe(this) {
             catAdapter.bindMuseumsList(it?.data)
         }
-        viewModel.responseLiveData.observe(this){
-            Snackbar.make(
-                this,
-                viewBinding.root,
-                "success",
-                Snackbar.LENGTH_SHORT
-            ).show()
-        museumRecyclerAdapter.binditem(it!!,position!!)
-            Log.e("Asem",it.toString())
+
+        viewModel.responseLiveData.observe(this) {
+            museumRecyclerAdapter.binditem(it!!, position!!)
+            Log.e("asem", "a7a")
         }
 
         viewModel.loadingLiveData.observe(this) {
@@ -160,17 +162,18 @@ class HomeActivity : AppCompatActivity() {
 
         museumRecyclerAdapter.onLoveClickListener =
             MuseumRecyclerAdapter.OnMuseumClickListener { museumDto, position ->
-               if (museumDto.isFavourite==false){
-                   Log.d("museumIdMainonlove", museumDto.toString())
-                   museumDto.id?.let { viewModel.sendfavouritemuseum(museumDto.id!!) }
-this.position=position
-               }
-                else {
-                   Log.d("deletemuseumIdMainonlove",museumDto.toString())
-                   museumDto.id?.let { viewModel.deleteMuseumData(museumDto.id!!)
-
-                   }
-               }
+                if (museumDto.isFavourite == false) {
+                    Log.d("museumIdMainonlove", museumDto.toString())
+                    viewModel.sendFavouriteMuseum(museumDto.id!!)
+                } else {
+                    Log.d("deletemuseumIdMainonlove", museumDto.toString())
+                    museumDto.id?.let {
+                        viewModel.deleteMuseumData(museumDto.id!!)
+                    }
+                    museumDto.isFavourite = false
+                }
+                this.position = position
+                this.museum = museumDto
 
 
             }
@@ -192,13 +195,10 @@ this.position=position
         catAdapter.onTypeClickListener =
             CategoriesRecyclerAdapter.OnTypeClickListener { categoriesDtoItem, _ ->
                 val intent = Intent(this@HomeActivity, CategoryMuseumActivity::class.java)
-                val typeId = categoriesDtoItem.id.toString()
+                val typeId = categoriesDtoItem.name.toString()
                 intent.putExtra("typeId", typeId)
                 startActivity(intent)
             }
-
-
-
 
     }
 
