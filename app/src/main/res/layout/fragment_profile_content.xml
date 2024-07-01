@@ -91,6 +91,7 @@
             android:layout_height="@dimen/_55sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:backgroundTint="#EDEDED"
+            android:visibility="gone"
             android:fontFamily="@font/cairo_regular"
             android:gravity="start"
             android:paddingVertical="@dimen/_15sdp"

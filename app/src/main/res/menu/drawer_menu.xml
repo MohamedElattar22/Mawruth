@@ -1,30 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/contact_us"
-        android:icon="@drawable/contact"
-        android:iconTint="@color/white"
-        android:title="تواصل معنا"
-        app:showAsAction="always" />
+
     <item
         android:id="@+id/fav"
         android:icon="@drawable/favourite"
         android:iconTint="@color/white"
         android:title="المفضله"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/faq"
-        android:icon="@drawable/fan"
-        android:iconTint="@color/white"
-        android:title="FandQ"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/send"
-        android:icon="@drawable/share_app"
-        android:iconTint="@color/white"
-        android:title="مشاركة التطبيق"
-        app:showAsAction="always" />
+
+
     <item
         android:id="@+id/person"
         android:icon="@drawable/person"
