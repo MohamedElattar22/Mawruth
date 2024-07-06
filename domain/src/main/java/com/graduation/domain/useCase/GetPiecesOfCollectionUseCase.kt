@@ -9,13 +9,15 @@ class GetPiecesOfCollectionUseCase @Inject constructor(private val piecesReposit
         museumID: Int,
         collectionID: Int? = null,
         hallID: Int? = null,
+        pieceName: String? = null,
         ar: Boolean? = null
     ): PiecesResponse? {
         return piecesRepository.getPiecesOfCollection(
-            collectionID,
-            museumID,
-            hallID,
-            ar
+            collectionID = collectionID,
+            museumID = museumID,
+            hallID = hallID,
+            pieceName = pieceName,
+            ar = ar
         )
     }
 }

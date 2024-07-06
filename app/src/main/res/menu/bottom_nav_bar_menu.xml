@@ -14,8 +14,8 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/fav_nav_barIconBottom"
-        android:icon="@drawable/diamond"
-        android:title="المفضلة"
+        android:icon="@drawable/piece_ar"
+        android:title="واقع معزز"
         app:showAsAction="always" />
     <item
         android:id="@+id/moreIconBottom"

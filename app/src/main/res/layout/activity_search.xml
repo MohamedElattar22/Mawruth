@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.graduation.mawruth.ui.search.SearchViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.notifications.NotificationActivity">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#F1F0EB"
+            app:cardCornerRadius="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeWidth="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    android:text="البحــث"
+                    android:textColor="@color/darkBrown"
+                    android:textSize="@dimen/_18ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </TextView>
+
+                <ImageView
+                    android:id="@+id/closeBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:src="@drawable/close"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView21"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView21">
+
+                </ImageView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/search_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:background="@color/white"
+                    app:boxCornerRadiusBottomEnd="@dimen/_5sdp"
+                    app:boxCornerRadiusBottomStart="@dimen/_5sdp"
+                    app:boxCornerRadiusTopEnd="@dimen/_5sdp"
+                    app:boxCornerRadiusTopStart="@dimen/_5sdp"
+                    app:boxStrokeColor="#B7B2AB"
+                    app:boxStrokeWidth="1dp"
+                    app:hintEnabled="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/materialButton2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView21"
+                    app:strokeColor="#B7B2AB"
+                    app:strokeWidth="@dimen/_1sdp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/searchCont"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawableEnd="@drawable/search_icon"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="#B7B2AB"
+                        android:hint="إلي أي تراث تتطلع ....؟"
+                        android:text="@={vm.museumName}"
+                        app:backgroundTint="@color/white"
+                        app:boxStrokeColor="#B7B2AB"
+                        app:hintTextColor="#B7B2AB">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/materialButton2"
+                    android:layout_width="65dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    app:backgroundTint="@color/darkBrown"
+                    app:cornerRadius="@dimen/_7sdp"
+                    app:icon="@drawable/search_icon"
+                    app:iconGravity="textStart"
+                    app:iconPadding="1dp"
+                    app:iconSize="@dimen/_21sdp"
+                    app:iconTint="@color/mainSand"
+                    app:layout_constraintBottom_toBottomOf="@+id/search_bar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/search_bar">
+
+                </com.google.android.material.button.MaterialButton>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:id="@+id/successContent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView7">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/searchResultCntTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:fontFamily="@font/cairo_medium"
+                    android:gravity="end"
+                    android:textColor="#B9A474"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:fontFamily="@font/cairo_medium"
+                    android:gravity="start"
+                    android:text="نتائج الفلتر"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </TextView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/resultRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/search_item_layout">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/notFoundContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView7">
+
+            <ImageView
+                android:id="@+id/notification_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/search_bg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView7">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="لا تتوافر نتائج للبحث"
+                android:textColor="@color/darkBrown"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/notification_background">
+
+            </TextView>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

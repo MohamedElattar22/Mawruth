@@ -32,7 +32,9 @@ import com.graduation.mawruth.ui.home.viewpager.HomeViewPager
 import com.graduation.mawruth.ui.home.viewpager.TestViewPagerObject
 import com.graduation.mawruth.ui.login.LoginActivity
 import com.graduation.mawruth.ui.museumDetails.MuseumDetailsActivity
+import com.graduation.mawruth.ui.notifications.NotificationActivity
 import com.graduation.mawruth.ui.profile.ProfileActivity
+import com.graduation.mawruth.ui.search.SearchActivity
 import com.graduation.mawruth.ui.settings.SettingsActivity
 import com.graduation.mawruth.ui.signup.SignupActivity
 import com.graduation.mawruth.ui.splash.SplashScreen
@@ -156,6 +158,12 @@ class HomeActivity : AppCompatActivity() {
         viewBinding.content.catRV.adapter = catAdapter
         viewBinding.content.museumRec.adapter = museumRecyclerAdapter
         viewBinding.viewPager.adapter = adapter
+        viewBinding.toolbar.setOnMenuItemClickListener { item ->
+            if (item.itemId == R.id.notification) {
+                navigateToNotification()
+            }
+            return@setOnMenuItemClickListener true
+        }
 
         handelTabLayoutForPager()
         initDrawer()
@@ -199,7 +207,24 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("typeId", typeId)
                 startActivity(intent)
             }
+        viewBinding.filtersBtn.setOnClickListener {
+            navigateToSearchView()
+        }
 
+        viewBinding.searchCont.setOnClickListener {
+            navigateToSearchView()
+        }
+    }
+
+    private fun navigateToNotification() {
+        val intent = Intent(this, NotificationActivity::class.java)
+        startActivity(intent)
+
+    }
+
+    private fun navigateToSearchView() {
+        val intent = Intent(this, SearchActivity::class.java)
+        startActivity(intent)
     }
 
     private fun handelTabLayoutForPager() {
@@ -239,6 +264,7 @@ class HomeActivity : AppCompatActivity() {
                 R.string.close,
             )
         toggle.drawerArrowDrawable.color = resources.getColor(R.color.darkBrown)
+
         viewBinding.drawer.addDrawerListener(toggle)
         toggle.syncState()
         val header = viewBinding.nav.getHeaderView(0)

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:backgroundTint="@color/white"
+    app:strokeWidth="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView8"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeWidth="0dp">
+
+            <ImageView
+                android:id="@+id/museumImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/museum_pic">
+
+            </ImageView>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/museumName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="متحف الفن الإسلامي"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/materialCardView8"
+            app:layout_constraintEnd_toStartOf="@+id/materialCardView8"
+            app:layout_constraintTop_toTopOf="@+id/materialCardView8">
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_search"
+            app:layout_constraintBottom_toBottomOf="@+id/museumName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/museumName">
+
+        </ImageView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="#B7B2AB"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView8">
+
+        </View>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

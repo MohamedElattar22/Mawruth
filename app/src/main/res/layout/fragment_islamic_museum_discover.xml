@@ -8,18 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.islamicmuseum.fragments.home.collections.CollectionPiecesActivity">
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_30sdp"
-        android:src="@drawable/back_ic"
-        app:layout_constraintBottom_toBottomOf="@+id/view4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-    </ImageView>
 
     <TextView
         android:id="@+id/mainTV"

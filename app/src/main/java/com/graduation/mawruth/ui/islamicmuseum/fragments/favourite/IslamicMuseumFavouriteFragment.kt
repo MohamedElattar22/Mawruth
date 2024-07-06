@@ -5,25 +5,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.graduation.mawruth.R
+import androidx.lifecycle.ViewModelProvider
+import com.graduation.mawruth.databinding.FragmentIslamicMuseumFavouriteBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * A simple [Fragment] subclass.
- * Use the [IslamicMuseumFavouriteFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class IslamicMuseumFavouriteFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var viewBinding: FragmentIslamicMuseumFavouriteBinding
+    private lateinit var viewModel: PiecesARViewModel
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_islamic_museum_favourite, container, false)
+    ): View {
+        viewBinding = FragmentIslamicMuseumFavouriteBinding.inflate(
+            inflater, container,
+            false
+        )
+        viewModel = ViewModelProvider(this)[PiecesARViewModel::class.java]
+        return viewBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews()
+    }
+
+    private fun initViews() {
+
     }
 
 

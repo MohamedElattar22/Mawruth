@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.favourites.FavouriteActivity"
+    tools:context=".ui.favourities.FavouriteActivity"
     android:background="@color/white"
     >
 
@@ -14,6 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_24sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:contentDescription="backicon"
         android:src="@drawable/arrowright"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +28,7 @@
         android:layout_marginTop="@dimen/_24sdp"
         android:layout_marginEnd="@dimen/_8sdp"
         android:fontFamily="@font/cairo_medium"
-        android:text="المقتنيات"
+        android:text="المفضلة"
         android:textColor="@color/darkBrown"
         android:textSize="@dimen/_18ssp"
         app:layout_constraintBottom_toBottomOf="@id/backArrow"
@@ -48,6 +49,7 @@
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/togglegroup"
         android:layout_width="wrap_content"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_13sdp"
 

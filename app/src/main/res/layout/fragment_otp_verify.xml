@@ -42,6 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_40sdp"
         android:orientation="horizontal">
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/otp1Layout"
             android:layout_width="@dimen/_50sdp"
@@ -60,16 +61,13 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/otp1"
-
-                android:layout_width="@dimen/_55sdp"
-                android:layout_height="@dimen/_55sdp"
-
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:cursorVisible="false"
                 android:drawablePadding="@dimen/_8sdp"
                 android:fontFamily="@font/cairo_semibold"
                 android:gravity="center"
                 android:hint="-"
-                android:layout_marginStart="@dimen/_15sdp"
                 android:imeOptions="actionNext"
                 android:inputType="number"
                 android:maxEms="1"
@@ -84,7 +82,6 @@
             </com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/otp2Layout"
             android:layout_width="@dimen/_50sdp"

@@ -56,6 +56,7 @@ class PieceDetailsActivity : AppCompatActivity() {
         Log.d("moha", intent.getBooleanExtra("isMaster", false).toString())
         val isMasterPiece = intent.getBooleanExtra("isMaster", false)
         viewBinding.navigateToAR.isVisible = isMasterPiece
+        viewBinding.bottomNavBar.isVisible = isMasterPiece
         viewBinding.navigateToAR.setOnClickListener {
             val start = Intent(this, AgumentedRealityActivity::class.java)
             start.putExtra("agmunted", pieceAr)
@@ -63,6 +64,10 @@ class PieceDetailsActivity : AppCompatActivity() {
             start.putExtra("pieceDes", pieceDes.toString())
             startActivity(start)
         }
+        viewBinding.toolbar.setNavigationOnClickListener {
+            finish()
+        }
+
 
     }
 

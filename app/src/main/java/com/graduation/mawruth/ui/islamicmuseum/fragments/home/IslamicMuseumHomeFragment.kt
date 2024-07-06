@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.facebook.shimmer.Shimmer
 import com.google.android.material.snackbar.Snackbar
+import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.FragmentIslamicMuseumHomeBinding
 import com.graduation.mawruth.ui.halls.IslamicMuseumHallsActivity
 import com.graduation.mawruth.ui.home.viewpager.HomeViewPager
@@ -18,6 +19,7 @@ import com.graduation.mawruth.ui.islamicmuseum.fragments.home.collections.Collec
 import com.graduation.mawruth.ui.islamicmuseum.fragments.home.collections.CollectionsAdapter
 import com.graduation.mawruth.ui.islamicmuseum.fragments.home.halls.HallsAdapter
 import com.graduation.mawruth.ui.islamicmuseum.fragments.home.stories.StoriesAdapter
+import com.graduation.mawruth.ui.notifications.NotificationActivity
 import com.graduation.mawruth.ui.stories.StoriesActivity
 import com.graduation.mawruth.utils.IslamicMuseumPager
 import dagger.hilt.android.AndroidEntryPoint
@@ -64,6 +66,13 @@ class IslamicMuseumHomeFragment : Fragment() {
         viewBinding.islamicContent.hallsRecycler.adapter = hallsAdapter
         viewBinding.islamicContent.collectionsRV.adapter = collectionsAdapter
         adapter = HomeViewPager(IslamicMuseumPager.list)
+        viewBinding.toolbar.setOnMenuItemClickListener { item ->
+            if (item.itemId == R.id.notification) {
+                navigateToNotification()
+            }
+            return@setOnMenuItemClickListener true
+        }
+
         viewBinding.viewPager.adapter = adapter
 //        TabLayoutMediator(
 //
@@ -81,6 +90,10 @@ class IslamicMuseumHomeFragment : Fragment() {
         setCollectionsOnCLick()
     }
 
+    private fun navigateToNotification() {
+        val intent = Intent(requireActivity(), NotificationActivity::class.java)
+        startActivity(intent)
+    }
     private fun subscribeToLive() {
         viewModel.storiesList.observe(viewLifecycleOwner) { storyData ->
             storiesAdapter.bindStoriesList(storyData.data!!)

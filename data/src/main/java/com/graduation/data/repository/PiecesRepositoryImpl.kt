@@ -24,11 +24,16 @@ class PiecesRepositoryImpl
     override suspend fun getPiecesOfCollection(
         collectionID: Int?,
         museumID: Int,
+        pieceName: String?,
         hallID: Int?,
         ar: Boolean?
     ): PiecesResponse? {
         return piecesDataStore.getPiecesOfCollection(
-            collectionID, museumID, hallID, ar
+            collectionID = collectionID,
+            museumID = museumID,
+            hallID = hallID,
+            ar = ar,
+            pieceName = pieceName
         )
     }
 

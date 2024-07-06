@@ -76,10 +76,7 @@ class CollectionPiecesActivity : AppCompatActivity() {
             intent.putExtra("pieceAR", data.arPath.toString())
             intent.putExtra("isMaster", data.isMasterpiece)
             startActivity(intent)
-
         }
-
-
     }
 
 }

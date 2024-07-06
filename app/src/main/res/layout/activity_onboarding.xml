@@ -90,8 +90,8 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/nextBtn"
-                android:layout_width="@dimen/_70sdp"
-                android:layout_height="@dimen/_70sdp"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
                 android:layout_marginEnd="@dimen/_18sdp"
                 android:layout_marginBottom="@dimen/_50sdp"
                 android:background="@drawable/next_btnf"

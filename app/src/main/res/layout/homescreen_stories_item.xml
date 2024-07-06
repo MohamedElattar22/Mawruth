@@ -43,7 +43,7 @@
                 android:maxEms="3"
                 android:maxLines="2"
                 android:text="قصة الشفر السرية"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/category_image"
                 app:layout_constraintStart_toStartOf="@+id/category_image" />

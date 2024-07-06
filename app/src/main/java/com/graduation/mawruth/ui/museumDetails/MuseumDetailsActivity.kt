@@ -18,6 +18,7 @@ import com.bumptech.glide.request.transition.Transition
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityMuseumDetailsBinding
 import com.graduation.mawruth.ui.islamicmuseum.IslamicActivity
+import com.graduation.mawruth.ui.notifications.NotificationActivity
 import com.graduation.mawruth.ui.pieceDetails.PieceDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -113,6 +114,18 @@ class MuseumDetailsActivity : AppCompatActivity() {
         viewBinding.toolbar.setNavigationOnClickListener {
             finish()
         }
+        viewBinding.toolbar.setOnMenuItemClickListener { item ->
+            if (item.itemId == R.id.notification) {
+                navigateToNotification()
+            }
+            return@setOnMenuItemClickListener true
+        }
+    }
+
+    private fun navigateToNotification() {
+        val intent = Intent(this, NotificationActivity::class.java)
+        startActivity(intent)
+
     }
 
     private fun navigateToIslamicMuseum() {
