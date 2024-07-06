@@ -26,10 +26,15 @@ class PiecesDataStoreImpl @Inject constructor(private val webServices: WebServic
         collectionID: Int?,
         museumID: Int,
         hallID: Int?,
+        pieceName: String?,
         ar: Boolean?
     ): PiecesResponse? {
         return webServices.getPiecesOfCollection(
-            museumID, collectionID, hallID, ar
+            museumID = museumID,
+            collectionID = collectionID,
+            hallID = hallID,
+            ar = ar,
+            name = pieceName
         )?.toPiecesResponse()
     }
 

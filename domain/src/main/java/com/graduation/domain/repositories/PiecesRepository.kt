@@ -16,6 +16,7 @@ interface PiecesRepository {
     suspend fun getPiecesOfCollection(
         collectionID: Int? = null,
         museumID: Int,
+        pieceName: String? = null,
         hallID: Int? = null,
         ar: Boolean? = null
     ): PiecesResponse?

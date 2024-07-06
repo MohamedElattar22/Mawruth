@@ -80,7 +80,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:layout_margin="@dimen/_18sdp"
+                android:layout_margin="@dimen/_10sdp"
                 android:contentDescription="asd"
                 android:outlineAmbientShadowColor="@color/black"
                 app:layout_collapseMode="pin"
@@ -113,6 +113,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"

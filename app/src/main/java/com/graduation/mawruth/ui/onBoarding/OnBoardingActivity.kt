@@ -31,7 +31,7 @@ class OnBoardingActivity : AppCompatActivity() {
     fun contentCreate(){
 
         imagesList.add(R.drawable.ar_onboard)
-        imagesList.add(R.drawable.maps_onboarding)
+        imagesList.add(R.drawable.ai_detect)
         imagesList.add(R.drawable.maps_onboarding)
         headerList.add("تجربة بصرية فريدة !")
         headerList.add("معزز بالذكاء الاصطناعي !")

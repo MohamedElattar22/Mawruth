@@ -1,5 +1,6 @@
 package com.graduation.mawruth.ui
 
+
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.graduation.mawruth.ClassifyViewModel
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityClassifyingBinding
+import com.graduation.mawruth.ui.arActivity.ObjectDataFragment
 import com.graduation.mawruth.utils.typeWrite
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -43,7 +45,7 @@ class ClassifyingActivity : AppCompatActivity() {
         assem()
     }
 
-    fun resolveToFile(uri: Uri?): File {
+    private fun resolveToFile(uri: Uri?): File {
         val fileDir = filesDir
         val file = File(fileDir, "image.jpeg")
         val inputStream = contentResolver.openInputStream(uri!!)
@@ -58,7 +60,23 @@ class ClassifyingActivity : AppCompatActivity() {
             viewBinding.name.isVisible = true
             viewBinding.more.isVisible = true
             viewBinding.name.typeWrite(lifecycleOwner = this, it.toString(), 100)
+            viewModel.getPieceByName(it.toString(), 49)
 
         }
+        viewModel.piecesResponse.observe(this) { pieceData ->
+            val data = pieceData?.data?.get(0)
+            viewBinding.more.setOnClickListener {
+                intent.putExtra("pieceName", data?.name)
+                intent.putExtra("pieceDes", data?.description)
+
+            }
+        }
+
     }
+
+    private fun showDataSheet() {
+        val dataBottomSheet = ObjectDataFragment()
+        dataBottomSheet.show(supportFragmentManager, "")
+    }
+
 }

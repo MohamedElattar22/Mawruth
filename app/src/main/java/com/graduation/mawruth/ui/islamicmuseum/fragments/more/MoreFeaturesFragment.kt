@@ -58,6 +58,19 @@ class MoreFeaturesFragment : BottomSheetDialogFragment() {
                 .createIntent()
             launcher.launch(intent)
         }
+        viewBinding.feature3.setOnClickListener {
+            startUnityActivity()
+        }
+    }
+
+    private fun startUnityActivity() {
+        val uri = Uri.parse("myapp://unity")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        try {
+            startActivity(intent)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
 }

@@ -17,6 +17,7 @@ interface PiecesDataStore {
         collectionID: Int? = null,
         museumID: Int,
         hallID: Int? = null,
+        pieceName: String? = null,
         ar: Boolean? = null
     ): PiecesResponse?
 }

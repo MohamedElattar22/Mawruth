@@ -34,6 +34,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.search.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.notifications.NotificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.ClassifyingActivity"
             android:exported="false" />
         <activity
@@ -48,12 +54,7 @@
         <activity
             android:name=".ui.islamicmuseum.fragments.home.collections.CollectionPiecesActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.halls.audio.AudioActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.halls.IslamicMuseumHallsActivity"
-            android:exported="true" />
+        <activity android:name=".ui.halls.audio.AudioActivity" />
         <activity
             android:name=".ui.stories.StoriesActivity"
             android:exported="true" />
@@ -65,7 +66,19 @@
             android:exported="false" />
         <activity
             android:name=".ui.islamicmuseum.IslamicActivity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Define the custom URI scheme and host -->
+                <data
+                    android:host="mawruth"
+                    android:scheme="app" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="false" />

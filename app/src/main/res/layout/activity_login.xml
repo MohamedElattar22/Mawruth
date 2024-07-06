@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <import type="android.view.View" />
-
         <variable
             name="vm"
             type="com.graduation.mawruth.ui.login.LoginViewModel" />
@@ -18,7 +16,6 @@
         android:layout_height="match_parent"
         android:background="@drawable/enter_background"
         tools:context=".ui.login.LoginActivity">
-
 
         <ImageView
             android:id="@+id/imageView"
@@ -62,7 +59,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.28" />
-
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView"
@@ -144,7 +140,7 @@
                             android:layout_height="match_parent"
                             android:textColorHighlight="@color/mainSand"
                             android:background="@drawable/emailbackground"
-                            android:drawableEnd="@drawable/user"
+                            android:drawableEnd="@drawable/email_ico"
                             android:drawablePadding="@dimen/_10sdp"
                             android:fontFamily="@font/cairo_regular"
                             android:gravity="end"
@@ -176,9 +172,10 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         app:cursorColor="@color/darkBrown"
                         android:layout_marginEnd="@dimen/_20sdp"
-                        app:counterEnabled="true"
+
                         app:hintEnabled="false"
-                        app:passwordToggleEnabled="true"
+
+
                         app:layout_constraintTop_toBottomOf="@+id/passwordtxt">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -186,7 +183,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/emailbackground"
-                            android:drawableEnd="@drawable/lock"
+                            android:drawableEnd="@drawable/main_lock"
                             android:drawablePadding="@dimen/_10sdp"
                             android:textColorHighlight="@color/mainSand"
                             android:fontFamily="@font/cairo_regular"

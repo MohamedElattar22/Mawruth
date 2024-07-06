@@ -65,9 +65,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_60sdp"
-
+                android:maxEms="4"
+                android:maxLines="2"
                 android:fontFamily="@font/cairo_semibold"
-                android:text="ســر المفتاح"
+                android:text="مفتاح الكعبة"
                 android:textColor="#514B45"
                 android:textSize="@dimen/_16sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView7"
@@ -81,7 +82,6 @@
                 android:id="@+id/storyTV"
                 android:layout_width="@dimen/_200sdp"
                 android:layout_height="0dp"
-                android:layout_marginTop="@dimen/_40sdp"
                 android:layout_marginEnd="@dimen/_60sdp"
                 android:fontFamily="@font/cairo_medium"
                 android:maxLines="10"
@@ -95,7 +95,7 @@
                 android:textColor="#CC514B45"
                 android:textSize="@dimen/_8sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/hkayaNameTV">
+                app:layout_constraintTop_toBottomOf="@+id/hkayaNameTV">
 
             </TextView>
 

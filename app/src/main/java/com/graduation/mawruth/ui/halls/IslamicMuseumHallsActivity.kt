@@ -53,13 +53,6 @@ class IslamicMuseumHallsActivity : AppCompatActivity() {
             }
         }
 
-//        viewModel.hallList.observe(this){ hallData->
-//            val data = hallData.data?.get(0)
-//            intent.putExtra("soundImage" , data?.soundImage)
-//            intent.putExtra("soundPath" , data?.soundPath)
-//            intent.putExtra("hallName" , data?.name)
-//
-//        }
     }
 
     private fun getDataFromHome() {
@@ -90,10 +83,6 @@ class IslamicMuseumHallsActivity : AppCompatActivity() {
             val intent = Intent(this, VirtualToursActivity::class.java)
             startActivity(intent)
         }
-
-    }
-
-    private fun navigateToSound() {
 
     }
 

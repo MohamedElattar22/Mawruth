@@ -3,7 +3,6 @@ package com.graduation.mawruth.ui.arActivity
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -42,9 +41,6 @@ class AgumentedRealityActivity : AppCompatActivity() {
 
         }
 
-        viewBinding.dataBtn.setOnClickListener {
-            Toast.makeText(this, "voice opened", Toast.LENGTH_SHORT).show()
-        }
         viewBinding.fab.setOnClickListener {
             showDataSheet()
         }

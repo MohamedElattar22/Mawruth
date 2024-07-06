@@ -9,8 +9,8 @@ import javax.inject.Inject
 class MuseumRepositoryImpl @Inject constructor(private val museumsDataSource: MuseumsDataSource) :
     MuseumRepository {
     override suspend fun getAllMuseum(
-        page: Int,
-        limit: Int,
+        page: Int?,
+        limit: Int?,
         name: String?,
         category: String?,
         city: String?,

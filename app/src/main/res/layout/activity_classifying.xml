@@ -31,7 +31,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/museum_pic"></ImageView>
+                tools:src="@drawable/museum_pic">
+
+            </ImageView>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -92,11 +94,12 @@
                         android:text="المزيد"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_12ssp"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
                         android:textStyle="bold"
-                        android:visibility="gone"
+                        android:visibility="invisible"
                         app:backgroundTint="@color/mainBtn"
+                        app:cornerRadius="@dimen/_10sdp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/materialCardView6"
                         app:layout_constraintTop_toBottomOf="@+id/name" />
 
                     <com.google.android.material.card.MaterialCardView

@@ -5,8 +5,8 @@ import com.graduation.domain.model.museums.MuseumsResponse
 
 interface MuseumRepository {
     suspend fun getAllMuseum(
-        page: Int = 1,
-        limit: Int = 10,
+        page: Int? = null,
+        limit: Int? = null,
         name: String? = null,
         category: String? = null,
         city: String? = null,

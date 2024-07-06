@@ -41,8 +41,8 @@ WebServices {
 
     @GET("museums")
     suspend fun getAllMuseums(
-        @Query("page") page: Int? = 1,
-        @Query("limit") limit: Int? = 10,
+        @Query("page") page: Int? = null,
+        @Query("limit") limit: Int? = null,
         @Query("name") name: String? = null,
         @Query("category") category: String? = null,
         @Query("city") city: String? = null,
@@ -103,6 +103,7 @@ WebServices {
     @GET("/pieces/museum/{id}")
     suspend fun getPiecesOfCollection(
         @Path("id") museumID: Int,
+        @Query("name") name: String? = null,
         @Query("collection") collectionID: Int? = null,
         @Query("hall") hallID: Int? = null,
         @Query("ar") ar: Boolean? = null
@@ -197,7 +198,6 @@ WebServices {
     suspend fun getCollectionOfMuseum(
         @Path("museumId") museumId: Int
     ): CollectionsResponseDto
-
 
 
 }

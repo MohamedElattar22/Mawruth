@@ -1,8 +1,5 @@
 package com.graduation.mawruth.ui.resetpassword.cyclefragments
 
-import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.FragmentResetPasswordBinding
 import com.graduation.mawruth.ui.resetpassword.ResetPasswordViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +19,7 @@ class ResetPasswordFragment : Fragment() {
     private lateinit var viewBinding: FragmentResetPasswordBinding
     private lateinit var viewModel: ResetPasswordViewModel
     private var txtWatcher: TextWatcher? = null
-    private lateinit var dialog: Dialog
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,12 +38,7 @@ class ResetPasswordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         textChanger()
         viewBinding.passwordsaveBtn.isEnabled = false
-        dialog = Dialog(requireActivity())
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setCancelable(false)
-        val dialogView =
-            LayoutInflater.from(requireContext()).inflate(R.layout.loading_dialog, viewBinding.root)
-        dialog.setContentView(dialogView)
+
         initViews()
     }
     private fun initViews() {
@@ -70,19 +61,19 @@ class ResetPasswordFragment : Fragment() {
 
     private fun resetPassword() {
         viewModel.editPassword(viewBinding.password.text.toString())
-        dialog.show()
+
     }
 
     private fun subscribeToLiveData() {
         viewModel.infoLiveData.observe(viewLifecycleOwner) {
             if (it) {
                 setNavigation()
-                dialog.dismiss()
+
             } else {
                 Snackbar.make(
                     requireContext(), viewBinding.root, "حدث خطأ ما", Snackbar.LENGTH_SHORT
                 ).show()
-                dialog.dismiss()
+
             }
 
         }

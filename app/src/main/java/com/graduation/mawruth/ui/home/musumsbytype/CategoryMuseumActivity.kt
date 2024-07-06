@@ -5,8 +5,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
+import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityCategoryMuseumBinding
 import com.graduation.mawruth.ui.museumDetails.MuseumDetailsActivity
+import com.graduation.mawruth.ui.notifications.NotificationActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,6 +51,21 @@ class CategoryMuseumActivity : AppCompatActivity() {
                 )
                 startActivity(intent)
             }
+        viewBinding.toolbar.setNavigationOnClickListener {
+            finish()
+        }
+        viewBinding.toolbar.setOnMenuItemClickListener { item ->
+            if (item.itemId == R.id.notification) {
+                navigateToNotification()
+            }
+            return@setOnMenuItemClickListener true
+        }
+    }
+
+    private fun navigateToNotification() {
+        val intent = Intent(this, NotificationActivity::class.java)
+        startActivity(intent)
+
     }
 
     private fun observeLiveData() {

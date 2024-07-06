@@ -16,6 +16,10 @@ class VirtualToursActivity : AppCompatActivity() {
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        finish()
+    }
     override fun onBackPressed() {
         super.onBackPressed()
         finish()

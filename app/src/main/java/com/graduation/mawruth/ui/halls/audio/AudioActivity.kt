@@ -1,6 +1,7 @@
 package com.graduation.mawruth.ui.halls.audio
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -17,12 +18,14 @@ import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.graduation.mawruth.R
 import com.graduation.mawruth.databinding.ActivityAudioBinding
+import com.graduation.mawruth.ui.halls.IslamicMuseumHallsActivity
 
 class AudioActivity : AppCompatActivity() {
     lateinit var binding: ActivityAudioBinding
     private lateinit var dialog: Dialog
     lateinit var player: SimpleExoPlayer
-    var duartion: Int = 0
+    var duration: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
@@ -30,6 +33,9 @@ class AudioActivity : AppCompatActivity() {
         setContentView(binding.root)
         retrieveData()
         createDialog()
+        binding.backBtn.setOnClickListener {
+            navigateToHalls()
+        }
         player = SimpleExoPlayer.Builder(this@AudioActivity).build()
         player.addListener(object : Player.Listener {
             override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
@@ -41,9 +47,9 @@ class AudioActivity : AppCompatActivity() {
             }
 
             override fun onIsPlayingChanged(isPlaying: Boolean) {
-                duartion = player.duration.toInt() / 1000
-                binding.seekbar.max = duartion
-                binding.time.text = gettimeString(duartion)
+                duration = player.duration.toInt() / 1000
+                binding.seekbar.max = duration
+                binding.time.text = gettimeString(duration)
             }
 
             override fun onPositionDiscontinuity(
@@ -74,7 +80,7 @@ class AudioActivity : AppCompatActivity() {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
                     player.seekTo(progress.toLong() * 1000)
-                    binding.time.text = gettimeString(duartion)
+                    binding.time.text = gettimeString(duration)
                 }
             }
 
@@ -111,21 +117,25 @@ class AudioActivity : AppCompatActivity() {
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        player.stop()
+        finish()
+    }
     fun gettimeString(duration: Int): String {
-        var min = duration / 60
-        var sec = duration % 60
-        var time = String.format("%02d:%02d", min, sec)
+        val min = duration / 60
+        val sec = duration % 60
+        val time = String.format("%02d:%02d", min, sec)
         return time
     }
 
-    fun createDialog() {
+    private fun createDialog() {
         dialog = Dialog(this)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCancelable(false)
         val dialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog, null)
         dialog.setContentView(dialogView)
     }
-
     private fun retrieveData() {
         val text = intent.getStringExtra("name")
         val image = intent.getStringExtra("image").toString()
@@ -135,5 +145,13 @@ class AudioActivity : AppCompatActivity() {
             .into(binding.audioImage)
         binding.audioText.text = text
     }
+
+    private fun navigateToHalls() {
+        val intent = Intent(this, IslamicMuseumHallsActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+
 
 }
